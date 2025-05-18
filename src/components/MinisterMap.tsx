@@ -14,6 +14,7 @@ interface RegionData {
   code: string;
   name: string;
   data?: any;
+  error?: string;
 }
 
 interface Position {
