@@ -152,15 +152,15 @@ const AdminPage = () => {
 
       <div className="flex gap-4 flex-col lg:flex-row">
         {/* LEFT */}
+        <div className="flex flex-col gap-8 lg:w-1/2">
+          <AdminDataReports />
+        </div>
+        
+        {/* RIGHT */}
         <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
           <div className="h-[400px]">
             <DetailedMap  />
           </div>
-        </div>
-        
-        {/* RIGHT */}
-        <div className="flex flex-col gap-8 lg:w-1/2">
-          <AdminDataReports />
         </div>
       </div>
     </div>

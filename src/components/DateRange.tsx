@@ -1,59 +1,52 @@
 import { useState } from 'react';
-import { DateRangePicker, Range, RangeKeyDict } from 'react-date-range';
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
-import { addDays } from 'date-fns';
+import DatePicker from 'react-datepicker';
+import { addDays } from 'date-fns';  // Add this import
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface DateRangeProps {
   onDateChange: (dates: { startDate: Date; endDate: Date }) => void;
 }
 
 const DateRangeComponent = ({ onDateChange }: DateRangeProps) => {
-  const [state, setState] = useState<Range[]>([
-    {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 7),
-      key: 'selection'
-    }
-  ]);
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [endDate, setEndDate] = useState<Date>(addDays(new Date(), 7));
 
-  const handleSelect = (ranges: RangeKeyDict) => {
-    const selection = ranges.selection;
-    setState([selection]);
-    onDateChange({
-      startDate: selection.startDate!,
-      endDate: selection.endDate!
-    });
+  const handleStartDateChange = (date: Date | null) => {
+    if (date) {
+      setStartDate(date);
+      onDateChange({ startDate: date, endDate });
+    }
+  };
+
+  const handleEndDateChange = (date: Date | null) => {
+    if (date) {
+      setEndDate(date);
+      onDateChange({ startDate, endDate: date });
+    }
   };
 
   return (
     <div className="flex flex-col gap-4 w-[100%] items-center">
-      <div className="justify-center sm:flex md:block xl:flex gap-2 items-center sm:justify-between ">
-        <p>From</p>
-        <input
-          type="text"
-          value={state[0].startDate?.toLocaleDateString()}
-          placeholder="From"
-          readOnly
-          className="border p-2 rounded"
+      <div className="flex gap-2 items-center">
+        <DatePicker
+          selected={startDate}
+          onChange={handleStartDateChange}
+          selectsStart
+          startDate={startDate}
+          endDate={endDate}
+          customInput={<input className="border p-2 rounded w-32" />}
         />
-        <p>To</p>
-        <input
-          type="text"
-          value={state[0].endDate?.toLocaleDateString()}
-          placeholder="To"
-          readOnly
-          className="border p-2 rounded"
+        <span>to</span>
+        <DatePicker
+          selected={endDate}
+          onChange={handleEndDateChange}
+          selectsEnd
+          startDate={startDate}
+          endDate={endDate}
+          minDate={startDate}
+          customInput={<input className="border p-2 rounded w-32" />}
         />
       </div>
-
-      {/* <DateRangePicker
-        onChange={handleSelect}
-        moveRangeOnFirstSelection={false}
-        months={2}
-        ranges={state}
-        direction="horizontal"
-      /> */}
     </div>
   );
 };

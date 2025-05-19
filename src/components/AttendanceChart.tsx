@@ -20,7 +20,7 @@ const data = [
   },
 ];
 
-const CountChart = () => {
+const PieChart = () => {
   return (
     <div className="bg-white rounded-xl w-full h-full p-4">
       {/* CHART */}
@@ -53,4 +53,4 @@ const CountChart = () => {
   );
 };
 
-export default CountChart;
+export default PieChart;

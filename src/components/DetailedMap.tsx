@@ -108,7 +108,7 @@ const DetailedMap = () => {
   };
 
   return (
-    <div className="map-container">
+    <div className="map-container h-[100%]">
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{

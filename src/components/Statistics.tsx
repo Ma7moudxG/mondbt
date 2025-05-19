@@ -26,9 +26,7 @@ const Statistics = () => {
                 <AttendanceChart />
             </div>
         </div>
-        <div className='mx-auto'>
-            <button className='bg-[#8447AB] py-2 px-6 font-bold text-base text-white rounded-full'>Export Report</button>
-        </div>
+        
     </div>
   )
 }
