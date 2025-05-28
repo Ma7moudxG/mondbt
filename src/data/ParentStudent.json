@@ -1,0 +1,3002 @@
+[
+  {
+    "parent_id": 1,
+    "student_id": 1,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 1,
+    "student_id": 2,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 1,
+    "student_id": 3,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 1,
+    "student_id": 4,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 1,
+    "student_id": 5,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 1,
+    "student_id": 6,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 1,
+    "student_id": 7,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 2,
+    "student_id": 8,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 2,
+    "student_id": 9,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 2,
+    "student_id": 10,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 2,
+    "student_id": 11,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 2,
+    "student_id": 12,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 2,
+    "student_id": 13,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 2,
+    "student_id": 14,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 3,
+    "student_id": 15,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 3,
+    "student_id": 16,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 3,
+    "student_id": 17,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 3,
+    "student_id": 18,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 3,
+    "student_id": 19,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 3,
+    "student_id": 20,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 3,
+    "student_id": 21,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 4,
+    "student_id": 22,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 4,
+    "student_id": 23,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 4,
+    "student_id": 24,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 4,
+    "student_id": 25,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 4,
+    "student_id": 26,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 4,
+    "student_id": 27,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 4,
+    "student_id": 28,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 5,
+    "student_id": 29,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 5,
+    "student_id": 30,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 5,
+    "student_id": 31,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 5,
+    "student_id": 32,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 5,
+    "student_id": 33,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 5,
+    "student_id": 34,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 5,
+    "student_id": 35,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 6,
+    "student_id": 36,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 6,
+    "student_id": 37,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 6,
+    "student_id": 38,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 6,
+    "student_id": 39,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 6,
+    "student_id": 40,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 6,
+    "student_id": 41,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 6,
+    "student_id": 42,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 7,
+    "student_id": 43,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 7,
+    "student_id": 44,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 7,
+    "student_id": 45,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 7,
+    "student_id": 46,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 7,
+    "student_id": 47,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 7,
+    "student_id": 48,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 7,
+    "student_id": 49,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 8,
+    "student_id": 50,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 8,
+    "student_id": 51,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 8,
+    "student_id": 52,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 8,
+    "student_id": 53,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 8,
+    "student_id": 54,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 8,
+    "student_id": 55,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 8,
+    "student_id": 56,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 9,
+    "student_id": 57,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 9,
+    "student_id": 58,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 9,
+    "student_id": 59,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 9,
+    "student_id": 60,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 9,
+    "student_id": 61,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 9,
+    "student_id": 62,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 9,
+    "student_id": 63,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 10,
+    "student_id": 64,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 10,
+    "student_id": 65,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 10,
+    "student_id": 66,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 10,
+    "student_id": 67,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 10,
+    "student_id": 68,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 10,
+    "student_id": 69,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 10,
+    "student_id": 70,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 11,
+    "student_id": 71,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 11,
+    "student_id": 72,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 11,
+    "student_id": 73,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 11,
+    "student_id": 74,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 11,
+    "student_id": 75,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 11,
+    "student_id": 76,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 11,
+    "student_id": 77,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 12,
+    "student_id": 78,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 12,
+    "student_id": 79,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 12,
+    "student_id": 80,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 12,
+    "student_id": 81,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 12,
+    "student_id": 82,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 12,
+    "student_id": 83,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 12,
+    "student_id": 84,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 13,
+    "student_id": 85,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 13,
+    "student_id": 86,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 13,
+    "student_id": 87,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 13,
+    "student_id": 88,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 13,
+    "student_id": 89,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 13,
+    "student_id": 90,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 13,
+    "student_id": 91,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 14,
+    "student_id": 92,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 14,
+    "student_id": 93,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 14,
+    "student_id": 94,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 14,
+    "student_id": 95,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 14,
+    "student_id": 96,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 14,
+    "student_id": 97,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 14,
+    "student_id": 98,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 15,
+    "student_id": 99,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 15,
+    "student_id": 100,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 15,
+    "student_id": 101,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 15,
+    "student_id": 102,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 15,
+    "student_id": 103,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 15,
+    "student_id": 104,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 15,
+    "student_id": 105,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 16,
+    "student_id": 106,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 16,
+    "student_id": 107,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 16,
+    "student_id": 108,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 16,
+    "student_id": 109,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 16,
+    "student_id": 110,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 16,
+    "student_id": 111,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 16,
+    "student_id": 112,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 17,
+    "student_id": 113,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 17,
+    "student_id": 114,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 17,
+    "student_id": 115,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 17,
+    "student_id": 116,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 17,
+    "student_id": 117,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 17,
+    "student_id": 118,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 17,
+    "student_id": 119,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 18,
+    "student_id": 120,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 18,
+    "student_id": 121,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 18,
+    "student_id": 122,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 18,
+    "student_id": 123,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 18,
+    "student_id": 124,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 18,
+    "student_id": 125,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 18,
+    "student_id": 126,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 19,
+    "student_id": 127,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 19,
+    "student_id": 128,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 19,
+    "student_id": 129,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 19,
+    "student_id": 130,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 19,
+    "student_id": 131,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 19,
+    "student_id": 132,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 19,
+    "student_id": 133,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 20,
+    "student_id": 134,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 20,
+    "student_id": 135,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 20,
+    "student_id": 136,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 20,
+    "student_id": 137,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 20,
+    "student_id": 138,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 20,
+    "student_id": 139,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 20,
+    "student_id": 140,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 21,
+    "student_id": 141,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 21,
+    "student_id": 142,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 21,
+    "student_id": 143,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 21,
+    "student_id": 144,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 21,
+    "student_id": 145,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 21,
+    "student_id": 146,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 21,
+    "student_id": 147,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 22,
+    "student_id": 148,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 22,
+    "student_id": 149,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 22,
+    "student_id": 150,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 22,
+    "student_id": 151,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 22,
+    "student_id": 152,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 22,
+    "student_id": 153,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 22,
+    "student_id": 154,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 23,
+    "student_id": 155,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 23,
+    "student_id": 156,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 23,
+    "student_id": 157,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 23,
+    "student_id": 158,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 23,
+    "student_id": 159,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 23,
+    "student_id": 160,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 23,
+    "student_id": 161,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 24,
+    "student_id": 162,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 24,
+    "student_id": 163,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 24,
+    "student_id": 164,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 24,
+    "student_id": 165,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 24,
+    "student_id": 166,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 24,
+    "student_id": 167,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 24,
+    "student_id": 168,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 25,
+    "student_id": 169,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 25,
+    "student_id": 170,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 25,
+    "student_id": 171,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 25,
+    "student_id": 172,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 25,
+    "student_id": 173,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 25,
+    "student_id": 174,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 25,
+    "student_id": 175,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 26,
+    "student_id": 176,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 26,
+    "student_id": 177,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 26,
+    "student_id": 178,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 26,
+    "student_id": 179,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 26,
+    "student_id": 180,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 27,
+    "student_id": 181,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 27,
+    "student_id": 182,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 27,
+    "student_id": 183,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 27,
+    "student_id": 184,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 27,
+    "student_id": 185,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 28,
+    "student_id": 186,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 28,
+    "student_id": 187,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 28,
+    "student_id": 188,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 28,
+    "student_id": 189,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 28,
+    "student_id": 190,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 29,
+    "student_id": 191,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 29,
+    "student_id": 192,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 29,
+    "student_id": 193,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 29,
+    "student_id": 194,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 29,
+    "student_id": 195,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 30,
+    "student_id": 196,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 30,
+    "student_id": 197,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 30,
+    "student_id": 198,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 30,
+    "student_id": 199,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 30,
+    "student_id": 200,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 31,
+    "student_id": 201,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 31,
+    "student_id": 202,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 31,
+    "student_id": 203,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 31,
+    "student_id": 204,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 31,
+    "student_id": 205,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 32,
+    "student_id": 206,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 32,
+    "student_id": 207,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 32,
+    "student_id": 208,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 32,
+    "student_id": 209,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 32,
+    "student_id": 210,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 33,
+    "student_id": 211,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 33,
+    "student_id": 212,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 33,
+    "student_id": 213,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 33,
+    "student_id": 214,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 33,
+    "student_id": 215,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 34,
+    "student_id": 216,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 34,
+    "student_id": 217,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 34,
+    "student_id": 218,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 34,
+    "student_id": 219,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 34,
+    "student_id": 220,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 35,
+    "student_id": 221,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 35,
+    "student_id": 222,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 35,
+    "student_id": 223,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 35,
+    "student_id": 224,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 35,
+    "student_id": 225,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 36,
+    "student_id": 226,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 36,
+    "student_id": 227,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 36,
+    "student_id": 228,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 36,
+    "student_id": 229,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 36,
+    "student_id": 230,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 37,
+    "student_id": 231,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 37,
+    "student_id": 232,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 37,
+    "student_id": 233,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 37,
+    "student_id": 234,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 37,
+    "student_id": 235,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 38,
+    "student_id": 236,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 38,
+    "student_id": 237,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 38,
+    "student_id": 238,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 38,
+    "student_id": 239,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 38,
+    "student_id": 240,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 39,
+    "student_id": 241,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 39,
+    "student_id": 242,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 39,
+    "student_id": 243,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 39,
+    "student_id": 244,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 39,
+    "student_id": 245,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 40,
+    "student_id": 246,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 40,
+    "student_id": 247,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 40,
+    "student_id": 248,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 40,
+    "student_id": 249,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 40,
+    "student_id": 250,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 41,
+    "student_id": 251,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 41,
+    "student_id": 252,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 41,
+    "student_id": 253,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 41,
+    "student_id": 254,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 41,
+    "student_id": 255,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 42,
+    "student_id": 256,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 42,
+    "student_id": 257,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 42,
+    "student_id": 258,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 42,
+    "student_id": 259,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 42,
+    "student_id": 260,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 43,
+    "student_id": 261,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 43,
+    "student_id": 262,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 43,
+    "student_id": 263,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 43,
+    "student_id": 264,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 43,
+    "student_id": 265,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 44,
+    "student_id": 266,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 44,
+    "student_id": 267,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 44,
+    "student_id": 268,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 44,
+    "student_id": 269,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 44,
+    "student_id": 270,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 45,
+    "student_id": 271,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 45,
+    "student_id": 272,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 45,
+    "student_id": 273,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 45,
+    "student_id": 274,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 45,
+    "student_id": 275,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 46,
+    "student_id": 276,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 46,
+    "student_id": 277,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 46,
+    "student_id": 278,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 46,
+    "student_id": 279,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 46,
+    "student_id": 280,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 47,
+    "student_id": 281,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 47,
+    "student_id": 282,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 47,
+    "student_id": 283,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 47,
+    "student_id": 284,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 47,
+    "student_id": 285,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 48,
+    "student_id": 286,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 48,
+    "student_id": 287,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 48,
+    "student_id": 288,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 48,
+    "student_id": 289,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 48,
+    "student_id": 290,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 49,
+    "student_id": 291,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 49,
+    "student_id": 292,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 49,
+    "student_id": 293,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 49,
+    "student_id": 294,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 49,
+    "student_id": 295,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 50,
+    "student_id": 296,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 50,
+    "student_id": 297,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 50,
+    "student_id": 298,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 50,
+    "student_id": 299,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 50,
+    "student_id": 300,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 51,
+    "student_id": 301,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 51,
+    "student_id": 302,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 51,
+    "student_id": 303,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 51,
+    "student_id": 304,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 52,
+    "student_id": 305,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 52,
+    "student_id": 306,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 52,
+    "student_id": 307,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 52,
+    "student_id": 308,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 53,
+    "student_id": 309,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 53,
+    "student_id": 310,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 53,
+    "student_id": 311,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 53,
+    "student_id": 312,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 54,
+    "student_id": 313,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 54,
+    "student_id": 314,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 54,
+    "student_id": 315,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 54,
+    "student_id": 316,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 55,
+    "student_id": 317,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 55,
+    "student_id": 318,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 55,
+    "student_id": 319,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 55,
+    "student_id": 320,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 56,
+    "student_id": 321,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 56,
+    "student_id": 322,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 56,
+    "student_id": 323,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 56,
+    "student_id": 324,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 57,
+    "student_id": 325,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 57,
+    "student_id": 326,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 57,
+    "student_id": 327,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 57,
+    "student_id": 328,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 58,
+    "student_id": 329,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 58,
+    "student_id": 330,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 58,
+    "student_id": 331,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 58,
+    "student_id": 332,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 59,
+    "student_id": 333,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 59,
+    "student_id": 334,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 59,
+    "student_id": 335,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 59,
+    "student_id": 336,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 60,
+    "student_id": 337,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 60,
+    "student_id": 338,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 60,
+    "student_id": 339,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 60,
+    "student_id": 340,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 61,
+    "student_id": 341,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 61,
+    "student_id": 342,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 61,
+    "student_id": 343,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 61,
+    "student_id": 344,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 62,
+    "student_id": 345,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 62,
+    "student_id": 346,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 62,
+    "student_id": 347,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 62,
+    "student_id": 348,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 63,
+    "student_id": 349,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 63,
+    "student_id": 350,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 63,
+    "student_id": 351,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 63,
+    "student_id": 352,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 64,
+    "student_id": 353,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 64,
+    "student_id": 354,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 64,
+    "student_id": 355,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 64,
+    "student_id": 356,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 65,
+    "student_id": 357,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 65,
+    "student_id": 358,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 65,
+    "student_id": 359,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 66,
+    "student_id": 360,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 66,
+    "student_id": 361,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 66,
+    "student_id": 362,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 67,
+    "student_id": 363,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 67,
+    "student_id": 364,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 67,
+    "student_id": 365,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 68,
+    "student_id": 366,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 68,
+    "student_id": 367,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 68,
+    "student_id": 368,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 69,
+    "student_id": 369,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 69,
+    "student_id": 370,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 69,
+    "student_id": 371,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 70,
+    "student_id": 372,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 70,
+    "student_id": 373,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 70,
+    "student_id": 374,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 71,
+    "student_id": 375,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 71,
+    "student_id": 376,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 71,
+    "student_id": 377,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 72,
+    "student_id": 378,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 72,
+    "student_id": 379,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 72,
+    "student_id": 380,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 73,
+    "student_id": 381,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 73,
+    "student_id": 382,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 73,
+    "student_id": 383,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 74,
+    "student_id": 384,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 74,
+    "student_id": 385,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 74,
+    "student_id": 386,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 75,
+    "student_id": 387,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 75,
+    "student_id": 388,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 75,
+    "student_id": 389,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 75,
+    "student_id": 390,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 76,
+    "student_id": 391,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 76,
+    "student_id": 392,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 76,
+    "student_id": 393,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 76,
+    "student_id": 394,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 77,
+    "student_id": 395,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 77,
+    "student_id": 396,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 77,
+    "student_id": 397,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 77,
+    "student_id": 398,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 78,
+    "student_id": 399,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 78,
+    "student_id": 400,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 78,
+    "student_id": 401,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 78,
+    "student_id": 402,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 79,
+    "student_id": 403,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 79,
+    "student_id": 404,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 79,
+    "student_id": 405,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 79,
+    "student_id": 406,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 80,
+    "student_id": 407,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 80,
+    "student_id": 408,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 80,
+    "student_id": 409,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 80,
+    "student_id": 410,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 81,
+    "student_id": 411,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 81,
+    "student_id": 412,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 81,
+    "student_id": 413,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 81,
+    "student_id": 414,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 82,
+    "student_id": 415,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 82,
+    "student_id": 416,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 82,
+    "student_id": 417,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 82,
+    "student_id": 418,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 83,
+    "student_id": 419,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 83,
+    "student_id": 420,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 83,
+    "student_id": 421,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 83,
+    "student_id": 422,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 84,
+    "student_id": 423,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 84,
+    "student_id": 424,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 84,
+    "student_id": 425,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 84,
+    "student_id": 426,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 85,
+    "student_id": 427,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 85,
+    "student_id": 428,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 85,
+    "student_id": 429,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 85,
+    "student_id": 430,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 86,
+    "student_id": 431,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 86,
+    "student_id": 432,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 86,
+    "student_id": 433,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 86,
+    "student_id": 434,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 87,
+    "student_id": 435,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 87,
+    "student_id": 436,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 87,
+    "student_id": 437,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 87,
+    "student_id": 438,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 88,
+    "student_id": 439,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 88,
+    "student_id": 440,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 88,
+    "student_id": 441,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 88,
+    "student_id": 442,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 89,
+    "student_id": 443,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 89,
+    "student_id": 444,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 89,
+    "student_id": 445,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 89,
+    "student_id": 446,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 90,
+    "student_id": 447,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 90,
+    "student_id": 448,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 90,
+    "student_id": 449,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 90,
+    "student_id": 450,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 91,
+    "student_id": 451,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 91,
+    "student_id": 452,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 91,
+    "student_id": 453,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 91,
+    "student_id": 454,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 91,
+    "student_id": 455,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 92,
+    "student_id": 456,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 92,
+    "student_id": 457,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 92,
+    "student_id": 458,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 92,
+    "student_id": 459,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 92,
+    "student_id": 460,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 93,
+    "student_id": 461,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 93,
+    "student_id": 462,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 93,
+    "student_id": 463,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 93,
+    "student_id": 464,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 93,
+    "student_id": 465,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 94,
+    "student_id": 466,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 94,
+    "student_id": 467,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 94,
+    "student_id": 468,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 94,
+    "student_id": 469,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 94,
+    "student_id": 470,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 95,
+    "student_id": 471,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 95,
+    "student_id": 472,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 95,
+    "student_id": 473,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 95,
+    "student_id": 474,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 95,
+    "student_id": 475,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 96,
+    "student_id": 476,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 96,
+    "student_id": 477,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 96,
+    "student_id": 478,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 96,
+    "student_id": 479,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 96,
+    "student_id": 480,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 97,
+    "student_id": 481,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 97,
+    "student_id": 482,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 97,
+    "student_id": 483,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 97,
+    "student_id": 484,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 97,
+    "student_id": 485,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 98,
+    "student_id": 486,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 98,
+    "student_id": 487,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 98,
+    "student_id": 488,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 98,
+    "student_id": 489,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 98,
+    "student_id": 490,
+    "relationship_en": "Father",
+    "relationship_ar": "أب"
+  },
+  {
+    "parent_id": 99,
+    "student_id": 491,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 99,
+    "student_id": 492,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 99,
+    "student_id": 493,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 99,
+    "student_id": 494,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 99,
+    "student_id": 495,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 100,
+    "student_id": 496,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 100,
+    "student_id": 497,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 100,
+    "student_id": 498,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 100,
+    "student_id": 499,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  },
+  {
+    "parent_id": 100,
+    "student_id": 500,
+    "relationship_en": "Mother",
+    "relationship_ar": "أم"
+  }
+]

@@ -13,7 +13,7 @@ const menuItems = [
         visible: ["admin", "minister", "parent"],
       },
       {
-        icon: "/",
+        icon: "/statistics.svg",
         label: "Statistics",
         href: "/statistics",
         visible: ["admin", "minister"],

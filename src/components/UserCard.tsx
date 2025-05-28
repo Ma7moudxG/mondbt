@@ -1,9 +1,12 @@
+// src/components/UserCard.tsx
 import Image from "next/image";
+
 interface cardType {
-    type:string,
-    number: string,
-    text: string
+  type: string, // This refers to the category name (e.g., "Attendance", "Absence")
+  number: string,
+  text: string
 }
+
 const UserCard = ({ type }: { type: cardType }) => {
   return (
     <div className="rounded-2xl text-white odd:bg-[#8447AB] even:bg-[#5EB89D] p-4 flex-1 min-w-[130px]">

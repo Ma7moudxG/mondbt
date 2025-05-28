@@ -36,3 +36,21 @@
     border-radius: 4px;
     cursor: pointer;
   }
+
+  @layer components {
+    .custom-table {
+      @apply bg-white border-collapse w-full;
+      
+      th {
+        @apply bg-[#F8F8F8] text-gray-700 font-semibold p-4 text-left;
+      }
+      
+      tr {
+        @apply bg-white hover:bg-[#F8F8F8] border-b border-gray-200;
+      }
+      
+      td {
+        @apply p-4 text-gray-900;
+      }
+    }
+  }

@@ -1,0 +1,67 @@
+[
+  {
+    "region_id": 1,
+    "name_en": "Riyadh",
+    "name_ar": "الرياض"
+  },
+  {
+    "region_id": 2,
+    "name_en": "Makkah Al-Mukarramah",
+    "name_ar": "مكة المكرمة"
+  },
+  {
+    "region_id": 3,
+    "name_en": "Eastern",
+    "name_ar": "المنطقة الشرقية"
+  },
+  {
+    "region_id": 4,
+    "name_en": "Al Madinah",
+    "name_ar": "المدينة المنورة"
+  },
+  {
+    "region_id": 5,
+    "name_en": "Al-Qassim",
+    "name_ar": "القصيم"
+  },
+  {
+    "region_id": 6,
+    "name_en": "Asir",
+    "name_ar": "عسير"
+  },
+  {
+    "region_id": 7,
+    "name_en": "Tabuk",
+    "name_ar": "تبوك"
+  },
+  {
+    "region_id": 8,
+    "name_en": "Hail",
+    "name_ar": "حائل"
+  },
+  {
+    "region_id": 9,
+    "name_en": "Northern Borders",
+    "name_ar": "الحدود الشمالية"
+  },
+  {
+    "region_id": 10,
+    "name_en": "Jazan",
+    "name_ar": "جازان"
+  },
+  {
+    "region_id": 11,
+    "name_en": "Najran",
+    "name_ar": "نجران"
+  },
+  {
+    "region_id": 12,
+    "name_en": "Al-Bahah",
+    "name_ar": "الباحة"
+  },
+  {
+    "region_id": 13,
+    "name_en": "Al-Jawf",
+    "name_ar": "الجوف"
+  }
+]

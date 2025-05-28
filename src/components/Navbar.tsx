@@ -1,26 +1,69 @@
-import Image from 'next/image'
-import React from 'react'
+"use client";
+import { signOut, useSession } from "next-auth/react";
+import moment from "moment-hijri";
 
-const Navbar = () => {
+
+export default function Header() {
+  const hijri = moment().format("iD iMMMM iYYYY هـ");
+  const gregorian = moment().format("DD MMMM YYYY"); // Corrected from invalid char to YYYY
+  const { data: session, status } = useSession(); // Get status for loading state
+
+  // Optional: Handle loading state
+  if (status === "loading") {
     return (
-      <div className='flex items-center justify-between p-4'>
-        {/* SEARCH BAR */}
-        {/* <div className='hidden md:flex items-center gap-2 text-xs rounded-full ring-[1.5px] ring-gray-300 px-2'>
-          <Image src="/search.png" alt="" width={14} height={14}/>
-          <input type="text" placeholder="Search..." className="w-[200px] p-2 bg-transparent outline-none"/>
-        </div> */}
-        {/* ICONS AND USER */}
-        <div className='flex items-center gap-6 justify-end w-full'>
-          <div className='items-center justify-center'>
-            <p className='text-xs text-[#9B9B9B] font-bold'> Hello! MINISTER</p>
-          </div>
-
-          <button className='rounded-full bg-white px-4 py-2 hover:bg-[#8447AB] hover:text-white font-bold hover:font-black text-xs'>
-            Log out
-          </button>
+      <header className="flex justify-between items-center p-4">
+        <div className="text-sm text-gray-600">
+          اليوم:{hijri}الموافق:{gregorian}
         </div>
-      </div>
-    )
+        <div className="flex items-center gap-4">
+          <span className="text-lg font-semibold">Loading...</span>
+        </div>
+      </header>
+    );
   }
 
-export default Navbar
+  // Get the role safely
+  const userRole = session?.user?.role;
+  let greetingName = "Guest"; // Default greeting
+
+  if (userRole) {
+    greetingName = userRole.charAt(0).toUpperCase() + userRole.slice(1);
+  } else if (session?.user?.name) { // Fallback to user's name if role is not present
+    greetingName = session.user.name;
+  } else if (session?.user?.email) { // Fallback to user's email
+    greetingName = session.user.email;
+  }
+
+
+  return (
+    <header className="flex justify-between items-center p-4">
+      {/* 🗓️ Date Line */}
+      <div className="text-xs text-[#9B9B9B] text-right font-bold">
+        <span className="text-[#5EB89D]">اليوم</span> : {hijri} <span className="text-[#5EB89D]">الموافق</span>: {gregorian}
+      </div>
+
+      {/* 👋 Greeting and Logout */}
+      <div className="flex items-center gap-4">
+        <span className="text-sm font-semibold text-[#9B9B9B]">
+          Hello, {greetingName}!
+        </span>
+        {session && ( // Only show logout if there's a session
+          <button
+            onClick={() => signOut({ callbackUrl: "/login" })}
+            className="bg-white rounded-full text-[#9B9B9B] text-sm font-medium px-4 py-2 hover:text-white  hover:bg-[#8447AB]"
+          >
+            Logout
+          </button>
+        )}
+        {!session && status !== "loading" && ( // Optional: Show login button if not authenticated
+            <a
+              href="/login" // Or use Next.js Link component
+              className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+            >
+              Login
+            </a>
+        )}
+      </div>
+    </header>
+  );
+}
