@@ -1,0 +1,242 @@
+[
+  {
+    "area_id": 1,
+    "city_id": 1,
+    "name_en": "Al Olaya",
+    "name_ar": "العليا"
+  },
+  {
+    "area_id": 2,
+    "city_id": 1,
+    "name_en": "Al Malaz",
+    "name_ar": "الملز"
+  },
+  {
+    "area_id": 3,
+    "city_id": 1,
+    "name_en": "Al Yasmin",
+    "name_ar": "الياسمين"
+  },
+  {
+    "area_id": 4,
+    "city_id": 1,
+    "name_en": "Al Narjis",
+    "name_ar": "النرجس"
+  },
+  {
+    "area_id": 5,
+    "city_id": 1,
+    "name_en": "Al Suwaidi",
+    "name_ar": "السويدي"
+  },
+  {
+    "area_id": 6,
+    "city_id": 1,
+    "name_en": "Al Rawdah",
+    "name_ar": "الروضة"
+  },
+  {
+    "area_id": 7,
+    "city_id": 1,
+    "name_en": "Al Shuhada",
+    "name_ar": "الشهداء"
+  },
+  {
+    "area_id": 8,
+    "city_id": 1,
+    "name_en": "Diplomatic Quarter",
+    "name_ar": "حي السفارات"
+  },
+  {
+    "area_id": 9,
+    "city_id": 1,
+    "name_en": "Al Murabba",
+    "name_ar": "المربع"
+  },
+  {
+    "area_id": 10,
+    "city_id": 1,
+    "name_en": "Al Qirawan",
+    "name_ar": "القيروان"
+  },
+  {
+    "area_id": 11,
+    "city_id": 27,
+    "name_en": "Al Haram",
+    "name_ar": "الحرم"
+  },
+  {
+    "area_id": 12,
+    "city_id": 27,
+    "name_en": "Ajyad",
+    "name_ar": "أجياد"
+  },
+  {
+    "area_id": 13,
+    "city_id": 27,
+    "name_en": "Al Aziziyah",
+    "name_ar": "العزيزية"
+  },
+  {
+    "area_id": 14,
+    "city_id": 27,
+    "name_en": "Al Misfalah",
+    "name_ar": "المسفلة"
+  },
+  {
+    "area_id": 15,
+    "city_id": 27,
+    "name_en": "Al Shubaikah",
+    "name_ar": "الشبيكة"
+  },
+  {
+    "area_id": 16,
+    "city_id": 27,
+    "name_en": "Al Naseem",
+    "name_ar": "النسيم"
+  },
+  {
+    "area_id": 17,
+    "city_id": 27,
+    "name_en": "Al Awali",
+    "name_ar": "العوالي"
+  },
+  {
+    "area_id": 18,
+    "city_id": 27,
+    "name_en": "Al Shoqiyah",
+    "name_ar": "الشوقية"
+  },
+  {
+    "area_id": 19,
+    "city_id": 27,
+    "name_en": "Al Nuzhah",
+    "name_ar": "النزهة"
+  },
+  {
+    "area_id": 20,
+    "city_id": 27,
+    "name_en": "Al Taneem",
+    "name_ar": "التنعيم"
+  },
+  {
+    "area_id": 21,
+    "city_id": 28,
+    "name_en": "Al-Rawdah",
+    "name_ar": "الروضة"
+  },
+  {
+    "area_id": 22,
+    "city_id": 28,
+    "name_en": "Al-Hamra",
+    "name_ar": "الحمراء"
+  },
+  {
+    "area_id": 23,
+    "city_id": 28,
+    "name_en": "Al-Andalus",
+    "name_ar": "الأندلس"
+  },
+  {
+    "area_id": 24,
+    "city_id": 28,
+    "name_en": "Al-Shati",
+    "name_ar": "الشاطئ"
+  },
+  {
+    "area_id": 25,
+    "city_id": 28,
+    "name_en": "Al-Nahda",
+    "name_ar": "النهضة"
+  },
+  {
+    "area_id": 26,
+    "city_id": 28,
+    "name_en": "Al-Salama",
+    "name_ar": "السلامة"
+  },
+  {
+    "area_id": 27,
+    "city_id": 28,
+    "name_en": "Al-Rehab",
+    "name_ar": "الرحاب"
+  },
+  {
+    "area_id": 28,
+    "city_id": 28,
+    "name_en": "Al-Safa",
+    "name_ar": "الصفا"
+  },
+  {
+    "area_id": 29,
+    "city_id": 28,
+    "name_en": "Al-Basateen",
+    "name_ar": "البساتين"
+  },
+  {
+    "area_id": 30,
+    "city_id": 28,
+    "name_en": "Al-Naeem",
+    "name_ar": "النعيم"
+  },
+  {
+    "area_id": 31,
+    "city_id": 54,
+    "name_en": "Central Area (near Haram)",
+    "name_ar": "المنطقة المركزية"
+  },
+  {
+    "area_id": 32,
+    "city_id": 54,
+    "name_en": "Al Azhari",
+    "name_ar": "الأزهري"
+  },
+  {
+    "area_id": 33,
+    "city_id": 54,
+    "name_en": "Al Qiblatain",
+    "name_ar": "القبلتين"
+  },
+  {
+    "area_id": 34,
+    "city_id": 54,
+    "name_en": "Al Khalidiyah",
+    "name_ar": "الخالدية"
+  },
+  {
+    "area_id": 35,
+    "city_id": 54,
+    "name_en": "Al Awali",
+    "name_ar": "العوالي"
+  },
+  {
+    "area_id": 36,
+    "city_id": 54,
+    "name_en": "Al Jumaih",
+    "name_ar": "الجميح"
+  },
+  {
+    "area_id": 37,
+    "city_id": 54,
+    "name_en": "Al Uyun",
+    "name_ar": "العيون"
+  },
+  {
+    "area_id": 38,
+    "city_id": 54,
+    "name_en": "Al Iskan",
+    "name_ar": "الإسكان"
+  },
+  {
+    "area_id": 39,
+    "city_id": 54,
+    "name_en": "Al Shuhada",
+    "name_ar": "الشهداء"
+  },
+  {
+    "area_id": 40,
+    "city_id": 54,
+    "name_en": "Al Rabwa",
+    "name_ar": "الربوة"
+  }
+]

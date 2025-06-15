@@ -1,6 +1,8 @@
-import { role } from "@/lib/data";
-import Image from "next/image";
-import Link from "next/link";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
+import { cookies } from 'next/headers';
+import TranslatedMenuContent from "./TranslatedMenuContent"; // Import the new client component
+type UserRole = "admin" | "minister" | "parent" | "manager";
 
 const menuItems = [
   {
@@ -9,68 +11,56 @@ const menuItems = [
       {
         icon: "/home.svg",
         label: "Home",
-        href: "/",
-        visible: ["admin", "minister", "parent"],
-      },
-      {
-        icon: "/statistics.svg",
-        label: "Statistics",
-        href: "/statistics",
-        visible: ["admin", "minister"],
-      },
-      {
-        icon: "/",
-        label: "Approvals",
-        href: "/approvals",
-        visible: ["admin", "teacher"],
+        href: "", // Corrected href as it seems to be relative to the role base, will become e.g. /admin/ or /parent/
+        visible: ["admin", "minister", "parent", "manager"],
       },
     ],
   },
   {
-    title: "OTHER MENU",
+    title: "Statistics",
     items: [
       {
-        icon: "/",
-        label: "Fines",
-        href: "/fines",
-        visible: ["admin", "minister", "parent"],
+        icon: "/approvals.svg",
+        label: "Attendance",
+        href: "", 
+        visible: ["minister", "parent", "manager"],
       },
       {
-        icon: "/",
-        label: "Rewards",
-        href: "/rewards",
-        visible: ["admin", "minister", "parent"],
+        icon: "/approvals.svg",
+        label: "Attendance",
+        href: "attendance", 
+        visible: ["admin"],
+      },
+      {
+        icon: "/absence.svg",
+        label: "Absence",
+        href: "",
+        visible: ["admin", "minister", "parent", "manager"],
+      },
+      {
+        icon: "/late.svg",
+        label: "Late",
+        href: "",
+        visible: ["admin", "parent", "minister", "manager"],
+      },
+      {
+        icon: "/excuse.svg",
+        label: "Excuses",
+        href: "",
+        visible: ["admin", "manager", "minister", "parent"],
       },
     ],
   },
 ];
 
-const Menu = () => {
-  return (
+export default async function Menu() {
+  const session = await getServerSession(authOptions);
+ const cookieStore = cookies(); 
+ const currentUserRole: UserRole | null = (session?.user?.role as UserRole) || null;
+
+return (
     <div className="mt-4 text-sm">
-      {menuItems.map((i) => (
-        <div className="flex flex-col gap-2" key={i.title}>
-          <span className="hidden lg:block text-white font-light my-4">
-            {i.title}
-          </span>
-          {i.items.map((item) => {
-            if (item.visible.includes(role)) {
-              return (
-                <Link
-                  href={item.href}
-                  key={item.label}
-                  className="flex items-center justify-center lg:justify-start gap-4 text-white py-2 md:px-4 rounded-full hover:bg-[#8447AB]"
-                >
-                  <Image src={item.icon} alt="" width={20} height={20} />
-                  <span className="hidden lg:block">{item.label}</span>
-                </Link>
-              );
-            }
-          })}
-        </div>
-      ))}
+      <TranslatedMenuContent menuItems={menuItems} currentUserRole={currentUserRole} />
     </div>
   );
-};
-
-export default Menu;
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "reward_type_id": 1,
+    "description_en": "10% discount on Saudia Airlines",
+    "description_ar": "خصم 10% الخطوط السعودية"
+  },
+  {
+    "reward_type_id": 2,
+    "description_en": "5% discount from Like Card",
+    "description_ar": " خصم 5% من like card"
+  },
+  {
+    "reward_type_id": 3,
+    "description_en": "10% discount at VOX Cinema",
+    "description_ar": "خصم 10% من vox cinema"
+  },
+  {
+    "reward_type_id": 4,
+    "description_en": "10% discount on the NOON app",
+    "description_ar": " خصم 10% من تطبيق NOON"
+  },
+  {
+    "reward_type_id": 5,
+    "description_en": "5% discount at Sparky's",
+    "description_ar": " خصم 5% من سباركيز"
+  },
+  {
+    "reward_type_id": 6,
+    "description_en": "10% discount on any course on the Edraak platform",
+    "description_ar": " خصم 10% على أي دورة في منصة أدراك"
+  },
+  {
+    "reward_type_id": 7,
+    "description_en": "15% discount card at LEGO toy stores",
+    "description_ar": " بطاقة خصم 15% من محلات lego للألعاب"
+  },
+  {
+    "reward_type_id": 8,
+    "description_en": "10% discount on Fitness Time subscription",
+    "description_ar": " خصم 10% على الاشتراك في فتنس تايم"
+  },
+  {
+    "reward_type_id": 9,
+    "description_en": "20% discount on entry to Boulevard World",
+    "description_ar": " خصم 20% للدخول إلى boulevard world"
+  }
+]

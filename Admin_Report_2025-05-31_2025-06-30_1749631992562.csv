@@ -1,0 +1,60 @@
+﻿Applied Filters
+Filter Name,القيمة
+region,"الرياض"
+city,"الرياض"
+area,"الملز"
+sex,"Male"
+
+ملخص الاحصائيات المفلترة
+المقياس,القيمة,الوحدة,بداية الفترة,نهاية الفترة
+الحضور,572,طالب,2025-05-31,2025-06-30
+الغياب,0,طالب,2025-05-31,2025-06-30
+التأخير,72,طالب,2025-05-31,2025-06-30
+الغرامات,0,ريال سعودي,2025-05-31,2025-06-30
+
+تفاصيل المدارس المفلترة
+School ID,School Name (EN),School Name (AR),المنطقة,المدينة,المنطقة,الرقم الوزاري,School Type,Gender Type
+12,"Intermediate Capital Model Institute","متوسطة معهد العاصمة النموذجي","الرياض","الرياض","الملز","158319","National","Male"
+32,"Amoria Medium","متوسطة عمورية","الرياض","الرياض","الملز","684492","National","Male"
+72,"Intermediate Khalaf bin Hisham for memorization of the Holy Quran","متوسطة خلف بن هشام لتحفيظ القرآن الكريم","الرياض","الرياض","الملز","877524","National","Male"
+82,"Jafar bin Zubair medium","متوسطة جعفر بن الزبير","الرياض","الرياض","الملز","572128","National","Male"
+172,"El Sharqia High School","ثانوية الشرقية","الرياض","الرياض","الملز","529649","National","Male"
+182,"Gulf High School","ثانوية الخليج","الرياض","الرياض","الملز","368388","National","Male"
+202,"Imam El Douri High School For Quran Memorization","ثانوية الإمام الدوري لتحفيظ القرآن الكريم","الرياض","الرياض","الملز","809623","National","Male"
+212,"Ibn Saad High School","ثانوية ابن سعد","الرياض","الرياض","الملز","596827","National","Male"
+222,"Ibn El Roumi High School","ثانوية ابن الرومي","الرياض","الرياض","الملز","203783","National","Male"
+242,"Al-Munar National Primary School","ابتدائية المنر الأهلية","الرياض","الرياض","الملز","942533","National","Male"
+252,"Al-Qudwa Primary School","ابتدائية القدوة الأهلية","الرياض","الرياض","الملز","539538","National","Male"
+262,"Bayan Model Primary School","ابتدائية البيان النموذجية","الرياض","الرياض","الملز","222003","National","Male"
+272,"Hundred and Tenth Primary 110","الابتدائية العاشرة بعد المائة 110","الرياض","الرياض","الملز","176807","National","Male"
+282,"Hundred and Sixty-sixth Primary 166","الابتدائية السادسة والستون بعد المائة 166","الرياض","الرياض","الملز","262372","National","Male"
+292,"Eighty-sixth Primary","الابتدائية السادسة والثمانون","الرياض","الرياض","الملز","386630","National","Male"
+
+Filtered Students Details
+Student ID,First Name (EN),Last Name (EN),First Name (AR),Last Name (AR),School Name (EN),School Name (AR),Gender
+56,"Mostafa","Nasser Abdullah Saud Al Qahtani","مصطفى","خالد رامي باسل كنعان","Amoria Medium","متوسطة عمورية","Male"
+57,"Ahmed","Turki Fahad Fahad Al Saud","احمد","محمد رامي باسل عازار","Amoria Medium","متوسطة عمورية","Male"
+66,"Mostafa","Youssef Youssef Hassan Mahmoud","مصطفى","فيصل سعود آل سعود","Jafar bin Zubair medium","متوسطة جعفر بن الزبير","Male"
+86,"Nader","Fahad Fahad Khalid Al Saud","نادر","عبدالله تركي سعود المطيري","Intermediate Capital Model Institute","متوسطة معهد العاصمة النموذجي","Male"
+99,"Hassan","Rami Bassel Bassel Jaber","حسن","ناصر كرم باسل خوري","Intermediate Khalaf bin Hisham for memorization of the Holy Quran","متوسطة خلف بن هشام لتحفيظ القرآن الكريم","Male"
+100,"Bassel","Rami Bassel Bassel Jaber","باسل","ناصر كرم باسل خوري","Imam El Douri High School For Quran Memorization","ثانوية الإمام الدوري لتحفيظ القرآن الكريم","Male"
+114,"Fahad","Ismail Omar Nour Hassan","فهد","منصور رامي رامي خوري","Gulf High School","ثانوية الخليج","Male"
+138,"Turki","Bader Nour Nour Ali","تركي","فيصل نادر كرم حداد","El Sharqia High School","ثانوية الشرقية","Male"
+148,"Mostafa","Khalid Rami Bassel Kanaan","مصطفى","تركي رامي نادر عازر","Ibn Saad High School","ثانوية ابن سعد","Male"
+207,"Karam","Abdelrahman Ismail Nour Abdelrahman","كرم","عمر محمد عمر مصطفى","El Sharqia High School","ثانوية الشرقية","Male"
+211,"Ismail","Abdullah Abdullah Saud Al Otaibi","إسماعيل","عبد الله نادر جميل كنعان","El Sharqia High School","ثانوية الشرقية","Male"
+228,"Mohamed","Youssef Tarek Tarek Farid","محمد","طارق يوسف مصطفى إبراهيم","Ibn El Roumi High School","ثانوية ابن الرومي","Male"
+237,"Tarek","Nasser Karam Bassel Khoury","طارق","خالد باسل رامي كنعان","Bayan Model Primary School","ابتدائية البيان النموذجية","Male"
+239,"Turki","Nasser Karam Bassel Khoury","تركي","خالد باسل رامي كنعان","Al-Qudwa Primary School","ابتدائية القدوة الأهلية","Male"
+241,"Mostafa","Bader Jamil Bassel Kanaan","مصطفى","محمد محمد نور إبراهيم","Hundred and Tenth Primary 110","الابتدائية العاشرة بعد المائة 110","Male"
+248,"Rami","Mansour Rami Rami Khoury","رامي","شريف يوسف مصطفى إبراهيم","Hundred and Sixty-sixth Primary 166","الابتدائية السادسة والستون بعد المائة 166","Male"
+255,"Abdelrahman","Hisham Ahmed Ahmed Ibrahim","عبد الرحمن","عبد الرحمن نور نور عبد الرحمن","Bayan Model Primary School","ابتدائية البيان النموذجية","Male"
+269,"Youssef","Jamil Nader Rami Kanaan","يوسف","تركي فهد فهد آل سعود","Hundred and Tenth Primary 110","الابتدائية العاشرة بعد المائة 110","Male"
+325,"Turki","Hassan Ahmed Ahmed El Sayed","تركي","أحمد مصطفى مصطفى إبراهيم","Eighty-sixth Primary","الابتدائية السادسة والثمانون","Male"
+332,"Nader","Omar Omar Abdelrahman Abdelrahman","نادر","أحمد حسن مصطفى توفيق","Al-Munar National Primary School","ابتدائية المنر الأهلية","Male"
+338,"Youssef","Abdullah Saud Saud Al Qahtani","يوسف","عبدالله عبدالله سعود العتيبي","Bayan Model Primary School","ابتدائية البيان النموذجية","Male"
+386,"Saud","Mohammed Jamil Nader Jaber","سعود","عبدالله سعود القحطاني","Al-Munar National Primary School","ابتدائية المنر الأهلية","Male"
+417,"Ismail","Abdullah Nader Jamil Kanaan","إسماعيل","أحمد مصطفى يوسف محمود","Eighty-sixth Primary","الابتدائية السادسة والثمانون","Male"
+433,"Bassel","Hassan Ahmed Ahmed Tawfik","باسل","طارق أحمد طارق السيد","Hundred and Sixty-sixth Primary 166","الابتدائية السادسة والستون بعد المائة 166","Male"
+443,"Nour","Saud Khalid Fahad Al Qahtani","نور","طارق طارق مصطفى إبراهيم","Eighty-sixth Primary","الابتدائية السادسة والثمانون","Male"
+469,"Turki","Tarek Youssef Ahmed Ibrahim","تركي","رامي كرم كرم جابر","Hundred and Sixty-sixth Primary 166","الابتدائية السادسة والستون بعد المائة 166","Male"

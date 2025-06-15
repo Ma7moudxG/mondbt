@@ -11,7 +11,7 @@ export default function DashboardLayout({
   return (
     <div className="h-screen flex ">
       {/* LEFT  */}
-      <div className="w-[16%] md:w-[8%] lg:w-[16%] xl:w-[14%] bg-[#5EB89D] p-4">
+      <div className="bg-[url('/background.png')] bg-cover bg-no-repeat w-[16%] md:w-[8%] lg:w-[16%] xl:w-[14%] p-8">
         <Link href="/" className=" md:block lg:flex gap-2 items-center justify-center align-middle lg:justify-start">
           <Image src='/w-logo.svg' alt='Mondbt Logo' width={60} height={60} className="mb-2 md:mb-2"/>
           <Image src='/m-logo.svg' alt='Mondbt Logo' width={50} height={50}/>

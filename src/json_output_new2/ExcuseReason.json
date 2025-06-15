@@ -1,0 +1,26 @@
+[
+  {
+    "reason_id": 1,
+    "code": "sick",
+    "description_en": "Student illness (requires submission of a medical report or verified excuse via Sehhaty app).",
+    "description_ar": "مرض الطالب (يشترط تقديم تقرير طبي أو عذر طبي مصدق من تطبيق صحتي)."
+  },
+  {
+    "reason_id": 2,
+    "code": "death",
+    "description_en": "Death of a first-degree relative (parents, siblings, grandparents), with death certificate.",
+    "description_ar": "وفاة قريب من الدرجة الأولى • (الوالدين، الإخوة والأخوات، الأجداد والجدات)، مع تقديم شهادة الوفاة."
+  },
+  {
+    "reason_id": 3,
+    "code": "medical_appointment",
+    "description_en": "Urgent medical appointments for the student, with proof via an official hospital report.",
+    "description_ar": "مواعيد طبية ضرورية للطالب نفسه، مع إثبات ذلك من قبل تقرير مصدق من المستشفى."
+  },
+  {
+    "reason_id": 4,
+    "code": "official_assignment",
+    "description_en": "Official assignments or participation, such as representing the school or the Kingdom in approved events, with an official letter.",
+    "description_ar": "التكليفات أو المشاركات الرسمية مثل تمثيل المدرسة أو المملكة في مسابقات أو مناسبات معتمدة، بموجب خطاب رسمي."
+  }
+]

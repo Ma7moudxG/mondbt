@@ -13,6 +13,7 @@ import UserCard from "@/components/UserCard";
 import Statistics from "@/components/Statistics";
 import MainChart from "@/components/MainChart";
 import { validateDataStructure } from "@/utils/dataValidator";
+import { useTranslation } from "react-i18next";
 
 const cm = (...classes: (string | boolean | undefined | null)[]) =>
   classes.filter(Boolean).join(" ");
@@ -24,12 +25,33 @@ interface Stats {
   fines: number;
   totalStudentsInRegion: number;
   totalPossibleAttendances: number;
-  rewards: number; // Include rewards for cards too
+  rewards: number;
 }
 
 type CardTab = "Day" | "Month" | "Year"; // Tabs specifically for cards
 
 const MinisterPage = () => {
+  const { t } = useTranslation();
+
+  // START: Hydration Fix - Mounted state
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Helper to ensure consistent translated text during SSR
+  const getConsistentTranslatedText = (key: string) => {
+    if (!mounted) {
+      // During SSR, return the key itself or a default English string
+      // This ensures the server output is consistent regardless of initial locale
+      return key;
+    }
+    // After hydration, use the actual translation from i18n
+    return t(key);
+  };
+  // END: Hydration Fix
+
   // State for the card tabs (Day, Month, Year)
   const [cardTab, setCardTab] = useState<CardTab>("Day");
   // State for the date range used by cards
@@ -40,26 +62,24 @@ const MinisterPage = () => {
 
   // State for the main date range (MinisterMap, Statistics, MainChart)
   // Default to last week as per requirement
-  const getInitialMainDateRange = (referenceDate: Date = new Date()): { startDate: Date; endDate: Date } => {
-    // Clone the referenceDate to avoid modifying the original
-    const today = new Date(referenceDate);
-    today.setHours(0, 0, 0, 0); // Set to the very start of the current day
+  const getInitialMainDateRange = useCallback(
+    (
+      referenceDate: Date = new Date()
+    ): { startDate: Date; endDate: Date } => {
+      const today = new Date(referenceDate);
+      today.setHours(0, 0, 0, 0);
 
-    const endDate = new Date(today);
-    endDate.setDate(today.getDate() - 1); // End of the day before today (yesterday)
-    endDate.setHours(23, 59, 59, 999); // Set to the very end of yesterday
+      const endDate = new Date(today);
+      endDate.setDate(today.getDate() - 1); // End of yesterday
+      endDate.setHours(23, 59, 59, 999);
 
-    const startDate = new Date(endDate);
-    startDate.setDate(endDate.getDate() - 7); // 7 days before yesterday's end, plus yesterday itself makes 7 days
-    startDate.setHours(0, 0, 0, 0); // Set to the very start of the day 7 days ago
+      const startDate = new Date(endDate);
+      startDate.setDate(endDate.getDate() - 30); // 7 days before yesterday's end, plus yesterday itself makes 7 days
+      startDate.setHours(0, 0, 0, 0);
 
-    console.log("Initial Main Date Range (Last Week):");
-    console.log("  Reference Date:", referenceDate.toISOString()); // For debugging if needed
-    console.log("  Start Date:", startDate.toISOString());
-    console.log("  End Date:", endDate.toISOString());
-
-    return { startDate, endDate };
-  };
+      return { startDate, endDate };
+    }, [] // useCallback with empty dependency array to memoize the function
+  );
 
   const [mainDateRange, setMainDateRange] = useState(getInitialMainDateRange());
   // Stats specifically for the cards
@@ -87,25 +107,40 @@ const MinisterPage = () => {
   const [selectedRegion, setSelectedRegion] = useState<number | null>(null);
 
   // Helper function to get date range for a specific tab
-  const getDateRangeForTab = (
-    tab: CardTab
-  ): { startDate: Date; endDate: Date } => {
-    const endDate = new Date();
-    endDate.setHours(23, 59, 59, 999);
-    const startDate = new Date(endDate);
+  const getDateRangeForTab = useCallback(
+    (
+      tab: CardTab
+    ): { startDate: Date; endDate: Date } => {
+      const endDate = new Date();
+      endDate.setHours(23, 59, 59, 999); // End of current day
 
-    if (tab === "Day") {
-      startDate.setHours(0, 0, 0, 0); // Start of current day
-    } else if (tab === "Month") {
-      startDate.setDate(1); // Start of current month
-      startDate.setHours(0, 0, 0, 0);
-    } else if (tab === "Year") {
-      startDate.setMonth(0); // January
-      startDate.setDate(1); // 1st
-      startDate.setHours(0, 0, 0, 0); // Start of current year
-    }
-    return { startDate, endDate };
-  };
+      const startDate = new Date(endDate); // Initialize startDate with endDate
+
+      if (tab === "Day") {
+        startDate.setHours(0, 0, 0, 0); // Start of current day
+      } else if (tab === "Month") {
+        startDate.setDate(1); // Start of current month
+        startDate.setHours(0, 0, 0, 0);
+      } else if (tab === "Year") {
+        const currentYear = endDate.getFullYear();
+        const currentMonth = endDate.getMonth(); // 0-indexed (0 = January, 8 = September)
+
+        // If current month is before September (Jan-Aug), start year from September of the *previous* year
+        if (currentMonth < 8) {
+          // Month 8 is September
+          startDate.setFullYear(currentYear - 1);
+          startDate.setMonth(8); // Set to September (month 8)
+        } else {
+          // If current month is September or later (Sep-Dec), start year from September of the *current* year
+          startDate.setFullYear(currentYear);
+          startDate.setMonth(8); // Set to September (month 8)
+        }
+        startDate.setDate(1); // Set to the 1st of September
+        startDate.setHours(0, 0, 0, 0); // Set to the very start of the day
+      }
+      return { startDate, endDate };
+    }, [] // useCallback with empty dependency array
+  );
 
   // Effect to set initial selectedRegion and handle initial card date range
   useEffect(() => {
@@ -113,16 +148,10 @@ const MinisterPage = () => {
     const allRegions = DataService.getAllRegions();
     if (allRegions && allRegions.length > 0 && selectedRegion === null) {
       setSelectedRegion(allRegions[0].region_id); // Set the first region as default
-      console.log(
-        "MinisterPage: Initial region set to:",
-        allRegions[0].name_en,
-        allRegions[0].region_id
-      );
     }
     setCardDateRange(getDateRangeForTab(cardTab));
-  }, []); // Run once on mount for initial setup. selectedRegion is in the dependency array for loadMainStats.
-  
-  
+  }, [selectedRegion, cardTab, getDateRangeForTab]); // Added getDateRangeForTab to dependencies
+
   useEffect(() => {
     const loadCardStats = () => {
       try {
@@ -165,14 +194,12 @@ const MinisterPage = () => {
             regionStats.attendance + regionStats.absence + regionStats.late;
         });
 
-        console.log("reeeeeeeeeeee", totalFines)
-
         setCardStats({
           attendance: totalAttendance,
           absence: totalAbsence,
           late: totalLate,
           fines: totalFines,
-          totalStudentsInRegion: totalStudentsAcrossAllRegions, // This might need clarification: total students in ALL regions for cards, or selected? Assuming ALL.
+          totalStudentsInRegion: totalStudentsAcrossAllRegions,
           totalPossibleAttendances: totalPossibleAttendancesAcrossAllRegions,
           rewards: totalRewards,
         });
@@ -191,10 +218,10 @@ const MinisterPage = () => {
     };
 
     if (cardDateRange.startDate && cardDateRange.endDate) {
-      // Ensure dates are valid
       loadCardStats();
     }
-  }, [cardDateRange, cardTab]); // cardTab included as a dependency to ensure update on tab change
+  }, [cardDateRange, cardTab]);
+
   // Effect to load stats for the main components (map, statistics, chart)
   useEffect(() => {
     const loadMainStats = () => {
@@ -227,10 +254,6 @@ const MinisterPage = () => {
 
         const region = DataService.getRegionById(selectedRegion);
         if (!region) {
-          console.error(
-            "MinisterPage: Region not found in school data for ID:",
-            selectedRegion
-          );
           setMainStats({
             attendance: 0,
             absence: 0,
@@ -278,7 +301,7 @@ const MinisterPage = () => {
     };
 
     loadMainStats();
-  }, [mainDateRange, selectedRegion]); // Dependency array for re-fetching main stats
+  }, [mainDateRange, selectedRegion]);
 
   const handleMainDateRangeChange = (dates: {
     startDate: Date;
@@ -298,65 +321,79 @@ const MinisterPage = () => {
 
   const handleExport = () => {
     if (!selectedRegion) {
-      alert("Please select a region first");
+      alert(getConsistentTranslatedText("Please select a region first")); // Use helper
       return;
     }
 
     const { startDate, endDate } = mainDateRange; // Use mainDateRange for export
     const region = DataService.getRegionById(selectedRegion);
 
+    const BOM = "\ufeff";
+
     const csvContent = [
-      ["Metric", "Value", "Unit", "Start Date", "End Date", "Region"],
       [
-        "Attendance",
+        getConsistentTranslatedText("Metric"), // Use helper
+        getConsistentTranslatedText("Value"), // Use helper
+        getConsistentTranslatedText("Unit"), // Use helper
+        getConsistentTranslatedText("Start Date"), // Use helper
+        getConsistentTranslatedText("End Date"), // Use helper
+        getConsistentTranslatedText("Region"), // Use helper
+      ],
+      [
+        getConsistentTranslatedText("Attendance"), // Use helper
         mainStats.attendance,
-        "students",
+        getConsistentTranslatedText("Student"), // Use helper
         startDate.toISOString().split("T")[0],
         endDate.toISOString().split("T")[0],
-        region?.name_en || "N/A",
+        region?.name_en || getConsistentTranslatedText("N/A"), // Use helper
       ],
       [
-        "Absence",
+        getConsistentTranslatedText("Absence"), // Use helper
         mainStats.absence,
-        "students",
+        getConsistentTranslatedText("Student"), // Use helper
         startDate.toISOString().split("T")[0],
         endDate.toISOString().split("T")[0],
-        region?.name_en || "N/A",
+        region?.name_en || getConsistentTranslatedText("N/A"),
       ],
       [
-        "Late Arrivals",
+        getConsistentTranslatedText("Late"), // Use helper
         mainStats.late,
-        "students",
+        getConsistentTranslatedText("Student"), // Use helper
         startDate.toISOString().split("T")[0],
         endDate.toISOString().split("T")[0],
-        region?.name_en || "N/A",
+        region?.name_en || getConsistentTranslatedText("N/A"),
       ],
       [
-        "Fines",
+        getConsistentTranslatedText("Fines"), // Use helper
         mainStats.fines,
-        "SAR",
+        getConsistentTranslatedText("Saudi Riyal"), // Use helper
         startDate.toISOString().split("T")[0],
         endDate.toISOString().split("T")[0],
-        region?.name_en || "N/A",
+        region?.name_en || getConsistentTranslatedText("N/A"),
       ],
       [
-        "Rewards",
+        getConsistentTranslatedText("Rewards"), // Use helper
         mainStats.rewards,
-        "count",
+        getConsistentTranslatedText("Reward"), // Use helper
         startDate.toISOString().split("T")[0],
         endDate.toISOString().split("T")[0],
-        region?.name_en || "N/A",
+        region?.name_en || getConsistentTranslatedText("N/A"),
       ],
     ]
       .map((row) => row.join(","))
       .join("\n");
 
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    // Prepend the BOM to the CSV content
+    const finalCsvContent = BOM + csvContent;
+
+    const blob = new Blob([finalCsvContent], {
+      type: "text/csv;charset=utf-8;",
+    });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `report_${
-      region?.name_en || "all"
+    link.download = `${getConsistentTranslatedText("report")}_${ // Use helper
+      region?.name_en || getConsistentTranslatedText("all") // Use helper
     }_${new Date().getTime()}.csv`;
     document.body.appendChild(link);
     link.click();
@@ -367,36 +404,36 @@ const MinisterPage = () => {
   // Cards data for the top section (uses cardStats)
   const cards = [
     {
-      type: "Attendance",
+      type: getConsistentTranslatedText("Attendance"), // Use helper
       number: cardStats.attendance.toLocaleString(),
-      text: "student",
+      text: getConsistentTranslatedText("student"), // Use helper
     },
     {
-      type: "Absence",
+      type: getConsistentTranslatedText("Absence"), // Use helper
       number: cardStats.absence.toLocaleString(),
-      text: "student",
+      text: getConsistentTranslatedText("student"), // Use helper
     },
     {
-      type: "Late",
+      type: getConsistentTranslatedText("Late"), // Use helper
       number: cardStats.late.toLocaleString(),
-      text: "late student",
+      text: getConsistentTranslatedText("late student"), // Use helper
     },
     {
-      type: "Fines",
+      type: getConsistentTranslatedText("Fines"), // Use helper
       number: cardStats.fines.toLocaleString(),
-      text: "Saudi Riyal",
+      text: getConsistentTranslatedText("Saudi Riyal"), // Use helper
     },
     {
-      type: "Rewards",
+      type: getConsistentTranslatedText("Rewards"), // Use helper
       number: cardStats.rewards.toLocaleString(),
-      text: "count",
+      text: getConsistentTranslatedText("Reward"), // Use helper
     },
   ];
 
   return (
     <div className="p-4 flex flex-col gap-4">
       <div className="flex gap-12">
-        <h1 className="text-lg font-black text-[#7C8B9D]">Statistics</h1>
+        <h1 className="text-lg font-black text-[#7C8B9D]">{getConsistentTranslatedText("Statistics")}</h1>{" "}
         <div className="flex flex-wrap justify-center gap-2">
           {/* Tabs for the Cards section */}
           {(["Day", "Month", "Year"] as CardTab[]).map((tab) => (
@@ -413,7 +450,7 @@ const MinisterPage = () => {
                 setCardDateRange(getDateRangeForTab(tab)); // Update the card date range
               }}
             >
-              {tab}
+              {getConsistentTranslatedText(tab)} {/* Use helper */}
             </button>
           ))}
         </div>
@@ -421,6 +458,8 @@ const MinisterPage = () => {
 
       <div className="flex gap-2 justify-between flex-wrap">
         {cards.map((card) => (
+          // UserCard should ideally handle its own translation internally if it uses `t()`
+          // But since `type` and `text` are passed from `cards` array, they are already pre-translated here
           <UserCard key={card.type} type={card} />
         ))}
       </div>
@@ -435,10 +474,12 @@ const MinisterPage = () => {
               selectedRegionId={selectedRegion}
             />
           </div>
+        </div>
 
+        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
           {/* DateRange component uses mainDateRange */}
           <DateRange
-            onDateChange={handleMainDateRangeChange} // New handler for main date range
+            onDateChange={handleMainDateRangeChange}
             initialStartDate={mainDateRange.startDate}
             initialEndDate={mainDateRange.endDate}
           />
@@ -448,7 +489,10 @@ const MinisterPage = () => {
             attendance={mainStats.attendance}
             absence={mainStats.absence}
             late={mainStats.late}
-            totalPossibleAttendances={mainStats.totalPossibleAttendances}
+            totalStudentsInRegion={mainStats.totalStudentsInRegion}
+            totalPossibleAttendances={
+              mainStats.attendance + mainStats.late + mainStats.absence
+            }
             // rewards={mainStats.rewards} // Pass rewards if Statistics needs it
           />
 
@@ -456,23 +500,20 @@ const MinisterPage = () => {
             <button
               onClick={handleExport}
               className="bg-[#8447AB] py-2 px-6 font-bold text-base text-white rounded-full
-                               hover:bg-[#6a3793] transition-colors"
+                             hover:bg-[#6a3793] transition-colors"
             >
-              Export Report
+              {getConsistentTranslatedText("Export Report")} {/* Use helper */}
             </button>
           </div>
         </div>
-
-        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
-          <div className="h-[400px]">
-            {/* MainChart uses mainDateRange and selectedRegion */}
-            <MainChart
-              startDate={mainDateRange.startDate}
-              endDate={mainDateRange.endDate}
-              regionId={selectedRegion}
-            />
-          </div>
-        </div>
+      </div>
+      <div className="h-[800px] flex flex-col gap-8 p-8 bg-white rounded-2xl">
+        {/* MainChart uses mainDateRange and selectedRegion */}
+        <MainChart
+          startDate={mainDateRange.startDate}
+          endDate={mainDateRange.endDate}
+          regionId={selectedRegion}
+        />
       </div>
     </div>
   );

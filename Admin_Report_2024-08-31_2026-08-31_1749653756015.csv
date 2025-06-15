@@ -1,0 +1,53 @@
+﻿Applied Filters
+Filter Name,القيمة
+region,"الرياض"
+city,"الرياض"
+area,"العليا"
+sex,"Male"
+
+ملخص الاحصائيات المفلترة
+المقياس,القيمة,الوحدة,بداية الفترة,نهاية الفترة
+الحضور,11462,طالب,2024-08-31,2026-08-31
+الغياب,53,طالب,2024-08-31,2026-08-31
+التأخير,164,طالب,2024-08-31,2026-08-31
+الغرامات,390,ريال سعودي,2024-08-31,2026-08-31
+
+تفاصيل المدارس المفلترة
+School ID,School Name (EN),School Name (AR),المنطقة,المدينة,المنطقة,الرقم الوزاري,School Type,Gender Type
+31,"Medium Omair Bin Wahb","متوسطة عمير بن وهب","الرياض","الرياض","العليا","788995","National","Male"
+41,"Othman bin Talha medium","متوسطة عثمان بن طلحة","الرياض","الرياض","العليا","486718","National","Male"
+71,"Dhi El Nourain Medium","متوسطة ذي النورين","الرياض","الرياض","العليا","790863","National","Male"
+101,"Prince Abdulmohsen bin Abdulaziz High School","ثانوية الأمير عبدالمحسن بن عبدالعزيز","الرياض","الرياض","العليا","744300","National","Male"
+141,"Capital Institute Model High School","ثانوية معهد العاصمة النموذجي","الرياض","الرياض","العليا","114459","National","Male"
+161,"Jerusalem High School","ثانوية القدس","الرياض","الرياض","العليا","329295","National","Male"
+221,"Ibn El Moataz High School","ثانوية ابن المعتز","الرياض","الرياض","العليا","696678","National","Male"
+241,"Primary Secrets Eligibility","ابتدائية أسراري الأهلية","الرياض","الرياض","العليا","508275","National","Male"
+251,"Arab Private Academy Primary School","ابتدائية الأكاديمية العربية الخاصة","الرياض","الرياض","العليا","291545","National","Male"
+261,"Horizon National Primary School","ابتدائية الأفق الأهلية","الرياض","الرياض","العليا","229564","National","Male"
+281,"Sixty-sixth primary after the two hundred 266","الابتدائية السادسة والستون بعد المائتين 266","الرياض","الرياض","العليا","137563","National","Male"
+291,"Hundred and Eighty-sixth Primary 186","الابتدائية السادسة والثمانون بعد المائة 186","الرياض","الرياض","العليا","823271","National","Male"
+
+Filtered Students Details
+Student ID,First Name (EN),Last Name (EN),First Name (AR),Last Name (AR),School Name (EN),School Name (AR),Gender
+46,"Nour","Hassan Youssef Hassan Tawfik","نور","منصور باسل باسل جابر","Othman bin Talha medium","متوسطة عثمان بن طلحة","Male"
+60,"Khalid","Turki Fahad Fahad Al Saud","خالد","محمد رامي باسل عازار","Dhi El Nourain Medium","متوسطة ذي النورين","Male"
+61,"Bassel","Turki Fahad Fahad Al Saud","باسل","محمد رامي باسل عازار","Medium Omair Bin Wahb","متوسطة عمير بن وهب","Male"
+120,"Karam","Bassel Nader Rami Kanaan","كرم","هشام أحمد أحمد إبراهيم","Prince Abdulmohsen bin Abdulaziz High School","ثانوية الأمير عبدالمحسن بن عبدالعزيز","Male"
+158,"Hassan","Karam Bassel Jamil Azar","حسن","عبدالله خالد سعود العتيبي","Capital Institute Model High School","ثانوية معهد العاصمة النموذجي","Male"
+167,"Bassel","Mohammed Rami Bassel Azar","باسل","سعود نادر جميل حداد","Capital Institute Model High School","ثانوية معهد العاصمة النموذجي","Male"
+177,"Bassel","Khalid Saud Khalid Al Saud","باسل","طارق مصطفى يوسف توفيق","Capital Institute Model High School","ثانوية معهد العاصمة النموذجي","Male"
+193,"Ahmed","Abdullah Turki Saud Al Mutairi","احمد","محمد جميل نادر جابر","Ibn El Moataz High School","ثانوية ابن المعتز","Male"
+204,"Turki","Ahmed Hassan Mostafa Tawfik","تركي","فهد باسل جميل عازر","Jerusalem High School","ثانوية القدس","Male"
+206,"Ismail","Abdelrahman Ismail Nour Abdelrahman","إسماعيل","عمر محمد عمر مصطفى","Prince Abdulmohsen bin Abdulaziz High School","ثانوية الأمير عبدالمحسن بن عبدالعزيز","Male"
+258,"Nader","Karim Tarek Hassan El Sayed","نادر","خالد تركي عبدالله آل سعود","Hundred and Eighty-sixth Primary 186","الابتدائية السادسة والثمانون بعد المائة 186","Male"
+282,"Hassan","Abdelrahman Nour Abdelrahman Ibrahim","حسن","سعود فهد عبدالله آل سعود","Arab Private Academy Primary School","ابتدائية الأكاديمية العربية الخاصة","Male"
+283,"Rami","Abdelrahman Nour Abdelrahman Ibrahim","رامي","سعود فهد عبدالله آل سعود","Primary Secrets Eligibility","ابتدائية أسراري الأهلية","Male"
+327,"Omar","Hassan Ahmed Ahmed El Sayed","عمر","أحمد مصطفى مصطفى إبراهيم","Horizon National Primary School","ابتدائية الأفق الأهلية","Male"
+352,"Nader","Mostafa Tarek Tarek Tawfik","نادر","حسن مصطفى أحمد السيد","Primary Secrets Eligibility","ابتدائية أسراري الأهلية","Male"
+356,"Tarek","Mansour Karam Karam Azar","طارق","طارق حسن يوسف فريد","Horizon National Primary School","ابتدائية الأفق الأهلية","Male"
+404,"Abdelrahman","Mostafa Ahmed Mostafa Mahmoud","عبد الرحمن","مصطفى طارق أحمد فريد","Primary Secrets Eligibility","ابتدائية أسراري الأهلية","Male"
+426,"Youssef","Fahad Abdullah Saud Al Mutairi","يوسف","عمر إسماعيل عبد الرحمن حسن","Horizon National Primary School","ابتدائية الأفق الأهلية","Male"
+436,"Abdelrahman","Tarek Youssef Mostafa Ibrahim","عبد الرحمن","تركي تركي تركي آل سعود","Sixty-sixth primary after the two hundred 266","الابتدائية السادسة والستون بعد المائتين 266","Male"
+451,"Ahmed","Tarek Tarek Hassan Mahmoud","احمد","حسن أحمد أحمد توفيق","Primary Secrets Eligibility","ابتدائية أسراري الأهلية","Male"
+471,"Saud","Khalid Bassel Rami Kanaan","سعود","طارق طارق حسن محمود","Arab Private Academy Primary School","ابتدائية الأكاديمية العربية الخاصة","Male"
+472,"Nour","Khalid Bassel Rami Kanaan","نور","طارق طارق حسن محمود","Hundred and Eighty-sixth Primary 186","الابتدائية السادسة والثمانون بعد المائة 186","Male"

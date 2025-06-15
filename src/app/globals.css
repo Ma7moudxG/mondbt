@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+/* .left_menu {
+  background-image: url('/background.svg'); 
+} */
+
+/* Apply Inter as the default sans font */
+html {
+  font-family: var(--font-inter);
+}
+
+/* Apply Noto Sans Arabic when the language is Arabic (or direction is RTL) */
+html[lang="ar"],
+html[dir="rtl"] {
+  font-family: var(--font-noto-sans-arabic);
+}
+html[lang="en"],
+html[dir="ltr"] {
+  font-family: var(--font-inter);
+}
+
+/* In your globals.css or a dedicated CSS file */
+
+/* Target Flowbite's TableHeadCell */
+.flowbite-react-table-head-cell.text-right {
+  text-align: right !important;
+}
+
+.flowbite-react-table-head-cell.text-left {
+  text-align: left !important;
+}
+
+/* Target Flowbite's TableCell */
+.flowbite-react-table-cell.text-right {
+  text-align: right !important;
+}
+
+.flowbite-react-table-cell.text-left {
+  text-align: left !important;
+}
+
 .map-container {
   width: 100%;
   height: 500px; 
@@ -42,7 +81,7 @@
       @apply bg-white border-collapse w-full;
       
       th {
-        @apply bg-[#F8F8F8] text-gray-700 font-semibold p-4 text-left;
+        @apply bg-[#F8F8F8] text-gray-700 font-semibold p-4;
       }
       
       tr {

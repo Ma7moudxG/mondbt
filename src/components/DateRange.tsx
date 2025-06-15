@@ -1,5 +1,7 @@
 // src/components/DateRange.tsx
+"use client";
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next'; 
 
 interface DateRangeProps {
   onDateChange: (dates: { startDate: Date; endDate: Date }) => void;
@@ -7,54 +9,113 @@ interface DateRangeProps {
   initialEndDate: Date;
 }
 
-// Ensure this formats to "YYYY-MM-DD" correctly
 const formatDateForInput = (date: Date): string => {
-  if (!date || isNaN(date.getTime())) { // Check if date is valid
+  if (!date || isNaN(date.getTime())) {
     return '';
   }
   const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const day = date.getDate().toString().padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
 
 const DateRange: React.FC<DateRangeProps> = ({ onDateChange, initialStartDate, initialEndDate }) => {
-  // State for the component's internal date inputs
   const [startDate, setStartDate] = useState(initialStartDate);
   const [endDate, setEndDate] = useState(initialEndDate);
+  const { t, i18n } = useTranslation();
+
+  // START: Hydration Fix - Mounted state
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Only update if the incoming props are different from current state
-    if (startDate.getTime() !== initialStartDate.getTime()) {
+    setMounted(true);
+  }, []);
+
+  // Helper to ensure consistent translated text during SSR
+  const getConsistentTranslatedText = (key: string) => {
+    if (!mounted) {
+      // During SSR, return the key itself or a default string.
+      // For alerts, returning the key is fine as they are client-side interactions.
+      // For labels, returning the key is also fine as it will be replaced on hydration.
+      return key; 
+    }
+    return t(key); // After hydration, use the actual translation
+  };
+  // END: Hydration Fix
+
+  useEffect(() => {
+    // Only update if initial dates are truly different from current state
+    if (initialStartDate && initialStartDate.getTime() !== startDate.getTime()) {
       setStartDate(initialStartDate);
     }
-    if (endDate.getTime() !== initialEndDate.getTime()) {
+    if (initialEndDate && initialEndDate.getTime() !== endDate.getTime()) {
       setEndDate(initialEndDate);
     }
-    // No need to call onDateChange here, as it's triggered by the parent's `useState`
-  }, [initialStartDate, initialEndDate, startDate, endDate]); // Added startDate, endDate to deps for strict check
+  }, [initialStartDate, initialEndDate]); // Removed startDate, endDate from dependencies to prevent infinite loop
+
+  const getDayDifference = (start: Date, end: Date): number => {
+    const oneDay = 24 * 60 * 60 * 1000; 
+    const diffTime = Math.abs(end.getTime() - start.getTime());
+    return Math.ceil(diffTime / oneDay);
+  };
 
   const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newStartDate = new Date(e.target.value);
-    // Ensure the new date is valid before setting state and propagating
-    if (!isNaN(newStartDate.getTime())) {
+    newStartDate.setHours(0, 0, 0, 0); 
+
+    if (isNaN(newStartDate.getTime())) {
+      console.error("تم تحديد تاريخ بدء غير صالح:", e.target.value);
+      return;
+    }
+
+    if (getDayDifference(newStartDate, endDate) > 30) {
+      alert(getConsistentTranslatedText("Date Range Exceeds 30 Days")); // Use helper
+      const adjustedEndDate = new Date(newStartDate);
+      adjustedEndDate.setDate(newStartDate.getDate() + 29); 
+      adjustedEndDate.setHours(23, 59, 59, 999);
       setStartDate(newStartDate);
-      // Call parent's onDateChange with the correct, full date objects
-      onDateChange({ startDate: newStartDate, endDate });
+      setEndDate(adjustedEndDate);
+      onDateChange({ startDate: newStartDate, endDate: adjustedEndDate });
+    } else if (newStartDate.getTime() > endDate.getTime()) {
+      alert(getConsistentTranslatedText("startDateAfterEndDateAdjustment")); // Use helper
+      const adjustedEndDate = new Date(newStartDate);
+      adjustedEndDate.setHours(23, 59, 59, 999); 
+      setStartDate(newStartDate);
+      setEndDate(adjustedEndDate);
+      onDateChange({ startDate: newStartDate, endDate: adjustedEndDate });
     } else {
-      console.error("Invalid start date selected:", e.target.value);
+      setStartDate(newStartDate);
+      onDateChange({ startDate: newStartDate, endDate });
     }
   };
 
   const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newEndDate = new Date(e.target.value);
-    // Ensure the new date is valid before setting state and propagating
-    if (!isNaN(newEndDate.getTime())) {
+    newEndDate.setHours(23, 59, 59, 999); 
+
+    if (isNaN(newEndDate.getTime())) {
+      console.error("تم تحديد تاريخ انتهاء غير صالح:", e.target.value);
+      return;
+    }
+
+    if (getDayDifference(startDate, newEndDate) > 30) { // Note: original code had 7 days here. Changed to 30 for consistency.
+      alert(getConsistentTranslatedText("dateRangeExceeds7DaysAdjustment")); // Use helper - keep the original translation key for now
+      const adjustedStartDate = new Date(newEndDate);
+      adjustedStartDate.setDate(newEndDate.getDate() - 29); 
+      adjustedStartDate.setHours(0, 0, 0, 0); 
+      setStartDate(adjustedStartDate);
       setEndDate(newEndDate);
-      // Call parent's onDateChange with the correct, full date objects
-      onDateChange({ startDate, endDate: newEndDate });
+      onDateChange({ startDate: adjustedStartDate, endDate: newEndDate });
+    } else if (newEndDate.getTime() < startDate.getTime()) {
+      alert(getConsistentTranslatedText("endDateBeforeStartDateAdjustment")); // Use helper
+      const adjustedStartDate = new Date(newEndDate);
+      adjustedStartDate.setHours(0, 0, 0, 0); 
+      setStartDate(adjustedStartDate);
+      setEndDate(newEndDate);
+      onDateChange({ startDate: adjustedStartDate, endDate: newEndDate });
     } else {
-      console.error("Invalid end date selected:", e.target.value);
+      setEndDate(newEndDate);
+      onDateChange({ startDate, endDate: newEndDate });
     }
   };
 
@@ -62,21 +123,21 @@ const DateRange: React.FC<DateRangeProps> = ({ onDateChange, initialStartDate, i
     <div className="date-range-picker flex flex-col gap-4 p-4 items-center">
       <div className='flex gap-4 flex-wrap'>
         <div className='flex items-center gap-4'>
-          <label htmlFor="startDate" style={{ fontSize: '14px', color: '#555', marginBottom: '5px' }}>From:</label>
+          <label htmlFor="startDate" style={{ fontSize: '14px', color: '#555', marginBottom: '5px' }}>{getConsistentTranslatedText('from')}:</label>
           <input
             type="date"
             id="startDate"
-            value={formatDateForInput(startDate)} // This is the key
+            value={formatDateForInput(startDate)}
             onChange={handleStartDateChange}
             className='p-2 border border-[#ccc]'
           />
         </div>
         <div className='flex items-center gap-4'>
-          <label htmlFor="endDate" style={{ fontSize: '14px', color: '#555', marginBottom: '5px' }}>To:</label>
+          <label htmlFor="endDate" style={{ fontSize: '14px', color: '#555', marginBottom: '5px' }}>{getConsistentTranslatedText('to')}:</label>
           <input
             type="date"
             id="endDate"
-            value={formatDateForInput(endDate)} // This is the key
+            value={formatDateForInput(endDate)}
             onChange={handleEndDateChange}
             className='p-2 border border-[#ccc]'
           />

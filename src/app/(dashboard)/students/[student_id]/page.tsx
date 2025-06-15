@@ -1,153 +1,203 @@
+// src/components/StudentPage.tsx
 
 "use client";
-import DataService, { StudentDetails, Reward, Penalty, Excuse } from "@/services/dataService";
+import DataService, { StudentDetails, Reward, ParentPenalty, Excuse } from "@/services/dataService";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
-import ParentFinesTable from "@/components/ParentFinesTable"; // This component needs to be updated to accept studentId
-import ParentExcuses from "@/components/ParentExcuses"; // This component needs to be updated to accept studentId
-
-  const rewards = [
-    {
-      img: "/reward3.svg",
-      month: "November",
-    },
-    {
-      img: "/reward3.svg",
-      month: "December",
-    },
-    {
-      img: "/reward3.svg",
-      month: "January",
-    },
-    {
-      img: "/reward3.svg",
-      month: "February",
-    },
-    {
-      img: "/reward3.svg",
-      month: "March",
-    },
-    {
-      img: "/reward3.svg",
-      month: "April",
-    },
-    {
-      img: "/reward3.svg",
-      month: "May",
-    },
-    {
-      img: "/reward3.svg",
-      month: "June",
-    },
-  ];
+import ParentFinesTable from "@/components/ParentFinesTable";
+import ParentExcuses from "@/components/ParentExcuses";
+import { useTranslation } from "react-i18next";
+import RewardsCard from "@/components/RewardsCard";
 
 const cm = (...classes: (string | boolean)[]) =>
   classes.filter(Boolean).join(" ");
 
-const StudentPage = ({
-  params: { student_id: studentIdParam }, // Renamed to avoid conflict with numeric studentId
-}: {
-  params: { student_id: string };
-}) => {
+interface StudentPageProps {
+  params: Promise<{ student_id: string }>;
+}
+
+const StudentPage = ({ params }: StudentPageProps) => {
+  const { t, i18n } = useTranslation();
+  const resolvedParams = React.use(params);
+  const studentIdParam = resolvedParams.student_id;
   const studentId = Number(studentIdParam);
 
-  const [studentDetails, setStudentDetails] = useState<StudentDetails | null>(
-    null
-  );
+  const [studentDetails, setStudentDetails] = useState<StudentDetails | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"this_month" | "academic_year">("this_month");
   const [attendanceRate, setAttendanceRate] = useState<number>(0);
-  const [studentRewards, setStudentRewards] = useState<Reward[]>([]);
-  const [studentPenalties, setStudentPenalties] = useState<Penalty[]>([]);
-  const [studentExcuses, setStudentExcuses] = useState<Excuse[]>([]);
+  const [rewardsJson, setrewardsJson] = useState<Reward[]>();
+  const [excusesJson, setExcusesJson] = useState<Excuse[]>();
+  const [penaltiesJson, setPenaltiesJson] = useState<ParentPenalty[]>([]); // Add state for penalties
 
-  // Chart data state, though not fully implemented with dynamic calculation based on current logic
-  type ChartTab = "this_month" | "all_months";
-  const [chartTab, setChartTab] = useState<ChartTab>("this_month");
-  // For actual chart data, you'd calculate based on studentDetails.attendance and date ranges
-  const [chartData, setChartData] = useState<
-    Record<ChartTab, Array<{ name: string; value: number }>>
-  >({
-    this_month: [], // You'd populate this based on monthly attendance data if available
-    all_months: [], // You'd populate this based on all-time attendance data
-  });
+  const isArabic = i18n.language === "ar";
+  const textDirectionClass = isArabic ? "text-right" : "text-left";
+  const dirAttribute = isArabic ? "rtl" : "ltr";
+
+  const getDateRange = (period: "this_month" | "academic_year") => {
+    const now = new Date();
+    const yesterday = new Date(now);
+    yesterday.setDate(now.getDate() - 1);
+
+    if (period === "this_month") {
+      const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+      return { start: firstDayOfMonth, end: yesterday };
+    } else {
+      const currentYear = now.getFullYear();
+      const currentMonth = now.getMonth();
+
+      const academicYearStart = new Date(
+        currentMonth >= 8 ? currentYear : currentYear - 1,
+        8,
+        1
+      );
+
+      return { start: academicYearStart, end: yesterday };
+    }
+  };
 
   useEffect(() => {
-    if (!isNaN(studentId)) {
-      const details = DataService.getStudentDetailsById(studentId);
-      setStudentDetails(details);
-  
-      if (details?.attendance) {
-        // Use 'in_time' and 'violation' from the new structure
-        const inTimeDays = details.attendance.in_time || 0;
-        const violationDays = details.attendance.violation || 0; // This now includes what was 'absent' and 'late'
-        const totalAttendanceDays = inTimeDays + violationDays;
-  
-        if (totalAttendanceDays > 0) {
-          setAttendanceRate(
-            Math.round((inTimeDays / totalAttendanceDays) * 100)
-          );
-        } else {
-          setAttendanceRate(0); // No attendance records or no categorizable statuses
-        }
-      } else {
-        setAttendanceRate(0);
-      }
-  
-      setStudentRewards(details?.rewards || []);
-      setStudentPenalties(DataService.getPenaltiesForStudent(studentId));
-      setStudentExcuses(DataService.getExcusesForStudent(studentId)); // Ensure this is the singular version
-    }
-  }, [studentId]);
+    const fetchStudentData = async () => {
+      setLoading(true);
+      setError(null);
 
-  // You can add a loading state here if data fetching is asynchronous
-  if (!studentDetails) {
+      if (isNaN(studentId)) {
+        setError(t("invalid_student_id_error"));
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const dateRange = getDateRange(activeTab);
+        const details = await DataService.getStudentDetailsById(studentId, dateRange);
+        setStudentDetails(details);
+        console.log("dettt", details);
+
+        // --- FIX STARTS HERE ---
+        // Use the 'details' variable which is guaranteed to be non-null here
+        // after the await completes successfully.
+        if (details?.student?.student_id) { // Defensive check, though 'details' should not be null here
+          const penalties = await DataService.getPenaltiesForStudent(details.student.student_id);
+          const filteredPenalties = penalties.filter(p => p.paid === "N");
+          setPenaltiesJson(filteredPenalties); // Set the state for penalties
+
+          const rewardsJsonAwait = await DataService.getRewardsForStudent(studentId);
+          setrewardsJson(rewardsJsonAwait);
+
+          const excusesJsonAwait = await DataService.getExcusesForStudent(studentId);
+          setExcusesJson(excusesJsonAwait);
+        } else {
+          // Handle case where student details or student ID might be missing
+          setError(t("no_student_details_found", { studentId: studentId }));
+          setrewardsJson([]);
+          setExcusesJson([]);
+          setPenaltiesJson([]);
+          setAttendanceRate(0);
+        }
+        // --- FIX ENDS HERE ---
+
+        if (details?.attendanceSummary) {
+          const { presentDays, lateDays, absentDays } = details.attendanceSummary;
+          const totalDaysWithRecords = presentDays + lateDays + absentDays;
+
+          if (totalDaysWithRecords > 0) {
+            const rate = Math.round(((presentDays + lateDays) / totalDaysWithRecords) * 100);
+            setAttendanceRate(rate);
+          } else {
+            setAttendanceRate(0);
+          }
+        } else {
+          setAttendanceRate(0);
+        }
+      } catch (err) {
+        console.error("Failed to fetch student details:", err);
+        setError(t("failed_to_load_student_data_error"));
+        setrewardsJson([]); // Clear previous data on error
+        setExcusesJson([]); // Clear previous data on error
+        setPenaltiesJson([]); // Clear previous data on error
+        setAttendanceRate(0); // Reset attendance rate on error
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStudentData();
+  }, [studentId, studentIdParam, activeTab, i18n.language, t]); // Add t and i18n.language to dependencies
+
+  if (loading) {
     return (
       <div className="p-4 flex flex-col gap-4 text-center text-gray-600">
-        Loading student details...
+        {t("loading_student_details")}
       </div>
     );
   }
 
-  // Placeholder for age - you might need to calculate this from a birthdate if available
-  // Or add an 'age' property to your Student interface
+  if (error) {
+    return (
+      <div className="p-4 flex flex-col gap-4 text-center text-red-600">
+        {t("error_prefix")}: {error}
+      </div>
+    );
+  }
+
+  // This check correctly ensures studentDetails is not null before rendering main content
+  if (!studentDetails) {
+    return (
+      <div className="p-4 flex flex-col gap-4 text-center text-gray-600">
+        {t("no_student_details_found", { studentId: studentId })}
+      </div>
+    );
+  }
+
+  const [studentFirstName, studentLastName] = DataService.getStudentNameById(
+    studentDetails.student.student_id,
+    i18n.language
+  );
+  
   const studentAge = new Date().getFullYear() - new Date(studentDetails.student.date_of_birth).getFullYear();
-  const studentSchool = DataService.getSchoolNameById(studentDetails.student.school_id)
-  const penalties = DataService.getPenaltiesForStudent(studentDetails.student.student_id)
-  console.log("pennnnnnn", penalties)
+  const studentSchool = DataService.getSchoolNameById(studentDetails.student.school_id, i18n.language);
+  
+  console.log("rewaaaaaards", studentDetails.rewards); // This log is fine as studentDetails is confirmed non-null here
+
   return (
-    <div className="p-4 flex flex-col gap-4">
+    <div className={`p-4 flex flex-col gap-4`} dir={dirAttribute}>
       <div className="p-8 bg-white rounded-2xl flex flex-col gap-8">
-        <h1 className="text-lg font-black text-[#7C8B9D]">My Children</h1>
-        <div className="flex gap-8 items-center">
+        <h1 className={`text-lg font-black text-[#7C8B9D] ${textDirectionClass}`}>
+          {t("My Children")}
+        </h1>
+        <div className={`flex gap-8 items-center`}>
           <div className="">
             <Image
-              src="/zahra.png"
+              src={
+                studentDetails.student?.image_url || "/profile.png"
+              }
               height={128}
               width={128}
-              alt="view"
-              className=" text-white pt-2 hover:opacity-75 transition-opacity flex justify-items-end items-end "
+              alt={t("student_avatar_alt")}
+              className=" rounded-full text-white pt-2 hover:opacity-75 transition-opacity flex justify-items-end items-end "
             />
           </div>
-          <div className="flex flex-col gap-4">
-            <div className="font-bold text-medium text-[#6BBEA5]">
-              {studentDetails?.student.first_name_en}
-              {studentDetails?.student.last_name_en}
+          <div className={`flex flex-col gap-4`}>
+            <div className={`font-bold text-medium text-[#6BBEA5] ${textDirectionClass}`}>
+              { `${studentFirstName} ${studentLastName} `}
             </div>
-            <div className="flex gap-8">
+            <div className={`flex gap-8 ${isArabic ? 'flex-row-reverse' : ''}`}>
               <div>
-                <p className="text-sm font-bold text-[#9B9B9B]">Class</p>
+                <p className="text-sm font-bold text-[#9B9B9B]">{t("Class")}</p>
                 <h3 className="text-[#6BBEA5] font-medium">
-                  {studentDetails?.student.class_ar}
+                  {isArabic ? studentDetails?.student.class_ar : studentDetails?.student.class_en}
                 </h3>
               </div>
               <div>
-                <p className="text-sm font-bold text-[#9B9B9B]">School</p>
+                <p className="text-sm font-bold text-[#9B9B9B]">{t("School")}</p>
                 <h3 className="text-[#6BBEA5] font-medium">
                   {studentSchool}
                 </h3>
               </div>
               <div>
-                <p className="text-sm font-bold text-[#9B9B9B]">Age</p>
+                <p className="text-sm font-bold text-[#9B9B9B]">{t("Age")}</p>
                 <h3 className="text-[#6BBEA5] font-medium">
                   {studentAge}
                 </h3>
@@ -158,9 +208,10 @@ const StudentPage = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-        <div className="p-8 bg-white rounded-2xl flex flex-col gap-8 items-center">
-          <div className="flex flex-col justify-items-start">
-            <h1 className="text-lg font-black text-[#8447AB]">Attendance</h1>
+        {/* Attendance Card */}
+        <div className={`p-8 bg-white rounded-2xl flex flex-col gap-8 items-center ${textDirectionClass}`}>
+          <div className={`flex flex-col justify-items-start ${textDirectionClass}`}>
+            <h1 className="text-lg font-black text-[#8447AB]">{t("Attendance")}</h1>
           </div>
           <div>
             <div className=" flex flex-col justify-between">
@@ -180,7 +231,7 @@ const StudentPage = ({
                       fill: "#6BBEA5",
                     },
                     [`& .${gaugeClasses.referenceArc}`]: {
-                      fill: "#8447AB", // Replace theme color with static value
+                      fill: "#8447AB",
                     },
                   }}
                 />
@@ -188,87 +239,56 @@ const StudentPage = ({
             </div>
           </div>
 
-          <div>
-            {(Object.keys(chartData) as ChartTab[]).map((tab) => (
-              <button
-                key={tab}
-                className={cm(
-                  "px-4 py-2 rounded-full text-sm transition-colors",
-                  chartTab === tab
-                    ? "bg-[#8447AB] text-white font-bold"
-                    : "text-gray-600 hover:bg-gray-200"
-                )}
-                onClick={() => setChartTab(tab)}
-              >
-                {tab === "this_month" ? "This Month" : "All months"}
-              </button>
-            ))}
-          </div>
-        </div>
-        
-        <div className="p-8 bg-white rounded-2xl flex flex-col gap-8">
-          <div className="flex flex-col">
-            <h1 className="text-lg font-black text-[#8447AB]">Rewards</h1>
-          </div>
-          <div>
-            <div className=" flex flex-col justify-between py-8">
-              <div className="grid gap-2 grid-cols-2 md:grid-cols-3 xl:grid-cols-5 justify-between items-center">
-                <div className="flex flex-col gap-2 items-center">
-                  <Image
-                    src="/reward1.svg"
-                    height={128}
-                    width={128}
-                    alt="view"
-                    className=" text-white pt-2 hover:opacity-75 transition-opacity flex justify-items-end items-end "
-                  />
-                  <p className="text-[10px] text-[#D4AE0E] font-medium">September</p>
-                </div>
-                <div className="flex flex-col gap-2 items-center">
-                  <Image
-                    src="/reward2.svg"
-                    height={128}
-                    width={128}
-                    alt="view"
-                    className=" text-white pt-2 hover:opacity-75 transition-opacity flex justify-items-end items-end "
-                  />
-                  <p className="text-[10px] font-bold text-[#FFD009]">October</p>
-                </div>
-
-                {rewards.map((i) => (
-                  <div key={i.month} className="flex flex-col gap-2 items-center">
-                    <Image
-                      src={i.img}
-                      height={128}
-                      width={128}
-                      alt="view"
-                      className=" text-white pt-2 hover:opacity-75 transition-opacity flex justify-items-end items-end "
-                    />
-                    <p className="text-[10px] text-[#CCCCCC]">{i.month}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="p-8 bg-white rounded-2xl flex flex-col gap-8">
-          <div className="flex flex-col">
-            <h1 className="text-lg font-black text-[#8447AB]">Fines</h1>
-          </div>
-          <div>
-            <ParentFinesTable penalties={studentPenalties}/>
-          </div>
-        </div>
-        
-        <div className="p-8 bg-white rounded-2xl flex flex-col gap-8">
-          <div className="flex flex-col">
-            <h1 className="text-lg font-black text-[#8447AB]">Excuses</h1>
-          </div>
-          <div>
-            <ParentExcuses  />
+          <div className={`flex gap-2 ${isArabic ? 'flex-row-reverse' : ''}`}>
+            <button
+              className={cm(
+                "px-4 py-2 rounded-full text-sm transition-colors",
+                activeTab === "this_month"
+                  ? "bg-[#8447AB] text-white font-bold"
+                  : "text-gray-600 hover:bg-gray-200"
+              )}
+              onClick={() => setActiveTab("this_month")}
+            >
+              {t("Month")}
+            </button>
+            <button
+              className={cm(
+                "px-4 py-2 rounded-full text-sm transition-colors",
+                activeTab === "academic_year"
+                  ? "bg-[#8447AB] text-white font-bold"
+                  : "text-gray-600 hover:bg-gray-200"
+              )}
+              onClick={() => setActiveTab("academic_year")}
+            >
+              {t("School Year")}
+            </button>
           </div>
         </div>
 
+        {/* Rewards Card */}
+        <RewardsCard rewards={rewardsJson || []} attendance={attendanceRate}/>
+
+        {/* Fines Card */}
+        <div className={`p-8 bg-white rounded-2xl flex flex-col gap-8 ${textDirectionClass}`}>
+          <div className="flex flex-col">
+            <h1 className="text-lg font-black text-[#8447AB]">{t("Fines")}</h1>
+          </div>
+          <div>
+            {/* Pass the penalties state here */}
+            <ParentFinesTable penalties={penaltiesJson} />
+          </div>
+        </div>
+
+        {/* Excuses Card */}
+        <div className={`p-8 bg-white rounded-2xl flex flex-col gap-8 ${textDirectionClass}`}>
+          <div className="flex flex-col">
+            <h1 className="text-lg font-black text-[#8447AB]">{t("Excuses")}</h1>
+          </div>
+          <div>
+            {/* Pass the excuses state here */}
+            <ParentExcuses excuses={excusesJson || []} />
+          </div>
+        </div>
       </div>
     </div>
   );

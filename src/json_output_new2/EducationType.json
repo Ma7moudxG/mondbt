@@ -1,0 +1,32 @@
+[
+  {
+    "education_type_id": 1,
+    "description_en": "National",
+    "description_ar": "أهلي"
+  },
+  {
+    "education_type_id": 2,
+    "description_en": "global",
+    "description_ar": "عالمي"
+  },
+  {
+    "education_type_id": 3,
+    "description_en": "Foreign",
+    "description_ar": "أجنبي"
+  },
+  {
+    "education_type_id": 4,
+    "description_en": "An international program for private schools",
+    "description_ar": "برنامج دولي تابع للمدارس الاهلية"
+  },
+  {
+    "education_type_id": 5,
+    "description_en": "Egyptian Path",
+    "description_ar": "مسار مصري"
+  },
+  {
+    "education_type_id": 6,
+    "description_en": "Sudanese path",
+    "description_ar": "مسار سوداني"
+  }
+]
