@@ -19,15 +19,6 @@ export default function ExcusePage() {
       : params.id
     : undefined;
 
-  // Return early if ID is missing
-  if (!excuseId) {
-    return (
-      <div className="p-4 flex flex-col gap-4 text-center text-red-600">
-        Invalid excuse ID in URL
-      </div>
-    );
-  }
-
   console.log("excuseId", excuseId);
 
   const { t, i18n } = useTranslation();
