@@ -748,94 +748,94 @@ export default class DataService {
    * @param educationalLevel Optional: Filter by educational level ("Primary", "Intermediate", "Secondary").
    * @returns An object with aggregated attendance, absence, late counts, and total possible attendances.
    */
-  public static getSchoolsForAttendance(
-    regionId: number | null,
-    filters: FilterValues
-  ): {
-    all: School[];
-    male: School[];
-    female: School[];
-    primary: School[];
-    intermediate: School[];
-    secondary: School[];
-  } {
-    console.log(
-      "DataService: getSchoolsForAttendance START with regionId:",
-      regionId
-    );
+  // public static getSchoolsForAttendance(
+  //   regionId: number | null,
+  //   filters: FilterValues
+  // ): {
+  //   all: School[];
+  //   male: School[];
+  //   female: School[];
+  //   primary: School[];
+  //   intermediate: School[];
+  //   secondary: School[];
+  // } {
+  //   console.log(
+  //     "DataService: getSchoolsForAttendance START with regionId:",
+  //     regionId
+  //   );
 
-    // Start with all schools
-    let schools = schoolData.schools;
+  //   // Start with all schools
+  //   let schools = schoolData.schools;
 
-    // Apply region filter if provided
-    if (regionId !== null) {
-      schools = schools.filter((school) => school.region_id === regionId);
-      console.log(
-        `DataService: Schools after region filter (${regionId}): ${schools.length}`
-      );
-    }
+  //   // Apply region filter if provided
+  //   if (regionId !== null) {
+  //     schools = schools.filter((school) => school.region_id === regionId);
+  //     console.log(
+  //       `DataService: Schools after region filter (${regionId}): ${schools.length}`
+  //     );
+  //   }
 
-    // Apply additional filters from the UI
-    if (filters.city) {
-      const cityId = getCityIdFromName(filters.city);
-      if (cityId !== null) {
-        schools = schools.filter((school) => school.city_id === cityId);
-      }
-    }
+  //   // Apply additional filters from the UI
+  //   if (filters.city) {
+  //     const cityId = getCityIdFromName(filters.city);
+  //     if (cityId !== null) {
+  //       schools = schools.filter((school) => school.city_id === cityId);
+  //     }
+  //   }
 
-    if (filters.schoolName) {
-      const name = filters.schoolName.toLowerCase().trim();
-      schools = schools.filter(
-        (school) =>
-          school.name_en.toLowerCase().includes(name) ||
-          school.name_ar.toLowerCase().includes(name)
-      );
-    }
+  //   if (filters.schoolName) {
+  //     const name = filters.schoolName.toLowerCase().trim();
+  //     schools = schools.filter(
+  //       (school) =>
+  //         school.name_en.toLowerCase().includes(name) ||
+  //         school.name_ar.toLowerCase().includes(name)
+  //     );
+  //   }
 
-    if (filters.ministryNumber) {
-      const number = filters.ministryNumber.toLowerCase().trim();
-      schools = schools.filter((school) =>
-        school.ministerial_number.toString().toLowerCase().includes(number)
-      );
-    }
+  //   if (filters.ministryNumber) {
+  //     const number = filters.ministryNumber.toLowerCase().trim();
+  //     schools = schools.filter((school) =>
+  //       school.ministerial_number.toString().toLowerCase().includes(number)
+  //     );
+  //   }
 
-    if (filters.schoolType) {
-      const typeId = getEducationTypeIdFromName(filters.schoolType);
-      if (typeId !== null) {
-        schools = schools.filter(
-          (school) => school.education_type_id === typeId
-        );
-      }
-    }
+  //   if (filters.schoolType) {
+  //     const typeId = getEducationTypeIdFromName(filters.schoolType);
+  //     if (typeId !== null) {
+  //       schools = schools.filter(
+  //         (school) => school.education_type_id === typeId
+  //       );
+  //     }
+  //   }
 
-    // Group schools by gender and educational level
-    const maleSchools = schools.filter((school) => school.type_en === "Male");
-    const femaleSchools = schools.filter(
-      (school) => school.type_en === "Female"
-    );
+  //   // Group schools by gender and educational level
+  //   const maleSchools = schools.filter((school) => school.type_en === "Male");
+  //   const femaleSchools = schools.filter(
+  //     (school) => school.type_en === "Female"
+  //   );
 
-    const primarySchools = schools.filter(
-      (school) => school.educational_level_en === "Primary"
-    );
+  //   const primarySchools = schools.filter(
+  //     (school) => school.educational_level_en === "Primary"
+  //   );
 
-    const intermediateSchools = schools.filter(
-      (school) => school.educational_level_en === "Intermediate"
-    );
+  //   const intermediateSchools = schools.filter(
+  //     (school) => school.educational_level_en === "Intermediate"
+  //   );
 
-    const secondarySchools = schools.filter(
-      (school) => school.educational_level_en === "Secondary"
-    );
+  //   const secondarySchools = schools.filter(
+  //     (school) => school.educational_level_en === "Secondary"
+  //   );
 
-    console.log("DataService: getSchoolsForAttendance END");
-    return {
-      all: schools,
-      male: maleSchools,
-      female: femaleSchools,
-      primary: primarySchools,
-      intermediate: intermediateSchools,
-      secondary: secondarySchools,
-    };
-  }
+  //   console.log("DataService: getSchoolsForAttendance END");
+  //   return {
+  //     all: schools,
+  //     male: maleSchools,
+  //     female: femaleSchools,
+  //     primary: primarySchools,
+  //     intermediate: intermediateSchools,
+  //     secondary: secondarySchools,
+  //   };
+  // }
 
   public static getSchoolsByRegionId(regionId: number): School[] {
     console.log("DataService: getSchoolsByRegionId for region ID:", regionId);
