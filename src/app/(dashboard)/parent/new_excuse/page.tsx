@@ -19,7 +19,7 @@ const NewExcusePage = () => {
   }, []);
   // END: Hydration Fix
 
-  const parentId = 7; // Mock parent ID
+  const parentId = 2; // Mock parent ID
 
   const [students, setStudents] = useState<Student[]>([]);
   const [excuseReasons, setExcuseReasons] = useState<ExcuseReason[]>([]);
@@ -56,7 +56,7 @@ const NewExcusePage = () => {
     const fetchData = async () => {
       const parentStudents = DataService.getStudentsByParentId(parentId);
       console.log("Students loaded for parentId:", parentId, parentStudents);
-      setStudents(parentStudents);
+      setStudents(parentStudents.slice(0,3));
 
       try {
         const reasons = await DataService.getExcuseReasons();

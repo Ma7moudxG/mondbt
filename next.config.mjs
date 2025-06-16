@@ -27,6 +27,12 @@ const nextConfig = {
         port: '',
         pathname: '/**', // This allows any path on the hostname
       },
+      {
+        protocol: 'https',
+        hostname: 'almanahj.com',
+        port: '',
+        pathname: '/**', // This allows any path on the hostname
+      },
       // Add other remote image hostnames here if you have them
     ],
   },

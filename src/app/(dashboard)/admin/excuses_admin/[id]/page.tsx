@@ -1,103 +1,103 @@
 // src/app/excuses/[id]/page.tsx
 "use client";
 
-import React, { useState, useEffect, useCallback, useMemo } from "react"; // Added useCallback
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Image from "next/image";
-import Link from "next/link"; // Not used but good to keep if needed
 import { useTranslation } from "react-i18next";
+import { useParams } from "next/navigation";
 
 import DataService, { Excuse, Student } from "@/services/dataService";
 
-interface ExcusePageProps {
-  params: {
-    id: string; // The ID from the URL is always a string
-  };
-}
+const AdminExcusesPage = () => {
+  const params = useParams();
 
-const AdminExcusesPage = ({ params }: ExcusePageProps) => {
+  // Safely extract id with proper type handling.
+  const excuseIdString: string | undefined = params?.id
+    ? Array.isArray(params.id)
+      ? params.id[0]
+      : params.id
+    : undefined;
+
   const { t, i18n } = useTranslation();
 
-  const excuseIdString: string = params.id;
-
   const [excuseDetails, setExcuseDetails] = useState<Excuse | null>(null);
-  const [excuseDescription, setExcuseDescription] = useState<string | null>(
-    null
-  );
+  const [excuseDescription, setExcuseDescription] = useState<string | null>(null);
   const [excuseAttachment, setExcuseAttachment] = useState<string | null>(null);
   const [studentFullName, setStudentFullName] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isUpdatingStatus, setIsUpdatingStatus] = useState<boolean>(false);
-
   const [showModal, setShowModal] = useState(false);
 
-  // Use a state for mounted to ensure client-side only rendering for critical parts
-  // and prevent hydration errors when client-side language or data differs from server.
+  // Mounted state to distinguish between server render and client hydration
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    setMounted(true);
-    // Set document direction based on language
+    setMounted(true); // Component has mounted on the client
+    // Setting document direction globally is safe here as it runs client-side
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
   }, [i18n.language]);
 
   const isArabic = i18n.language === "ar";
   const textDirectionClass = isArabic ? "text-right" : "text-left";
-  const dirAttribute = isArabic ? "rtl" : "ltr";
+  
+  // Conditionally apply dir attribute to the component's root div
+  // On SSR, it will be 'ltr' (or your i18n default). On client mount, it updates.
+  const dirAttribute = mounted && isArabic ? "rtl" : "ltr"; 
 
-  // Memoize fetchExcuseData to prevent unnecessary re-creations
+  // Memoized fetch function
   const fetchExcuseData = useCallback(async () => {
     setLoading(true);
     setError(null);
-    try {
-      // Fetch details and attachment first
-      const [details, attachment] = await Promise.all([
-        DataService.getExcuseDetailsById(excuseIdString),
-        DataService.getExcuseAttachmentById(excuseIdString),
-      ]);
 
-      console.log("Fetched details:", details);
-      console.log("Fetched attachment:", attachment);
+    if (!excuseIdString) {
+      setError("invalid_excuse_id");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const details = await DataService.getExcuseDetailsById(excuseIdString);
 
       if (!details) {
-        setError("excuse_not_found"); // Use string key for translation later
+        setError("excuse_not_found");
         setLoading(false);
         return;
       }
 
       setExcuseDetails(details);
-      setExcuseAttachment(attachment);
 
-      // Fetch description and student name *after* details are available
-      // and ensure language is considered for translation.
-      const [description, [firstName, lastName]] = await Promise.all([
-        DataService.getExcuseDescriptionById(
-          details.reason_id.toString(),
-          i18n.language // Pass current language
-        ),
-        DataService.getStudentNameById(
-          details.student_id as number,
-          i18n.language // Pass current language
-        ),
+      const [attachmentUrl, description, [firstName, lastName]] = await Promise.all([
+        DataService.getExcuseAttachmentById(details.id.toString()),
+        DataService.getExcuseDescriptionById(details.reason_id.toString(), i18n.language),
+        DataService.getStudentNameById(details.student_id as number, i18n.language),
       ]);
 
+      setExcuseAttachment(attachmentUrl);
       setExcuseDescription(description);
       setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
+
     } catch (err) {
       console.error("Failed to fetch Excuse details:", err);
-      setError("failed_to_load_excuse_data_error"); // Use string key for translation later
+      setError("failed_to_load_excuse_data_error");
     } finally {
       setLoading(false);
     }
-  }, [excuseIdString, i18n.language, t]); // Dependencies for useCallback
+  }, [excuseIdString, i18n.language, t]);
 
+  // Effect to trigger data fetching
   useEffect(() => {
-    // Only fetch data if mounted (ensures client-side fetch, less critical for this component
-    // as it's 'use client', but good for general data fetching after hydration).
-    // The main reason for `mounted` is to ensure `i18n.language` is stable.
-    if (mounted) {
+    // Only fetch data if mounted AND excuseIdString is available.
+    // This also means data fetching only begins on the client-side,
+    // avoiding server-side data fetching for this client component.
+    if (mounted && excuseIdString) {
       fetchExcuseData();
+    } else if (mounted && excuseIdString === undefined) {
+      // If mounted but no ID, it's an invalid URL, show an error.
+      setLoading(false);
+      setError("invalid_excuse_id");
     }
-  }, [mounted, fetchExcuseData]); // Added fetchExcuseData to dependencies
+  }, [mounted, excuseIdString, fetchExcuseData]);
 
   const handleUpdateStatus = useCallback(async (status: "APPROVED" | "REJECTED") => {
     if (!excuseDetails) return;
@@ -122,54 +122,67 @@ const AdminExcusesPage = ({ params }: ExcusePageProps) => {
     } finally {
       setIsUpdatingStatus(false);
     }
-  }, [excuseDetails, t]); // Added excuseDetails to dependencies
+  }, [excuseDetails, t]);
 
   const handleImageClick = useCallback(() => {
     if (excuseAttachment) {
       setShowModal(true);
     }
-  }, [excuseAttachment]); // Added excuseAttachment to dependencies
+  }, [excuseAttachment]);
 
   const handleCloseModal = useCallback(() => {
     setShowModal(false);
   }, []);
 
-  // Ensure consistent date formatting on client-side
   const excuseDate = useMemo(() => {
     if (!excuseDetails) return t("N/A");
-
-    if (isArabic) {
-      return excuseDetails.excuse_date_h || t("N/A");
-    } else {
-      return excuseDetails.excuse_date_g
-        ? new Date(excuseDetails.excuse_date_g).toLocaleDateString(i18n.language, {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-          })
-        : t("N/A");
-    }
-  }, [excuseDetails, isArabic, i18n.language, t]); // Dependencies for useMemo
+    return isArabic
+      ? excuseDetails.excuse_date_h || t("N/A")
+      : excuseDetails.excuse_date_g
+      ? new Date(excuseDetails.excuse_date_g).toLocaleDateString(i18n.language, {
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+        })
+      : t("N/A");
+  }, [excuseDetails, isArabic, i18n.language, t]);
 
   const excuseStatusTranslated = useMemo(() => {
     if (!excuseDetails) return t("N/A");
     return isArabic ? excuseDetails.status_ar : excuseDetails.status_en;
   }, [excuseDetails, isArabic, t]);
 
-  // Render nothing or a minimal loading skeleton if not mounted yet,
-  // or if still loading data. This helps prevent hydration errors by
-  // ensuring the client's initial render matches the server's.
-  if (!mounted || loading) { // Combine mounted check with loading
+  // --- Crucial change here for loading state text ---
+  if (!mounted) {
+    // During SSR, and initial client render before useEffect runs.
+    // Render a consistent, non-localized loading message.
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-gray-600">
-        {t("loading")}
+      <div className="p-4 flex flex-col gap-4 text-center text-gray-600" dir="ltr">
+        Loading... {/* This text will be consistently rendered on SSR */}
+      </div>
+    );
+  }
+
+  // Once mounted, subsequent renders can use localized text and dynamic dir.
+  if (excuseIdString === undefined) {
+    return (
+      <div className="p-4 flex flex-col gap-4 text-center text-red-600" dir={dirAttribute}>
+        {t("invalid_excuse_id_in_url")}
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="p-4 flex flex-col gap-4 text-center text-gray-600" dir={dirAttribute}>
+        {t("loading")} {/* This will now be localized only on the client */}
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-red-600">
+      <div className="p-4 flex flex-col gap-4 text-center text-red-600" dir={dirAttribute}>
         {t("error_prefix")}: {t(error)}
       </div>
     );
@@ -177,7 +190,7 @@ const AdminExcusesPage = ({ params }: ExcusePageProps) => {
 
   if (!excuseDetails) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-gray-600">
+      <div className="p-4 flex flex-col gap-4 text-center text-gray-600" dir={dirAttribute}>
         {t("no_excuse_details_found", { excuseId: excuseIdString })}
       </div>
     );
@@ -257,6 +270,12 @@ const AdminExcusesPage = ({ params }: ExcusePageProps) => {
                 <p className="text-gray-500">{t("no_attachment_available")}</p>
               )}
             </div>
+            <div className="sm:w-full">
+               <p className="text-sm font-bold text-[#9B9B9B]">{t("Remarks")}</p>
+               <h3 className="text-[#6BBEA5] font-medium">
+                 {isArabic ? excuseDetails.remarks_ar : excuseDetails.remarks_en}
+               </h3>
+             </div>
           </div>
         </div>
 
@@ -305,36 +324,34 @@ const AdminExcusesPage = ({ params }: ExcusePageProps) => {
           onClick={handleCloseModal}
         >
           <div
-            className="relative bg-white rounded-lg p-4 w-full max-w-4xl max-h-[90vh] overflow-hidden flex justify-center items-center"
+            className="relative bg-white rounded-lg p-4 max-w-4xl max-h-[90vh] w-full h-[90vh] flex flex-col justify-center items-center overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={handleCloseModal}
-              className="absolute top-2 right-2 text-gray-800 hover:text-gray-600 text-3xl font-bold p-1 leading-none"
+              className="absolute top-2 right-2 text-gray-800 hover:text-gray-600 text-3xl font-bold p-1 leading-none z-50"
               aria-label={t("close_button_alt")}
             >
               &times;
             </button>
+
             <div
-              className="relative w-full"
+              className="relative flex-grow w-full flex justify-center items-center"
               style={{
-                height: "calc(90vh - 8rem)", // Adjusted height based on context
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                maxWidth: "calc(100vw - 64px)",
+                maxHeight: "calc(90vh - 64px - 4rem)",
+                position: "relative",
               }}
             >
-              {excuseAttachment && (
-                <Image
-                  key={excuseAttachment + "-modal"}
-                  src={excuseAttachment}
-                  alt={t("full_size_excuse_attachment_alt")}
-                  layout="fill" // This is deprecated in Next.js 13+
-                  objectFit="contain"
-                  className="rounded-md"
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                />
-              )}
+              <Image
+                key={excuseAttachment + "-modal"}
+                src={excuseAttachment}
+                alt={t("full_size_excuse_attachment_alt")}
+                fill={true}
+                objectFit="contain"
+                className="rounded-md"
+                sizes="(max-width: 768px) 100vw, 80vw"
+              />
             </div>
           </div>
         </div>

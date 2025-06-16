@@ -1,0 +1,5 @@
+id,code,description_en,description_ar
+1,sick,Student illness (requires submission of a medical report or verified excuse via Sehhaty app).,مرض الطالب (يشترط تقديم تقرير طبي أو عذر طبي مقبول من تطبيق صحتي).
+2,death,"Death of a first-degree relative (parents, siblings, grandparents), with death certificate.",وفاة قريب من الدرجة الأولى • (الوالدين، الإخوة والأخوات، الأجداد والجدات)، مع تقديم شهادة الوفاة.
+3,medical_appointment,"Urgent medical appointments for the student, with proof via an official hospital report.",مواعيد طبية ضرورية للطالب نفسه، مع إثبات ذلك من قبل تقرير مقبول من المستشفى.
+4,official_assignment,"Official assignments or participation, such as representing the school or the Kingdom in approved events, with an official letter.",التكليفات أو المشاركات الرسمية مثل تمثيل المدرسة أو المملكة في مسابقات أو مناسبات معتمدة، بموجب خطاب رسمي.

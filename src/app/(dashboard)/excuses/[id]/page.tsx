@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,9 +10,10 @@ import DataService, { Excuse, Student } from "@/services/dataService";
 
 export default function ExcusePage() {
   const params = useParams();
+  const [mounted, setMounted] = useState(false);
 
   // Safely extract id with proper type handling
-  const excuseId = params?.id
+  const excuseId: string | undefined = params?.id
     ? Array.isArray(params.id)
       ? params.id[0]
       : params.id
@@ -27,6 +28,8 @@ export default function ExcusePage() {
     );
   }
 
+  console.log("excuseId", excuseId);
+
   const { t, i18n } = useTranslation();
 
   const [excuseDetails, setExcuseDetails] = useState<Excuse | null>(null);
@@ -39,54 +42,67 @@ export default function ExcusePage() {
   const [error, setError] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
 
-  const isArabic = i18n.language === "ar";
-  const textDirectionClass = isArabic ? "text-right" : "text-left";
-  const dirAttribute = isArabic ? "rtl" : "ltr";
 
   useEffect(() => {
-    const fetchExcuseData = async () => {
+      setMounted(true); // Component has mounted on the client
+      // Setting document direction globally is safe here as it runs client-side
+      document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    }, [i18n.language]);
+
+  const isArabic = i18n.language === "ar";
+  const textDirectionClass = isArabic ? "text-right" : "text-left";
+
+  const fetchExcuseData = useCallback(async () => {
       setLoading(true);
       setError(null);
-
+  
+      if (!excuseId) {
+        setError("invalid_excuse_id");
+        setLoading(false);
+        return;
+      }
+  
       try {
-        // Now we can safely use excuseId as it's guaranteed to be a string
-        const [details, attachment] = await Promise.all([
-          DataService.getExcuseDetailsById(excuseId),
-          DataService.getExcuseAttachmentById(excuseId),
-        ]);
-
+        const details = await DataService.getExcuseDetailsById(excuseId);
+  
         if (!details) {
-          setError(t("excuse_not_found"));
+          setError("excuse_not_found");
           setLoading(false);
           return;
         }
-
+  
         setExcuseDetails(details);
-        setExcuseAttachment(attachment);
-
-        const [description, [firstName, lastName]] = await Promise.all([
-          DataService.getExcuseDescriptionById(
-            details.reason_id.toString(),
-            i18n.language
-          ),
-          DataService.getStudentNameById(
-            details.student_id as number,
-            i18n.language
-          ),
+  
+        const [attachmentUrl, description, [firstName, lastName]] = await Promise.all([
+          DataService.getExcuseAttachmentById(details.id.toString()),
+          DataService.getExcuseDescriptionById(details.reason_id.toString(), i18n.language),
+          DataService.getStudentNameById(details.student_id as number, i18n.language),
         ]);
-
+  
+        setExcuseAttachment(attachmentUrl);
         setExcuseDescription(description);
         setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
+  
       } catch (err) {
         console.error("Failed to fetch Excuse details:", err);
-        setError(t("failed_to_load_excuse_data_error"));
+        setError("failed_to_load_excuse_data_error");
       } finally {
         setLoading(false);
       }
-    };
+    }, [excuseId, i18n.language, t]);
 
-    fetchExcuseData();
-  }, [excuseId, i18n.language, t]);
+    useEffect(() => {
+        // Only fetch data if mounted AND excuseIdString is available.
+        // This also means data fetching only begins on the client-side,
+        // avoiding server-side data fetching for this client component.
+        if (mounted && excuseId) {
+          fetchExcuseData();
+        } else if (mounted && excuseId === undefined) {
+          // If mounted but no ID, it's an invalid URL, show an error.
+          setLoading(false);
+          setError("invalid_excuse_id");
+        }
+      }, [mounted, excuseId, fetchExcuseData]);
 
   const handleImageClick = () => {
     if (excuseAttachment) {
@@ -137,7 +153,7 @@ export default function ExcusePage() {
   }
 
   return (
-    <div className={`p-4 flex flex-col gap-4 w-1/2`} dir={dirAttribute}>
+    <div className={`p-4 flex flex-col gap-4 w-1/2`} dir={textDirectionClass}>
       <div className="p-8 bg-white rounded-2xl flex flex-col gap-8 shadow-md">
         <h1
           className={`text-lg font-black text-[#7C8B9D] ${textDirectionClass}`}
@@ -225,7 +241,7 @@ export default function ExcusePage() {
           {t("New Excuse")}
         </Link>
       </div>
-      
+
       {showModal && excuseAttachment && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"

@@ -129,7 +129,7 @@ const StudentPage = ({ params }: StudentPageProps) => {
   if (loading) {
     return (
       <div className="p-4 flex flex-col gap-4 text-center text-gray-600">
-        {t("loading_student_details")}
+        {t("Loading...")}
       </div>
     );
   }

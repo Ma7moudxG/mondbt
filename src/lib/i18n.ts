@@ -149,7 +149,8 @@ const ar = {
   "Primary Schools": "المدارس الابتدائية",
   "Intermediate Schools": "المدارس المتوسطة",
   "Secondary Schools": "المدارس الثانوية",
-  "Filtered Students": "المدارس المفلترة"
+  "Filtered Students": "المدارس المفلترة",
+  
 
 };
 
