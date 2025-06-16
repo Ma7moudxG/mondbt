@@ -297,6 +297,45 @@ const mapSchoolTypeNameToIds = (typeName: string): number[] => {
     .map((et) => et.education_type_id);
 };
 
+
+async function fetchData<T>(url: string, method: string = 'GET', body?: object): Promise<T | null> {
+  const options: RequestInit = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  if (body) {
+    options.body = JSON.stringify(body);
+  }
+
+  try {
+    console.log(`Fetching from Netlify Function: ${method} ${url}`);
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        console.warn(`Data not found at ${url}`);
+        return null; // For 404, return null
+      }
+      const errorData = await response.json();
+      console.error(`Network request error: ${method} ${url} - Status: ${response.status}`, errorData);
+      throw new Error(errorData.error || `HTTP error! Status: ${response.status}`);
+    }
+
+    // Handle 204 No Content for PATCH/PUT/DELETE operations if no content is expected
+    if (response.status === 204) {
+        return {} as T; // Return an empty object or true, depending on expected type
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error(`Error during fetch to ${url}:`, error);
+    throw error; // Re-throw to be caught by the calling component
+  }
+}
+
 // --- DataService Class (FIXED FUNCTIONS with Debugging) ---
 export default class DataService {
   static getSchoolData(): MergedSchoolData {
@@ -1899,7 +1938,7 @@ export default class DataService {
     }
   }
 
-  static async updatePenaltyStatus(
+  static async updatePcnaltyStatus(
     penaltyId: string,
     newPaidStatus: "Y" | "N"
   ): Promise<ParentPenalty | null> {
@@ -2392,22 +2431,6 @@ export default class DataService {
       const absenceRate =
         totalExpectedDays > 0 ? absentDays / totalExpectedDays : 0;
 
-      // console.log("Student ID:", studentId);
-      // console.log("Date Range:", dateRange);
-      // console.log("Total Attendance Entries (IN_TIME + VIOLATION):", totalAttendanceEntries);
-      // console.log("Total Absence Entries:", totalAbsenceEntries);
-      // console.log("Total Expected Days (Denominator):", totalExpectedDays);
-      // console.log("Present Days (IN_TIME):", presentDays);
-      // console.log("Late Days (VIOLATION):", lateDays);
-      // console.log("Absent Days:", absentDays);
-      // console.log("Attendance Rate:", attendanceRate.toFixed(2));
-      // console.log("Late Rate:", lateRate.toFixed(2));
-      // console.log("Absence Rate:", absenceRate.toFixed(2));
-
-      // --- End Core Logic for Attendance Calculations ---
-      console.log("dettt", dateRange);
-      console.log("dettt", attendanceRate);
-
       return {
         student,
         school,
@@ -2443,6 +2466,9 @@ export default class DataService {
     }
   }
 
+  // static async getExcuseDetailsById(excuseId: string): Promise<Excuse | null> {
+  //   return fetchData<Excuse>(`/netlify/functions/getExcuseDetailsById?id=${excuseId}`);
+  // }
   static async getExcuseDetailsById(
     excuseId: string // Keep this as string, as your IDs are strings like "ec58"
   ): Promise<Excuse | null> {

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2020", // Compile to a modern JS version
+    "module": "commonjs", // Use CommonJS for Node.js environment
+    "lib": ["es2020", "dom"], // Include ES2020 features and DOM types (for Request/Response)
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Allow default imports from modules with no default export
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "../../.netlify/functions-build", // Output compiled JS files to a build directory
+    "rootDir": "./" // Root directory for source files
+  },
+  "include": ["./**/*.ts"] // Include all TypeScript files in this directory and subdirectories
+}
