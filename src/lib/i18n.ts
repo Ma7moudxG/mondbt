@@ -150,7 +150,8 @@ const ar = {
   "Intermediate Schools": "المدارس المتوسطة",
   "Secondary Schools": "المدارس الثانوية",
   "Filtered Students": "المدارس المفلترة",
-  
+  "Male": "ذكور",
+  "Female": "إناث"
 
 };
 

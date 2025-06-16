@@ -21,12 +21,9 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         const user = USERS.find((u) => u.username === credentials?.username);
         if (user && user.password === credentials?.password) {
-          console.log(`AUTH_DEBUG: ✅ Authorization successful for user: ${user.name} Role: ${user.role}`);
           return { id: user.id, name: user.name, role: user.role };
-        } else {
-          console.log(`AUTH_DEBUG: ❌ Authorization failed for username: ${credentials?.username}`);
-          return null;
         }
+        return null;
       },
     }),
   ],
@@ -55,23 +52,7 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
-  cookies: {
-    sessionToken: {
-      name: `next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        secure: process.env.NODE_ENV === 'production', // false for localhost
-      },
-    },
-  },
 };
 
-// Export the 'auth', 'signIn', and 'signOut' helpers directly from NextAuth
-// This is crucial for the middleware to use.
-export const { auth, signIn, signOut } = NextAuth(authOptions);
-
-// Keep the handler exports for the /api/auth/[...nextauth] route
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

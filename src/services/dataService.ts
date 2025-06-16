@@ -1938,7 +1938,7 @@ export default class DataService {
     }
   }
 
-  static async updatePcnaltyStatus(
+  static async updatePenaltyStatus(
     penaltyId: string,
     newPaidStatus: "Y" | "N"
   ): Promise<ParentPenalty | null> {
