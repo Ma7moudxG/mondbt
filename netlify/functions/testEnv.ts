@@ -1,5 +1,5 @@
 import { Handler, Context, APIGatewayEvent } from '@netlify/functions';
-import { supabase } from '../../src/lib/supabase/supabaseClient'; // Or supabaseAdmin if you're using it
+import { supabaseAdmin } from '../../src/lib/supabase/supabaseClient'; // <-- Changed to supabaseAdmin
 
 interface Excuse {
   id: string; // <-- ENSURE THIS IS STRING IF YOUR DB COLUMN IS TEXT/UUID
@@ -36,7 +36,7 @@ const handler: Handler = async (event, context) => {
     console.log(`[getExcuseDetailsById] Function received request.`);
     console.log(`[getExcuseDetailsById] Attempting to fetch excuse details for ID: '${excuseId}' (type: ${typeof excuseId})`);
 
-    const { data, error } = await supabase // Or supabaseAdmin
+    const { data, error } = await supabaseAdmin // Or supabaseAdmin
       .from('excuses')
       .select('*')
       .eq('id', excuseId) // Pass the string ID directly

@@ -1,5 +1,5 @@
 import { Handler, Context } from '@netlify/functions';
-import { supabase } from '../../src/lib/supabase/supabaseClient'; // Import the shared Supabase client
+import { supabaseAdmin } from '../../src/lib/supabase/supabaseClient'; // <-- Changed to supabaseAdmin
 
 interface Excuse {
   id: string; // Adjusted to string as per your db.json
@@ -32,11 +32,11 @@ const handler: Handler = async (event, context) => {
 
   try {
     console.log(`Fetching excuse details for ID: ${excuseId}`);
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin // <-- Changed from supabase to supabaseAdmin
       .from('excuses')
       .select('*')
-      .eq('id', excuseId) // Filter by ID
-      .single(); // Expecting a single result
+      .eq('id', excuseId)
+      .single();
 
     if (error && error.code === 'PGRST116') { // PostgreSQL error code for no rows found
       console.warn(`Excuse with ID ${excuseId} not found.`);
