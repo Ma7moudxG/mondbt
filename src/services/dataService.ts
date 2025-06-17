@@ -679,7 +679,7 @@ export default class DataService {
   static async updateExcuseStatus(
     excuseId: string,
     statusEn: "PENDING" | "APPROVED" | "REJECTED",
-    statusAr: "قيد المراجعة" | "مصدق" | "مرفوض"
+    statusAr: "قيد المراجعة" | "مقبول" | "مرفوض"
   ): Promise<Excuse> {
     const updateData = {
       status_en: statusEn,

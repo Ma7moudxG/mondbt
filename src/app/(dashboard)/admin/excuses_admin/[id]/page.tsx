@@ -85,15 +85,10 @@ const AdminExcusesPage = () => {
     }
   }, [excuseIdString, i18n.language, t]);
 
-  // Effect to trigger data fetching
   useEffect(() => {
-    // Only fetch data if mounted AND excuseIdString is available.
-    // This also means data fetching only begins on the client-side,
-    // avoiding server-side data fetching for this client component.
     if (mounted && excuseIdString) {
       fetchExcuseData();
     } else if (mounted && excuseIdString === undefined) {
-      // If mounted but no ID, it's an invalid URL, show an error.
       setLoading(false);
       setError("invalid_excuse_id");
     }
@@ -114,6 +109,7 @@ const AdminExcusesPage = () => {
         statusEn,
         statusAr
       );
+
       setExcuseDetails(updatedExcuse);
       console.log(`Excuse ${excuseDetails.id} status updated to ${statusEn}`);
     } catch (err) {
@@ -122,7 +118,7 @@ const AdminExcusesPage = () => {
     } finally {
       setIsUpdatingStatus(false);
     }
-  }, [excuseDetails, t]);
+  }, [excuseDetails]);
 
   const handleImageClick = useCallback(() => {
     if (excuseAttachment) {
