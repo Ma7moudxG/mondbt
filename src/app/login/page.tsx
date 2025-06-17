@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react"; // Import useState
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Inter } from "next/font/google";
 import { Noto_Sans_Arabic } from "next/font/google";
 
@@ -20,7 +20,30 @@ const notoSansArabic = Noto_Sans_Arabic({
 export default function LoginPage() {
   const { t, i18n } = useTranslation();
   const { data: session } = useSession();
-  const router = useRouter();
+  
+  
+   const router = useRouter();
+  const searchParams = useSearchParams();
+  const error = searchParams.get('error');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const result = await signIn("credentials", {
+      username: formData.get("username"),
+      password: formData.get("password"),
+      redirect: false,
+    });
+
+    if (result?.error) {
+      // Handle error locally
+      console.error("Login error:", result.error);
+    } else {
+      // Redirect on success
+      router.refresh();
+    }
+  };
 
   // START: Hydration Fix - Mounted state
   const [mounted, setMounted] = useState(false);
@@ -46,16 +69,16 @@ export default function LoginPage() {
     }
   }, [session, router]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.currentTarget);
 
-    await signIn("credentials", {
-      username: formData.get("username"),
-      password: formData.get("password"),
-      callbackUrl: "/", // temporarily goes to /, then redirect in useEffect
-    });
-  };
+  //   await signIn("credentials", {
+  //     username: formData.get("username"),
+  //     password: formData.get("password"),
+  //     callbackUrl: "/", // temporarily goes to /, then redirect in useEffect
+  //   });
+  // };
 
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "ar" : "en";
@@ -136,6 +159,12 @@ export default function LoginPage() {
           />
         </button>
       </div>
+
+      {error && (
+        <div className="text-red-500 mb-4">
+          {t("Authentication failed. Please check your credentials.")}
+        </div>
+      )}
 
       {/* Language Toggle */}
       <div className="flex gap-4 items-center">
