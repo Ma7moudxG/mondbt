@@ -22,20 +22,19 @@ export default function LoginPage() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  // State for error and mounted status
   const [mounted, setMounted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
     
-    // Check for error in URL after mounting
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const errorParam = params.get("error");
-      if (errorParam) {
-        setError("Authentication failed. Please check your credentials.");
-      }
+    // Check for authentication errors in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("error")) {
+      setError("Authentication failed. Please check your credentials.");
+      // Clean the URL
+      const cleanUrl = window.location.origin + window.location.pathname;
+      window.history.replaceState(null, "", cleanUrl);
     }
   }, []);
 
@@ -48,8 +47,9 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null); // Reset error on new submission
+    
     const formData = new FormData(e.currentTarget);
-
     const result = await signIn("credentials", {
       username: formData.get("username"),
       password: formData.get("password"),
@@ -68,7 +68,6 @@ export default function LoginPage() {
     i18n.changeLanguage(newLang);
   };
 
-  // Helper to ensure consistent translated text during SSR
   const getConsistentTranslatedText = (key: string) => {
     if (!mounted) return key;
     return t(key);
@@ -95,7 +94,7 @@ export default function LoginPage() {
         </div>
 
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
             {error}
           </div>
         )}
@@ -155,7 +154,6 @@ export default function LoginPage() {
         </button>
       </div>
 
-      {/* Language Toggle */}
       <div className="flex gap-4 items-center">
         <p className="text-white">{getConsistentTranslatedText("Language")}:</p>
         <button
