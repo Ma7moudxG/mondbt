@@ -5,14 +5,19 @@ import FilteredSearch from "@/components/FilteredSearch";
 import AdminDataReports from "@/components/AdminDataReports";
 import DataService, {
   type School,
-  type Excuse,
   type FilterValues,
   type Stats as DataServiceStats,
-  type Student 
+  type Student, 
+  Excuse
 } from "@/services/dataService";
 import { useTranslation } from "react-i18next";
 import { AdminExcuses } from "@/components/AdminExcuses";
-import SchoolMap from "@/components/SchoolMap";
+import dynamic from 'next/dynamic';
+
+// Dynamically import SchoolMap with no SSR
+const SchoolMap = dynamic(() => import("@/components/SchoolMap"), {
+  ssr: false,
+});
 
 const cm = (...classes: (string | boolean | undefined | null)[]) =>
   classes.filter(Boolean).join(" ");
@@ -31,6 +36,13 @@ type CardTab = "Day" | "Month" | "Year";
 
 const AdminPage = () => {
   const { t, i18n } = useTranslation();
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+  }, [i18n.language]);
 
   const [cardTab, setCardTab] = useState<CardTab>("Day");
   const [cardDateRange, setCardDateRange] = useState({
@@ -69,7 +81,14 @@ const AdminPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    if (isClient) {
+      const initialDateRange = getDateRangeForTab("Day");
+      setCardDateRange(initialDateRange);
+      setDateRange(initialDateRange);
+    }
+  }, [isClient]);
+
+  useEffect(() => {
 
     const initialDateRange = getDateRangeForTab("Day");
     setCardDateRange(initialDateRange);
@@ -77,6 +96,7 @@ const AdminPage = () => {
   }, [i18n.language]);
 
   const loadFilteredData = useCallback(() => {
+    if (!isClient) return;
     setLoading(true);
     setError(null);
     try {
@@ -153,9 +173,10 @@ const AdminPage = () => {
   }, [filters, dateRange, t, i18n.language]); // Add i18n.language to dependencies
 
   useEffect(() => {
-    console.log("AdminPage: Main Data Date Range (for reports):", dateRange.startDate.toLocaleString(), "to", dateRange.endDate.toLocaleString());
-    loadFilteredData();
-  }, [loadFilteredData]);
+    if (isClient) {
+      loadFilteredData();
+    }
+  }, [loadFilteredData, isClient]);
 
   const getDateRangeForTab = useCallback((
     tab: CardTab
@@ -212,6 +233,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     const loadCardStats = () => {
+      if (!isClient) return;
       try {
         const allRegions = DataService.getAllRegions(); // Pass language to get all regions
         if (!allRegions || allRegions.length === 0) {
@@ -267,10 +289,10 @@ const AdminPage = () => {
       }
     };
 
-    if (cardDateRange.startDate && cardDateRange.endDate) {
+    if (isClient && cardDateRange.startDate && cardDateRange.endDate) {
       loadCardStats();
     }
-  }, [cardDateRange, i18n.language]); // Add i18n.language to dependencies
+  }, [cardDateRange, i18n.language, isClient]); // Add i18n.language to dependencies
 
   const handleDateChange = useCallback((dates: { startDate: Date; endDate: Date }) => {
     setDateRange(dates);
@@ -427,6 +449,9 @@ const AdminPage = () => {
     URL.revokeObjectURL(url);
   }, [filters, stats, dateRange, results, filteredStudentIdsForExport, t, i18n.language]); // Removed excusesForStudents from dependencies
 
+  if (!isClient) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="p-4 flex flex-col gap-8">

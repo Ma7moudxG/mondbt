@@ -218,15 +218,18 @@ import i18n from "@/lib/i18n";
 const JSON_SERVER_BASE_URL = "http://localhost:3001"; // Your JSON Server URL
 
 // Load data from localStorage or use initial data
-export const loadSchoolData = (): MergedSchoolData | null => {
-  if (typeof window !== "undefined") {
-    const storedData = localStorage.getItem("schoolDataJson");
-    if (storedData) {
-      return JSON.parse(storedData) as MergedSchoolData;
-    }
+export const loadSchoolData = (): MergedSchoolData => {
+  if (typeof window === 'undefined') {
+    return initialSchoolData as MergedSchoolData;
   }
-  return null; // Return null instead of static data on server
+
+  const storedData = localStorage.getItem("schoolDataJson");
+  return storedData 
+    ? (JSON.parse(storedData) as MergedSchoolData)
+    : (initialSchoolData as MergedSchoolData);
 };
+
+
 
 export const saveSchoolData = (data: MergedSchoolData): void => {
   if (typeof window !== "undefined") {
@@ -346,12 +349,8 @@ async function fetchData<T>(url: string, method: string = 'GET', body?: object):
 // --- DataService Class (FIXED FUNCTIONS with Debugging) ---
 export default class DataService {
   static getSchoolData(): MergedSchoolData {
-    const data = loadSchoolData();
-    if (!data) {
-      throw new Error("School data not available (probably running on server)");
-    }
-    return data;
-  }
+  return loadSchoolData(); // Now always returns data
+}
 
   // --- Methods now fetching from JSON Server ---
 
