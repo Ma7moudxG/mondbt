@@ -1,3 +1,15 @@
+// src/lib/auth.ts
+import NextAuth, { type NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+
+// Dummy user data
+const USERS = [
+  { id: "1", username: "admin", password: "admin", name: "Admin User", role: "admin" },
+  { id: "2", username: "minister", password: "minister", name: "Minister User", role: "minister" },
+  { id: "3", username: "parent", password: "parent", name: "Parent User", role: "parent" },
+  { id: "4", username: "manager", password: "manager", name: "Manager User", role: "manager" },
+];
+
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
@@ -13,9 +25,8 @@ export const authOptions: NextAuthOptions = {
           if (user && user.password === credentials?.password) {
             return { id: user.id, name: user.name, role: user.role };
           }
-          throw new Error("Invalid credentials");
+          return null; // Return null for invalid credentials
         } catch (error) {
-          // Return null instead of throwing to prevent NextAuth error redirect
           console.error("Authentication error:", error);
           return null;
         }
@@ -41,8 +52,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  // Remove error page configuration
-  // pages: {
-  //   signIn: "/login",
-  // },
 };
+
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
