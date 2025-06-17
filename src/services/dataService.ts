@@ -1883,45 +1883,68 @@ export default class DataService {
     return totalPossibleAttendanceDays;
   }
 
+  // static async getPenaltiesForParent(
+  //   parentId: number
+  // ): Promise<ParentPenalty[]> {
+  //   try {
+  //     const parentStudents = this.getStudentsByParentId(parentId);
+  //     //   if (!parentStudents || parentStudents.length === 0) {
+  //     //     return [];
+  //     // }
+  //     const studentIdStrings = new Set(
+  //       parentStudents.map((student) => String(student.student_id))
+  //     );
+
+  //     const response = await fetch(`${JSON_SERVER_BASE_URL}/parentPenalties`);
+  //     if (!response.ok) {
+  //       const errorText = await response.text();
+  //       throw new Error(
+  //         `HTTP error! Status: ${response.status}, Details: ${errorText}`
+  //       );
+  //     }
+
+  //     const allPenalties: ParentPenalty[] = await response.json();
+
+  //     const relevantPenalties = allPenalties.filter((penalty) => {
+  //       // Check if the penalty's student_id is in the set of student IDs for this parent
+  //       return studentIdStrings.has(penalty.student_id.toLocaleString());
+  //     });
+
+  //     console.log(
+  //       `DataService: Found ${relevantPenalties.length} relevant penalties for parentId: ${parentId}`
+  //     );
+  //     return relevantPenalties;
+  //   } catch (error) {
+  //     console.error(
+  //       `DataService: Error getting penalties for parent ID ${parentId}:`,
+  //       error
+  //     );
+  //     return []; // Return empty array on error
+  //   }
+  // }
+
+
   static async getPenaltiesForParent(
-    parentId: number
-  ): Promise<ParentPenalty[]> {
-    try {
-      const parentStudents = this.getStudentsByParentId(parentId);
-      //   if (!parentStudents || parentStudents.length === 0) {
-      //     return [];
-      // }
-      const studentIdStrings = new Set(
-        parentStudents.map((student) => String(student.student_id))
-      );
-
-      const response = await fetch(`${JSON_SERVER_BASE_URL}/parentPenalties`);
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(
-          `HTTP error! Status: ${response.status}, Details: ${errorText}`
+        parentId: number
+    ): Promise<ParentPenalty[]> {
+        console.log(`DataService: Requesting penalties for parentId: ${parentId} via fetchData.`);
+        
+        // Use fetchData to call the Netlify function
+        const penalties = await fetchData<ParentPenalty[]>(
+            `/.netlify/functions/getPenaltiesForParent?parentId=${parentId}`
         );
-      }
 
-      const allPenalties: ParentPenalty[] = await response.json();
+        // fetchData returns null on error. The original function returned an empty array on error.
+        if (penalties === null) {
+            console.error(`DataService: Failed to fetch penalties for parent ID ${parentId}. Returning empty array.`);
+            return []; // Return empty array to match the original function's error handling behavior
+        }
 
-      const relevantPenalties = allPenalties.filter((penalty) => {
-        // Check if the penalty's student_id is in the set of student IDs for this parent
-        return studentIdStrings.has(penalty.student_id.toLocaleString());
-      });
-
-      console.log(
-        `DataService: Found ${relevantPenalties.length} relevant penalties for parentId: ${parentId}`
-      );
-      return relevantPenalties;
-    } catch (error) {
-      console.error(
-        `DataService: Error getting penalties for parent ID ${parentId}:`,
-        error
-      );
-      return []; // Return empty array on error
+        console.log(
+            `DataService: Successfully fetched ${penalties.length} penalties for parentId: ${parentId}.`
+        );
+        return penalties;
     }
-  }
 
   static async getTotalPenaltiesForParent(parentId: number): Promise<number> {
     try {
