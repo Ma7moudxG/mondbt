@@ -1,0 +1,501 @@
+student_id,school_id,class_en,class_ar,first_name_en,first_name_ar,last_name_en,last_name_ar,date_of_birth,date_of_birth_hijri,gender,registration_no,poi_number,identity_type,image_url
+237,262,First Primary,الأول الابتدائي,Tarek,طارق,Nasser Karam Bassel Khoury,خالد باسل رامي كنعان,2018-01-04,1435-11-16,Male,REG283259,239155374,National_ID,https://files.catbox.moe/23kp94.jpg
+241,272,First Primary,الأول الابتدائي,Mostafa,مصطفى,Bader Jamil Bassel Kanaan,محمد محمد نور إبراهيم,2017-08-01,1435-11-16,Male,REG803483,221046175,Iqama,https://files.catbox.moe/ypraoq.jpg
+245,293,First Primary,الأول الابتدائي,Saud,سعود,Bader Jamil Bassel Kanaan,محمد محمد نور إبراهيم,2018-03-26,1430-10-31,Male,REG816213,232371300,Iqama,https://files.catbox.moe/23kp94.jpg
+252,452,First Primary,الأول الابتدائي,Fatima,فاطمه,Hisham Ahmed Ahmed Ibrahim,عبد الرحمن نور نور عبد الرحمن,2018-11-29,1440-02-07,Female,REG400647,123078573,Iqama,https://files.catbox.moe/tyqlaa.jpg
+269,272,First Primary,الأول الابتدائي,Youssef,يوسف,Jamil Nader Rami Kanaan,تركي فهد فهد آل سعود,2017-09-01,1436-03-08,Male,REG847680,173174394,National_ID,https://files.catbox.moe/tw1jzy.jpg
+272,244,First Primary,الأول الابتدائي,Nader,نادر,Faisal Nader Karam Haddad,يوسف يوسف حسن محمود,2017-03-12,1431-03-23,Male,REG404378,175395834,National_ID,https://files.catbox.moe/23kp94.jpg
+279,270,First Primary,الأول الابتدائي,Abdelrahman,عبد الرحمن,Ahmed Hassan Mostafa Ibrahim,مصطفى أحمد حسن إبراهيم,2017-05-19,1433-01-08,Male,REG674086,140966449,Iqama,https://files.catbox.moe/2l6fok.jpg
+281,275,First Primary,الأول الابتدائي,Khalid,خالد,Abdelrahman Nour Abdelrahman Ibrahim,سعود فهد عبدالله آل سعود,2017-08-01,1429-12-04,Male,REG164990,123259487,National_ID,https://files.catbox.moe/tw1jzy.jpg
+285,341,First Primary,الأول الابتدائي,Hala,هاله,Abdelrahman Nour Abdelrahman Ibrahim,سعود فهد عبدالله آل سعود,2017-10-30,1435-12-26,Female,REG958334,126607030,National_ID,https://files.catbox.moe/r5nj4o.jpg
+291,307,First Primary,الأول الابتدائي,Lina,لينا,Bassel Jamil Bassel Jaber,فهد خالد تركي الحربي,2018-12-08,1428-12-09,Female,REG742801,212524047,Iqama,https://files.catbox.moe/r5nj4o.jpg
+292,268,First Primary,الأول الابتدائي,Bassel,باسل,Bassel Jamil Bassel Jaber,فهد خالد تركي الحربي,2017-07-24,1438-12-09,Male,REG838052,178061899,Iqama,https://files.catbox.moe/tw1jzy.jpg
+297,256,First Primary,الأول الابتدائي,Bassel,باسل,Turki Rami Nader Azar,رامي باسل باسل جابر,2017-03-03,1440-02-07,Male,REG100625,158277723,Iqama,https://files.catbox.moe/tw1jzy.jpg
+313,269,First Primary,الأول الابتدائي,Ahmed,احمد,Ahmed Youssef Hassan El Sayed,حسن أحمد طارق إبراهيم,2018-10-08,1439-12-30,Male,REG809760,138212610,National_ID,https://files.catbox.moe/ypraoq.jpg
+315,256,First Primary,الأول الابتدائي,Khalid,خالد,Ahmed Youssef Hassan El Sayed,حسن أحمد طارق إبراهيم,2017-11-01,1432-07-17,Male,REG991154,223405521,National_ID,https://files.catbox.moe/2l6fok.jpg
+318,477,First Primary,الأول الابتدائي,Amna,آمنة,Nader Bassel Jamil Azar,كرم باسل جميل عازر,2018-07-24,1431-09-22,Female,REG838684,194644955,Iqama,https://files.catbox.moe/r5nj4o.jpg
+323,277,First Primary,الأول الابتدائي,Youssef,يوسف,Nasser Fahad Turki Al Otaibi,خالد سعود خالد آل سعود,2017-11-12,1432-07-19,Male,REG787763,182920738,National_ID,https://files.catbox.moe/23kp94.jpg
+330,562,First Primary,الأول الابتدائي,Hala,هاله,Omar Omar Abdelrahman Abdelrahman,أحمد حسن مصطفى توفيق,2017-09-16,1429-07-24,Female,REG909510,212908769,National_ID,https://files.catbox.moe/tyqlaa.jpg
+331,287,First Primary,الأول الابتدائي,Youssef,يوسف,Omar Omar Abdelrahman Abdelrahman,أحمد حسن مصطفى توفيق,2017-06-15,1431-06-17,Male,REG180022,229429790,National_ID,https://files.catbox.moe/2l6fok.jpg
+338,262,First Primary,الأول الابتدائي,Youssef,يوسف,Abdullah Saud Saud Al Qahtani,عبدالله عبدالله سعود العتيبي,2017-06-24,1434-07-03,Male,REG746481,233892633,Iqama,https://files.catbox.moe/2l6fok.jpg
+339,463,First Primary,الأول الابتدائي,Najat,نجاة,Abdullah Saud Saud Al Qahtani,عبدالله عبدالله سعود العتيبي,2018-12-26,1429-10-16,Female,REG769112,260445597,Iqama,https://files.catbox.moe/tyqlaa.jpg
+344,244,First Primary,الأول الابتدائي,Nader,نادر,Nour Abdelrahman Mohamed Ibrahim,كرم نادر رامي خوري,2017-12-30,1438-11-08,Male,REG536316,291685340,National_ID,https://files.catbox.moe/23kp94.jpg
+348,330,First Primary,الأول الابتدائي,Latifa,لطيفة,Fahad Saud Abdullah Al Qahtani,خالد فهد سعود الحربي,2017-12-16,1434-05-22,Female,REG792939,254131047,Iqama,https://files.catbox.moe/r5nj4o.jpg
+372,355,First Primary,الأول الابتدائي,Salma,سلمي,Hassan Ahmed Tarek Ibrahim,أحمد يوسف حسن السيد,2017-04-26,1435-09-26,Female,REG820568,187202093,National_ID,https://files.catbox.moe/r5nj4o.jpg
+376,538,First Primary,الأول الابتدائي,Rima,ريما,Omar Ismail Abdelrahman Hassan,نادر باسل جميل عازر,2018-08-15,1439-04-26,Female,REG991926,180280163,National_ID,https://files.catbox.moe/r5nj4o.jpg
+382,400,First Primary,الأول الابتدائي,Samar,سمر,Omar Omar Mohamed Mustafa,عمر عمر عبد الرحمن عبد الرحمن,2018-04-17,1429-07-05,Female,REG365084,162926970,Iqama,https://files.catbox.moe/r5nj4o.jpg
+414,403,First Primary,الأول الابتدائي,Rima,ريما,Tarek Tarek Mostafa Ibrahim,نادر نادر كرم عازر,2018-01-10,1431-01-26,Female,REG628244,179636512,Iqama,https://files.catbox.moe/tyqlaa.jpg
+417,292,First Primary,الأول الابتدائي,Ismail,إسماعيل,Abdullah Nader Jamil Kanaan,أحمد مصطفى يوسف محمود,2017-11-30,1438-01-25,Male,REG505480,121913610,Iqama,https://files.catbox.moe/23kp94.jpg
+421,398,First Primary,الأول الابتدائي,Rania,رانيا,Youssef Mostafa Ahmed El Sayed,حسن أحمد طارق إبراهيم,2017-10-22,1434-07-17,Female,REG675071,142179101,National_ID,https://files.catbox.moe/r5nj4o.jpg
+430,437,First Primary,الأول الابتدائي,Amna,آمنة,Mahmoud Omar Ismail Abdelrahman,عمر عمر محمد مصطفى,2017-08-20,1429-03-05,Female,REG903273,160364815,Iqama,https://files.catbox.moe/r5nj4o.jpg
+432,498,First Primary,الأول الابتدائي,Abeer,عبير,Hassan Ahmed Ahmed Tawfik,طارق أحمد طارق السيد,2018-09-10,1428-06-19,Female,REG528961,234551157,National_ID,https://files.catbox.moe/tyqlaa.jpg
+436,281,First Primary,الأول الابتدائي,Abdelrahman,عبد الرحمن,Tarek Youssef Mostafa Ibrahim,تركي تركي تركي آل سعود,2018-09-01,1439-11-20,Male,REG972288,227981400,Iqama,https://files.catbox.moe/tw1jzy.jpg
+440,299,First Primary,الأول الابتدائي,Saud,سعود,Abdullah Turki Fahad Al Harbi,مصطفى أحمد مصطفى محمود,2018-07-22,1439-01-27,Male,REG389133,113600402,Iqama,https://files.catbox.moe/ypraoq.jpg
+441,345,First Primary,الأول الابتدائي,Rania,رانيا,Abdullah Turki Fahad Al Harbi,مصطفى أحمد مصطفى محمود,2018-09-24,1434-06-28,Female,REG242173,189724929,Iqama,https://files.catbox.moe/tyqlaa.jpg
+445,394,First Primary,الأول الابتدائي,Dina,دينا,Saud Khalid Fahad Al Qahtani,طارق طارق مصطفى إبراهيم,2018-02-25,1439-09-08,Female,REG550914,288783456,National_ID,https://files.catbox.moe/tyqlaa.jpg
+455,357,First Primary,الأول الابتدائي,Rima,ريما,Tarek Tarek Hassan Mahmoud,حسن أحمد أحمد توفيق,2018-02-25,1433-04-24,Female,REG644300,281421717,Iqama,https://files.catbox.moe/tyqlaa.jpg
+462,246,First Primary,الأول الابتدائي,Abdullah,عبد الله,Mansour Fahad Turki Al Saud,سعود خالد فهد القحطاني,2018-05-07,1429-10-31,Male,REG334226,299887145,National_ID,https://files.catbox.moe/23kp94.jpg
+468,289,First Primary,الأول الابتدائي,Hassan,حسن,Tarek Youssef Ahmed Ibrahim,رامي كرم كرم جابر,2017-06-08,1439-11-07,Male,REG701819,285701403,National_ID,https://files.catbox.moe/23kp94.jpg
+475,300,First Primary,الأول الابتدائي,Abdelrahman,عبد الرحمن,Khalid Bassel Rami Kanaan,طارق طارق حسن محمود,2018-02-04,1427-10-25,Male,REG268368,168743115,Iqama,https://files.catbox.moe/tw1jzy.jpg
+490,536,First Primary,الأول الابتدائي,Dina,دينا,Nader Bassel Jamil Azar,خالد فهد فهد آل سعود,2017-02-16,1433-02-04,Female,REG420979,173927618,National_ID,https://files.catbox.moe/r5nj4o.jpg
+493,243,First Primary,الأول الابتدائي,Abdullah,عبد الله,Mohammed Mohamed Nour Ibrahim,نور إسماعيل نور عبد الرحمن,2018-01-05,1432-06-09,Male,REG548053,158742294,Iqama,https://files.catbox.moe/tw1jzy.jpg
+495,462,First Primary,الأول الابتدائي,Maha,مها,Mohammed Mohamed Nour Ibrahim,نور إسماعيل نور عبد الرحمن,2017-11-16,1438-03-19,Female,REG322735,252389565,Iqama,https://files.catbox.moe/r5nj4o.jpg
+103,230,First secondary,الأول ثانوي,Fatima,فاطمه,Rami Bassel Bassel Jaber,ناصر كرم باسل خوري,2012-09-24,1433-09-24,Female,REG780554,210936528,National_ID,https://files.catbox.moe/178hjt.png
+107,229,First secondary,الأول ثانوي,Mona,مني,Jamil Nader Karam Jaber,بدر جميل باسل كنعان,2012-10-13,1433-10-13,Female,REG459640,153398085,Iqama,https://files.catbox.moe/68hhzz.png
+113,235,First secondary,الأول ثانوي,Najat,نجاة,Ismail Omar Nour Hassan,منصور رامي رامي خوري,2011-01-05,1432-01-05,Female,REG806813,149423550,Iqama,https://files.catbox.moe/su8v9w.png
+126,184,First secondary,الأول ثانوي,Karam,كرم,Bassel Nader Rami Kanaan,هشام أحمد أحمد إبراهيم,2016-04-27,1437-04-27,Male,REG582565,126244267,Iqama,https://files.catbox.moe/pm003z.jpg
+132,115,First secondary,الأول ثانوي,Ismail,إسماعيل,Hassan Ahmed Tarek Ibrahim,كريم طارق حسن السيد,2011-05-22,1432-05-22,Male,REG988730,131406750,Iqama,https://files.catbox.moe/pusrqu.jpg
+134,185,First secondary,الأول ثانوي,Abdullah,عبد الله,Bader Nour Nour Ali,فيصل نادر كرم حداد,2014-07-12,1435-07-12,Male,REG896758,171348102,National_ID,https://files.catbox.moe/pm003z.jpg
+137,204,First secondary,الأول ثانوي,Jamil,جميل,Bader Nour Nour Ali,فيصل نادر كرم حداد,2007-03-20,1428-03-20,Male,REG274242,299540001,National_ID,https://files.catbox.moe/pusrqu.jpg
+139,232,First secondary,الأول ثانوي,Abeer,عبير,Bader Nour Nour Ali,فيصل نادر كرم حداد,2009-06-13,1430-06-13,Female,REG321589,220279706,National_ID,https://files.catbox.moe/su8v9w.png
+144,233,First secondary,الأول ثانوي,Salma,سلمي,Mansour Bassel Bassel Jaber,أحمد حسن مصطفى إبراهيم,2013-04-03,1434-04-03,Female,REG329701,290246049,National_ID,https://files.catbox.moe/178hjt.png
+149,149,First secondary,الأول ثانوي,Nour,نور,Khalid Rami Bassel Kanaan,تركي رامي نادر عازر,2008-02-01,1429-02-01,Male,REG619711,158652384,National_ID,https://files.catbox.moe/pm003z.jpg
+150,133,First secondary,الأول ثانوي,Abdelrahman,عبد الرحمن,Khalid Rami Bassel Kanaan,تركي رامي نادر عازر,2015-12-08,1436-12-08,Male,REG721057,162373998,National_ID,https://files.catbox.moe/pusrqu.jpg
+155,231,First secondary,الأول ثانوي,Huda,هدي,Karam Bassel Jamil Azar,عبدالله خالد سعود العتيبي,2008-07-05,1429-07-05,Female,REG116036,172850458,National_ID,https://files.catbox.moe/68hhzz.png
+163,228,First secondary,الأول ثانوي,Lina,لينا,Mohammed Rami Bassel Azar,سعود نادر جميل حداد,2012-02-05,1433-02-05,Female,REG537252,197164551,National_ID,https://files.catbox.moe/su8v9w.png
+170,235,First secondary,الأول ثانوي,Salma,سلمي,Faisal Saud Saud Al Saud,ناصر فهد تركي العتيبي,2012-10-13,1433-10-13,Female,REG219158,244832475,National_ID,https://files.catbox.moe/68hhzz.png
+172,234,First secondary,الأول ثانوي,Maha,مها,Faisal Saud Saud Al Saud,ناصر فهد تركي العتيبي,2007-11-16,1428-11-16,Female,REG103541,139646679,National_ID,https://files.catbox.moe/178hjt.png
+174,229,First secondary,الأول ثانوي,Dina,دينا,Faisal Saud Saud Al Saud,ناصر فهد تركي العتيبي,2007-11-02,1428-11-02,Female,REG714139,140571697,National_ID,https://files.catbox.moe/su8v9w.png
+179,231,First secondary,الأول ثانوي,Lina,لينا,Khalid Saud Khalid Al Saud,طارق مصطفى يوسف توفيق,2012-12-10,1433-12-10,Female,REG863804,192556065,National_ID,https://files.catbox.moe/178hjt.png
+184,223,First secondary,الأول ثانوي,Abdelrahman,عبد الرحمن,Ahmed Youssef Ahmed Tawfik,منصور كرم كرم عازر,2015-03-23,1436-03-23,Male,REG457516,286851904,Iqama,https://files.catbox.moe/pm003z.jpg
+202,206,First secondary,الأول ثانوي,Jamil,جميل,Ahmed Hassan Mostafa Tawfik,فهد باسل جميل عازر,2008-05-08,1429-05-08,Male,REG627420,129588730,National_ID,https://files.catbox.moe/pm003z.jpg
+209,229,First secondary,الأول ثانوي,Noura,نورا,Abdelrahman Ismail Nour Abdelrahman,عمر محمد عمر مصطفى,2017-11-29,1438-11-29,Female,REG868369,284137725,Iqama,https://files.catbox.moe/68hhzz.png
+211,172,First secondary,الأول ثانوي,Ismail,إسماعيل,Abdullah Abdullah Saud Al Otaibi,عبد الله نادر جميل كنعان,2008-06-01,1429-06-01,Male,REG846786,177678771,National_ID,https://files.catbox.moe/pusrqu.jpg
+221,145,First secondary,الأول ثانوي,Tarek,طارق,Khalid Fahad Saud Al Harbi,محمود عمر إسماعيل عبد الرحمن,2008-03-05,1429-03-05,Male,REG121626,257907844,Iqama,https://files.catbox.moe/pm003z.jpg
+222,127,First secondary,الأول ثانوي,Jamil,جميل,Khalid Fahad Saud Al Harbi,محمود عمر إسماعيل عبد الرحمن,2009-10-06,1430-10-06,Male,REG553808,246670434,Iqama,https://files.catbox.moe/pm003z.jpg
+227,159,First secondary,الأول ثانوي,Abdelrahman,عبد الرحمن,Youssef Tarek Tarek Farid,طارق يوسف مصطفى إبراهيم,2008-12-20,1429-12-20,Male,REG102869,237469094,Iqama,https://files.catbox.moe/pm003z.jpg
+228,222,First secondary,الأول ثانوي,Mohamed,محمد,Youssef Tarek Tarek Farid,طارق يوسف مصطفى إبراهيم,2008-03-05,1429-03-05,Male,REG526274,261299978,Iqama,https://files.catbox.moe/pusrqu.jpg
+235,235,First secondary,الأول ثانوي,Maha,مها,Hassan Mostafa Ahmed El Sayed,منصور فهد تركي آل سعود,2017-12-17,1438-12-17,Female,REG669611,122208512,National_ID,https://files.catbox.moe/68hhzz.png
+2,590,First Intermediate,الأول متوسط,Mona,مني,Fahad Karam Jamil Azar,فهد كرم جميل عازر,2017-11-09,1438-11-09,Female,REG940190,126015182,Iqama,https://files.catbox.moe/mq2lyu.jpg
+3,637,First Intermediate,الأول متوسط,Salma,سلمي,Fahad Karam Jamil Azar,فهد كرم جميل عازر,2016-01-23,1437-01-23,Female,REG460538,115413312,Iqama,https://files.catbox.moe/mq2lyu.jpg
+5,93,First Intermediate,الأول متوسط,Turki,تركي,Fahad Karam Jamil Azar,فهد كرم جميل عازر,2006-12-07,1427-12-07,Male,REG521988,115507551,Iqama,https://files.catbox.moe/ki5ubc.jpg
+7,50,First Intermediate,الأول متوسط,Mohamed,محمد,Fahad Karam Jamil Azar,فهد كرم جميل عازر,2018-05-03,1439-05-03,Male,REG789197,138908321,Iqama,https://files.catbox.moe/ki5ubc.jpg
+10,70,First Intermediate,الأول متوسط,Khalid,خالد,Abdelrahman Nour Nour Abdelrahman,عمر إسماعيل عبد الرحمن علي,2017-08-29,1438-08-29,Male,REG443751,225369105,National_ID,https://files.catbox.moe/ki5ubc.jpg
+14,678,First Intermediate,الأول متوسط,Noura,نورا,Abdelrahman Nour Nour Abdelrahman,عمر إسماعيل عبد الرحمن علي,2013-12-21,1434-12-21,Female,REG299872,299802516,National_ID,https://files.catbox.moe/emgnbf.jpg
+17,77,First Intermediate,الأول متوسط,Rami,رامي,Khalid Turki Abdullah Al Saud,عبدالله سعود آل سعود,2018-05-01,1439-05-01,Male,REG954647,167235465,Iqama,https://files.catbox.moe/ki5ubc.jpg
+20,615,First Intermediate,الأول متوسط,Nihal,نهال,Khalid Turki Abdullah Al Saud,عبدالله سعود آل سعود,2015-05-16,1436-05-16,Female,REG760816,186884729,Iqama,https://files.catbox.moe/mq2lyu.jpg
+25,96,First Intermediate,الأول متوسط,Tarek,طارق,Omar Ismail Abdelrahman Ali,يوسف عمر عبد الرحمن علي,2006-05-26,1427-05-26,Male,REG725362,254572244,Iqama,https://files.catbox.moe/pusrqu.jpg
+31,23,First Intermediate,الأول متوسط,Omar,عمر,Abdullah Saud Saud Al Saud,ناصر عبدالله سعود القحطاني,2007-03-30,1428-03-30,Male,REG547698,215452944,National_ID,https://files.catbox.moe/ki5ubc.jpg
+33,752,First Intermediate,الأول متوسط,Hala,هاله,Abdullah Saud Saud Al Saud,ناصر عبدالله سعود القحطاني,2009-08-05,1430-08-05,Female,REG358753,146158365,National_ID,https://files.catbox.moe/emgnbf.jpg
+36,728,First Intermediate,الأول متوسط,Huda,هدي,Youssef Omar Abdelrahman Ali,بدر نور نور علي,2007-10-25,1428-10-25,Female,REG810855,278333859,Iqama,https://files.catbox.moe/mq2lyu.jpg
+38,53,First Intermediate,الأول متوسط,Ismail,إسماعيل,Youssef Omar Abdelrahman Ali,بدر نور نور علي,2008-08-13,1429-08-13,Male,REG519269,247215930,Iqama,https://files.catbox.moe/ki5ubc.jpg
+39,44,First Intermediate,الأول متوسط,Fahad,فهد,Youssef Omar Abdelrahman Ali,بدر نور نور علي,2006-08-24,1427-08-24,Male,REG840755,124420338,Iqama,https://files.catbox.moe/ki5ubc.jpg
+44,25,First Intermediate,الأول متوسط,Fahad,فهد,Hassan Youssef Hassan Tawfik,منصور باسل باسل جابر,2006-06-15,1427-06-15,Male,REG632299,179755249,Iqama,https://files.catbox.moe/ki5ubc.jpg
+45,737,First Intermediate,الأول متوسط,Fatima,فاطمه,Hassan Youssef Hassan Tawfik,منصور باسل باسل جابر,2010-01-10,1431-01-10,Female,REG928631,123378781,Iqama,https://files.catbox.moe/emgnbf.jpg
+49,19,First Intermediate,الأول متوسط,Ismail,إسماعيل,Hassan Youssef Hassan Tawfik,منصور باسل باسل جابر,2006-06-08,1427-06-08,Male,REG502736,114937759,Iqama,https://files.catbox.moe/pusrqu.jpg
+52,97,First Intermediate,الأول متوسط,Khalid,خالد,Nasser Abdullah Saud Al Qahtani,خالد رامي باسل كنعان,2016-10-22,1437-10-22,Male,REG391989,236209890,Iqama,https://files.catbox.moe/ki5ubc.jpg
+53,56,First Intermediate,الأول متوسط,Abdelrahman,عبد الرحمن,Nasser Abdullah Saud Al Qahtani,خالد رامي باسل كنعان,2008-01-22,1429-01-22,Male,REG293114,241075462,Iqama,https://files.catbox.moe/ki5ubc.jpg
+57,32,First Intermediate,الأول متوسط,Ahmed,احمد,Turki Fahad Fahad Al Saud,محمد رامي باسل عازار,2017-06-10,1438-06-10,Male,REG314326,284889678,Iqama,https://files.catbox.moe/pusrqu.jpg
+59,24,First Intermediate,الأول متوسط,Mostafa,مصطفى,Turki Fahad Fahad Al Saud,محمد رامي باسل عازار,2011-07-17,1432-07-17,Male,REG749258,175670223,Iqama,https://files.catbox.moe/pusrqu.jpg
+61,31,First Intermediate,الأول متوسط,Bassel,باسل,Turki Fahad Fahad Al Saud,محمد رامي باسل عازار,2018-02-09,1439-02-09,Male,REG603136,197507973,Iqama,https://files.catbox.moe/ki5ubc.jpg
+65,4,First Intermediate,الأول متوسط,Nour,نور,Youssef Youssef Hassan Mahmoud,فيصل سعود آل سعود,2013-02-21,1434-02-21,Male,REG148924,273055666,Iqama,https://files.catbox.moe/ki5ubc.jpg
+66,82,First Intermediate,الأول متوسط,Mostafa,مصطفى,Youssef Youssef Hassan Mahmoud,فيصل سعود آل سعود,2017-01-27,1438-01-27,Male,REG170265,143751248,Iqama,https://files.catbox.moe/pusrqu.jpg
+67,625,First Intermediate,الأول متوسط,Maha,مها,Youssef Youssef Hassan Mahmoud,فيصل سعود آل سعود,2007-10-12,1428-10-12,Female,REG665753,118249924,Iqama,https://files.catbox.moe/mq2lyu.jpg
+73,637,First Intermediate,الأول متوسط,Abeer,عبير,Mostafa Ahmed Hassan Ibrahim,أحمد يوسف أحمد توفيق,2008-08-31,1429-08-31,Female,REG888960,117420760,National_ID,https://files.catbox.moe/emgnbf.jpg
+76,656,First Intermediate,الأول متوسط,Abeer,عبير,Mostafa Ahmed Hassan Ibrahim,أحمد يوسف أحمد توفيق,2017-06-19,1438-06-19,Female,REG156597,164851945,National_ID,https://files.catbox.moe/mq2lyu.jpg
+78,704,First Intermediate,الأول متوسط,Huda,هدي,Saud Fahad Abdullah Al Saud,عمر عمر عبد الرحمن عبد الرحمن,2012-04-19,1433-04-19,Female,REG768294,184257496,National_ID,https://files.catbox.moe/mq2lyu.jpg
+80,659,First Intermediate,الأول متوسط,Salma,سلمي,Saud Fahad Abdullah Al Saud,عمر عمر عبد الرحمن عبد الرحمن,2009-01-08,1430-01-08,Female,REG468589,255823432,National_ID,https://files.catbox.moe/mq2lyu.jpg
+81,755,First Intermediate,الأول متوسط,Salma,سلمي,Saud Fahad Abdullah Al Saud,عمر عمر عبد الرحمن عبد الرحمن,2011-02-17,1432-02-17,Female,REG239171,260356086,National_ID,https://files.catbox.moe/mq2lyu.jpg
+84,687,First Intermediate,الأول متوسط,Nihal,نهال,Saud Fahad Abdullah Al Saud,عمر عمر عبد الرحمن عبد الرحمن,2007-02-01,1428-02-01,Female,REG414624,253252104,National_ID,https://files.catbox.moe/emgnbf.jpg
+85,86,First Intermediate,الأول متوسط,Ismail,إسماعيل,Fahad Fahad Khalid Al Saud,عبدالله تركي سعود المطيري,2009-11-23,1430-11-23,Male,REG529105,252571067,Iqama,https://files.catbox.moe/pusrqu.jpg
+86,12,First Intermediate,الأول متوسط,Nader,نادر,Fahad Fahad Khalid Al Saud,عبدالله تركي سعود المطيري,2017-12-24,1438-12-24,Male,REG797312,126413682,Iqama,https://files.catbox.moe/ki5ubc.jpg
+92,6,First Intermediate,الأول متوسط,Nader,نادر,Fahad Khalid Turki Al Harbi,يوسف طارق طارق فريد,2007-02-10,1428-02-10,Male,REG700369,210749795,National_ID,https://files.catbox.moe/ki5ubc.jpg
+95,685,First Intermediate,الأول متوسط,Fatima,فاطمه,Fahad Khalid Turki Al Harbi,يوسف طارق طارق فريد,2016-09-24,1437-09-24,Female,REG900205,114200634,National_ID,https://files.catbox.moe/emgnbf.jpg
+96,711,First Intermediate,الأول متوسط,Noura,نورا,Fahad Khalid Turki Al Harbi,يوسف طارق طارق فريد,2017-07-18,1438-07-18,Female,REG758049,186087131,National_ID,https://files.catbox.moe/mq2lyu.jpg
+266,435,Third Primary,الثالث الابتدائي,Samah,سماح,Jamil Nader Rami Kanaan,تركي فهد فهد آل سعود,2014-05-26,1435-05-26,Female,REG798188,164071212,National_ID,https://files.catbox.moe/r5nj4o.jpg
+277,447,Third Primary,الثالث الابتدائي,Rima,ريما,Ahmed Hassan Mostafa Ibrahim,مصطفى أحمد حسن إبراهيم,2019-04-22,1440-04-22,Female,REG469857,253912463,Iqama,https://files.catbox.moe/tyqlaa.jpg
+294,522,Third Primary,الثالث الابتدائي,Samar,سمر,Bassel Jamil Bassel Jaber,فهد خالد تركي الحربي,2019-04-16,1440-04-16,Female,REG998549,253010436,Iqama,https://files.catbox.moe/tyqlaa.jpg
+304,401,Third Primary,الثالث الابتدائي,Maha,مها,Abdullah Khalid Saud Al Otaibi,جميل نادر كرم جابر,2013-07-03,1434-07-03,Female,REG320894,181695224,National_ID,https://files.catbox.moe/r5nj4o.jpg
+310,243,Third Primary,الثالث الابتدائي,Omar,عمر,Saud Turki Khalid Al Mutairi,باسل نادر رامي كنعان,2006-09-29,1427-09-29,Male,REG712952,162301368,Iqama,https://files.catbox.moe/tw1jzy.jpg
+312,297,Third Primary,الثالث الابتدائي,Hassan,حسن,Saud Turki Khalid Al Mutairi,باسل نادر رامي كنعان,2006-05-26,1427-05-26,Male,REG680443,235114149,Iqama,https://files.catbox.moe/ypraoq.jpg
+317,493,Third Primary,الثالث الابتدائي,Nihal,نهال,Nader Bassel Jamil Azar,كرم باسل جميل عازر,2016-02-05,1437-02-05,Female,REG504837,224268397,Iqama,https://files.catbox.moe/tyqlaa.jpg
+321,286,Third Primary,الثالث الابتدائي,Ahmed,احمد,Nasser Fahad Turki Al Otaibi,خالد سعود خالد آل سعود,2014-10-16,1435-10-16,Male,REG601244,183334959,National_ID,https://files.catbox.moe/tw1jzy.jpg
+326,501,Third Primary,الثالث الابتدائي,Latifa,لطيفة,Hassan Ahmed Ahmed El Sayed,أحمد مصطفى مصطفى إبراهيم,2012-12-03,1433-12-03,Female,REG277911,156145038,Iqama,https://files.catbox.moe/r5nj4o.jpg
+328,264,Third Primary,الثالث الابتدائي,Rami,رامي,Hassan Ahmed Ahmed El Sayed,أحمد مصطفى مصطفى إبراهيم,2009-03-07,1430-03-07,Male,REG902962,239690500,Iqama,https://files.catbox.moe/tw1jzy.jpg
+333,240,Third Primary,الثالث الابتدائي,Bassel,باسل,Tarek Mostafa Youssef Tawfik,عبد الرحمن إسماعيل نور عبد الرحمن,2018-10-21,1439-10-21,Male,REG450934,260839658,National_ID,https://files.catbox.moe/2l6fok.jpg
+340,263,Third Primary,الثالث الابتدائي,Nour,نور,Abdullah Saud Saud Al Qahtani,عبدالله عبدالله سعود العتيبي,2014-10-06,1435-10-06,Male,REG614352,278149795,Iqama,https://files.catbox.moe/2l6fok.jpg
+341,290,Third Primary,الثالث الابتدائي,Turki,تركي,Nour Abdelrahman Mohamed Ibrahim,كرم نادر رامي خوري,2016-08-20,1437-08-20,Male,REG361743,127933826,National_ID,https://files.catbox.moe/23kp94.jpg
+355,283,Third Primary,الثالث الابتدائي,Turki,تركي,Mansour Karam Karam Azar,طارق حسن يوسف فريد,2008-02-14,1429-02-14,Male,REG671567,116302274,National_ID,https://files.catbox.moe/tw1jzy.jpg
+356,261,Third Primary,الثالث الابتدائي,Tarek,طارق,Mansour Karam Karam Azar,طارق حسن يوسف فريد,2014-05-29,1435-05-29,Male,REG888877,283567393,National_ID,https://files.catbox.moe/ypraoq.jpg
+360,413,Third Primary,الثالث الابتدائي,Dina,دينا,Mostafa Tarek Ahmed Farid,عبد الرحمن نور عبد الرحمن إبراهيم,2016-07-28,1437-07-28,Female,REG809018,182988432,Iqama,https://files.catbox.moe/r5nj4o.jpg
+361,259,Third Primary,الثالث الابتدائي,Youssef,يوسف,Mostafa Tarek Ahmed Farid,عبد الرحمن نور عبد الرحمن إبراهيم,2016-11-24,1437-11-24,Male,REG352075,292418110,Iqama,https://files.catbox.moe/23kp94.jpg
+369,523,Third Primary,الثالث الابتدائي,Fatima,فاطمه,Ahmed Mostafa Youssef Mahmoud,سعود تركي خالد المطيري,2012-04-17,1433-04-17,Female,REG947523,277869286,Iqama,https://files.catbox.moe/r5nj4o.jpg
+371,243,Third Primary,الثالث الابتدائي,Bassel,باسل,Ahmed Mostafa Youssef Mahmoud,سعود تركي خالد المطيري,2012-12-01,1433-12-01,Male,REG679773,277106459,Iqama,https://files.catbox.moe/tw1jzy.jpg
+375,408,Third Primary,الثالث الابتدائي,Rasha,رشا,Omar Ismail Abdelrahman Hassan,نادر باسل جميل عازر,2016-10-10,1437-10-10,Female,REG975703,178164954,National_ID,https://files.catbox.moe/tyqlaa.jpg
+378,553,Third Primary,الثالث الابتدائي,Diala,ديالا,Khalid Abdullah Turki Al Otaibi,حسن أحمد أحمد السيد,2016-11-05,1437-11-05,Female,REG705136,210494220,Iqama,https://files.catbox.moe/r5nj4o.jpg
+388,430,Third Primary,الثالث الابتدائي,Fatima,فاطمه,Tarek Ahmed Tarek El Sayed,نور عبد الرحمن محمد إبراهيم,2012-12-27,1433-12-27,Female,REG116538,183932535,Iqama,https://files.catbox.moe/r5nj4o.jpg
+392,399,Third Primary,الثالث الابتدائي,Huda,هدي,Turki Turki Turki Al Saud,فهد سعود عبدالله القحطاني,2008-06-18,1429-06-18,Female,REG733122,210726287,National_ID,https://files.catbox.moe/r5nj4o.jpg
+393,268,Third Primary,الثالث الابتدائي,Khalid,خالد,Turki Turki Turki Al Saud,فهد سعود عبدالله القحطاني,2015-03-23,1436-03-23,Male,REG171381,211338832,National_ID,https://files.catbox.moe/2l6fok.jpg
+398,238,Third Primary,الثالث الابتدائي,Khalid,خالد,Faisal Turki Saud Al Mutairi,مصطفى طارق طارق توفيق,2012-09-18,1433-09-18,Male,REG848033,214738690,National_ID,https://files.catbox.moe/2l6fok.jpg
+400,342,Third Primary,الثالث الابتدائي,Amna,آمنة,Fahad Bassel Jamil Azar,تركي عبد الله سعود الحربي,2009-08-20,1430-08-20,Female,REG827388,230307809,National_ID,https://files.catbox.moe/r5nj4o.jpg
+402,349,Third Primary,الثالث الابتدائي,Najat,نجاة,Fahad Bassel Jamil Azar,تركي عبد الله سعود الحربي,2012-06-17,1433-06-17,Female,REG333758,274868806,National_ID,https://files.catbox.moe/r5nj4o.jpg
+409,435,Third Primary,الثالث الابتدائي,Salma,سلمي,Omar Mohamed Omar Mustafa,كرم باسل رامي جابر,2006-11-06,1427-11-06,Female,REG658095,151475916,National_ID,https://files.catbox.moe/tyqlaa.jpg
+410,259,Third Primary,الثالث الابتدائي,Khalid,خالد,Omar Mohamed Omar Mustafa,كرم باسل رامي جابر,2015-03-30,1436-03-30,Male,REG508852,220886237,National_ID,https://files.catbox.moe/ypraoq.jpg
+418,283,Third Primary,الثالث الابتدائي,Nader,نادر,Abdullah Nader Jamil Kanaan,أحمد مصطفى يوسف محمود,2014-12-10,1435-12-10,Male,REG427402,125590921,Iqama,https://files.catbox.moe/23kp94.jpg
+426,261,Third Primary,الثالث الابتدائي,Youssef,يوسف,Fahad Abdullah Saud Al Mutairi,عمر إسماعيل عبد الرحمن حسن,2013-08-22,1434-08-22,Male,REG561112,282311442,National_ID,https://files.catbox.moe/2l6fok.jpg
+427,373,Third Primary,الثالث الابتدائي,Hala,هاله,Mahmoud Omar Ismail Abdelrahman,عمر عمر محمد مصطفى,2016-01-10,1437-01-10,Female,REG607055,253902340,Iqama,https://files.catbox.moe/r5nj4o.jpg
+434,278,Third Primary,الثالث الابتدائي,Ahmed,احمد,Hassan Ahmed Ahmed Tawfik,طارق أحمد طارق السيد,2013-06-16,1434-06-16,Male,REG409209,181918307,National_ID,https://files.catbox.moe/tw1jzy.jpg
+442,409,Third Primary,الثالث الابتدائي,Abeer,عبير,Abdullah Turki Fahad Al Harbi,مصطفى أحمد مصطفى محمود,2006-11-28,1427-11-28,Female,REG827578,225103134,Iqama,https://files.catbox.moe/tyqlaa.jpg
+447,247,Third Primary,الثالث الابتدائي,Omar,عمر,Rami Karam Karam Jaber,فهد عبدالله سعود المطيري,2007-09-25,1428-09-25,Male,REG186787,299228687,Iqama,https://files.catbox.moe/ypraoq.jpg
+448,449,Third Primary,الثالث الابتدائي,Rania,رانيا,Rami Karam Karam Jaber,فهد عبدالله سعود المطيري,2012-05-23,1433-05-23,Female,REG382251,158069426,Iqama,https://files.catbox.moe/r5nj4o.jpg
+459,322,Third Primary,الثالث الابتدائي,Dina,دينا,Omar Nour Omar Mustafa,عبد الله تركي فهد الحربي,2012-08-14,1433-08-14,Female,REG144529,277392546,Iqama,https://files.catbox.moe/r5nj4o.jpg
+460,509,Third Primary,الثالث الابتدائي,Salma,سلمي,Omar Nour Omar Mustafa,عبد الله تركي فهد الحربي,2007-08-06,1428-08-06,Female,REG159058,183999803,Iqama,https://files.catbox.moe/r5nj4o.jpg
+464,265,Third Primary,الثالث الابتدائي,Omar,عمر,Mansour Fahad Turki Al Saud,سعود خالد فهد القحطاني,2006-06-14,1427-06-14,Male,REG289651,233041116,National_ID,https://files.catbox.moe/tw1jzy.jpg
+473,499,Third Primary,الثالث الابتدائي,Salma,سلمي,Khalid Bassel Rami Kanaan,طارق طارق حسن محمود,2012-09-03,1433-09-03,Female,REG705992,153210578,Iqama,https://files.catbox.moe/tyqlaa.jpg
+484,280,Third Primary,الثالث الابتدائي,Ahmed,احمد,Nour Ismail Nour Abdelrahman,طارق يوسف أحمد إبراهيم,2018-06-07,1439-06-07,Male,REG200155,195962672,National_ID,https://files.catbox.moe/ypraoq.jpg
+494,442,Third Primary,الثالث الابتدائي,Rania,رانيا,Mohammed Mohamed Nour Ibrahim,نور إسماعيل نور عبد الرحمن,2015-10-22,1436-10-22,Female,REG680712,227767761,Iqama,https://files.catbox.moe/tyqlaa.jpg
+496,569,Third Primary,الثالث الابتدائي,Salma,سلمي,Sherif Youssef Mostafa Ibrahim,نادر باسل جميل عازر,2011-12-16,1432-12-16,Female,REG323668,136374181,Iqama,https://files.catbox.moe/tyqlaa.jpg
+497,301,Third Primary,الثالث الابتدائي,Samar,سمر,Sherif Youssef Mostafa Ibrahim,نادر باسل جميل عازر,2009-07-11,1430-07-11,Female,REG870960,254374702,Iqama,https://files.catbox.moe/r5nj4o.jpg
+499,248,Third Primary,الثالث الابتدائي,Omar,عمر,Sherif Youssef Mostafa Ibrahim,نادر باسل جميل عازر,2007-10-09,1428-10-09,Male,REG972366,249300463,Iqama,https://files.catbox.moe/23kp94.jpg
+104,232,Third Secondary,الثالث ثانوي,Nihal,نهال,Rami Bassel Bassel Jaber,ناصر كرم باسل خوري,2015-07-19,1436-07-19,Female,REG859850,236510786,National_ID,https://files.catbox.moe/su8v9w.png
+106,230,Third Secondary,الثالث ثانوي,Hala,هاله,Jamil Nader Karam Jaber,بدر جميل باسل كنعان,2009-12-06,1430-12-06,Female,REG901758,297553857,Iqama,https://files.catbox.moe/68hhzz.png
+109,233,Third Secondary,الثالث ثانوي,Dina,دينا,Jamil Nader Karam Jaber,بدر جميل باسل كنعان,2011-05-07,1432-05-07,Female,REG777521,283336203,Iqama,https://files.catbox.moe/68hhzz.png
+110,233,Third Secondary,الثالث ثانوي,Huda,هدي,Jamil Nader Karam Jaber,بدر جميل باسل كنعان,2006-07-19,1427-07-19,Female,REG720628,277633270,Iqama,https://files.catbox.moe/68hhzz.png
+112,158,Third Secondary,الثالث ثانوي,Abdelrahman,عبد الرحمن,Jamil Nader Karam Jaber,بدر جميل باسل كنعان,2008-12-18,1429-12-18,Male,REG818740,178234946,Iqama,https://files.catbox.moe/pusrqu.jpg
+114,182,Third Secondary,الثالث ثانوي,Fahad,فهد,Ismail Omar Nour Hassan,منصور رامي رامي خوري,2012-01-25,1433-01-25,Male,REG355663,256371030,Iqama,https://files.catbox.moe/pm003z.jpg
+116,232,Third Secondary,الثالث ثانوي,Huda,هدي,Ismail Omar Nour Hassan,منصور رامي رامي خوري,2012-08-22,1433-08-22,Female,REG904492,239318367,Iqama,https://files.catbox.moe/su8v9w.png
+118,154,Third Secondary,الثالث ثانوي,Tarek,طارق,Ismail Omar Nour Hassan,منصور رامي رامي خوري,2007-12-28,1428-12-28,Male,REG661079,193357650,Iqama,https://files.catbox.moe/pm003z.jpg
+119,229,Third Secondary,الثالث ثانوي,Samar,سمر,Ismail Omar Nour Hassan,منصور رامي رامي خوري,2012-02-24,1433-02-24,Female,REG814735,120214067,Iqama,https://files.catbox.moe/178hjt.png
+120,101,Third Secondary,الثالث ثانوي,Karam,كرم,Bassel Nader Rami Kanaan,هشام أحمد أحمد إبراهيم,2016-12-13,1437-12-13,Male,REG473220,285044394,Iqama,https://files.catbox.moe/pm003z.jpg
+121,146,Third Secondary,الثالث ثانوي,Saud,سعود,Bassel Nader Rami Kanaan,هشام أحمد أحمد إبراهيم,2007-01-01,1428-01-01,Male,REG126208,182886255,Iqama,https://files.catbox.moe/pm003z.jpg
+122,187,Third Secondary,الثالث ثانوي,Karam,كرم,Bassel Nader Rami Kanaan,هشام أحمد أحمد إبراهيم,2007-02-05,1428-02-05,Male,REG210462,155230274,Iqama,https://files.catbox.moe/pm003z.jpg
+124,231,Third Secondary,الثالث ثانوي,Latifa,لطيفة,Bassel Nader Rami Kanaan,هشام أحمد أحمد إبراهيم,2009-03-08,1430-03-08,Female,REG895480,271650481,Iqama,https://files.catbox.moe/su8v9w.png
+127,232,Third Secondary,الثالث ثانوي,Rima,ريما,Hassan Ahmed Tarek Ibrahim,كريم طارق حسن السيد,2011-04-28,1432-04-28,Female,REG929282,291040802,Iqama,https://files.catbox.moe/68hhzz.png
+128,230,Third Secondary,الثالث ثانوي,Abeer,عبير,Hassan Ahmed Tarek Ibrahim,كريم طارق حسن السيد,2012-07-14,1433-07-14,Female,REG790878,223785335,Iqama,https://files.catbox.moe/su8v9w.png
+133,189,Third Secondary,الثالث ثانوي,Saud,سعود,Hassan Ahmed Tarek Ibrahim,كريم طارق حسن السيد,2008-05-07,1429-05-07,Male,REG989006,235368779,Iqama,https://files.catbox.moe/pm003z.jpg
+135,124,Third Secondary,الثالث ثانوي,Saud,سعود,Bader Nour Nour Ali,فيصل نادر كرم حداد,2018-10-28,1439-10-28,Male,REG853641,193046963,National_ID,https://files.catbox.moe/pusrqu.jpg
+136,210,Third Secondary,الثالث ثانوي,Nour,نور,Bader Nour Nour Ali,فيصل نادر كرم حداد,2010-06-22,1431-06-22,Male,REG650180,151497677,National_ID,https://files.catbox.moe/pm003z.jpg
+138,172,Third Secondary,الثالث ثانوي,Turki,تركي,Bader Nour Nour Ali,فيصل نادر كرم حداد,2011-08-20,1432-08-20,Male,REG163390,191757430,National_ID,https://files.catbox.moe/pm003z.jpg
+140,218,Third Secondary,الثالث ثانوي,Rami,رامي,Bader Nour Nour Ali,فيصل نادر كرم حداد,2015-04-18,1436-04-18,Male,REG387730,157436524,National_ID,https://files.catbox.moe/pusrqu.jpg
+141,235,Third Secondary,الثالث ثانوي,Huda,هدي,Mansour Bassel Bassel Jaber,أحمد حسن مصطفى إبراهيم,2018-10-16,1439-10-16,Female,REG989417,189552168,National_ID,https://files.catbox.moe/178hjt.png
+142,229,Third Secondary,الثالث ثانوي,Salma,سلمي,Mansour Bassel Bassel Jaber,أحمد حسن مصطفى إبراهيم,2007-08-08,1428-08-08,Female,REG364219,115558956,National_ID,https://files.catbox.moe/68hhzz.png
+143,232,Third Secondary,الثالث ثانوي,Samar,سمر,Mansour Bassel Bassel Jaber,أحمد حسن مصطفى إبراهيم,2011-07-18,1432-07-18,Female,REG484590,142697954,National_ID,https://files.catbox.moe/su8v9w.png
+146,145,Third Secondary,الثالث ثانوي,Fahad,فهد,Mansour Bassel Bassel Jaber,أحمد حسن مصطفى إبراهيم,2011-06-27,1432-06-27,Male,REG176314,268138315,National_ID,https://files.catbox.moe/pm003z.jpg
+152,234,Third Secondary,الثالث ثانوي,Amna,آمنة,Khalid Rami Bassel Kanaan,تركي رامي نادر عازر,2014-06-17,1435-06-17,Female,REG436812,152318898,National_ID,https://files.catbox.moe/su8v9w.png
+153,200,Third Secondary,الثالث ثانوي,Nour,نور,Khalid Rami Bassel Kanaan,تركي رامي نادر عازر,2012-02-17,1433-02-17,Male,REG683902,251250042,National_ID,https://files.catbox.moe/pm003z.jpg
+156,223,Third Secondary,الثالث ثانوي,Bassel,باسل,Karam Bassel Jamil Azar,عبدالله خالد سعود العتيبي,2014-07-18,1435-07-18,Male,REG165554,140057874,National_ID,https://files.catbox.moe/pm003z.jpg
+158,141,Third Secondary,الثالث ثانوي,Hassan,حسن,Karam Bassel Jamil Azar,عبدالله خالد سعود العتيبي,2018-04-19,1439-04-19,Male,REG299486,217075813,National_ID,https://files.catbox.moe/pm003z.jpg
+160,143,Third Secondary,الثالث ثانوي,Ahmed,احمد,Karam Bassel Jamil Azar,عبدالله خالد سعود العتيبي,2013-08-26,1434-08-26,Male,REG256287,192286830,National_ID,https://files.catbox.moe/pm003z.jpg
+161,231,Third Secondary,الثالث ثانوي,Mona,مني,Karam Bassel Jamil Azar,عبدالله خالد سعود العتيبي,2007-01-15,1428-01-15,Female,REG599706,145971767,National_ID,https://files.catbox.moe/68hhzz.png
+166,156,Third Secondary,الثالث ثانوي,Ahmed,احمد,Mohammed Rami Bassel Azar,سعود نادر جميل حداد,2009-01-16,1430-01-16,Male,REG680871,297204343,National_ID,https://files.catbox.moe/pusrqu.jpg
+169,219,Third Secondary,الثالث ثانوي,Abdullah,عبد الله,Faisal Saud Saud Al Saud,ناصر فهد تركي العتيبي,2015-12-31,1436-12-31,Male,REG249489,271331906,National_ID,https://files.catbox.moe/pusrqu.jpg
+175,185,Third Secondary,الثالث ثانوي,Karam,كرم,Faisal Saud Saud Al Saud,ناصر فهد تركي العتيبي,2009-10-06,1430-10-06,Male,REG268299,215037266,National_ID,https://files.catbox.moe/pusrqu.jpg
+177,141,Third Secondary,الثالث ثانوي,Bassel,باسل,Khalid Saud Khalid Al Saud,طارق مصطفى يوسف توفيق,2010-02-26,1431-02-26,Male,REG459856,128122128,National_ID,https://files.catbox.moe/pusrqu.jpg
+178,229,Third Secondary,الثالث ثانوي,Samah,سماح,Khalid Saud Khalid Al Saud,طارق مصطفى يوسف توفيق,2007-06-09,1428-06-09,Female,REG390595,156736085,National_ID,https://files.catbox.moe/su8v9w.png
+182,232,Third Secondary,الثالث ثانوي,Najat,نجاة,Ahmed Youssef Ahmed Tawfik,منصور كرم كرم عازر,2013-02-04,1434-02-04,Female,REG827283,132039479,Iqama,https://files.catbox.moe/su8v9w.png
+183,232,Third Secondary,الثالث ثانوي,Salma,سلمي,Ahmed Youssef Ahmed Tawfik,منصور كرم كرم عازر,2015-11-11,1436-11-11,Female,REG952137,147912146,Iqama,https://files.catbox.moe/178hjt.png
+187,233,Third Secondary,الثالث ثانوي,Rania,رانيا,Omar Omar Abdelrahman Abdelrahman,خالد عبد الله تركي العتيبي,2014-09-16,1435-09-16,Female,REG961352,283326479,Iqama,https://files.catbox.moe/su8v9w.png
+190,233,Third Secondary,الثالث ثانوي,Diala,ديالا,Omar Omar Abdelrahman Abdelrahman,خالد عبد الله تركي العتيبي,2017-12-14,1438-12-14,Female,REG133145,256913937,Iqama,https://files.catbox.moe/su8v9w.png
+191,235,Third Secondary,الثالث ثانوي,Salma,سلمي,Abdullah Turki Saud Al Mutairi,محمد جميل نادر جابر,2010-02-02,1431-02-02,Female,REG766361,219914398,Iqama,https://files.catbox.moe/178hjt.png
+192,234,Third Secondary,الثالث ثانوي,Fatima,فاطمه,Abdullah Turki Saud Al Mutairi,محمد جميل نادر جابر,2013-08-04,1434-08-04,Female,REG819574,130580610,Iqama,https://files.catbox.moe/178hjt.png
+193,221,Third Secondary,الثالث ثانوي,Ahmed,احمد,Abdullah Turki Saud Al Mutairi,محمد جميل نادر جابر,2007-10-26,1428-10-26,Male,REG502723,253214907,Iqama,https://files.catbox.moe/pusrqu.jpg
+194,189,Third Secondary,الثالث ثانوي,Nader,نادر,Abdullah Turki Saud Al Mutairi,محمد جميل نادر جابر,2012-08-29,1433-08-29,Male,REG533825,217538604,Iqama,https://files.catbox.moe/pm003z.jpg
+195,218,Third Secondary,الثالث ثانوي,Nour,نور,Abdullah Turki Saud Al Mutairi,محمد جميل نادر جابر,2010-02-20,1431-02-20,Male,REG881866,150561918,Iqama,https://files.catbox.moe/pm003z.jpg
+197,235,Third Secondary,الثالث ثانوي,Rima,ريما,Ahmed Mostafa Mostafa Ibrahim,فيصل تركي سعود المطيري,2016-05-08,1437-05-08,Female,REG985066,254190473,National_ID,https://files.catbox.moe/178hjt.png
+198,234,Third Secondary,الثالث ثانوي,Rasha,رشا,Ahmed Mostafa Mostafa Ibrahim,فيصل تركي سعود المطيري,2009-03-25,1430-03-25,Female,REG759711,196823483,National_ID,https://files.catbox.moe/68hhzz.png
+199,103,Third Secondary,الثالث ثانوي,Nour,نور,Ahmed Mostafa Mostafa Ibrahim,فيصل تركي سعود المطيري,2013-09-24,1434-09-24,Male,REG606906,288515593,National_ID,https://files.catbox.moe/pm003z.jpg
+201,231,Third Secondary,الثالث ثانوي,Rima,ريما,Ahmed Hassan Mostafa Tawfik,فهد باسل جميل عازر,2012-06-29,1433-06-29,Female,REG388405,229392794,National_ID,https://files.catbox.moe/68hhzz.png
+203,186,Third Secondary,الثالث ثانوي,Bassel,باسل,Ahmed Hassan Mostafa Tawfik,فهد باسل جميل عازر,2007-06-25,1428-06-25,Male,REG349966,118534152,National_ID,https://files.catbox.moe/pm003z.jpg
+206,101,Third Secondary,الثالث ثانوي,Ismail,إسماعيل,Abdelrahman Ismail Nour Abdelrahman,عمر محمد عمر مصطفى,2015-05-05,1436-05-05,Male,REG788539,235442876,Iqama,https://files.catbox.moe/pusrqu.jpg
+208,124,Third Secondary,الثالث ثانوي,Ahmed,احمد,Abdelrahman Ismail Nour Abdelrahman,عمر محمد عمر مصطفى,2019-03-13,1440-03-13,Male,REG189801,227236186,Iqama,https://files.catbox.moe/pusrqu.jpg
+210,231,Third Secondary,الثالث ثانوي,Noura,نورا,Abdelrahman Ismail Nour Abdelrahman,عمر محمد عمر مصطفى,2009-10-29,1430-10-29,Female,REG117949,227142941,Iqama,https://files.catbox.moe/su8v9w.png
+212,230,Third Secondary,الثالث ثانوي,Latifa,لطيفة,Abdullah Abdullah Saud Al Otaibi,عبد الله نادر جميل كنعان,2014-11-07,1435-11-07,Female,REG749630,238688171,National_ID,https://files.catbox.moe/68hhzz.png
+213,215,Third Secondary,الثالث ثانوي,Tarek,طارق,Abdullah Abdullah Saud Al Otaibi,عبد الله نادر جميل كنعان,2013-03-01,1434-03-01,Male,REG135073,264854766,National_ID,https://files.catbox.moe/pusrqu.jpg
+215,194,Third Secondary,الثالث ثانوي,Ahmed,احمد,Abdullah Abdullah Saud Al Otaibi,عبد الله نادر جميل كنعان,2009-12-02,1430-12-02,Male,REG419891,169204884,National_ID,https://files.catbox.moe/pusrqu.jpg
+216,154,Third Secondary,الثالث ثانوي,Turki,تركي,Karam Nader Rami Khoury,يوسف مصطفى أحمد السيد,2017-04-20,1438-04-20,Male,REG272854,186864229,Iqama,https://files.catbox.moe/pm003z.jpg
+217,230,Third Secondary,الثالث ثانوي,Nihal,نهال,Karam Nader Rami Khoury,يوسف مصطفى أحمد السيد,2007-02-10,1428-02-10,Female,REG986677,252333499,Iqama,https://files.catbox.moe/su8v9w.png
+218,114,Third Secondary,الثالث ثانوي,Fahad,فهد,Karam Nader Rami Khoury,يوسف مصطفى أحمد السيد,2010-01-25,1431-01-25,Male,REG135480,239159679,Iqama,https://files.catbox.moe/pusrqu.jpg
+225,229,Third Secondary,الثالث ثانوي,Diala,ديالا,Khalid Fahad Saud Al Harbi,محمود عمر إسماعيل عبد الرحمن,2012-07-19,1433-07-19,Female,REG717320,195374662,Iqama,https://files.catbox.moe/su8v9w.png
+226,232,Third Secondary,الثالث ثانوي,Nihal,نهال,Youssef Tarek Tarek Farid,طارق يوسف مصطفى إبراهيم,2015-09-10,1436-09-10,Female,REG883621,244559746,Iqama,https://files.catbox.moe/68hhzz.png
+229,228,Third Secondary,الثالث ثانوي,Samar,سمر,Youssef Tarek Tarek Farid,طارق يوسف مصطفى إبراهيم,2016-07-15,1437-07-15,Female,REG207110,224802434,Iqama,https://files.catbox.moe/178hjt.png
+230,228,Third Secondary,الثالث ثانوي,Samar,سمر,Youssef Tarek Tarek Farid,طارق يوسف مصطفى إبراهيم,2014-09-11,1435-09-11,Female,REG487405,151945324,Iqama,https://files.catbox.moe/68hhzz.png
+233,230,Third Secondary,الثالث ثانوي,Dina,دينا,Hassan Mostafa Ahmed El Sayed,منصور فهد تركي آل سعود,2013-04-20,1434-04-20,Female,REG828496,295532348,National_ID,https://files.catbox.moe/68hhzz.png
+1,657,Third Intermediate,الثالث متوسط,Samah ,سماح,Fahad Karam Jamil Azar,فهد كرم جميل عازر,2018-06-24,1439-06-24,Female,REG681655,113983552,Iqama,https://files.catbox.moe/emgnbf.jpg
+8,606,Third Intermediate,الثالث متوسط,Noura,خديجة,Abdelrahman Nour Nour Abdelrahman,عمر إسماعيل عبد الرحمن علي,2016-01-19,1437-01-19,Female,REG394153,238882179,National_ID,https://files.catbox.moe/emgnbf.jpg
+9,760,Third Intermediate,الثالث متوسط,Amna,آمنة,Abdelrahman Nour Nour Abdelrahman,عمر إسماعيل عبد الرحمن علي,2013-07-05,1434-07-05,Female,REG707364,185986762,National_ID,https://files.catbox.moe/emgnbf.jpg
+15,60,Third Intermediate,الثالث متوسط,Fahad,فهد,Khalid Turki Abdullah Al Saud,عبدالله سعود آل سعود,2007-06-25,1428-06-25,Male,REG275272,190069089,Iqama,https://files.catbox.moe/pusrqu.jpg
+19,624,Third Intermediate,الثالث متوسط,Maha,مها,Khalid Turki Abdullah Al Saud,عبدالله سعود آل سعود,2013-12-27,1434-12-27,Female,REG939009,215966159,Iqama,https://files.catbox.moe/emgnbf.jpg
+23,44,Third Intermediate,الثالث متوسط,Fahad,فهد,Omar Ismail Abdelrahman Ali,يوسف عمر عبد الرحمن علي,2016-09-01,1437-09-01,Male,REG339375,130861476,Iqama,https://files.catbox.moe/ki5ubc.jpg
+24,702,Third Intermediate,الثالث متوسط,Maha,مها,Omar Ismail Abdelrahman Ali,يوسف عمر عبد الرحمن علي,2019-04-01,1440-04-01,Female,REG138728,230826772,Iqama,https://files.catbox.moe/mq2lyu.jpg
+26,17,Third Intermediate,الثالث متوسط,Rami,رامي,Omar Ismail Abdelrahman Ali,يوسف عمر عبد الرحمن علي,2007-01-21,1428-01-21,Male,REG351588,246556957,Iqama,https://files.catbox.moe/ki5ubc.jpg
+27,622,Third Intermediate,الثالث متوسط,Abeer,عبير,Omar Ismail Abdelrahman Ali,يوسف عمر عبد الرحمن علي,2014-10-23,1435-10-23,Female,REG984124,150705876,Iqama,https://files.catbox.moe/emgnbf.jpg
+29,624,Third Intermediate,الثالث متوسط,Rima,ريما,Abdullah Saud Saud Al Saud,ناصر عبدالله سعود القحطاني,2011-09-15,1432-09-15,Female,REG713719,269055982,National_ID,https://files.catbox.moe/emgnbf.jpg
+30,40,Third Intermediate,الثالث متوسط,Tarek,طارق,Abdullah Saud Saud Al Saud,ناصر عبدالله سعود القحطاني,2014-05-04,1435-05-04,Male,REG109042,262752505,National_ID,https://files.catbox.moe/pusrqu.jpg
+32,726,Third Intermediate,الثالث متوسط,Lina,لينا,Abdullah Saud Saud Al Saud,ناصر عبدالله سعود القحطاني,2013-06-16,1434-06-16,Female,REG258316,132036746,National_ID,https://files.catbox.moe/emgnbf.jpg
+37,613,Third Intermediate,الثالث متوسط,Salma,سلمي,Youssef Omar Abdelrahman Ali,بدر نور نور علي,2018-09-27,1439-09-27,Female,REG273760,194673934,Iqama,https://files.catbox.moe/emgnbf.jpg
+41,20,Third Intermediate,الثالث متوسط,Hassan,حسن,Youssef Omar Abdelrahman Ali,بدر نور نور علي,2017-12-09,1438-12-09,Male,REG341178,186816355,Iqama,https://files.catbox.moe/pusrqu.jpg
+46,41,Third Intermediate,الثالث متوسط,Nour,نور,Hassan Youssef Hassan Tawfik,منصور باسل باسل جابر,2006-08-21,1427-08-21,Male,REG460928,247368850,Iqama,https://files.catbox.moe/pusrqu.jpg
+47,60,Third Intermediate,الثالث متوسط,Turki,تركي,Hassan Youssef Hassan Tawfik,منصور باسل باسل جابر,2018-08-07,1439-08-07,Male,REG939449,185199260,Iqama,https://files.catbox.moe/pusrqu.jpg
+48,56,Third Intermediate,الثالث متوسط,Rami,رامي,Hassan Youssef Hassan Tawfik,منصور باسل باسل جابر,2019-03-27,1440-03-27,Male,REG680728,136411168,Iqama,https://files.catbox.moe/pusrqu.jpg
+50,767,Third Intermediate,الثالث متوسط,Maha,مها,Nasser Abdullah Saud Al Qahtani,خالد رامي باسل كنعان,2017-11-22,1438-11-22,Female,REG557533,132348949,Iqama,https://files.catbox.moe/mq2lyu.jpg
+54,60,Third Intermediate,الثالث متوسط,Fahad,فهد,Nasser Abdullah Saud Al Qahtani,خالد رامي باسل كنعان,2009-08-20,1430-08-20,Male,REG252620,251406218,Iqama,https://files.catbox.moe/pusrqu.jpg
+56,32,Third Intermediate,الثالث متوسط,Mostafa,مصطفى,Nasser Abdullah Saud Al Qahtani,خالد رامي باسل كنعان,2016-09-29,1437-09-29,Male,REG425332,223302916,Iqama,https://files.catbox.moe/pusrqu.jpg
+58,715,Third Intermediate,الثالث متوسط,Nihal,نهال,Turki Fahad Fahad Al Saud,محمد رامي باسل عازار,2009-10-09,1430-10-09,Female,REG177556,294024876,Iqama,https://files.catbox.moe/mq2lyu.jpg
+62,67,Third Intermediate,الثالث متوسط,Ismail,إسماعيل,Turki Fahad Fahad Al Saud,محمد رامي باسل عازار,2009-06-30,1430-06-30,Male,REG777229,174652826,Iqama,https://files.catbox.moe/ki5ubc.jpg
+63,93,Third Intermediate,الثالث متوسط,Tarek,طارق,Turki Fahad Fahad Al Saud,محمد رامي باسل عازار,2008-02-06,1429-02-06,Male,REG399953,133785346,Iqama,https://files.catbox.moe/pusrqu.jpg
+64,762,Third Intermediate,الثالث متوسط,Rasha,رشا,Youssef Youssef Hassan Mahmoud,فيصل سعود آل سعود,2014-06-27,1435-06-27,Female,REG469056,268682416,Iqama,https://files.catbox.moe/emgnbf.jpg
+68,665,Third Intermediate,الثالث متوسط,Samah,سماح,Youssef Youssef Hassan Mahmoud,فيصل سعود آل سعود,2006-10-07,1427-10-07,Female,REG150273,195504969,Iqama,https://files.catbox.moe/mq2lyu.jpg
+69,761,Third Intermediate,الثالث متوسط,Nihal,نهال,Youssef Youssef Hassan Mahmoud,فيصل سعود آل سعود,2011-01-26,1432-01-26,Female,REG682644,120741624,Iqama,https://files.catbox.moe/mq2lyu.jpg
+70,645,Third Intermediate,الثالث متوسط,Dina,دينا,Youssef Youssef Hassan Mahmoud,فيصل سعود آل سعود,2014-02-06,1435-02-06,Female,REG811518,185314631,Iqama,https://files.catbox.moe/emgnbf.jpg
+71,44,Third Intermediate,الثالث متوسط,Jamil,جميل,Mostafa Ahmed Hassan Ibrahim,أحمد يوسف أحمد توفيق,2008-05-13,1429-05-13,Male,REG543952,281118947,National_ID,https://files.catbox.moe/ki5ubc.jpg
+72,19,Third Intermediate,الثالث متوسط,Youssef,يوسف,Mostafa Ahmed Hassan Ibrahim,أحمد يوسف أحمد توفيق,2010-10-04,1431-10-04,Male,REG954828,164825320,National_ID,https://files.catbox.moe/ki5ubc.jpg
+74,4,Third Intermediate,الثالث متوسط,Mostafa,مصطفى,Mostafa Ahmed Hassan Ibrahim,أحمد يوسف أحمد توفيق,2017-07-07,1438-07-07,Male,REG398561,272632050,National_ID,https://files.catbox.moe/pusrqu.jpg
+75,65,Third Intermediate,الثالث متوسط,Mostafa,مصطفى,Mostafa Ahmed Hassan Ibrahim,أحمد يوسف أحمد توفيق,2015-04-04,1436-04-04,Male,REG729696,128119152,National_ID,https://files.catbox.moe/pusrqu.jpg
+77,659,Third Intermediate,الثالث متوسط,Rania,رانيا,Mostafa Ahmed Hassan Ibrahim,أحمد يوسف أحمد توفيق,2017-05-14,1438-05-14,Female,REG451750,137443915,National_ID,https://files.catbox.moe/mq2lyu.jpg
+79,716,Third Intermediate,الثالث متوسط,Nihal,نهال,Saud Fahad Abdullah Al Saud,عمر عمر عبد الرحمن عبد الرحمن,2008-05-09,1429-05-09,Female,REG325685,289521977,National_ID,https://files.catbox.moe/mq2lyu.jpg
+83,19,Third Intermediate,الثالث متوسط,Ahmed,احمد,Saud Fahad Abdullah Al Saud,عمر عمر عبد الرحمن عبد الرحمن,2007-02-11,1428-02-11,Male,REG988919,191213420,National_ID,https://files.catbox.moe/ki5ubc.jpg
+88,639,Third Intermediate,الثالث متوسط,Rasha,رشا,Fahad Fahad Khalid Al Saud,عبدالله تركي سعود المطيري,2015-11-23,1436-11-23,Female,REG307496,259857639,Iqama,https://files.catbox.moe/emgnbf.jpg
+90,39,Third Intermediate,الثالث متوسط,Jamil,جميل,Fahad Fahad Khalid Al Saud,عبدالله تركي سعود المطيري,2012-08-20,1433-08-20,Male,REG792092,273857876,Iqama,https://files.catbox.moe/ki5ubc.jpg
+94,739,Third Intermediate,الثالث متوسط,Hala,هاله,Fahad Khalid Turki Al Harbi,يوسف طارق طارق فريد,2018-04-29,1439-04-29,Female,REG454435,132838919,National_ID,https://files.catbox.moe/mq2lyu.jpg
+97,79,Third Intermediate,الثالث متوسط,Youssef,يوسف,Fahad Khalid Turki Al Harbi,يوسف طارق طارق فريد,2014-10-22,1435-10-22,Male,REG558155,144394928,National_ID,https://files.catbox.moe/pusrqu.jpg
+98,26,Third Intermediate,الثالث متوسط,Abdullah,عبد الله,Fahad Khalid Turki Al Harbi,يوسف طارق طارق فريد,2018-07-07,1439-07-07,Male,REG909786,281833667,National_ID,https://files.catbox.moe/ki5ubc.jpg
+236,284,Second Primary,الثاني الابتدائي,Omar,عمر,Nasser Karam Bassel Khoury,خالد باسل رامي كنعان,2013-08-05,1434-08-05,Male,REG999010,173483498,National_ID,https://files.catbox.moe/tw1jzy.jpg
+238,554,Second Primary,الثاني الابتدائي,Amna,آمنة,Nasser Karam Bassel Khoury,خالد باسل رامي كنعان,2014-10-28,1435-10-28,Female,REG803353,184981474,National_ID,https://files.catbox.moe/tyqlaa.jpg
+239,252,Second Primary,الثاني الابتدائي,Turki,تركي,Nasser Karam Bassel Khoury,خالد باسل رامي كنعان,2017-12-14,1438-12-14,Male,REG243109,159385716,National_ID,https://files.catbox.moe/2l6fok.jpg
+240,422,Second Primary,الثاني الابتدائي,Samah,سماح,Nasser Karam Bassel Khoury,خالد باسل رامي كنعان,2011-11-18,1432-11-18,Female,REG287601,187693834,National_ID,https://files.catbox.moe/r5nj4o.jpg
+243,473,Second Primary,الثاني الابتدائي,Fatima,فاطمه,Bader Jamil Bassel Kanaan,محمد محمد نور إبراهيم,2017-03-14,1438-03-14,Female,REG695257,221142935,Iqama,https://files.catbox.moe/tyqlaa.jpg
+250,288,Second Primary,الثاني الابتدائي,Omar,عمر,Mansour Rami Rami Khoury,شريف يوسف مصطفى إبراهيم,2012-03-08,1433-03-08,Male,REG207967,151365231,National_ID,https://files.catbox.moe/2l6fok.jpg
+255,262,Second Primary,الثاني الابتدائي,Abdelrahman,عبد الرحمن,Hisham Ahmed Ahmed Ibrahim,عبد الرحمن نور نور عبد الرحمن,2006-12-31,1427-12-31,Male,REG288668,117033306,Iqama,https://files.catbox.moe/ypraoq.jpg
+256,300,Second Primary,الثاني الابتدائي,Khalid,خالد,Karim Tarek Hassan El Sayed,خالد تركي عبدالله آل سعود,2015-04-30,1436-04-30,Male,REG195995,236376872,National_ID,https://files.catbox.moe/2l6fok.jpg
+258,291,Second Primary,الثاني الابتدائي,Nader,نادر,Karim Tarek Hassan El Sayed,خالد تركي عبدالله آل سعود,2010-10-07,1431-10-07,Male,REG548024,230139167,National_ID,https://files.catbox.moe/23kp94.jpg
+261,265,Second Primary,الثاني الابتدائي,Tarek,طارق,Tarek Hassan Youssef Farid,حسن يوسف حسن توفيق,2012-11-04,1433-11-04,Male,REG453146,274922023,Iqama,https://files.catbox.moe/23kp94.jpg
+263,244,Second Primary,الثاني الابتدائي,Ismail,إسماعيل,Tarek Hassan Youssef Farid,حسن يوسف حسن توفيق,2011-05-28,1432-05-28,Male,REG188558,112535987,Iqama,https://files.catbox.moe/23kp94.jpg
+274,236,Second Primary,الثاني الابتدائي,Saud,سعود,Faisal Nader Karam Haddad,يوسف يوسف حسن محمود,2007-02-01,1428-02-01,Male,REG849085,190309993,National_ID,https://files.catbox.moe/2l6fok.jpg
+278,245,Second Primary,الثاني الابتدائي,Hassan,حسن,Ahmed Hassan Mostafa Ibrahim,مصطفى أحمد حسن إبراهيم,2014-01-10,1435-01-10,Male,REG186640,246449043,Iqama,https://files.catbox.moe/tw1jzy.jpg
+287,289,Second Primary,الثاني الابتدائي,Saud,سعود,Khalid Saud Fahad Al Harbi,فهد فهد خالد آل سعود,2015-05-30,1436-05-30,Male,REG138739,244877794,National_ID,https://files.catbox.moe/tw1jzy.jpg
+306,324,Second Primary,الثاني الابتدائي,Maha,مها,Saud Nader Jamil Haddad,إسماعيل عمر نور حسن,2013-01-02,1434-01-02,Female,REG537445,233574036,Iqama,https://files.catbox.moe/tyqlaa.jpg
+307,422,Second Primary,الثاني الابتدائي,Hala,هاله,Saud Nader Jamil Haddad,إسماعيل عمر نور حسن,2016-09-23,1437-09-23,Female,REG932609,285143874,Iqama,https://files.catbox.moe/r5nj4o.jpg
+311,356,Second Primary,الثاني الابتدائي,Nihal,نهال,Saud Turki Khalid Al Mutairi,باسل نادر رامي كنعان,2017-07-28,1438-07-28,Female,REG303307,222441028,Iqama,https://files.catbox.moe/tyqlaa.jpg
+319,283,Second Primary,الثاني الابتدائي,Omar,عمر,Nader Bassel Jamil Azar,كرم باسل جميل عازر,2012-01-21,1433-01-21,Male,REG564037,139992705,Iqama,https://files.catbox.moe/tw1jzy.jpg
+324,255,Second Primary,الثاني الابتدائي,Ahmed,احمد,Nasser Fahad Turki Al Otaibi,خالد سعود خالد آل سعود,2013-05-03,1434-05-03,Male,REG288926,263978726,National_ID,https://files.catbox.moe/tw1jzy.jpg
+327,261,Second Primary,الثاني الابتدائي,Omar,عمر,Hassan Ahmed Ahmed El Sayed,أحمد مصطفى مصطفى إبراهيم,2007-06-15,1428-06-15,Male,REG986576,229187370,Iqama,https://files.catbox.moe/2l6fok.jpg
+332,242,Second Primary,الثاني الابتدائي,Nader,نادر,Omar Omar Abdelrahman Abdelrahman,أحمد حسن مصطفى توفيق,2011-04-12,1432-04-12,Male,REG820317,272119852,National_ID,https://files.catbox.moe/ypraoq.jpg
+335,560,Second Primary,الثاني الابتدائي,Huda,هدي,Tarek Mostafa Youssef Tawfik,عبد الرحمن إسماعيل نور عبد الرحمن,2007-05-05,1428-05-05,Female,REG745731,297596311,National_ID,https://files.catbox.moe/r5nj4o.jpg
+337,525,Second Primary,الثاني الابتدائي,Rania,رانيا,Abdullah Saud Saud Al Qahtani,عبدالله عبدالله سعود العتيبي,2014-08-01,1435-08-01,Female,REG221109,161419606,Iqama,https://files.catbox.moe/r5nj4o.jpg
+343,373,Second Primary,الثاني الابتدائي,Fatima,فاطمه,Nour Abdelrahman Mohamed Ibrahim,كرم نادر رامي خوري,2007-10-14,1428-10-14,Female,REG992005,292173340,National_ID,https://files.catbox.moe/r5nj4o.jpg
+347,237,Second Primary,الثاني الابتدائي,Mostafa,مصطفى,Fahad Saud Abdullah Al Qahtani,خالد فهد سعود الحربي,2012-05-25,1433-05-25,Male,REG142599,166284272,Iqama,https://files.catbox.moe/2l6fok.jpg
+351,458,Second Primary,الثاني الابتدائي,Nihal,نهال,Mostafa Tarek Tarek Tawfik,حسن مصطفى أحمد السيد,2014-04-30,1435-04-30,Female,REG389666,215454675,Iqama,https://files.catbox.moe/tyqlaa.jpg
+353,277,Second Primary,الثاني الابتدائي,Saud,سعود,Mansour Karam Karam Azar,طارق حسن يوسف فريد,2014-03-15,1435-03-15,Male,REG288175,175208327,National_ID,https://files.catbox.moe/2l6fok.jpg
+357,270,Second Primary,الثاني الابتدائي,Khalid,خالد,Turki Abdullah Saud Al Harbi,جميل نادر رامي كنعان,2008-12-20,1429-12-20,Male,REG203651,277089418,National_ID,https://files.catbox.moe/23kp94.jpg
+359,274,Second Primary,الثاني الابتدائي,Bassel,باسل,Turki Abdullah Saud Al Harbi,جميل نادر رامي كنعان,2006-12-12,1427-12-12,Male,REG740680,157848048,National_ID,https://files.catbox.moe/23kp94.jpg
+364,298,Second Primary,الثاني الابتدائي,Mohamed,محمد,Karam Bassel Rami Jaber,خالد سعود فهد الحربي,2011-11-27,1432-11-27,Male,REG945968,293812183,National_ID,https://files.catbox.moe/ypraoq.jpg
+367,554,Second Primary,الثاني الابتدائي,Abeer,عبير,Nader Nader Karam Azar,باسل جميل باسل جابر,2015-09-27,1436-09-27,Female,REG285402,284064986,National_ID,https://files.catbox.moe/tyqlaa.jpg
+377,531,Second Primary,الثاني الابتدائي,Huda,هدي,Omar Ismail Abdelrahman Hassan,نادر باسل جميل عازر,2014-05-06,1435-05-06,Female,REG497235,269090405,National_ID,https://files.catbox.moe/r5nj4o.jpg
+381,441,Second Primary,الثاني الابتدائي,Diala,ديالا,Omar Omar Mohamed Mustafa,عمر عمر عبد الرحمن عبد الرحمن,2017-06-17,1438-06-17,Female,REG644524,140697863,Iqama,https://files.catbox.moe/r5nj4o.jpg
+384,522,Second Primary,الثاني الابتدائي,Maha,مها,Mohammed Jamil Nader Jaber,عبدالله سعود القحطاني,2018-07-15,1439-07-15,Female,REG630917,127523934,National_ID,https://files.catbox.moe/tyqlaa.jpg
+390,269,Second Primary,الثاني الابتدائي,Omar,عمر,Tarek Ahmed Tarek El Sayed,نور عبد الرحمن محمد إبراهيم,2019-01-31,1440-01-31,Male,REG574809,173460154,Iqama,https://files.catbox.moe/2l6fok.jpg
+404,241,Second Primary,الثاني الابتدائي,Abdelrahman,عبد الرحمن,Mostafa Ahmed Mostafa Mahmoud,مصطفى طارق أحمد فريد,2007-09-05,1428-09-05,Male,REG300993,160490650,Iqama,https://files.catbox.moe/23kp94.jpg
+405,377,Second Primary,الثاني الابتدائي,Samar,سمر,Mostafa Ahmed Mostafa Mahmoud,مصطفى طارق أحمد فريد,2007-02-26,1428-02-26,Female,REG783608,114575739,Iqama,https://files.catbox.moe/r5nj4o.jpg
+412,265,Second Primary,الثاني الابتدائي,Bassel,باسل,Tarek Tarek Mostafa Ibrahim,نادر نادر كرم عازر,2016-01-30,1437-01-30,Male,REG693386,268143032,Iqama,https://files.catbox.moe/2l6fok.jpg
+415,515,Second Primary,الثاني الابتدائي,Huda,هدي,Abdullah Nader Jamil Kanaan,أحمد مصطفى يوسف محمود,2010-04-21,1431-04-21,Female,REG727856,150208376,Iqama,https://files.catbox.moe/r5nj4o.jpg
+424,585,Second Primary,الثاني الابتدائي,Hala,هاله,Fahad Abdullah Saud Al Mutairi,عمر إسماعيل عبد الرحمن حسن,2008-04-28,1429-04-28,Female,REG146307,161451515,National_ID,https://files.catbox.moe/r5nj4o.jpg
+428,295,Second Primary,الثاني الابتدائي,Abdelrahman,عبد الرحمن,Mahmoud Omar Ismail Abdelrahman,عمر عمر محمد مصطفى,2013-07-29,1434-07-29,Male,REG880158,245858732,Iqama,https://files.catbox.moe/2l6fok.jpg
+437,534,Second Primary,الثاني الابتدائي,Fatima,فاطمه,Tarek Youssef Mostafa Ibrahim,تركي تركي تركي آل سعود,2006-12-01,1427-12-01,Female,REG408897,156864414,Iqama,https://files.catbox.moe/tyqlaa.jpg
+443,292,Second Primary,الثاني الابتدائي,Nour,نور,Saud Khalid Fahad Al Qahtani,طارق طارق مصطفى إبراهيم,2014-11-04,1435-11-04,Male,REG695772,235690023,National_ID,https://files.catbox.moe/2l6fok.jpg
+451,241,Second Primary,الثاني الابتدائي,Ahmed,احمد,Tarek Tarek Hassan Mahmoud,حسن أحمد أحمد توفيق,2012-07-04,1433-07-04,Male,REG160037,224222815,Iqama,https://files.catbox.moe/tw1jzy.jpg
+452,327,Second Primary,الثاني الابتدائي,Rania,رانيا,Tarek Tarek Hassan Mahmoud,حسن أحمد أحمد توفيق,2018-03-01,1439-03-01,Female,REG466956,121618648,Iqama,https://files.catbox.moe/tyqlaa.jpg
+465,567,Second Primary,الثاني الابتدائي,Diala,ديالا,Mansour Fahad Turki Al Saud,سعود خالد فهد القحطاني,2009-11-17,1430-11-17,Female,REG118088,191119702,National_ID,https://files.catbox.moe/r5nj4o.jpg
+471,251,Second Primary,الثاني الابتدائي,Saud,سعود,Khalid Bassel Rami Kanaan,طارق طارق حسن محمود,2006-07-08,1427-07-08,Male,REG299886,134341893,Iqama,https://files.catbox.moe/23kp94.jpg
+480,550,Second Primary,الثاني الابتدائي,Dina,دينا,Khalid Fahad Fahad Al Saud,عمر نور عمر مصطفى,2014-02-13,1435-02-13,Female,REG910887,289715041,Iqama,https://files.catbox.moe/r5nj4o.jpg
+485,478,Second Primary,الثاني الابتدائي,Rasha,رشا,Nour Ismail Nour Abdelrahman,طارق يوسف أحمد إبراهيم,2010-10-15,1431-10-15,Female,REG236737,123076963,National_ID,https://files.catbox.moe/r5nj4o.jpg
+492,270,Second Primary,الثاني الابتدائي,Nour,نور,Mohammed Mohamed Nour Ibrahim,نور إسماعيل نور عبد الرحمن,2011-05-17,1432-05-17,Male,REG284935,256010711,Iqama,https://files.catbox.moe/ypraoq.jpg
+100,202,Second secondary,الثاني ثانوي,Bassel,باسل,Rami Bassel Bassel Jaber,ناصر كرم باسل خوري,2014-03-14,1435-03-14,Male,REG493433,237298043,National_ID,https://files.catbox.moe/pm003z.jpg
+101,133,Second secondary,الثاني ثانوي,Omar,عمر,Rami Bassel Bassel Jaber,ناصر كرم باسل خوري,2017-04-14,1438-04-14,Male,REG433695,112261367,National_ID,https://files.catbox.moe/pm003z.jpg
+102,229,Second secondary,الثاني ثانوي,Abeer,عبير,Rami Bassel Bassel Jaber,ناصر كرم باسل خوري,2013-10-20,1434-10-20,Female,REG267665,187317872,National_ID,https://files.catbox.moe/178hjt.png
+105,231,Second secondary,الثاني ثانوي,Mona,مني,Rami Bassel Bassel Jaber,ناصر كرم باسل خوري,2009-06-05,1430-06-05,Female,REG842607,256988754,National_ID,https://files.catbox.moe/su8v9w.png
+108,228,Second secondary,الثاني ثانوي,Maha,مها,Jamil Nader Karam Jaber,بدر جميل باسل كنعان,2016-05-20,1437-05-20,Female,REG397038,293700313,Iqama,https://files.catbox.moe/178hjt.png
+111,140,Second secondary,الثاني ثانوي,Mostafa,مصطفى,Jamil Nader Karam Jaber,بدر جميل باسل كنعان,2008-10-01,1429-10-01,Male,REG304170,125405491,Iqama,https://files.catbox.moe/pusrqu.jpg
+115,235,Second secondary,الثاني ثانوي,Salma,سلمي,Ismail Omar Nour Hassan,منصور رامي رامي خوري,2012-02-20,1433-02-20,Female,REG969124,161170855,Iqama,https://files.catbox.moe/68hhzz.png
+117,106,Second secondary,الثاني ثانوي,Karam,كرم,Ismail Omar Nour Hassan,منصور رامي رامي خوري,2018-08-14,1439-08-14,Male,REG495041,239866199,Iqama,https://files.catbox.moe/pm003z.jpg
+123,228,Second secondary,الثاني ثانوي,Noura,نورا,Bassel Nader Rami Kanaan,هشام أحمد أحمد إبراهيم,2010-12-25,1431-12-25,Female,REG715478,279925526,Iqama,https://files.catbox.moe/68hhzz.png
+125,232,Second secondary,الثاني ثانوي,Rania,رانيا,Bassel Nader Rami Kanaan,هشام أحمد أحمد إبراهيم,2008-12-08,1429-12-08,Female,REG786733,295457114,Iqama,https://files.catbox.moe/su8v9w.png
+129,219,Second secondary,الثاني ثانوي,Fahad,فهد,Hassan Ahmed Tarek Ibrahim,كريم طارق حسن السيد,2013-02-10,1434-02-10,Male,REG795050,155647363,Iqama,https://files.catbox.moe/pusrqu.jpg
+130,128,Second secondary,الثاني ثانوي,Hassan,حسن,Hassan Ahmed Tarek Ibrahim,كريم طارق حسن السيد,2015-09-23,1436-09-23,Male,REG959839,160011919,Iqama,https://files.catbox.moe/pm003z.jpg
+131,230,Second secondary,الثاني ثانوي,Nihal,نهال,Hassan Ahmed Tarek Ibrahim,كريم طارق حسن السيد,2008-08-07,1429-08-07,Female,REG431697,267525643,Iqama,https://files.catbox.moe/su8v9w.png
+145,230,Second secondary,الثاني ثانوي,Nihal,نهال,Mansour Bassel Bassel Jaber,أحمد حسن مصطفى إبراهيم,2011-12-26,1432-12-26,Female,REG573587,239381867,National_ID,https://files.catbox.moe/178hjt.png
+147,176,Second secondary,الثاني ثانوي,Bassel,باسل,Mansour Bassel Bassel Jaber,أحمد حسن مصطفى إبراهيم,2013-06-13,1434-06-13,Male,REG424778,216479581,National_ID,https://files.catbox.moe/pusrqu.jpg
+148,212,Second secondary,الثاني ثانوي,Mostafa,مصطفى,Khalid Rami Bassel Kanaan,تركي رامي نادر عازر,2008-03-30,1429-03-30,Male,REG187762,136962662,National_ID,https://files.catbox.moe/pm003z.jpg
+151,128,Second secondary,الثاني ثانوي,Turki,تركي,Khalid Rami Bassel Kanaan,تركي رامي نادر عازر,2014-07-31,1435-07-31,Male,REG748011,295715868,National_ID,https://files.catbox.moe/pm003z.jpg
+154,106,Second secondary,الثاني ثانوي,Youssef,يوسف,Khalid Rami Bassel Kanaan,تركي رامي نادر عازر,2012-03-29,1433-03-29,Male,REG567874,289172609,National_ID,https://files.catbox.moe/pusrqu.jpg
+157,228,Second secondary,الثاني ثانوي,Samar,سمر,Karam Bassel Jamil Azar,عبدالله خالد سعود العتيبي,2008-05-14,1429-05-14,Female,REG125026,264245231,National_ID,https://files.catbox.moe/178hjt.png
+159,233,Second secondary,الثاني ثانوي,Maha,مها,Karam Bassel Jamil Azar,عبدالله خالد سعود العتيبي,2014-11-11,1435-11-11,Female,REG725075,163949898,National_ID,https://files.catbox.moe/68hhzz.png
+162,135,Second secondary,الثاني ثانوي,Ismail,إسماعيل,Mohammed Rami Bassel Azar,سعود نادر جميل حداد,2011-07-13,1432-07-13,Male,REG367609,151212635,National_ID,https://files.catbox.moe/pm003z.jpg
+164,215,Second secondary,الثاني ثانوي,Khalid,خالد,Mohammed Rami Bassel Azar,سعود نادر جميل حداد,2018-11-23,1439-11-23,Male,REG563985,293009525,National_ID,https://files.catbox.moe/pusrqu.jpg
+165,197,Second secondary,الثاني ثانوي,Khalid,خالد,Mohammed Rami Bassel Azar,سعود نادر جميل حداد,2018-01-31,1439-01-31,Male,REG743813,251590697,National_ID,https://files.catbox.moe/pm003z.jpg
+167,141,Second secondary,الثاني ثانوي,Bassel,باسل,Mohammed Rami Bassel Azar,سعود نادر جميل حداد,2009-03-24,1430-03-24,Male,REG424563,259793956,National_ID,https://files.catbox.moe/pusrqu.jpg
+168,134,Second secondary,الثاني ثانوي,Nader,نادر,Mohammed Rami Bassel Azar,سعود نادر جميل حداد,2017-01-21,1438-01-21,Male,REG694168,143552631,National_ID,https://files.catbox.moe/pm003z.jpg
+171,231,Second secondary,الثاني ثانوي,Fatima,فاطمه,Faisal Saud Saud Al Saud,ناصر فهد تركي العتيبي,2017-04-06,1438-04-06,Female,REG349381,171572546,National_ID,https://files.catbox.moe/68hhzz.png
+173,176,Second secondary,الثاني ثانوي,Ismail,إسماعيل,Faisal Saud Saud Al Saud,ناصر فهد تركي العتيبي,2007-07-08,1428-07-08,Male,REG896146,160799640,National_ID,https://files.catbox.moe/pusrqu.jpg
+176,233,Second secondary,الثاني ثانوي,Salma,سلمي,Khalid Saud Khalid Al Saud,طارق مصطفى يوسف توفيق,2019-02-25,1440-02-25,Female,REG225633,139612098,National_ID,https://files.catbox.moe/178hjt.png
+180,229,Second secondary,الثاني ثانوي,Samar,سمر,Khalid Saud Khalid Al Saud,طارق مصطفى يوسف توفيق,2006-07-12,1427-07-12,Female,REG704601,165369282,National_ID,https://files.catbox.moe/su8v9w.png
+181,218,Second secondary,الثاني ثانوي,Fahad,فهد,Ahmed Youssef Ahmed Tawfik,منصور كرم كرم عازر,2008-01-24,1429-01-24,Male,REG386015,212998590,Iqama,https://files.catbox.moe/pusrqu.jpg
+185,147,Second secondary,الثاني ثانوي,Karam,كرم,Ahmed Youssef Ahmed Tawfik,منصور كرم كرم عازر,2011-04-29,1432-04-29,Male,REG796844,247112012,Iqama,https://files.catbox.moe/pm003z.jpg
+186,108,Second secondary,الثاني ثانوي,Abdelrahman,عبد الرحمن,Omar Omar Abdelrahman Abdelrahman,خالد عبد الله تركي العتيبي,2014-01-10,1435-01-10,Male,REG718667,179054276,Iqama,https://files.catbox.moe/pusrqu.jpg
+188,229,Second secondary,الثاني ثانوي,Dina,دينا,Omar Omar Abdelrahman Abdelrahman,خالد عبد الله تركي العتيبي,2016-05-06,1437-05-06,Female,REG751283,252423061,Iqama,https://files.catbox.moe/68hhzz.png
+189,136,Second secondary,الثاني ثانوي,Mohamed,محمد,Omar Omar Abdelrahman Abdelrahman,خالد عبد الله تركي العتيبي,2018-07-20,1439-07-20,Male,REG288625,171700369,Iqama,https://files.catbox.moe/pm003z.jpg
+196,176,Second secondary,الثاني ثانوي,Fahad,فهد,Ahmed Mostafa Mostafa Ibrahim,فيصل تركي سعود المطيري,2010-11-01,1431-11-01,Male,REG963436,128606285,National_ID,https://files.catbox.moe/pusrqu.jpg
+200,230,Second secondary,الثاني ثانوي,Maha,مها,Ahmed Mostafa Mostafa Ibrahim,فيصل تركي سعود المطيري,2009-08-29,1430-08-29,Female,REG189801,171388931,National_ID,https://files.catbox.moe/68hhzz.png
+204,161,Second secondary,الثاني ثانوي,Turki,تركي,Ahmed Hassan Mostafa Tawfik,فهد باسل جميل عازر,2018-05-04,1439-05-04,Male,REG185967,289098826,National_ID,https://files.catbox.moe/pusrqu.jpg
+205,234,Second secondary,الثاني ثانوي,Fatima,فاطمه,Ahmed Hassan Mostafa Tawfik,فهد باسل جميل عازر,2006-11-12,1427-11-12,Female,REG150979,249961029,National_ID,https://files.catbox.moe/178hjt.png
+207,172,Second secondary,الثاني ثانوي,Karam,كرم,Abdelrahman Ismail Nour Abdelrahman,عمر محمد عمر مصطفى,2014-01-29,1435-01-29,Male,REG575820,110003124,Iqama,https://files.catbox.moe/pusrqu.jpg
+214,156,Second secondary,الثاني ثانوي,Rami,رامي,Abdullah Abdullah Saud Al Otaibi,عبد الله نادر جميل كنعان,2010-10-04,1431-10-04,Male,REG235703,181255501,National_ID,https://files.catbox.moe/pm003z.jpg
+219,231,Second secondary,الثاني ثانوي,Diala,ديالا,Karam Nader Rami Khoury,يوسف مصطفى أحمد السيد,2016-12-31,1437-12-31,Female,REG382871,271224952,Iqama,https://files.catbox.moe/68hhzz.png
+220,232,Second secondary,الثاني ثانوي,Rasha,رشا,Karam Nader Rami Khoury,يوسف مصطفى أحمد السيد,2008-11-19,1429-11-19,Female,REG511112,126383638,Iqama,https://files.catbox.moe/68hhzz.png
+223,228,Second secondary,الثاني ثانوي,Rania,رانيا,Khalid Fahad Saud Al Harbi,محمود عمر إسماعيل عبد الرحمن,2014-03-12,1435-03-12,Female,REG172161,115661912,Iqama,https://files.catbox.moe/68hhzz.png
+224,228,Second secondary,الثاني ثانوي,Lina,لينا,Khalid Fahad Saud Al Harbi,محمود عمر إسماعيل عبد الرحمن,2012-10-29,1433-10-29,Female,REG520579,157924470,Iqama,https://files.catbox.moe/su8v9w.png
+231,173,Second secondary,الثاني ثانوي,Ahmed,احمد,Hassan Mostafa Ahmed El Sayed,منصور فهد تركي آل سعود,2008-12-02,1429-12-02,Male,REG768066,230383529,National_ID,https://files.catbox.moe/pm003z.jpg
+232,230,Second secondary,الثاني ثانوي,Samar,سمر,Hassan Mostafa Ahmed El Sayed,منصور فهد تركي آل سعود,2015-12-27,1436-12-27,Female,REG569637,148203465,National_ID,https://files.catbox.moe/su8v9w.png
+234,230,Second secondary,الثاني ثانوي,Najat,نجاة,Hassan Mostafa Ahmed El Sayed,منصور فهد تركي آل سعود,2017-04-03,1438-04-03,Female,REG196103,145251520,National_ID,https://files.catbox.moe/68hhzz.png
+4,76,Second Intermediate,الثاني متوسط,Abdelrahman,عبد الرحمن,Fahad Karam Jamil Azar,فهد كرم جميل عازر,2013-06-12,1434-06-12,Male,REG641433,282353076,Iqama,https://files.catbox.moe/ki5ubc.jpg
+6,94,Second Intermediate,الثاني متوسط,Omar,عمر,Fahad Karam Jamil Azar,فهد كرم جميل عازر,2013-03-28,1434-03-28,Male,REG531573,155418196,Iqama,https://files.catbox.moe/pusrqu.jpg
+11,19,Second Intermediate,الثاني متوسط,Tarek,طارق,Abdelrahman Nour Nour Abdelrahman,عمر إسماعيل عبد الرحمن علي,2018-06-16,1439-06-16,Male,REG201418,274448550,National_ID,https://files.catbox.moe/pusrqu.jpg
+12,746,Second Intermediate,الثاني متوسط,Latifa,لطيفة,Abdelrahman Nour Nour Abdelrahman,عمر إسماعيل عبد الرحمن علي,2007-03-11,1428-03-11,Female,REG156819,273971186,National_ID,https://files.catbox.moe/mq2lyu.jpg
+13,728,Second Intermediate,الثاني متوسط,Mona,مني,Abdelrahman Nour Nour Abdelrahman,عمر إسماعيل عبد الرحمن علي,2009-03-19,1430-03-19,Female,REG283162,223691918,National_ID,https://files.catbox.moe/mq2lyu.jpg
+16,13,Second Intermediate,الثاني متوسط,Nader,نادر,Khalid Turki Abdullah Al Saud,عبدالله سعود آل سعود,2010-10-21,1431-10-21,Male,REG389954,151013764,Iqama,https://files.catbox.moe/ki5ubc.jpg
+18,19,Second Intermediate,الثاني متوسط,Hassan,حسن,Khalid Turki Abdullah Al Saud,عبدالله سعود آل سعود,2009-01-28,1430-01-28,Male,REG575045,296400724,Iqama,https://files.catbox.moe/ki5ubc.jpg
+21,5,Second Intermediate,الثاني متوسط,Khalid,خالد,Khalid Turki Abdullah Al Saud,عبدالله سعود آل سعود,2014-09-07,1435-09-07,Male,REG289453,130869869,Iqama,https://files.catbox.moe/pusrqu.jpg
+22,77,Second Intermediate,الثاني متوسط,Bassel,باسل,Omar Ismail Abdelrahman Ali,يوسف عمر عبد الرحمن علي,2015-12-12,1436-12-12,Male,REG153576,220087667,Iqama,https://files.catbox.moe/pusrqu.jpg
+28,83,Second Intermediate,الثاني متوسط,Ismail,إسماعيل,Omar Ismail Abdelrahman Ali,يوسف عمر عبد الرحمن علي,2011-12-10,1432-12-10,Male,REG323170,272387557,Iqama,https://files.catbox.moe/pusrqu.jpg
+34,14,Second Intermediate,الثاني متوسط,Fahad,فهد,Abdullah Saud Saud Al Saud,ناصر عبدالله سعود القحطاني,2015-09-23,1436-09-23,Male,REG389536,280611385,National_ID,https://files.catbox.moe/pusrqu.jpg
+35,753,Second Intermediate,الثاني متوسط,Diala,ديالا,Abdullah Saud Saud Al Saud,ناصر عبدالله سعود القحطاني,2017-03-01,1438-03-01,Female,REG140347,197757980,National_ID,https://files.catbox.moe/emgnbf.jpg
+40,74,Second Intermediate,الثاني متوسط,Turki,تركي,Youssef Omar Abdelrahman Ali,بدر نور نور علي,2013-03-25,1434-03-25,Male,REG847719,131535556,Iqama,https://files.catbox.moe/pusrqu.jpg
+42,691,Second Intermediate,الثاني متوسط,Noura,نورا,Youssef Omar Abdelrahman Ali,بدر نور نور علي,2013-07-01,1434-07-01,Female,REG392573,260252840,Iqama,https://files.catbox.moe/mq2lyu.jpg
+43,56,Second Intermediate,الثاني متوسط,Nader,نادر,Hassan Youssef Hassan Tawfik,منصور باسل باسل جابر,2011-10-10,1432-10-10,Male,REG260999,155360075,Iqama,https://files.catbox.moe/ki5ubc.jpg
+51,712,Second Intermediate,الثاني متوسط,Lina,لينا,Nasser Abdullah Saud Al Qahtani,خالد رامي باسل كنعان,2015-05-21,1436-05-21,Female,REG624715,285887430,Iqama,https://files.catbox.moe/mq2lyu.jpg
+55,28,Second Intermediate,الثاني متوسط,Fahad,فهد,Nasser Abdullah Saud Al Qahtani,خالد رامي باسل كنعان,2008-06-01,1429-06-01,Male,REG193615,258822031,Iqama,https://files.catbox.moe/pusrqu.jpg
+60,71,Second Intermediate,الثاني متوسط,Khalid,خالد,Turki Fahad Fahad Al Saud,محمد رامي باسل عازار,2011-02-27,1432-02-27,Male,REG916889,198058826,Iqama,https://files.catbox.moe/ki5ubc.jpg
+82,710,Second Intermediate,الثاني متوسط,Maha,مها,Saud Fahad Abdullah Al Saud,عمر عمر عبد الرحمن عبد الرحمن,2006-09-17,1427-09-17,Female,REG979285,134589835,National_ID,https://files.catbox.moe/emgnbf.jpg
+87,713,Second Intermediate,الثاني متوسط,Hala,هاله,Fahad Fahad Khalid Al Saud,عبدالله تركي سعود المطيري,2010-10-24,1431-10-24,Female,REG769757,112214898,Iqama,https://files.catbox.moe/mq2lyu.jpg
+89,638,Second Intermediate,الثاني متوسط,Huda,هدي,Fahad Fahad Khalid Al Saud,عبدالله تركي سعود المطيري,2011-10-01,1432-10-01,Female,REG162258,232114421,Iqama,https://files.catbox.moe/emgnbf.jpg
+91,23,Second Intermediate,الثاني متوسط,Tarek,طارق,Fahad Fahad Khalid Al Saud,عبدالله تركي سعود المطيري,2016-01-19,1437-01-19,Male,REG359516,124607716,Iqama,https://files.catbox.moe/ki5ubc.jpg
+93,55,Second Intermediate,الثاني متوسط,Tarek,طارق,Fahad Khalid Turki Al Harbi,يوسف طارق طارق فريد,2019-02-20,1440-02-20,Male,REG574608,111482262,National_ID,https://files.catbox.moe/pusrqu.jpg
+99,72,Second Intermediate,الثاني متوسط,Hassan,حسن,Rami Bassel Bassel Jaber,ناصر كرم باسل خوري,2017-05-09,1438-05-09,Male,REG472976,245052001,National_ID,https://files.catbox.moe/ki5ubc.jpg
+257,379,Fifth Primary,الخامس الابتدائي,Maha,مها,Karim Tarek Hassan El Sayed,خالد تركي عبدالله آل سعود,2008-12-01,1429-12-01,Female,REG828109,170933338,National_ID,https://files.catbox.moe/tyqlaa.jpg
+273,256,Fifth Primary,الخامس الابتدائي,Abdelrahman,عبد الرحمن,Faisal Nader Karam Haddad,يوسف يوسف حسن محمود,2008-08-12,1429-08-12,Male,REG544303,180996619,National_ID,https://files.catbox.moe/ypraoq.jpg
+275,547,Fifth Primary,الخامس الابتدائي,Rima,ريما,Faisal Nader Karam Haddad,يوسف يوسف حسن محمود,2011-07-04,1432-07-04,Female,REG809473,238320121,National_ID,https://files.catbox.moe/r5nj4o.jpg
+284,257,Fifth Primary,الخامس الابتدائي,Youssef,يوسف,Abdelrahman Nour Abdelrahman Ibrahim,سعود فهد عبدالله آل سعود,2012-09-17,1433-09-17,Male,REG356101,178228367,National_ID,https://files.catbox.moe/ypraoq.jpg
+300,546,Fifth Primary,الخامس الابتدائي,Dina,دينا,Turki Rami Nader Azar,رامي باسل باسل جابر,2009-11-25,1430-11-25,Female,REG338748,298395944,Iqama,https://files.catbox.moe/r5nj4o.jpg
+301,263,Fifth Primary,الخامس الابتدائي,Youssef,يوسف,Abdullah Khalid Saud Al Otaibi,جميل نادر كرم جابر,2011-04-28,1432-04-28,Male,REG550142,125126650,National_ID,https://files.catbox.moe/23kp94.jpg
+302,236,Fifth Primary,الخامس الابتدائي,Ismail,إسماعيل,Abdullah Khalid Saud Al Otaibi,جميل نادر كرم جابر,2015-07-03,1436-07-03,Male,REG486204,180519403,National_ID,https://files.catbox.moe/ypraoq.jpg
+305,388,Fifth Primary,الخامس الابتدائي,Samah,سماح,Saud Nader Jamil Haddad,إسماعيل عمر نور حسن,2014-08-07,1435-08-07,Female,REG724489,278191414,Iqama,https://files.catbox.moe/r5nj4o.jpg
+316,249,Fifth Primary,الخامس الابتدائي,Karam,كرم,Ahmed Youssef Hassan El Sayed,حسن أحمد طارق إبراهيم,2015-01-07,1436-01-07,Male,REG646209,280695424,National_ID,https://files.catbox.moe/ypraoq.jpg
+322,389,Fifth Primary,الخامس الابتدائي,Abeer,عبير,Nasser Fahad Turki Al Otaibi,خالد سعود خالد آل سعود,2010-11-08,1431-11-08,Female,REG543665,293463094,National_ID,https://files.catbox.moe/tyqlaa.jpg
+325,292,Fifth Primary,الخامس الابتدائي,Turki,تركي,Hassan Ahmed Ahmed El Sayed,أحمد مصطفى مصطفى إبراهيم,2012-12-06,1433-12-06,Male,REG229324,229540434,Iqama,https://files.catbox.moe/23kp94.jpg
+329,280,Fifth Primary,الخامس الابتدائي,Abdelrahman,عبد الرحمن,Omar Omar Abdelrahman Abdelrahman,أحمد حسن مصطفى توفيق,2017-04-19,1438-04-19,Male,REG952177,118277077,National_ID,https://files.catbox.moe/2l6fok.jpg
+349,287,Fifth Primary,الخامس الابتدائي,Ahmed,احمد,Mostafa Tarek Tarek Tawfik,حسن مصطفى أحمد السيد,2006-12-29,1427-12-29,Male,REG401545,126938736,Iqama,https://files.catbox.moe/ypraoq.jpg
+350,546,Fifth Primary,الخامس الابتدائي,Salma,سلمي,Mostafa Tarek Tarek Tawfik,حسن مصطفى أحمد السيد,2016-10-20,1437-10-20,Female,REG532141,168660292,Iqama,https://files.catbox.moe/tyqlaa.jpg
+352,241,Fifth Primary,الخامس الابتدائي,Nader,نادر,Mostafa Tarek Tarek Tawfik,حسن مصطفى أحمد السيد,2012-12-21,1433-12-21,Male,REG311096,264654608,Iqama,https://files.catbox.moe/tw1jzy.jpg
+370,263,Fifth Primary,الخامس الابتدائي,Saud,سعود,Ahmed Mostafa Youssef Mahmoud,سعود تركي خالد المطيري,2009-09-17,1430-09-17,Male,REG551792,247284338,Iqama,https://files.catbox.moe/2l6fok.jpg
+385,249,Fifth Primary,الخامس الابتدائي,Khalid,خالد,Mohammed Jamil Nader Jaber,عبدالله سعود القحطاني,2016-12-23,1437-12-23,Male,REG663896,110345135,National_ID,https://files.catbox.moe/tw1jzy.jpg
+389,290,Fifth Primary,الخامس الابتدائي,Mohamed,محمد,Tarek Ahmed Tarek El Sayed,نور عبد الرحمن محمد إبراهيم,2011-05-24,1432-05-24,Male,REG350561,139590254,Iqama,https://files.catbox.moe/ypraoq.jpg
+401,243,Fifth Primary,الخامس الابتدائي,Mostafa,مصطفى,Fahad Bassel Jamil Azar,تركي عبد الله سعود الحربي,2014-02-22,1435-02-22,Male,REG100783,238279286,National_ID,https://files.catbox.moe/2l6fok.jpg
+406,501,Fifth Primary,الخامس الابتدائي,Dina,دينا,Mostafa Ahmed Mostafa Mahmoud,مصطفى طارق أحمد فريد,2007-01-28,1428-01-28,Female,REG982639,112382245,Iqama,https://files.catbox.moe/r5nj4o.jpg
+413,501,Fifth Primary,الخامس الابتدائي,Noura,نورا,Tarek Tarek Mostafa Ibrahim,نادر نادر كرم عازر,2016-02-15,1437-02-15,Female,REG660601,238076530,Iqama,https://files.catbox.moe/tyqlaa.jpg
+416,468,Fifth Primary,الخامس الابتدائي,Rima,ريما,Abdullah Nader Jamil Kanaan,أحمد مصطفى يوسف محمود,2007-12-26,1428-12-26,Female,REG287982,171662935,Iqama,https://files.catbox.moe/r5nj4o.jpg
+420,484,Fifth Primary,الخامس الابتدائي,Latifa,لطيفة,Youssef Mostafa Ahmed El Sayed,حسن أحمد طارق إبراهيم,2015-04-22,1436-04-22,Female,REG826393,220913724,National_ID,https://files.catbox.moe/tyqlaa.jpg
+422,494,Fifth Primary,الخامس الابتدائي,Nihal,نهال,Youssef Mostafa Ahmed El Sayed,حسن أحمد طارق إبراهيم,2015-01-09,1436-01-09,Female,REG878631,139909430,National_ID,https://files.catbox.moe/r5nj4o.jpg
+438,520,Fifth Primary,الخامس الابتدائي,Dina,دينا,Tarek Youssef Mostafa Ibrahim,تركي تركي تركي آل سعود,2013-12-29,1434-12-29,Female,REG926041,145589885,Iqama,https://files.catbox.moe/r5nj4o.jpg
+450,260,Fifth Primary,الخامس الابتدائي,Khalid,خالد,Rami Karam Karam Jaber,فهد عبدالله سعود المطيري,2008-06-17,1429-06-17,Male,REG958421,194597709,Iqama,https://files.catbox.moe/23kp94.jpg
+453,277,Fifth Primary,الخامس الابتدائي,Nader,نادر,Tarek Tarek Hassan Mahmoud,حسن أحمد أحمد توفيق,2006-11-23,1427-11-23,Male,REG817533,154445075,Iqama,https://files.catbox.moe/2l6fok.jpg
+454,284,Fifth Primary,الخامس الابتدائي,Hassan,حسن,Tarek Tarek Hassan Mahmoud,حسن أحمد أحمد توفيق,2012-04-09,1433-04-09,Male,REG828713,115691337,Iqama,https://files.catbox.moe/tw1jzy.jpg
+456,248,Fifth Primary,الخامس الابتدائي,Turki,تركي,Omar Nour Omar Mustafa,عبد الله تركي فهد الحربي,2009-06-03,1430-06-03,Male,REG237125,264492148,Iqama,https://files.catbox.moe/tw1jzy.jpg
+463,362,Fifth Primary,الخامس الابتدائي,Samar,سمر,Mansour Fahad Turki Al Saud,سعود خالد فهد القحطاني,2009-12-07,1430-12-07,Female,REG978318,138337892,National_ID,https://files.catbox.moe/tyqlaa.jpg
+481,520,Fifth Primary,الخامس الابتدائي,Lina,لينا,Nour Ismail Nour Abdelrahman,طارق يوسف أحمد إبراهيم,2008-04-22,1429-04-22,Female,REG170306,135752086,National_ID,https://files.catbox.moe/tyqlaa.jpg
+488,557,Fifth Primary,الخامس الابتدائي,Samah,سماح,Nader Bassel Jamil Azar,خالد فهد فهد آل سعود,2009-12-08,1430-12-08,Female,REG797815,189420065,National_ID,https://files.catbox.moe/r5nj4o.jpg
+491,469,Fifth Primary,الخامس الابتدائي,Rania,رانيا,Mohammed Mohamed Nour Ibrahim,نور إسماعيل نور عبد الرحمن,2014-06-13,1435-06-13,Female,REG711827,219668604,Iqama,https://files.catbox.moe/tyqlaa.jpg
+498,254,Fifth Primary,الخامس الابتدائي,Youssef,يوسف,Sherif Youssef Mostafa Ibrahim,نادر باسل جميل عازر,2016-06-25,1437-06-25,Male,REG541540,162038467,Iqama,https://files.catbox.moe/23kp94.jpg
+248,282,Fourth Primary,الرابع الابتدائي,Rami,رامي,Mansour Rami Rami Khoury,شريف يوسف مصطفى إبراهيم,2010-02-12,1431-02-12,Male,REG411436,282437980,National_ID,https://files.catbox.moe/2l6fok.jpg
+251,344,Fourth Primary,الرابع الابتدائي,Samah,سماح,Hisham Ahmed Ahmed Ibrahim,عبد الرحمن نور نور عبد الرحمن,2018-05-26,1439-05-26,Female,REG539030,287600357,Iqama,https://files.catbox.moe/r5nj4o.jpg
+253,298,Fourth Primary,الرابع الابتدائي,Mohamed,محمد,Hisham Ahmed Ahmed Ibrahim,عبد الرحمن نور نور عبد الرحمن,2011-10-23,1432-10-23,Male,REG432188,110575143,Iqama,https://files.catbox.moe/2l6fok.jpg
+254,259,Fourth Primary,الرابع الابتدائي,Tarek,طارق,Hisham Ahmed Ahmed Ibrahim,عبد الرحمن نور نور عبد الرحمن,2011-11-14,1432-11-14,Male,REG731919,267370789,Iqama,https://files.catbox.moe/tw1jzy.jpg
+262,294,Fourth Primary,الرابع الابتدائي,Saud,سعود,Tarek Hassan Youssef Farid,حسن يوسف حسن توفيق,2016-04-24,1437-04-24,Male,REG386454,199392879,Iqama,https://files.catbox.moe/23kp94.jpg
+264,300,Fourth Primary,الرابع الابتدائي,Tarek,طارق,Tarek Hassan Youssef Farid,حسن يوسف حسن توفيق,2018-08-12,1439-08-12,Male,REG999103,220272651,Iqama,https://files.catbox.moe/tw1jzy.jpg
+267,358,Fourth Primary,الرابع الابتدائي,Diala,ديالا,Jamil Nader Rami Kanaan,تركي فهد فهد آل سعود,2007-07-11,1428-07-11,Female,REG140977,177579188,National_ID,https://files.catbox.moe/r5nj4o.jpg
+280,267,Fourth Primary,الرابع الابتدائي,Mostafa,مصطفى,Ahmed Hassan Mostafa Ibrahim,مصطفى أحمد حسن إبراهيم,2009-02-16,1430-02-16,Male,REG306621,151454710,Iqama,https://files.catbox.moe/2l6fok.jpg
+283,241,Fourth Primary,الرابع الابتدائي,Rami,رامي,Abdelrahman Nour Abdelrahman Ibrahim,سعود فهد عبدالله آل سعود,2014-03-26,1435-03-26,Male,REG162945,164127372,National_ID,https://files.catbox.moe/2l6fok.jpg
+288,284,Fourth Primary,الرابع الابتدائي,Ahmed,احمد,Khalid Saud Fahad Al Harbi,فهد فهد خالد آل سعود,2014-12-10,1435-12-10,Male,REG457556,257274467,National_ID,https://files.catbox.moe/ypraoq.jpg
+290,250,Fourth Primary,الرابع الابتدائي,Tarek,طارق,Khalid Saud Fahad Al Harbi,فهد فهد خالد آل سعود,2016-02-27,1437-02-27,Male,REG501822,113282837,National_ID,https://files.catbox.moe/ypraoq.jpg
+293,365,Fourth Primary,الرابع الابتدائي,Mona,مني,Bassel Jamil Bassel Jaber,فهد خالد تركي الحربي,2015-03-17,1436-03-17,Female,REG883335,193522337,Iqama,https://files.catbox.moe/r5nj4o.jpg
+296,419,Fourth Primary,الرابع الابتدائي,Hala,هاله,Turki Rami Nader Azar,رامي باسل باسل جابر,2007-09-11,1428-09-11,Female,REG611490,144364265,Iqama,https://files.catbox.moe/r5nj4o.jpg
+308,311,Fourth Primary,الرابع الابتدائي,Samar,سمر,Saud Nader Jamil Haddad,إسماعيل عمر نور حسن,2016-05-15,1437-05-15,Female,REG311341,159655465,Iqama,https://files.catbox.moe/r5nj4o.jpg
+309,413,Fourth Primary,الرابع الابتدائي,Salma,سلمي,Saud Turki Khalid Al Mutairi,باسل نادر رامي كنعان,2010-05-15,1431-05-15,Female,REG444831,126280716,Iqama,https://files.catbox.moe/r5nj4o.jpg
+320,454,Fourth Primary,الرابع الابتدائي,Najat,نجاة,Nader Bassel Jamil Azar,كرم باسل جميل عازر,2007-07-06,1428-07-06,Female,REG379571,277160591,Iqama,https://files.catbox.moe/r5nj4o.jpg
+363,277,Fourth Primary,الرابع الابتدائي,Mohamed,محمد,Karam Bassel Rami Jaber,خالد سعود فهد الحربي,2017-02-10,1438-02-10,Male,REG272728,138004996,National_ID,https://files.catbox.moe/tw1jzy.jpg
+366,274,Fourth Primary,الرابع الابتدائي,Jamil,جميل,Nader Nader Karam Azar,باسل جميل باسل جابر,2018-04-22,1439-04-22,Male,REG988323,163429614,National_ID,https://files.catbox.moe/ypraoq.jpg
+373,260,Fourth Primary,الرابع الابتدائي,Omar,عمر,Hassan Ahmed Tarek Ibrahim,أحمد يوسف حسن السيد,2008-04-13,1429-04-13,Male,REG923630,195310880,National_ID,https://files.catbox.moe/2l6fok.jpg
+374,473,Fourth Primary,الرابع الابتدائي,Najat,نجاة,Hassan Ahmed Tarek Ibrahim,أحمد يوسف حسن السيد,2007-06-02,1428-06-02,Female,REG581559,247647251,National_ID,https://files.catbox.moe/r5nj4o.jpg
+383,279,Fourth Primary,الرابع الابتدائي,Bassel,باسل,Omar Omar Mohamed Mustafa,عمر عمر عبد الرحمن عبد الرحمن,2018-01-03,1439-01-03,Male,REG774917,212901350,Iqama,https://files.catbox.moe/2l6fok.jpg
+391,551,Fourth Primary,الرابع الابتدائي,Najat,نجاة,Turki Turki Turki Al Saud,فهد سعود عبدالله القحطاني,2017-12-24,1438-12-24,Female,REG351656,118988485,National_ID,https://files.catbox.moe/tyqlaa.jpg
+395,320,Fourth Primary,الرابع الابتدائي,Rania,رانيا,Faisal Turki Saud Al Mutairi,مصطفى طارق طارق توفيق,2007-01-17,1428-01-17,Female,REG527806,280934447,National_ID,https://files.catbox.moe/r5nj4o.jpg
+399,279,Fourth Primary,الرابع الابتدائي,Abdelrahman,عبد الرحمن,Fahad Bassel Jamil Azar,تركي عبد الله سعود الحربي,2019-04-08,1440-04-08,Male,REG987065,138996123,National_ID,https://files.catbox.moe/2l6fok.jpg
+411,376,Fourth Primary,الرابع الابتدائي,Lina,لينا,Tarek Tarek Mostafa Ibrahim,نادر نادر كرم عازر,2017-09-25,1438-09-25,Female,REG196458,194071088,Iqama,https://files.catbox.moe/r5nj4o.jpg
+423,437,Fourth Primary,الرابع الابتدائي,Samah,سماح,Fahad Abdullah Saud Al Mutairi,عمر إسماعيل عبد الرحمن حسن,2011-08-04,1432-08-04,Female,REG511888,247635366,National_ID,https://files.catbox.moe/r5nj4o.jpg
+425,431,Fourth Primary,الرابع الابتدائي,Salma,سلمي,Fahad Abdullah Saud Al Mutairi,عمر إسماعيل عبد الرحمن حسن,2008-11-15,1429-11-15,Female,REG528221,143194995,National_ID,https://files.catbox.moe/r5nj4o.jpg
+433,282,Fourth Primary,الرابع الابتدائي,Bassel,باسل,Hassan Ahmed Ahmed Tawfik,طارق أحمد طارق السيد,2008-01-31,1429-01-31,Male,REG442021,160299223,National_ID,https://files.catbox.moe/2l6fok.jpg
+435,300,Fourth Primary,الرابع الابتدائي,Youssef,يوسف,Tarek Youssef Mostafa Ibrahim,تركي تركي تركي آل سعود,2009-01-19,1430-01-19,Male,REG724606,127437113,Iqama,https://files.catbox.moe/tw1jzy.jpg
+439,476,Fourth Primary,الرابع الابتدائي,Huda,هدي,Abdullah Turki Fahad Al Harbi,مصطفى أحمد مصطفى محمود,2013-09-23,1434-09-23,Female,REG190658,177055161,Iqama,https://files.catbox.moe/tyqlaa.jpg
+444,264,Fourth Primary,الرابع الابتدائي,Saud,سعود,Saud Khalid Fahad Al Qahtani,طارق طارق مصطفى إبراهيم,2011-12-01,1432-12-01,Male,REG484356,249799013,National_ID,https://files.catbox.moe/tw1jzy.jpg
+449,250,Fourth Primary,الرابع الابتدائي,Fahad,فهد,Rami Karam Karam Jaber,فهد عبدالله سعود المطيري,2007-08-05,1428-08-05,Male,REG784794,238567428,Iqama,https://files.catbox.moe/tw1jzy.jpg
+467,465,Fourth Primary,الرابع الابتدائي,Amna,آمنة,Tarek Youssef Ahmed Ibrahim,رامي كرم كرم جابر,2017-11-09,1438-11-09,Female,REG834873,181415708,National_ID,https://files.catbox.moe/tyqlaa.jpg
+469,282,Fourth Primary,الرابع الابتدائي,Turki,تركي,Tarek Youssef Ahmed Ibrahim,رامي كرم كرم جابر,2008-06-28,1429-06-28,Male,REG150220,117550434,National_ID,https://files.catbox.moe/23kp94.jpg
+472,291,Fourth Primary,الرابع الابتدائي,Nour,نور,Khalid Bassel Rami Kanaan,طارق طارق حسن محمود,2011-05-21,1432-05-21,Male,REG517133,262944855,Iqama,https://files.catbox.moe/2l6fok.jpg
+476,425,Fourth Primary,الرابع الابتدائي,Abeer,عبير,Khalid Fahad Fahad Al Saud,عمر نور عمر مصطفى,2016-09-07,1437-09-07,Female,REG945453,232050966,Iqama,https://files.catbox.moe/r5nj4o.jpg
+478,373,Fourth Primary,الرابع الابتدائي,Maha,مها,Khalid Fahad Fahad Al Saud,عمر نور عمر مصطفى,2008-10-22,1429-10-22,Female,REG826870,235522308,Iqama,https://files.catbox.moe/r5nj4o.jpg
+479,546,Fourth Primary,الرابع الابتدائي,Samar,سمر,Khalid Fahad Fahad Al Saud,عمر نور عمر مصطفى,2009-07-29,1430-07-29,Female,REG430279,129500546,Iqama,https://files.catbox.moe/r5nj4o.jpg
+482,550,Fourth Primary,الرابع الابتدائي,Huda,هدي,Nour Ismail Nour Abdelrahman,طارق يوسف أحمد إبراهيم,2014-07-04,1435-07-04,Female,REG523332,288777336,National_ID,https://files.catbox.moe/tyqlaa.jpg
+483,287,Fourth Primary,الرابع الابتدائي,Ismail,إسماعيل,Nour Ismail Nour Abdelrahman,طارق يوسف أحمد إبراهيم,2012-04-03,1433-04-03,Male,REG363087,149792917,National_ID,https://files.catbox.moe/tw1jzy.jpg
+242,415,Sixth Primary,السادس الابتدائي,Lina,لينا,Bader Jamil Bassel Kanaan,محمد محمد نور إبراهيم,2014-11-17,1435-11-17,Female,REG568065,197016944,Iqama,https://files.catbox.moe/r5nj4o.jpg
+244,276,Sixth Primary,السادس الابتدائي,Turki,تركي,Bader Jamil Bassel Kanaan,محمد محمد نور إبراهيم,2017-10-17,1438-10-17,Male,REG171632,296283062,Iqama,https://files.catbox.moe/tw1jzy.jpg
+246,276,Sixth Primary,السادس الابتدائي,Nour,نور,Mansour Rami Rami Khoury,شريف يوسف مصطفى إبراهيم,2015-08-18,1436-08-18,Male,REG577741,130441810,National_ID,https://files.catbox.moe/23kp94.jpg
+247,269,Sixth Primary,السادس الابتدائي,Hassan,حسن,Mansour Rami Rami Khoury,شريف يوسف مصطفى إبراهيم,2016-10-07,1437-10-07,Male,REG282494,162713681,National_ID,https://files.catbox.moe/ypraoq.jpg
+249,408,Sixth Primary,السادس الابتدائي,Samah,سماح,Mansour Rami Rami Khoury,شريف يوسف مصطفى إبراهيم,2006-07-24,1427-07-24,Female,REG596944,142008793,National_ID,https://files.catbox.moe/tyqlaa.jpg
+259,250,Sixth Primary,السادس الابتدائي,Bassel,باسل,Karim Tarek Hassan El Sayed,خالد تركي عبدالله آل سعود,2016-08-24,1437-08-24,Male,REG268052,258404649,National_ID,https://files.catbox.moe/23kp94.jpg
+260,569,Sixth Primary,السادس الابتدائي,Diala,ديالا,Karim Tarek Hassan El Sayed,خالد تركي عبدالله آل سعود,2009-01-17,1430-01-17,Female,REG624983,171813917,National_ID,https://files.catbox.moe/r5nj4o.jpg
+265,290,Sixth Primary,السادس الابتدائي,Ismail,إسماعيل,Tarek Hassan Youssef Farid,حسن يوسف حسن توفيق,2018-05-31,1439-05-31,Male,REG333914,231203464,Iqama,https://files.catbox.moe/ypraoq.jpg
+268,387,Sixth Primary,السادس الابتدائي,Samar,سمر,Jamil Nader Rami Kanaan,تركي فهد فهد آل سعود,2007-11-01,1428-11-01,Female,REG331177,162126702,National_ID,https://files.catbox.moe/tyqlaa.jpg
+270,546,Sixth Primary,السادس الابتدائي,Abeer,عبير,Jamil Nader Rami Kanaan,تركي فهد فهد آل سعود,2007-01-24,1428-01-24,Female,REG411390,260230615,National_ID,https://files.catbox.moe/tyqlaa.jpg
+271,263,Sixth Primary,السادس الابتدائي,Abdullah,عبد الله,Faisal Nader Karam Haddad,يوسف يوسف حسن محمود,2007-07-11,1428-07-11,Male,REG524580,237679247,National_ID,https://files.catbox.moe/tw1jzy.jpg
+276,300,Sixth Primary,السادس الابتدائي,Youssef,يوسف,Ahmed Hassan Mostafa Ibrahim,مصطفى أحمد حسن إبراهيم,2006-08-27,1427-08-27,Male,REG153076,274913942,Iqama,https://files.catbox.moe/tw1jzy.jpg
+282,251,Sixth Primary,السادس الابتدائي,Hassan,حسن,Abdelrahman Nour Abdelrahman Ibrahim,سعود فهد عبدالله آل سعود,2017-07-22,1438-07-22,Male,REG763988,280154724,National_ID,https://files.catbox.moe/tw1jzy.jpg
+286,248,Sixth Primary,السادس الابتدائي,Ahmed,احمد,Khalid Saud Fahad Al Harbi,فهد فهد خالد آل سعود,2012-11-24,1433-11-24,Male,REG250886,157059116,National_ID,https://files.catbox.moe/2l6fok.jpg
+289,239,Sixth Primary,السادس الابتدائي,Saud,سعود,Khalid Saud Fahad Al Harbi,فهد فهد خالد آل سعود,2006-12-19,1427-12-19,Male,REG149587,147398762,National_ID,https://files.catbox.moe/2l6fok.jpg
+295,301,Sixth Primary,السادس الابتدائي,Najat,نجاة,Bassel Jamil Bassel Jaber,فهد خالد تركي الحربي,2016-08-09,1437-08-09,Female,REG833804,147411424,Iqama,https://files.catbox.moe/r5nj4o.jpg
+298,268,Sixth Primary,السادس الابتدائي,Hassan,حسن,Turki Rami Nader Azar,رامي باسل باسل جابر,2013-08-25,1434-08-25,Male,REG106054,282346455,Iqama,https://files.catbox.moe/ypraoq.jpg
+299,352,Sixth Primary,السادس الابتدائي,Abeer,عبير,Turki Rami Nader Azar,رامي باسل باسل جابر,2019-03-27,1440-03-27,Female,REG101872,242257006,Iqama,https://files.catbox.moe/r5nj4o.jpg
+303,387,Sixth Primary,السادس الابتدائي,Rasha,رشا,Abdullah Khalid Saud Al Otaibi,جميل نادر كرم جابر,2016-07-30,1437-07-30,Female,REG321358,241936420,National_ID,https://files.catbox.moe/tyqlaa.jpg
+314,264,Sixth Primary,السادس الابتدائي,Rami,رامي,Ahmed Youssef Hassan El Sayed,حسن أحمد طارق إبراهيم,2009-06-28,1430-06-28,Male,REG650016,214810586,National_ID,https://files.catbox.moe/2l6fok.jpg
+334,255,Sixth Primary,السادس الابتدائي,Mohamed,محمد,Tarek Mostafa Youssef Tawfik,عبد الرحمن إسماعيل نور عبد الرحمن,2012-01-29,1433-01-29,Male,REG461927,117719790,National_ID,https://files.catbox.moe/tw1jzy.jpg
+336,351,Sixth Primary,السادس الابتدائي,Hala,هاله,Tarek Mostafa Youssef Tawfik,عبد الرحمن إسماعيل نور عبد الرحمن,2007-01-03,1428-01-03,Female,REG835512,267936911,National_ID,https://files.catbox.moe/r5nj4o.jpg
+342,460,Sixth Primary,السادس الابتدائي,Maha,مها,Nour Abdelrahman Mohamed Ibrahim,كرم نادر رامي خوري,2018-08-06,1439-08-06,Female,REG697338,232277761,National_ID,https://files.catbox.moe/tyqlaa.jpg
+345,334,Sixth Primary,السادس الابتدائي,Samah,سماح,Fahad Saud Abdullah Al Qahtani,خالد فهد سعود الحربي,2018-04-13,1439-04-13,Female,REG948358,156303022,Iqama,https://files.catbox.moe/r5nj4o.jpg
+346,372,Sixth Primary,السادس الابتدائي,Samar,سمر,Fahad Saud Abdullah Al Qahtani,خالد فهد سعود الحربي,2008-12-20,1429-12-20,Female,REG579683,143736559,Iqama,https://files.catbox.moe/r5nj4o.jpg
+354,315,Sixth Primary,السادس الابتدائي,Rima,ريما,Mansour Karam Karam Azar,طارق حسن يوسف فريد,2007-03-13,1428-03-13,Female,REG384407,269581520,National_ID,https://files.catbox.moe/r5nj4o.jpg
+358,311,Sixth Primary,السادس الابتدائي,Dina,دينا,Turki Abdullah Saud Al Harbi,جميل نادر رامي كنعان,2006-09-27,1427-09-27,Female,REG570136,182889739,National_ID,https://files.catbox.moe/r5nj4o.jpg
+362,236,Sixth Primary,السادس الابتدائي,Khalid,خالد,Mostafa Tarek Ahmed Farid,عبد الرحمن نور عبد الرحمن إبراهيم,2008-08-26,1429-08-26,Male,REG826562,174254843,Iqama,https://files.catbox.moe/ypraoq.jpg
+365,541,Sixth Primary,السادس الابتدائي,Hala,هاله,Karam Bassel Rami Jaber,خالد سعود فهد الحربي,2008-03-09,1429-03-09,Female,REG838768,175194892,National_ID,https://files.catbox.moe/tyqlaa.jpg
+368,274,Sixth Primary,السادس الابتدائي,Saud,سعود,Nader Nader Karam Azar,باسل جميل باسل جابر,2017-06-08,1438-06-08,Male,REG466892,182678993,National_ID,https://files.catbox.moe/ypraoq.jpg
+379,336,Sixth Primary,السادس الابتدائي,Najat,نجاة,Khalid Abdullah Turki Al Otaibi,حسن أحمد أحمد السيد,2017-02-25,1438-02-25,Female,REG622662,259130993,Iqama,https://files.catbox.moe/tyqlaa.jpg
+380,294,Sixth Primary,السادس الابتدائي,Fahad,فهد,Khalid Abdullah Turki Al Otaibi,حسن أحمد أحمد السيد,2012-02-22,1433-02-22,Male,REG921671,150586592,Iqama,https://files.catbox.moe/23kp94.jpg
+386,242,Sixth Primary,السادس الابتدائي,Saud,سعود,Mohammed Jamil Nader Jaber,عبدالله سعود القحطاني,2011-06-09,1432-06-09,Male,REG309524,251379948,National_ID,https://files.catbox.moe/tw1jzy.jpg
+387,269,Sixth Primary,السادس الابتدائي,Hassan,حسن,Tarek Ahmed Tarek El Sayed,نور عبد الرحمن محمد إبراهيم,2008-07-22,1429-07-22,Male,REG460479,118273206,Iqama,https://files.catbox.moe/ypraoq.jpg
+394,408,Sixth Primary,السادس الابتدائي,Noura,نورا,Turki Turki Turki Al Saud,فهد سعود عبدالله القحطاني,2009-08-12,1430-08-12,Female,REG312145,190643085,National_ID,https://files.catbox.moe/tyqlaa.jpg
+396,531,Sixth Primary,السادس الابتدائي,Samar,سمر,Faisal Turki Saud Al Mutairi,مصطفى طارق طارق توفيق,2013-01-23,1434-01-23,Female,REG570144,264878860,National_ID,https://files.catbox.moe/r5nj4o.jpg
+397,310,Sixth Primary,السادس الابتدائي,Najat,نجاة,Faisal Turki Saud Al Mutairi,مصطفى طارق طارق توفيق,2013-12-16,1434-12-16,Female,REG656450,212497441,National_ID,https://files.catbox.moe/r5nj4o.jpg
+403,405,Sixth Primary,السادس الابتدائي,Maha,مها,Mostafa Ahmed Mostafa Mahmoud,مصطفى طارق أحمد فريد,2017-02-23,1438-02-23,Female,REG397592,291039162,Iqama,https://files.catbox.moe/r5nj4o.jpg
+407,293,Sixth Primary,السادس الابتدائي,Omar,عمر,Omar Mohamed Omar Mustafa,كرم باسل رامي جابر,2014-08-31,1435-08-31,Male,REG439534,132060710,National_ID,https://files.catbox.moe/2l6fok.jpg
+408,472,Sixth Primary,السادس الابتدائي,Amna,آمنة,Omar Mohamed Omar Mustafa,كرم باسل رامي جابر,2010-09-27,1431-09-27,Female,REG198166,126701707,National_ID,https://files.catbox.moe/r5nj4o.jpg
+419,245,Sixth Primary,السادس الابتدائي,Youssef,يوسف,Youssef Mostafa Ahmed El Sayed,حسن أحمد طارق إبراهيم,2018-04-12,1439-04-12,Male,REG208782,120165354,National_ID,https://files.catbox.moe/2l6fok.jpg
+429,438,Sixth Primary,السادس الابتدائي,Rima,ريما,Mahmoud Omar Ismail Abdelrahman,عمر عمر محمد مصطفى,2007-10-29,1428-10-29,Female,REG286460,197784453,Iqama,https://files.catbox.moe/tyqlaa.jpg
+431,475,Sixth Primary,السادس الابتدائي,Mona,مني,Hassan Ahmed Ahmed Tawfik,طارق أحمد طارق السيد,2013-06-19,1434-06-19,Female,REG878295,211073875,National_ID,https://files.catbox.moe/r5nj4o.jpg
+446,392,Sixth Primary,السادس الابتدائي,Najat,نجاة,Saud Khalid Fahad Al Qahtani,طارق طارق مصطفى إبراهيم,2010-09-10,1431-09-10,Female,REG351996,296763457,National_ID,https://files.catbox.moe/r5nj4o.jpg
+457,407,Sixth Primary,السادس الابتدائي,Salma,سلمي,Omar Nour Omar Mustafa,عبد الله تركي فهد الحربي,2006-07-25,1427-07-25,Female,REG606763,146378327,Iqama,https://files.catbox.moe/r5nj4o.jpg
+458,404,Sixth Primary,السادس الابتدائي,Samah,سماح,Omar Nour Omar Mustafa,عبد الله تركي فهد الحربي,2010-04-26,1431-04-26,Female,REG466953,161617898,Iqama,https://files.catbox.moe/tyqlaa.jpg
+461,583,Sixth Primary,السادس الابتدائي,Latifa,لطيفة,Mansour Fahad Turki Al Saud,سعود خالد فهد القحطاني,2016-07-18,1437-07-18,Female,REG305393,274731021,National_ID,https://files.catbox.moe/tyqlaa.jpg
+466,334,Sixth Primary,السادس الابتدائي,Rasha,رشا,Tarek Youssef Ahmed Ibrahim,رامي كرم كرم جابر,2017-08-09,1438-08-09,Female,REG308069,121201151,National_ID,https://files.catbox.moe/r5nj4o.jpg
+470,484,Sixth Primary,السادس الابتدائي,Rima,ريما,Tarek Youssef Ahmed Ibrahim,رامي كرم كرم جابر,2019-02-13,1440-02-13,Female,REG815954,176360011,National_ID,https://files.catbox.moe/r5nj4o.jpg
+474,238,Sixth Primary,السادس الابتدائي,Turki,تركي,Khalid Bassel Rami Kanaan,طارق طارق حسن محمود,2018-02-15,1439-02-15,Male,REG490158,175663416,Iqama,https://files.catbox.moe/23kp94.jpg
+477,362,Sixth Primary,السادس الابتدائي,Latifa,لطيفة,Khalid Fahad Fahad Al Saud,عمر نور عمر مصطفى,2010-05-10,1431-05-10,Female,REG334726,276211676,Iqama,https://files.catbox.moe/r5nj4o.jpg
+486,383,Sixth Primary,السادس الابتدائي,Diala,ديالا,Nader Bassel Jamil Azar,خالد فهد فهد آل سعود,2008-08-10,1429-08-10,Female,REG941693,236391245,National_ID,https://files.catbox.moe/tyqlaa.jpg
+487,254,Sixth Primary,السادس الابتدائي,Khalid,خالد,Nader Bassel Jamil Azar,خالد فهد فهد آل سعود,2006-11-14,1427-11-14,Male,REG545308,249145958,National_ID,https://files.catbox.moe/23kp94.jpg
+489,318,Sixth Primary,السادس الابتدائي,Samah,سماح,Nader Bassel Jamil Azar,خالد فهد فهد آل سعود,2012-07-22,1433-07-22,Female,REG833470,263557495,National_ID,https://files.catbox.moe/tyqlaa.jpg
+500,336,Sixth Primary,السادس الابتدائي,Najat,نجاة,Sherif Youssef Mostafa Ibrahim,نادر باسل جميل عازر,2008-02-21,1429-02-21,Female,REG848134,185230084,Iqama,https://files.catbox.moe/tyqlaa.jpg
