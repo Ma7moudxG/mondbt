@@ -1,14 +1,32 @@
 {
+  "extends": "../../tsconfig.json", // If you have a root tsconfig, extend it
   "compilerOptions": {
-    "target": "es2020", // Compile to a modern JS version
-    "module": "commonjs", // Use CommonJS for Node.js environment
-    "lib": ["es2020", "dom"], // Include ES2020 features and DOM types (for Request/Response)
-    "strict": true, // Enable all strict type-checking options
-    "esModuleInterop": true, // Allow default imports from modules with no default export
-    "skipLibCheck": true, // Skip type checking of declaration files
+    // Set rootDir to your project root, or a common ancestor of functions and src
+    "rootDir": "../../", // Goes up to your project root 'f:/School/mondbt-web/'
+    "target": "es2020",
+    "module": "commonjs", // Netlify Functions often prefer commonjs
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "../../.netlify/functions-build", // Output compiled JS files to a build directory
-    "rootDir": "./" // Root directory for source files
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "./.netlify/functions-build", // Where compiled JS will go
+    "resolveJsonModule": true, // If you import JSON in functions
+    "baseUrl": ".", // For module resolution
+    "paths": { // If you use path aliases
+      "@/lib/*": ["../../src/lib/*"],
+      "@/services/*": ["../../src/services/*"]
+      // Add any other aliases your functions might use from outside netlify/functions
+    }
   },
-  "include": ["./**/*.ts"] // Include all TypeScript files in this directory and subdirectories
+  "include": [
+    "**/*.ts", // Include all TypeScript files in this directory
+    "**/*.js",  // Include all JavaScript files in this directory (if any)
+    "../../src/lib/**/*.ts", // Explicitly include the lib folder
+    "../../src/services/**/*.ts" // Explicitly include the services folder if functions use them
+    // Add any other paths that your functions import from outside netlify/functions
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts"
+  ]
 }

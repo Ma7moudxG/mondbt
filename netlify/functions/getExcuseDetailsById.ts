@@ -1,5 +1,5 @@
 import { Handler, Context } from '@netlify/functions';
-import { supabase } from './supabaseClient'; // Import the shared Supabase client
+import { supabase } from '../../src/lib/supabase/supabaseClient'; // Import the shared Supabase client
 
 interface Excuse {
   id: string; // Adjusted to string as per your db.json

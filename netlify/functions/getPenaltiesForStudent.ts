@@ -1,6 +1,6 @@
 
 import { Handler, Context } from '@netlify/functions';
-import { supabase } from './supabaseClient';
+import { supabase } from '../../src/lib/supabase/supabaseClient';
 
 interface ParentPenalty {
   id: string; // Assuming penalty IDs are strings based on db.json

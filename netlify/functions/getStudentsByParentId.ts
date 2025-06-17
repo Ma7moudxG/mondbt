@@ -1,6 +1,6 @@
 // netlify/functions/get-students-by-parent-id.ts
 import { Handler, Context } from '@netlify/functions';
-import { supabase } from './supabaseClient';
+import { supabase } from '../../src/lib/supabase/supabaseClient';
 
 interface Student {
   student_id: number; // Assuming this is the primary ID
