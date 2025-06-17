@@ -8,7 +8,11 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-  [functions."*"]
-  included_files = [
-    "./supabaseClient.ts"
-  ]
+[functions."*"]
+included_files = [
+  "./supabaseClient.ts"
+]
+
+[functions]
+directory = "netlify/functions" # This should be relative to your project root
+node_bundler = "esbuild"
