@@ -2476,41 +2476,41 @@ export default class DataService {
     }
   }
 
-  // static async getExcuseDetailsById(excuseId: string): Promise<Excuse | null> {
-  //   return fetchData<Excuse>(`/netlify/functions/getExcuseDetailsById?id=${excuseId}`);
-  // }
-  static async getExcuseDetailsById(
-    excuseId: string // Keep this as string, as your IDs are strings like "ec58"
-  ): Promise<Excuse | null> {
-    try {
-      console.log(
-        `DataService: Attempting to fetch excuse details for ID: ${excuseId}`
-      );
-
-      const response = await fetch(
-        `${JSON_SERVER_BASE_URL}/excuses/${excuseId}`
-      );
-      if (!response.ok) {
-        if (response.status === 404) {
-          console.warn(`DataService: Excuse with ID ${excuseId} not found.`);
-          return null; // Return null if not found
-        }
-        const errorText = await response.text(); // Get more details if available
-        throw new Error(
-          `HTTP error! Status: ${response.status}, Details: ${errorText}`
-        );
-      }
-
-      const excuse: Excuse = await response.json();
-      return excuse;
-    } catch (error) {
-      console.error(
-        `DataService: Error getting Excuse details by ID ${excuseId}:`,
-        error
-      );
-      return null; // Return null on any error during fetching
-    }
+  static async getExcuseDetailsById(excuseId: string): Promise<Excuse | null> {
+    return fetchData<Excuse>(`/netlify/functions/getExcuseDetailsById?id=${excuseId}`);
   }
+  // static async getExcuseDetailsById(
+  //   excuseId: string // Keep this as string, as your IDs are strings like "ec58"
+  // ): Promise<Excuse | null> {
+  //   try {
+  //     console.log(
+  //       `DataService: Attempting to fetch excuse details for ID: ${excuseId}`
+  //     );
+
+  //     const response = await fetch(
+  //       `${JSON_SERVER_BASE_URL}/excuses/${excuseId}`
+  //     );
+  //     if (!response.ok) {
+  //       if (response.status === 404) {
+  //         console.warn(`DataService: Excuse with ID ${excuseId} not found.`);
+  //         return null; // Return null if not found
+  //       }
+  //       const errorText = await response.text(); // Get more details if available
+  //       throw new Error(
+  //         `HTTP error! Status: ${response.status}, Details: ${errorText}`
+  //       );
+  //     }
+
+  //     const excuse: Excuse = await response.json();
+  //     return excuse;
+  //   } catch (error) {
+  //     console.error(
+  //       `DataService: Error getting Excuse details by ID ${excuseId}:`,
+  //       error
+  //     );
+  //     return null; // Return null on any error during fetching
+  //   }
+  // }
 
   static getAcademicYearRange(): { start: Date; end: Date } {
     const now = new Date();
