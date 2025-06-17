@@ -1,7 +1,6 @@
 "use client";
 import UserCard from "@/components/UserCard";
 import React, { useEffect, useState, useCallback } from "react";
-import DetailedMap from "@/components/DetailedMap"; // This component seems unused in the provided code
 import FilteredSearch from "@/components/FilteredSearch";
 import AdminDataReports from "@/components/AdminDataReports";
 import DataService, {
@@ -9,7 +8,7 @@ import DataService, {
   type Excuse,
   type FilterValues,
   type Stats as DataServiceStats,
-  type Student // Import Student type if you have it
+  type Student 
 } from "@/services/dataService";
 import SchoolMap from "@/components/SchoolMap";
 import { useTranslation } from "react-i18next";
@@ -93,24 +92,24 @@ const AdminPage = () => {
         sex: filters.sex,
       };
 
-      console.log("AdminPage: schoolFilterCriteria passed to DataService.getSchoolsByFilters:", schoolFilterCriteria);
+      // console.log("AdminPage: schoolFilterCriteria passed to DataService.getSchoolsByFilters:", schoolFilterCriteria);
 
       // Pass the current language to DataService.getSchoolsByFilters
-      let filteredSchools = DataService.getSchoolsByFilters(schoolFilterCriteria, i18n.language);
-      console.log("AdminPage: Number of schools returned by DataService.getSchoolsByFilters (initial school-level filter):", filteredSchools.length);
+      let filteredSchools = DataService.getSchoolsByFilters(schoolFilterCriteria);
+      // console.log("AdminPage: Number of schools returned by DataService.getSchoolsByFilters (initial school-level filter):", filteredSchools.length);
 
       let studentIdsFromFilteredSchools: number[] = DataService.getStudentsInSchools(
         filteredSchools.map(s => s.school_id)
       );
-      console.log("AdminPage: Found", studentIdsFromFilteredSchools.length, "students initially in filtered schools.");
+      // console.log("AdminPage: Found", studentIdsFromFilteredSchools.length, "students initially in filtered schools.");
 
       let finalFilteredStudentIds: number[] = studentIdsFromFilteredSchools;
       if (filters.sex && filters.sex.trim() !== '') {
-        console.log("AdminPage: Passing these student IDs to getStudentsBySex:", finalFilteredStudentIds.length, finalFilteredStudentIds.slice(0, 50));
+        // console.log("AdminPage: Passing these student IDs to getStudentsBySex:", finalFilteredStudentIds.length, finalFilteredStudentIds.slice(0, 50));
         // Note: getStudentsBySex should internally handle sex filtering, probably not needing `i18n.language`
         // unless the `sex` filter value itself needs translation mapping, which DataService.getSchoolsByFilters now handles.
-        finalFilteredStudentIds = DataService.getStudentsBySex(studentIdsFromFilteredSchools, filters.sex, i18n.language); // Pass language here as well
-        console.log("AdminPage: After sex filter ('", filters.sex, "'), found", finalFilteredStudentIds.length, "students.");
+        finalFilteredStudentIds = DataService.getStudentsBySex(studentIdsFromFilteredSchools, filters.sex); // Pass language here as well
+        // console.log("AdminPage: After sex filter ('", filters.sex, "'), found", finalFilteredStudentIds.length, "students.");
       }
 
       let schoolsToDisplay = filteredSchools;
@@ -134,9 +133,9 @@ const AdminPage = () => {
 
       setResults(schoolsToDisplay);
       setFilteredStudentIdsForExport(finalFilteredStudentIds); // Store for export
-
+      const students : Student[] = DataService.getStudentsByIds(finalFilteredStudentIds)
       const calculatedStats: DataServiceStats = {
-        attendance: DataService.calculateAttendance(finalFilteredStudentIds, dateRange.startDate, dateRange.endDate),
+        attendance: DataService.calculateAttendance(students, dateRange.startDate, dateRange.endDate),
         absence: DataService.countAbsences(finalFilteredStudentIds, dateRange.startDate, dateRange.endDate),
         late: DataService.countLateArrivals(finalFilteredStudentIds, dateRange.startDate, dateRange.endDate),
         fines: DataService.sumPenalties(finalFilteredStudentIds, dateRange.startDate, dateRange.endDate),

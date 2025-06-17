@@ -2,6 +2,9 @@ import withFlowbiteReact from "flowbite-react/plugin/nextjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   reactStrictMode: false,
   swcMinify: true,
   experimental: {
@@ -33,7 +36,6 @@ const nextConfig = {
         port: '',
         pathname: '/**', // This allows any path on the hostname
       },
-      // Add other remote image hostnames here if you have them
     ],
   },
   

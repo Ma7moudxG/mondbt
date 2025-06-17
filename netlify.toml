@@ -1,6 +1,6 @@
 # netlify.toml
 [build]
-  command = "npm run build" # Your project's main build command (e.g., next build)
+  command = "next build" # Your project's main build command (e.g., next build)
   publish = ".next" # Or "out" if you use next export
   functions = "netlify/functions" # Tell Netlify where your source functions are
 

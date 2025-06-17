@@ -945,12 +945,12 @@ export default class DataService {
 
   // NEW Helper: Get Education Type Name from ID (e.g., 1 -> "National")
   public static getEducationTypeNameFromId(
-    educationTypeId: number
+    educationTypeId: number, lang: string
   ): string | null {
     const educationType = schoolData.educationTypes.find(
       (et) => et.education_type_id === educationTypeId
     );
-    return educationType ? educationType.description_en : null;
+    return  educationType ? lang === "ar" ? educationType.description_ar : educationType.description_ar : null;
   }
 
   public static getSchoolsByFilters(filters: FilterValues): School[] {
