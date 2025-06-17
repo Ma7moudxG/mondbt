@@ -2477,7 +2477,7 @@ export default class DataService {
   }
 
   static async getExcuseDetailsById(excuseId: string): Promise<Excuse | null> {
-    return fetchData<Excuse>(`/netlify/functions/getExcuseDetailsById?id=${excuseId}`);
+    return fetchData<Excuse>(`/.netlify/functions/getExcuseDetailsById?id=${excuseId}`);
   }
   // static async getExcuseDetailsById(
   //   excuseId: string // Keep this as string, as your IDs are strings like "ec58"
