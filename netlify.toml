@@ -2,17 +2,19 @@
   command = "npm run build"
   publish = ".next"
 
-[functions]
+[functions] # Consolidate all function settings here
   directory = "netlify/functions"
+  node_bundler = "esbuild" # Add this to the main functions block
+
+  # This section needs to be combined if it applies to all functions
+  # If you want it to apply to all functions, it should be nested under [functions] as a sub-table
+  # or applied globally if it's a root-level function config (which [functions."*"] is).
+  # However, with the supabaseClient.ts move, you likely don't need this anymore for that file.
+  # Let's remove it for now as per previous recommendations.
+  # [functions."*"]
+  # included_files = [
+  #   "./supabaseClient.ts" # REMOVE THIS LINE
+  # ]
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-[functions."*"]
-included_files = [
-  "./supabaseClient.ts"
-]
-
-[functions]
-directory = "netlify/functions" # This should be relative to your project root
-node_bundler = "esbuild"
