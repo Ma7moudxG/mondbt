@@ -1,6 +1,6 @@
 import moment from "moment";
 import "moment-hijri";
-import { saveSchoolData } from '@/utils/schoolService';
+// import { saveSchoolData } from '@/utils/schoolService';
 // src/services/dataService.ts
 // --- Interfaces (Copied directly from your last provided code) ---
 export interface Region {
@@ -218,14 +218,20 @@ import i18n from "@/lib/i18n";
 const JSON_SERVER_BASE_URL = "http://localhost:3001"; // Your JSON Server URL
 
 // Load data from localStorage or use initial data
-const loadSchoolData = (): MergedSchoolData => {
+export const loadSchoolData = (): MergedSchoolData | null => {
   if (typeof window !== "undefined") {
     const storedData = localStorage.getItem("schoolDataJson");
     if (storedData) {
       return JSON.parse(storedData) as MergedSchoolData;
     }
   }
-  return initialSchoolData as MergedSchoolData;
+  return null; // Return null instead of static data on server
+};
+
+export const saveSchoolData = (data: MergedSchoolData): void => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("schoolDataJson", JSON.stringify(data));
+  }
 };
 
 let schoolDataJson1: MergedSchoolData = loadSchoolData();
@@ -340,7 +346,11 @@ async function fetchData<T>(url: string, method: string = 'GET', body?: object):
 // --- DataService Class (FIXED FUNCTIONS with Debugging) ---
 export default class DataService {
   static getSchoolData(): MergedSchoolData {
-    return schoolDataJson1;
+    const data = loadSchoolData();
+    if (!data) {
+      throw new Error("School data not available (probably running on server)");
+    }
+    return data;
   }
 
   // --- Methods now fetching from JSON Server ---
