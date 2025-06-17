@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 import UserCard from "@/components/UserCard";
 import React, { useEffect, useState, useCallback } from "react";
 import FilteredSearch from "@/components/FilteredSearch";

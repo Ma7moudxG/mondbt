@@ -1,5 +1,6 @@
 import moment from "moment";
 import "moment-hijri";
+import { saveSchoolData } from '@/utils/schoolService';
 // src/services/dataService.ts
 // --- Interfaces (Copied directly from your last provided code) ---
 export interface Region {
@@ -1250,12 +1251,12 @@ export default class DataService {
     };
   }
 
-  static saveSchoolData(data: MergedSchoolData) {
-    schoolDataJson1 = data;
-    if (typeof window !== "undefined") {
-      localStorage.setItem("schoolDataJson", JSON.stringify(data));
-    }
-  }
+  // static saveSchoolData(data: MergedSchoolData) {
+  //   schoolDataJson1 = data;
+  //   if (typeof window !== "undefined") {
+  //     localStorage.setItem("schoolDataJson", JSON.stringify(data));
+  //   }
+  // }
 
   static getUnpaidPenaltiesForStudent(studentId: number): ParentPenalty[] {
     const penalties = this.getSchoolData().penalties || [];
@@ -1284,7 +1285,7 @@ export default class DataService {
       };
 
       // Update and save the data
-      this.saveSchoolData({
+      saveSchoolData({
         ...data,
         penalties: updatedPenalties,
       });

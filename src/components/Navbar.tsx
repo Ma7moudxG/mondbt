@@ -44,9 +44,7 @@ export default function Header() {
   }, [i18n]); // Dependency on i18n object itself to ensure it's stable
 
 
-  // Effect to calculate dates, runs after mount and language changes
   useEffect(() => {
-    // Only proceed if component is mounted on the client
     if (!isMounted) return;
 
     const lang = i18n.language;
