@@ -1,10 +1,9 @@
-# netlify.toml
 [build]
-  command = "next build" # Your project's main build command (e.g., next build)
-  publish = ".next" # Or "out" if you use next export
-  functions = "netlify/functions" # Tell Netlify where your source functions are
+  command = "npm run build"
+  publish = ".next"
 
 [functions]
-  # This tells Netlify to compile your TypeScript functions using the tsconfig.json
-  node_bundler = "esbuild"
-  included_files = ["./supabaseClient.ts"] # Ensure supabaseClient.ts is bundled with all functions
+  directory = "netlify/functions"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
