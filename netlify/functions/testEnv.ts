@@ -1,75 +1,57 @@
-// netlify/functions/testEnv.ts
+// netlify/functions/testSupabaseConn.ts (or update testEnv.ts)
 import { Handler, Context, APIGatewayEvent } from '@netlify/functions';
-// Import the client from its new shared location
-// Make sure this path is correct based on where you moved supabaseClient.ts
-// For example: '../../src/lib/supabase/supabaseClient'
-import { supabase } from '../../src/lib/supabase/supabaseClient'; 
+import { supabase } from '../../src/lib/supabase/supabaseClient'; // Adjust path if needed
 
 const handler: Handler = async (event: APIGatewayEvent, context: Context) => {
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
-
-  if (!supabaseUrl || !supabaseAnonKey) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        message: "Supabase environment variables missing. This should not happen if previous test passed.",
-        supabaseUrlPresent: !!supabaseUrl,
-        supabaseAnonKeyPresent: !!supabaseAnonKey,
-      }),
-    };
-  }
+  // No need to re-check env vars here, as your previous test confirmed them.
+  // But keep the conditional check in your actual functions for robustness.
 
   try {
-    // --- IMPORTANT: Replace 'excuses' with a table name you know exists in your Supabase DB. ---
-    // --- Select a minimal column (e.g., 'id') and limit to 1 to reduce data transfer. ---
+    // IMPORTANT: Replace 'your_test_table' with a small, existing table in your Supabase DB.
+    // A good candidate would be 'excuses' or a simple 'profiles' table if you have one,
+    // but pick one that you know for sure exists and has some data.
     const { data, error } = await supabase
-      .from('excuses') // <-- Use an actual table name from your Supabase DB
-      .select('id')    // <-- Select a simple column
-      .limit(1);      // <-- Only retrieve one record to test connectivity
+      .from('excuses') // <-- REPLACE 'excuses' WITH YOUR ACTUAL TABLE NAME
+      .select('id') // Just select 'id' or any single column to keep it light
+      .limit(1); // Only fetch one row to confirm connectivity
 
     if (error) {
       console.error("Supabase query error:", error);
+      // Return a 500 with error details if the query fails
       return {
         statusCode: 500,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          message: "Failed to connect to Supabase or query table. Check credentials and RLS.",
+          message: "Failed to query Supabase table.",
           errorDetails: error.message,
-          supabaseUrlPresent: true,
-          supabaseAnonKeyPresent: true,
+          errorCode: error.code, // Supabase error codes can be helpful
         }),
-      }),
-      body: JSON.stringify({
-        message: "Failed to connect to Supabase or query table. Check credentials and RLS.",
-        errorDetails: error.message,
-        supabaseUrlPresent: true,
-        supabaseAnonKeyPresent: true,
-      }),
-    };
+      };
     }
 
+    // If no error, the connection and query were successful
     return {
       statusCode: 200,
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*", // Restrict this in production
       },
       body: JSON.stringify({
-        message: "Supabase connection and query successful!",
-        dataReceived: data ? data.length > 0 : false, // True if at least one record was found
+        message: "Supabase connection and test query successful!",
+        dataFetched: data && data.length > 0, // True if data was returned
+        // If you want to see the data (for debugging only, don't return sensitive data):
+        // rawData: data
       }),
     };
   } catch (e) {
     console.error("General function error during Supabase test:", e);
+    // Catch any unexpected errors during function execution
     return {
       statusCode: 500,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        message: "An unexpected error occurred during Supabase test.",
+        message: "An unexpected error occurred in the Supabase test function.",
         errorDetails: (e as Error).message,
-        supabaseUrlPresent: true,
-        supabaseAnonKeyPresent: true,
       }),
     };
   }
