@@ -1,58 +1,69 @@
-// netlify/functions/testSupabaseConn.ts (or update testEnv.ts)
 import { Handler, Context, APIGatewayEvent } from '@netlify/functions';
-import { supabase } from '../../src/lib/supabase/supabaseClient'; // Adjust path if needed
+import { supabase } from '../../src/lib/supabase/supabaseClient'; // Or supabaseAdmin if you're using it
 
-const handler: Handler = async (event: APIGatewayEvent, context: Context) => {
-  // No need to re-check env vars here, as your previous test confirmed them.
-  // But keep the conditional check in your actual functions for robustness.
+interface Excuse {
+  id: string; // <-- ENSURE THIS IS STRING IF YOUR DB COLUMN IS TEXT/UUID
+  student_id: number;
+  parent_id: number;
+  reason_id: number;
+  excuse_date_g: string;
+  excuse_date_h: string;
+  submitted_at: string;
+  remarks_en: string;
+  remarks_ar: string;
+  status_en: "PENDING" | "APPROVED" | "REJECTED";
+  status_ar: string;
+}
+
+const handler: Handler = async (event, context) => {
+  if (event.httpMethod !== 'GET') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+
+  // Get the ID from query parameters, e.g., /.netlify/functions/get-excuse-details-by-id?id=1
+  // This 'excuseId' is already a string, which is what we want if DB ID is text.
+  const excuseId = event.queryStringParameters?.id;
+
+  if (!excuseId) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'Excuse ID is required.' }),
+    };
+  }
 
   try {
-    // IMPORTANT: Replace 'your_test_table' with a small, existing table in your Supabase DB.
-    // A good candidate would be 'excuses' or a simple 'profiles' table if you have one,
-    // but pick one that you know for sure exists and has some data.
-    const { data, error } = await supabase
-      .from('excuses') // <-- REPLACE 'excuses' WITH YOUR ACTUAL TABLE NAME
-      .select('id') // Just select 'id' or any single column to keep it light
-      .limit(1); // Only fetch one row to confirm connectivity
+    // Add console logs for extreme debugging clarity
+    console.log(`[getExcuseDetailsById] Function received request.`);
+    console.log(`[getExcuseDetailsById] Attempting to fetch excuse details for ID: '${excuseId}' (type: ${typeof excuseId})`);
 
-    if (error) {
-      console.error("Supabase query error:", error);
-      // Return a 500 with error details if the query fails
+    const { data, error } = await supabase // Or supabaseAdmin
+      .from('excuses')
+      .select('*')
+      .eq('id', excuseId) // Pass the string ID directly
+      .single();
+
+    if (error && error.code === 'PGRST116') { // PostgreSQL error code for no rows found
+      console.warn(`[getExcuseDetailsById] Excuse with ID '${excuseId}' not found (PGRST116).`);
+      return { statusCode: 404, body: JSON.stringify({ error: 'Excuse not found.' }) };
+    } else if (error) {
+      console.error(`[getExcuseDetailsById] Supabase error fetching excuse ID '${excuseId}':`, error);
       return {
         statusCode: 500,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: "Failed to query Supabase table.",
-          errorDetails: error.message,
-          errorCode: error.code, // Supabase error codes can be helpful
-        }),
+        body: JSON.stringify({ error: `Failed to fetch excuse: ${error.message}` }),
       };
     }
 
-    // If no error, the connection and query were successful
+    console.log(`[getExcuseDetailsById] Successfully fetched data for ID: '${excuseId}'.`);
     return {
       statusCode: 200,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*", // Restrict this in production
-      },
-      body: JSON.stringify({
-        message: "Supabase connection and test query successful!",
-        dataFetched: data && data.length > 0, // True if data was returned
-        // If you want to see the data (for debugging only, don't return sensitive data):
-        // rawData: data
-      }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data as Excuse),
     };
-  } catch (e) {
-    console.error("General function error during Supabase test:", e);
-    // Catch any unexpected errors during function execution
+  } catch (apiError) {
+    console.error(`[getExcuseDetailsById] API Function caught unexpected error for ID '${excuseId}':`, apiError);
     return {
       statusCode: 500,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: "An unexpected error occurred in the Supabase test function.",
-        errorDetails: (e as Error).message,
-      }),
+      body: JSON.stringify({ error: `Server error: ${(apiError as Error).message}` }),
     };
   }
 };
