@@ -24,18 +24,10 @@ export default function LoginPage() {
 
   const [mounted, setMounted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    
-    // Check for authentication errors in the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("error")) {
-      setError("Authentication failed. Please check your credentials.");
-      // Clean the URL
-      const cleanUrl = window.location.origin + window.location.pathname;
-      window.history.replaceState(null, "", cleanUrl);
-    }
   }, []);
 
   useEffect(() => {
@@ -47,19 +39,28 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null); // Reset error on new submission
+    setError(null);
+    setIsLoading(true);
     
-    const formData = new FormData(e.currentTarget);
-    const result = await signIn("credentials", {
-      username: formData.get("username"),
-      password: formData.get("password"),
-      redirect: false,
-    });
+    try {
+      const formData = new FormData(e.currentTarget);
+      const result = await signIn("credentials", {
+        username: formData.get("username"),
+        password: formData.get("password"),
+        redirect: false,
+      });
 
-    if (result?.error) {
-      setError("Authentication failed. Please check your credentials.");
-    } else {
-      router.refresh();
+      if (result?.error) {
+        setError("Authentication failed. Please check your credentials.");
+      } else {
+        // Force session update and redirect
+        router.refresh();
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      console.error("Login error:", err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -111,6 +112,7 @@ export default function LoginPage() {
               className="p-2 border rounded-md w-full"
               placeholder={getConsistentTranslatedText("Civil Number")}
               required
+              disabled={isLoading}
             />
           </div>
           <div className="mb-4">
@@ -120,14 +122,16 @@ export default function LoginPage() {
               className="p-2 border rounded-md w-full"
               placeholder={getConsistentTranslatedText("Password")}
               required
+              disabled={isLoading}
             />
           </div>
           <p className="text-sm text-white">{getConsistentTranslatedText("Forgot Password?")}</p>
           <button
             type="submit"
-            className="w-full bg-[#8447AB] text-white p-2 rounded-md hover:bg-[#5d3279]"
+            className="w-full bg-[#8447AB] text-white p-2 rounded-md hover:bg-[#5d3279] disabled:opacity-50"
+            disabled={isLoading}
           >
-            {getConsistentTranslatedText("Login")}
+            {isLoading ? getConsistentTranslatedText("Loading...") : getConsistentTranslatedText("Login")}
           </button>
           <p className="text-sm text-white">
             {getConsistentTranslatedText("Don't have an account?")}{" "}
@@ -141,7 +145,8 @@ export default function LoginPage() {
 
         <button
           type="button"
-          className="w-full flex gap-4 items-center justify-center bg-white text-[#8447AB] hover:text-white p-4 rounded-md hover:bg-[#8447AB]"
+          className="w-full flex gap-4 items-center justify-center bg-white text-[#8447AB] hover:text-white p-4 rounded-md hover:bg-[#8447AB] disabled:opacity-50"
+          disabled={isLoading}
         >
           {getConsistentTranslatedText("Login using")}
           <Image
@@ -159,7 +164,8 @@ export default function LoginPage() {
         <button
           type="button"
           onClick={toggleLanguage}
-          className="bg-white text-[#8447AB] hover:text-white p-2 rounded-md hover:bg-[#8447AB] w-16"
+          className="bg-white text-[#8447AB] hover:text-white p-2 rounded-md hover:bg-[#8447AB] w-16 disabled:opacity-50"
+          disabled={isLoading}
         >
           {mounted ? (i18n.language === "en" ? t("Ar") : t("En")) : "Ar"}
         </button>

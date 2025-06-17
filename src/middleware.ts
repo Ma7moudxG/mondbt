@@ -1,4 +1,3 @@
-// src/middleware.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
@@ -6,8 +5,14 @@ import { getToken } from "next-auth/jwt";
 export async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
   
-  // Always allow auth routes and error pages
-  if (pathname.startsWith("/api/auth") || pathname === "/login") {
+  // Always allow auth routes and static assets
+  if (
+    pathname.startsWith("/_next") || 
+    pathname.startsWith("/api/auth") ||
+    pathname.startsWith("/static") ||
+    pathname.includes(".") ||
+    pathname === "/favicon.ico"
+  ) {
     return NextResponse.next();
   }
 
@@ -16,17 +21,8 @@ export async function middleware(req: NextRequest) {
     secret: process.env.NEXTAUTH_SECRET || "default_secret" 
   });
 
-  // Allow static files
-  if (
-    pathname.startsWith("/_next") ||
-    pathname === "/favicon.ico" ||
-    pathname.includes(".")
-  ) {
-    return NextResponse.next();
-  }
-
   // Redirect unauthenticated users to login
-  if (!token) {
+  if (!token && pathname !== "/login") {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
