@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 import UserCard from "@/components/UserCard";
 import React, { useEffect, useState, useCallback } from "react";
 import FilteredSearch from "@/components/FilteredSearch";
@@ -10,9 +11,9 @@ import DataService, {
   type Stats as DataServiceStats,
   type Student 
 } from "@/services/dataService";
-import SchoolMap from "@/components/SchoolMap";
 import { useTranslation } from "react-i18next";
 import { AdminExcuses } from "@/components/AdminExcuses";
+import SchoolMap from "@/components/SchoolMap";
 
 const cm = (...classes: (string | boolean | undefined | null)[]) =>
   classes.filter(Boolean).join(" ");
