@@ -63,8 +63,15 @@ export default function ExcusePage() {
 
       setExcuseDetails(details);
 
+      // --- ADDED CONSOLE LOGS START ---
+      // This log confirms the ID being passed to the attachment service before Promise.all
+      console.log("Details ID being passed to getExcuseAttachmentById (from component):", details.id.toString());
+      // --- ADDED CONSOLE LOGS END ---
+
+
       const [attachmentUrl, description, [firstName, lastName]] =
         await Promise.all([
+          // Ensure DataService.getExcuseAttachmentById has its own internal logs too
           DataService.getExcuseAttachmentById(details.id.toString()),
           DataService.getExcuseDescriptionById(
             details.reason_id.toString(),
@@ -76,17 +83,18 @@ export default function ExcusePage() {
           ),
         ]);
 
-        setExcuseAttachment(attachmentUrl);
-        setExcuseDescription(description);
-        setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
-        console.log("aaaassss", excuseAttachment)
+      setExcuseAttachment(attachmentUrl);
+      setExcuseDescription(description);
+      setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
+      console.log("aaaassss (after Promise.all):", attachmentUrl); // Your existing log, clarified
+
     } catch (err) {
       console.error("Failed to fetch Excuse details:", err);
       setError("failed_to_load_excuse_data_error");
     } finally {
       setLoading(false);
     }
-  }, [excuseId, i18n.language, t]);
+  }, [excuseId, i18n.language, t]); // Dependencies for useCallback
 
   useEffect(() => {
     if (mounted && excuseId) {
@@ -96,7 +104,7 @@ export default function ExcusePage() {
       setLoading(false);
       setError("invalid_excuse_id");
     }
-  }, [mounted, excuseId, fetchExcuseData]);
+  }, [mounted, excuseId, fetchExcuseData]); // Dependencies for useEffect
 
   const handleImageClick = () => {
     if (excuseAttachment) {
@@ -242,9 +250,7 @@ export default function ExcusePage() {
           onClick={handleCloseModal}
         >
           <div
-            // This div is the white background of the modal content
-            // Added fixed w-full and h-full for debugging, will refine later
-            className="relative bg-white rounded-lg p-4 max-w-4xl max-h-[90vh] w-full h-[90vh] flex flex-col justify-center items-center overflow-hidden" // Changed to w-full h-[90vh] for explicit sizing within its parent's flex context
+            className="relative bg-white rounded-lg p-4 max-w-4xl max-h-[90vh] w-full h-[90vh] flex flex-col justify-center items-center overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -255,15 +261,12 @@ export default function ExcusePage() {
               &times;
             </button>
 
-            {/* This is the direct parent of the Image with layout="fill" */}
-            {/* It should now correctly take up the available space within the modal content */}
             <div
-              className="relative flex-grow w-full flex justify-center items-center" // Use flex-grow to take available space
+              className="relative flex-grow w-full flex justify-center items-center"
               style={{
-                // These max values define the upper limit, but flex-grow will dictate actual size
-                maxWidth: "calc(100vw - 64px)", // Adjusting for 2x p-4 padding on parent
-                maxHeight: "calc(90vh - 64px - 4rem)", // Adjusting for padding and button height
-                position: "relative", // Essential for layout="fill"
+                maxWidth: "calc(100vw - 64px)",
+                maxHeight: "calc(90vh - 64px - 4rem)",
+                position: "relative",
               }}
             >
               <Image
@@ -271,7 +274,7 @@ export default function ExcusePage() {
                 src={excuseAttachment}
                 alt={t("excuse_attachment")}
                 layout="fill"
-                objectFit="contain" // Keeps aspect ratio, fits within bounds
+                objectFit="contain"
                 className="rounded-md"
                 sizes="(max-width: 768px) 100vw, 80vw"
               />
