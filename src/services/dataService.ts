@@ -400,6 +400,8 @@ export default class DataService {
         throw new Error(error.message); // Throw error to be caught by caller
       }
 
+      console.log("dataaaaaaaaaa", data)
+
       // If data exists, return the file_url, otherwise null
       return data ? data.file_url : null;
 
