@@ -659,31 +659,29 @@ export default class DataService {
         studentId: number,
         reasonId: number,
         remarks: string,
-        attachmentFile: File | undefined, // The actual File object from input
+        attachmentFile: File | undefined,
         excuseDateG: string,
         excuseDateH: string
-    ): Promise<{ newExcuse: Excuse; newAttachment?: ExcuseAttachment } | null> { // Return null on failure
+    ): Promise<{ newExcuse: Excuse; newAttachment?: ExcuseAttachment } | null> {
         
         try {
             const formData = new FormData();
-            // Append all fields as strings
             formData.append('parentId', String(parentId));
             formData.append('studentId', String(studentId));
             formData.append('reasonId', String(reasonId));
-            formData.append('remarksEn', remarks); // Assuming remarks maps to both EN/AR for now
-            formData.append('remarksAr', remarks); 
+            formData.append('remarksEn', remarks);
+            formData.append('remarksAr', remarks);
             formData.append('excuseDateG', excuseDateG);
             formData.append('excuseDateH', excuseDateH);
 
             if (attachmentFile) {
-                // 'attachmentFile' must match the field name in the Netlify Function (files.attachmentFile)
                 formData.append('attachmentFile', attachmentFile); 
             }
 
-            console.log("DataService: Calling Netlify function to create excuse...");
-            const response = await fetch(`./netlify/functions/createExcuse`, {
+            console.log(`DataService: Calling Netlify function at: netlify/functions/createExcuse`);
+            const response = await fetch(`/.netlify/functions/createExcuse`, { // <-- Use the absolute URL
                 method: 'POST',
-                body: formData, // No Content-Type header; browser sets it automatically for FormData
+                body: formData,
             });
 
             if (!response.ok) {
@@ -706,7 +704,7 @@ export default class DataService {
                 `DataService: Error creating excuse via Netlify Function:`,
                 error
             );
-            return null; // Return null on error
+            return null;
         }
     }
 
