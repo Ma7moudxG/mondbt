@@ -1,8 +1,8 @@
 // netlify/functions/createExcuse.ts
 
 import { Handler, Context, APIGatewayProxyEvent } from "@netlify/functions";
-import { supabaseAdmin } from "../../src/lib/supabase/supabaseClient";
-import formidable from "formidable";
+import { supabaseAdmin } from "./utils/supabaseAdminClient"; // <--- CHANGE THIS IMPORT
+// import formidable from "formidable";
 import { Readable } from "stream";
 import { readFile } from "fs/promises";
 // import path from "path"; // No longer needed

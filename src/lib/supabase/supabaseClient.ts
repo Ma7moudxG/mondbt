@@ -14,8 +14,8 @@ if (!supabaseServiceRoleKey) {
 
 export const supabase: SupabaseClient = createClient(supabaseUrl as string, supabaseAnonKey as string);
 
-export const supabaseAdmin: SupabaseClient = createClient(supabaseUrl as string, supabaseServiceRoleKey as string, {
-    auth: {
-        persistSession: false, // Important for server-side
-    },
-});
+// export const supabaseAdmin: SupabaseClient = createClient(supabaseUrl as string, supabaseServiceRoleKey as string, {
+//     auth: {
+//         persistSession: false, // Important for server-side
+//     },
+// });
