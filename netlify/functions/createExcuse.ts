@@ -32,8 +32,6 @@ interface ExcuseAttachment {
   excuse_id: string; // Foreign key to Excuse.id
   file_url: string;
   uploaded_at: string;
-  file_type: string; // Mime type
-  file_size: number; // Size in bytes
 }
 
 // --- Helper function to parse multipart/form-data ---
@@ -229,8 +227,6 @@ const handler: Handler = async (
           excuse_id: newExcuse.id,
           file_url: finalAttachmentUrl,
           uploaded_at: now,
-          file_type: attachmentFile.mimetype || "application/octet-stream",
-          file_size: attachmentFile.size || 0,
         };
 
       console.log(
