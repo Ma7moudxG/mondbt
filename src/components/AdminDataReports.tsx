@@ -113,10 +113,10 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
   };
 
   return (
-    <div className="flex gap-4 flex-col lg:flex-row h-[750px]">
+    <div className="flex gap-4 flex-col lg:flex-row lg:h-[720px] ">
       {/* Left side: Schools/Students list */}
-      <div className="bg-white rounded-2xl lg:w-1/2 flex md:block justify-center p-4">
-        <div className="rounded-full border">
+      <div className="bg-white rounded-2xl lg:w-1/2 flex flex-col md:block justify-center p-4">
+        <div className="rounded-full border flex">
           <button
             className={cm(
               "px-4 py-2 rounded-full text-xs w-1/2",
@@ -139,12 +139,12 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
           </button>
         </div>
         {rightTab === "Schools" ? (
-          <div className="h-full flex flex-col justify-between py-8">
+          <div className="h-full flex flex-col justify-between py-4 lg:py-8">
             <h3 className="text-lg font-semibold mb-4 text-[#7C8B9D]">
               {t("Filtered Schools")} ({schools.length})
               {/* Translate "Filtered Schools" */}
             </h3>
-            <div className="flex flex-col gap-4 h-full overflow-y-auto">
+            <div className="flex flex-col gap-4 h-[300px] lg:h-full overflow-y-auto">
               {schools.length > 0 ? (
                 schools.map((school) => (
                   <div
@@ -168,12 +168,12 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
             </div>
           </div>
         ) : (
-          <div className="h-full flex flex-col justify-between py-8">
+          <div className="h-full flex flex-col justify-between py-4 lg:py-8">
             <h3 className="text-lg font-semibold mb-4 text-[#7C8B9D]">
               {t("Filtered Students")} ({filteredStudents.length})
               {/* Translate "Filtered Students" */}
             </h3>
-            <div className="flex flex-col gap-4 h-full overflow-y-auto">
+            <div className="flex flex-col gap-4 h-[300px] lg:h-full overflow-y-auto">
               {filteredStudents.length > 0 ? (
                 filteredStudents.map((studentDetails) => (
                   <div
@@ -229,9 +229,9 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
       </div>
 
       {/* Right side: Statistics/Reports */}
-      <div className="bg-white rounded-2xl lg:w-1/2 flex md:block justify-center p-4">
+      <div className="bg-white rounded-2xl lg:w-1/2 flex flex-col md:block justify-center p-4">
         <div className="">
-          <h3 className="text-lg font-semibold mb-4 text-[#7C8B9D]">
+          <h3 className="text-lg font-semibold mb-4 text-[#7C8B9D] ">
             {t("Filtered Statistics")} {/* Translate "Filtered Statistics" */}
           </h3>
         </div>

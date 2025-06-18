@@ -482,7 +482,7 @@ const AdminPage = () => {
         </div>
       </div>
 
-      <div className="flex gap-2 justify-between flex-wrap">
+      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-2 justify-between flex-wrap">
         {cards.map((i) => (
           <UserCard key={i.type} type={i} />
         ))}
@@ -494,16 +494,16 @@ const AdminPage = () => {
       />
 
      <div className="flex gap-4 flex-col lg:flex-row">
-        <div className="flex flex-col gap-8 lg:w-1/2">
+        <div className="flex flex-col gap-8 lg:w-1/2 lg:h-[720px]">
           <AdminDataReports
             schools={results}
             startDate={dateRange.startDate}
             endDate={dateRange.endDate}
           />
         </div>
-        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
-          <div className="h-[400px]">
-            <div className="mb-8">
+        <div className="flex flex-col gap-8 lg:w-1/2 lg:h-[720px] p-8 bg-white rounded-2xl">
+          <div className="">
+            <div className="mb-8 ">
               <SchoolMap schools={results} />
             </div>
           </div>
