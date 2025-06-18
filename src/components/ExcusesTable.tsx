@@ -138,7 +138,7 @@ export function ExcusesTable({ items }: { items: EnrichedExcuseItem[] }) {
                 </TableCell>
                 <TableCell className={`${alignmentClass}`}>
                   <Link
-                    href={`/excuses/${item.id}`}
+                    href={`excuses/${item.id}`}
                     className="flex align-middle items-center"
                   >
                     <Image
