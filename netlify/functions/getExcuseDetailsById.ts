@@ -1,5 +1,5 @@
 import { Handler, Context } from '@netlify/functions';
-import { supabaseAdmin } from '../../src/lib/supabase/supabaseClient'; // <-- Changed to supabaseAdmin
+import { supabaseAdmin } from "./utils/supabaseAdminClient"; // <--- CHANGE THIS IMPORT
 
 interface Excuse {
   id: string; // Adjusted to string as per your db.json

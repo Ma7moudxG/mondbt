@@ -1,5 +1,5 @@
 import { Handler, Context, APIGatewayEvent } from '@netlify/functions';
-import { supabaseAdmin } from '../../src/lib/supabase/supabaseClient'; // <-- Changed to supabaseAdmin
+import { supabaseAdmin } from "./utils/supabaseAdminClient"; // <--- CHANGE THIS IMPORT
 
 interface Excuse {
   id: string; // <-- ENSURE THIS IS STRING IF YOUR DB COLUMN IS TEXT/UUID

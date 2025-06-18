@@ -1,7 +1,7 @@
 // netlify/functions/getPenaltiesForParent.ts
 
 import { Handler, Context, APIGatewayEvent } from '@netlify/functions';
-import { supabaseAdmin } from '../../src/lib/supabase/supabaseClient'; // Using supabaseAdmin for backend functions
+import { supabaseAdmin } from "./utils/supabaseAdminClient"; // <--- CHANGE THIS IMPORT
 
 interface ParentPenalty {
   id: string;
