@@ -1,7 +1,6 @@
 import moment from "moment";
 import "moment-hijri";
-import { supabase } from '../../src/lib/supabase/supabaseClient';// // import { saveSchoolData } from '@/utils/schoolService';
-// src/services/dataService.ts
+import { supabase } from '@/lib/supabase/supabaseClient';// src/services/dataService.ts
 // --- Interfaces (Copied directly from your last provided code) ---
 export interface Region {
   region_id: number;
