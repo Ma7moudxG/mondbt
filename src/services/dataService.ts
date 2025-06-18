@@ -393,7 +393,7 @@ export default class DataService {
         .from("excuseAttachments")
         .select("file_url") // Only select the file_url column
         .eq("excuse_id", excuseId) // Filter by excuse_id
-        .single(); // Expecting one attachment per excuse, or the first one if multiple
+        .maybeSingle(); // Expecting one attachment per excuse, or the first one if multiple
 
       if (error) {
         console.error("Supabase Error fetching attachment:", error);

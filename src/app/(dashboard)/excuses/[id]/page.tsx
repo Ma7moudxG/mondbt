@@ -76,6 +76,7 @@ export default function ExcusePage() {
           ),
         ]);
 
+        console.log("aaaassss", excuseAttachment)
       setExcuseAttachment(attachmentUrl);
       setExcuseDescription(description);
       setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
