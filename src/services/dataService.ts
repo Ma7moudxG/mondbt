@@ -295,6 +295,9 @@ export interface StudentDetails {
   rewards: Reward[];
 }
 
+  const NETLIFY_FUNCTIONS_BASE_URL = "/.netlify/functions"
+
+
 /**
  * Maps a school type name (e.g., "National") to an array of corresponding education_type_ids.
  * Returns an array of IDs because some names might map to multiple IDs (like "National").
@@ -654,6 +657,7 @@ export default class DataService {
   //   return { newExcuse, newAttachment };
   // }
 
+
   static async createExcuse(
         parentId: number,
         studentId: number,
@@ -678,10 +682,11 @@ export default class DataService {
                 formData.append('attachmentFile', attachmentFile); 
             }
 
-            console.log(`DataService: Calling Netlify function at: netlify/functions/createExcuse`);
-            const response = await fetch(`/.netlify/functions/createExcuse`, { // <-- Use the absolute URL
+            console.log(`DataService: Calling Netlify function at: ${NETLIFY_FUNCTIONS_BASE_URL}/createExcuse`);
+            const response = await fetch(`${NETLIFY_FUNCTIONS_BASE_URL}/createExcuse`, { 
                 method: 'POST',
                 body: formData,
+                // No 'Content-Type' header here; browser sets it automatically for FormData
             });
 
             if (!response.ok) {

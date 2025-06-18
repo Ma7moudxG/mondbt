@@ -1,12 +1,12 @@
 // netlify/functions/createExcuse.ts
 
-import { Handler, Context, APIGatewayProxyEvent } from '@netlify/functions'; // Use APIGatewayProxyEvent
-import { supabaseAdmin } from '../../src/lib/supabase/supabaseClient'; // Ensure this path is correct
-import formidable from 'formidable';
-import { Readable } from 'stream';
-import { readFile } from 'fs/promises'; // Import readFile directly for promise-based file reading
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { Handler, Context, APIGatewayProxyEvent } from "@netlify/functions"; // Use APIGatewayProxyEvent
+import { supabaseAdmin } from "../../src/lib/supabase/supabaseClient"; // Ensure this path is correct
+import formidable from "formidable";
+import { Readable } from "stream";
+import { readFile } from "fs/promises"; // Import readFile directly for promise-based file reading
+import path from "path";
+import { fileURLToPath } from "url";
 
 // Helper to get __dirname in ES Modules (Netlify Functions are ESM by default with esbuild)
 // These lines are fine for ESM. The warning earlier was about the 'cjs' output format.
@@ -41,40 +41,50 @@ interface ExcuseAttachment {
 // --- Helper function to parse multipart/form-data ---
 // This is adjusted to better handle how formidable expects input in a serverless context.
 const parseMultipartForm = (event: APIGatewayProxyEvent) => {
-  return new Promise<{ fields: formidable.Fields; files: formidable.Files }>((resolve, reject) => {
-    const form = formidable({
-      multiples: false,
-      keepExtensions: true,
-      maxFileSize: 5 * 1024 * 1024, // Max 5MB file size
-      // formidable needs header and body. event.headers are sufficient.
-      // The `event.body` comes in as base64 encoded for binary data in Netlify.
-      // formidable handles the parsing of the stream from a request.
-    });
+  return new Promise<{ fields: formidable.Fields; files: formidable.Files }>(
+    (resolve, reject) => {
+      const form = formidable({
+        multiples: false,
+        keepExtensions: true,
+        maxFileSize: 5 * 1024 * 1024,
+        uploadDir: "/tmp", // Explicitly set upload directory, common for serverless
+      });
 
-    // Create a mock IncomingMessage as formidable expects it
-    const req = new Readable() as any; // Cast to any to add properties
-    req.headers = event.headers;
-    req.method = event.httpMethod;
-    req.url = event.path;
+      // Create a mock IncomingMessage as formidable expects it
+      const req = new Readable() as any;
+      req.headers = event.headers;
+      req.method = event.httpMethod;
+      req.url = event.path;
 
-    // Convert base64 body to buffer and push to stream
-    req.push(event.isBase64Encoded ? Buffer.from(event.body || '', 'base64') : event.body);
-    req.push(null); // Mark end of stream
+      // Convert base64 body to buffer and push to stream
+      req.push(
+        event.isBase64Encoded
+          ? Buffer.from(event.body || "", "base64")
+          : event.body
+      );
+      req.push(null); // Mark end of stream
 
-    form.parse(req, (err, fields, files) => {
-      if (err) {
-        console.error("[Formidable] Error parsing form:", err);
-        return reject(err);
-      }
-      resolve({ fields, files });
-    });
-  });
+      form.parse(req, (err, fields, files) => {
+        if (err) {
+          console.error("[Formidable] Error parsing form:", err);
+          return reject(err);
+        }
+        console.log("[Formidable Parse Result] Fields:", fields); // NEW LOG
+        console.log("[Formidable Parse Result] Files:", files); // NEW LOG
+        resolve({ fields, files });
+      });
+    }
+  );
 };
 
 // --- Main Handler for creating an excuse ---
-const handler: Handler = async (event: APIGatewayProxyEvent, context: Context) => { // Use APIGatewayProxyEvent
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+const handler: Handler = async (
+  event: APIGatewayProxyEvent,
+  context: Context
+) => {
+  // Use APIGatewayProxyEvent
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
   }
 
   let fields: formidable.Fields;
@@ -88,22 +98,30 @@ const handler: Handler = async (event: APIGatewayProxyEvent, context: Context) =
     console.error("[createExcuse] Error parsing multipart form data:", error);
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: `Failed to parse form data: ${(error as Error).message}` }),
+      body: JSON.stringify({
+        error: `Failed to parse form data: ${(error as Error).message}`,
+      }),
     };
   }
 
   const student_id_str = fields.studentId?.[0];
   const parent_id_str = fields.parentId?.[0];
   const reason_id_str = fields.reasonId?.[0];
-  const remarks_en = fields.remarksEn?.[0] || '';
-  const remarks_ar = fields.remarksAr?.[0] || '';
+  const remarks_en = fields.remarksEn?.[0] || "";
+  const remarks_ar = fields.remarksAr?.[0] || "";
   const excuse_date_g = fields.excuseDateG?.[0];
   const excuse_date_h = fields.excuseDateH?.[0];
 
-  if (!student_id_str || !parent_id_str || !reason_id_str || !excuse_date_g || !excuse_date_h) {
+  if (
+    !student_id_str ||
+    !parent_id_str ||
+    !reason_id_str ||
+    !excuse_date_g ||
+    !excuse_date_h
+  ) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: 'Missing required excuse fields.' }),
+      body: JSON.stringify({ error: "Missing required excuse fields." }),
     };
   }
 
@@ -114,7 +132,9 @@ const handler: Handler = async (event: APIGatewayProxyEvent, context: Context) =
   if (isNaN(student_id) || isNaN(parent_id) || isNaN(reason_id)) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: 'Invalid ID format for studentId, parentId, or reasonId.' }),
+      body: JSON.stringify({
+        error: "Invalid ID format for studentId, parentId, or reasonId.",
+      }),
     };
   }
 
@@ -125,33 +145,58 @@ const handler: Handler = async (event: APIGatewayProxyEvent, context: Context) =
 
   try {
     if (attachmentFile) {
-      console.log("[createExcuse] Uploading attachment to Supabase Storage...");
-      const filePath = `public/excuse_attachments/${Date.now()}-${attachmentFile.originalFilename}`;
-      // Use readFile directly from 'fs/promises'
-      const fileBuffer = await readFile(attachmentFile.filepath); 
+      console.log("[createExcuse] Attachment file object found. Details:", {
+        // NEW LOG
+        originalFilename: attachmentFile.originalFilename,
+        filepath: attachmentFile.filepath, // IMPORTANT: Check this
+        mimetype: attachmentFile.mimetype,
+        size: attachmentFile.size,
+      });
 
-      const { data: uploadData, error: uploadError } = await supabaseAdmin.storage
-        .from('excuse-attachments')
-        .upload(filePath, fileBuffer, {
-          contentType: attachmentFile.mimetype || 'application/octet-stream',
-          upsert: false,
-        });
+      if (!attachmentFile.filepath) {
+        console.error(
+          "[createExcuse] ERROR: attachmentFile.filepath is undefined AFTER formidable parsing!"
+        ); // NEW ERROR LOG
+        throw new Error("Missing attachment file path after upload parsing.");
+      }
+
+      console.log("[createExcuse] Uploading attachment to Supabase Storage...");
+      const filePath = `public/excuse_attachments/${Date.now()}-${
+        attachmentFile.originalFilename
+      }`;
+      const fileBuffer = await readFile(attachmentFile.filepath);
+
+      const { data: uploadData, error: uploadError } =
+        await supabaseAdmin.storage
+          .from("excuse-attachments")
+          .upload(filePath, fileBuffer, {
+            contentType: attachmentFile.mimetype || "application/octet-stream",
+            upsert: false,
+          });
 
       if (uploadError) {
-        console.error("[createExcuse] Supabase Storage upload error:", uploadError);
-        throw new Error(`Failed to upload attachment to storage: ${uploadError.message}`);
+        console.error(
+          "[createExcuse] Supabase Storage upload error:",
+          uploadError
+        );
+        throw new Error(
+          `Failed to upload attachment to storage: ${uploadError.message}`
+        );
       }
 
       const { data: publicUrlData } = supabaseAdmin.storage
-        .from('excuse-attachments')
+        .from("excuse-attachments")
         .getPublicUrl(filePath);
 
       finalAttachmentUrl = publicUrlData.publicUrl;
-      console.log("[createExcuse] Attachment uploaded successfully, URL:", finalAttachmentUrl);
+      console.log(
+        "[createExcuse] Attachment uploaded successfully, URL:",
+        finalAttachmentUrl
+      );
     }
 
     const now = new Date().toISOString();
-    const newExcuseData: Omit<Excuse, 'id'> = {
+    const newExcuseData: Omit<Excuse, "id"> = {
       student_id,
       parent_id,
       reason_id,
@@ -166,57 +211,79 @@ const handler: Handler = async (event: APIGatewayProxyEvent, context: Context) =
 
     console.log("[createExcuse] Inserting new excuse record:", newExcuseData);
     const { data: newExcuse, error: excuseError } = await supabaseAdmin
-      .from('excuses')
+      .from("excuses")
       .insert([newExcuseData])
       .select()
       .single();
 
     if (excuseError) {
-      console.error("[createExcuse] Supabase DB excuse insert error:", excuseError);
+      console.error(
+        "[createExcuse] Supabase DB excuse insert error:",
+        excuseError
+      );
       throw new Error(`Failed to create excuse record: ${excuseError.message}`);
     }
 
-    console.log("[createExcuse] Excuse record created successfully:", newExcuse);
+    console.log(
+      "[createExcuse] Excuse record created successfully:",
+      newExcuse
+    );
 
     if (attachmentFile && finalAttachmentUrl && newExcuse?.id) {
-      const newAttachmentData: Omit<ExcuseAttachment, 'id'> = {
+      const newAttachmentData: Omit<ExcuseAttachment, "id"> = {
         excuse_id: newExcuse.id,
         file_url: finalAttachmentUrl,
         uploaded_at: now,
-        file_name: attachmentFile.originalFilename || 'unnamed',
-        file_type: attachmentFile.mimetype || 'application/octet-stream',
+        file_name: attachmentFile.originalFilename || "unnamed",
+        file_type: attachmentFile.mimetype || "application/octet-stream",
         file_size: attachmentFile.size || 0,
       };
 
-      console.log("[createExcuse] Inserting new attachment record:", newAttachmentData);
-      const { data: attachmentRecord, error: attachmentError } = await supabaseAdmin
-        .from('excuseAttachments')
-        .insert([newAttachmentData])
-        .select()
-        .single();
+      console.log(
+        "[createExcuse] Inserting new attachment record:",
+        newAttachmentData
+      );
+      const { data: attachmentRecord, error: attachmentError } =
+        await supabaseAdmin
+          .from("excuseAttachments")
+          .insert([newAttachmentData])
+          .select()
+          .single();
 
       if (attachmentError) {
-        console.error("[createExcuse] Supabase DB attachment insert error:", attachmentError);
-        throw new Error(`Failed to create attachment record: ${attachmentError.message}`);
+        console.error(
+          "[createExcuse] Supabase DB attachment insert error:",
+          attachmentError
+        );
+        throw new Error(
+          `Failed to create attachment record: ${attachmentError.message}`
+        );
       }
       newAttachmentRecord = attachmentRecord;
-      console.log("[createExcuse] Attachment record created successfully:", newAttachmentRecord);
+      console.log(
+        "[createExcuse] Attachment record created successfully:",
+        newAttachmentRecord
+      );
     }
 
     return {
       statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         newExcuse,
         newAttachment: newAttachmentRecord,
       }),
     };
-
   } catch (apiError) {
-    console.error("[createExcuse] API Function caught unexpected error:", apiError);
+    console.error(
+      "[createExcuse] API Function caught unexpected error:",
+      apiError
+    );
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: `Server error: ${(apiError as Error).message}` }),
+      body: JSON.stringify({
+        error: `Server error: ${(apiError as Error).message}`,
+      }),
     };
   }
 };
