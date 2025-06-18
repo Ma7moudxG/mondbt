@@ -59,7 +59,7 @@ export default async function Menu() {
  const currentUserRole: UserRole | null = (session?.user?.role as UserRole) || null;
 
 return (
-    <div className="mt-4 text-sm">
+    <div className="mt-4 text-sm" >
       <TranslatedMenuContent menuItems={menuItems} currentUserRole={currentUserRole} />
     </div>
   );

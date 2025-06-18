@@ -121,7 +121,7 @@ const DateRange: React.FC<DateRangeProps> = ({ onDateChange, initialStartDate, i
 
   return (
     <div className="date-range-picker flex flex-col gap-4 p-4 items-center">
-      <div className='flex gap-4 flex-wrap'>
+      <div className='flex flex-col md:flex-row gap-4 flex-wrap items-center'>
         <div className='flex items-center gap-4'>
           <label htmlFor="startDate" style={{ fontSize: '14px', color: '#555', marginBottom: '5px' }}>{getConsistentTranslatedText('from')}:</label>
           <input

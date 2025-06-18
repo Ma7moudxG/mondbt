@@ -57,10 +57,10 @@ const Statistics: React.FC<StatisticsProps> = ({
       : 0;
 
   return (
-    <div className="statistics-component-container flex justify-between">
-      <div className="flex flex-col gap-4 p-4 rounded-lg">
+    <div className="statistics-component-container flex justify-between items-center">
+      <div className="flex flex-col gap-8 lg:gap-4 p-4 rounded-lg mx-auto">
         {/* Attendance Statistics */}
-        <div className="flex gap-2 items-center justify-between">
+        <div className="flex flex-col md:flex-row gap-2 items-center justify-between">
           <div className="flex gap-2 items-center">
             <Image
               src="/stats_attendance.svg"
@@ -74,7 +74,7 @@ const Statistics: React.FC<StatisticsProps> = ({
               {/* Use helper */}
             </p>
           </div>
-          <div className="flex">
+          <div className="flex align-left">
             <Gauge
               value={attendanceRate}
               valueMax={100}
@@ -101,7 +101,7 @@ const Statistics: React.FC<StatisticsProps> = ({
         </div>
 
         {/* Absence Statistics */}
-        <div className="flex gap-2 justify-between items-center">
+        <div className="flex flex-col md:flex-row gap-2 justify-between items-center">
           <div className="flex gap-2 items-center">
             <Image
               src="/stats_absence.svg"
@@ -142,7 +142,7 @@ const Statistics: React.FC<StatisticsProps> = ({
         </div>
 
         {/* Late Statistics */}
-        <div className="flex gap-2 items-center justify-between ">
+        <div className="flex flex-col md:flex-row gap-2 items-center justify-between ">
           <div className="flex gap-2 items-center">
             <Image
               src="/stats_late.svg"

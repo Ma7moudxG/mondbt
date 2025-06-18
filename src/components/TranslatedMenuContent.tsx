@@ -62,13 +62,14 @@ export default function TranslatedMenuContent({
               <Link
                 href={`/${currentUserRole}/${item.href}`}
                 key={item.label}
-                className="flex items-center justify-center lg:justify-start gap-4 text-white py-2 md:px-4 rounded-full hover:bg-[#8447AB]"
+                className="flex items-center justify-center align-middle lg:justify-start  gap-4 text-white py-2 lg:px-4  rounded-full hover:bg-[#8447AB]"
               >
                 <Image
                   src={item.icon || "/default-icon.svg"}
                   alt="" // Your alt text is currently empty, consider adding a translated alt.
                   width={20}
                   height={20}
+                  
                 />
                 <span className="hidden lg:block">
                   {/* START: Hydration Fix - Conditionally render translation */}

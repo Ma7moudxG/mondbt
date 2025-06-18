@@ -113,12 +113,12 @@ export default function Header() {
   return (
     <header className="flex justify-between items-center p-4 bg-white">
       {/* Date Display */}
-      <div className="text-xs text-[#9B9B9B] text-right font-bold whitespace-nowrap">
+      <div className="flex flex-col lg:flex-row text-xs text-[#9B9B9B] text-right font-bold whitespace-nowrap">
         {useHijri ? (
           <>
-            <span className="text-[#5EB89D]">{t('today')}</span>: {hijriDate}
+            <span className="text-[#5EB89D]">{t('today')}:</span> {hijriDate}
             &nbsp;&nbsp;&nbsp;
-            <span className="text-[#5EB89D]">{t('corresponding')}</span>: {gregorianDate}
+            <span className="text-[#5EB89D]">{t('corresponding')}:</span> {gregorianDate}
           </>
         ) : (
           <>
@@ -143,21 +143,10 @@ export default function Header() {
           >
             {i18n.language === 'ar' ? "EN" : "AR"}
           </button>
-          {/* Re-enable this button if you want the user to toggle date type */}
-          {/* <button
-            onClick={toggleDateType}
-            className={`px-3 py-1 text-xs rounded-full border ${
-              useHijri
-                ? "bg-[#8447AB] text-white border-[#8447AB]"
-                : "bg-white text-[#8447AB] border-[#8447AB]"
-            }`}
-          >
-            {useHijri ? t('gregorian') : t('hijri')}
-          </button> */}
         </div>
 
         {/* User Greeting */}
-        <span className="text-sm font-semibold text-[#9B9B9B]">
+        <span className="text-xs md:text-sm font-semibold text-[#9B9B9B]">
           {t('hello')}, {greetingName}!
         </span>
 
@@ -165,7 +154,7 @@ export default function Header() {
         {session && (
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
-            className="bg-white rounded-full text-[#9B9B9B] text-sm font-medium px-4 py-2 hover:text-white hover:bg-[#8447AB]"
+            className="bg-white rounded-full text-[#9B9B9B] text-xs md:text-sm font-medium px-2 md:px-4 py-2 hover:text-white hover:bg-[#8447AB]"
           >
             {t('logout')}
           </button>
