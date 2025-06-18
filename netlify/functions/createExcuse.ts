@@ -126,12 +126,12 @@ const handler: Handler = async (event: APIGatewayProxyEvent, context: Context) =
   try {
     if (attachmentFile) {
       console.log("[createExcuse] Uploading attachment to Supabase Storage...");
-      const filePath = `public/excuse_attachments/${Date.now()}-${attachmentFile.originalFilename}`;
+      const filePath = `public/excuseAttachments/${Date.now()}-${attachmentFile.originalFilename}`;
       // Use readFile directly from 'fs/promises'
       const fileBuffer = await readFile(attachmentFile.filepath); 
 
       const { data: uploadData, error: uploadError } = await supabaseAdmin.storage
-        .from('excuse-attachments')
+        .from('excuseAttachments')
         .upload(filePath, fileBuffer, {
           contentType: attachmentFile.mimetype || 'application/octet-stream',
           upsert: false,
@@ -143,7 +143,7 @@ const handler: Handler = async (event: APIGatewayProxyEvent, context: Context) =
       }
 
       const { data: publicUrlData } = supabaseAdmin.storage
-        .from('excuse-attachments')
+        .from('excuseAttachments')
         .getPublicUrl(filePath);
 
       finalAttachmentUrl = publicUrlData.publicUrl;
