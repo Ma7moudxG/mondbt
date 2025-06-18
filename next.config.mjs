@@ -36,6 +36,12 @@ const nextConfig = {
         port: '',
         pathname: '/**', // This allows any path on the hostname
       },
+      {
+        protocol: 'https',
+        hostname: 'igedrwglaksviasmylvv.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/**', // This covers your public bucket path
+      },
     ],
   },
   
