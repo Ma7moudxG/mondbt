@@ -1,20 +1,14 @@
 // netlify/functions/createExcuse.ts
 
 import { Handler, Context, APIGatewayProxyEvent } from "@netlify/functions";
-import { supabaseAdmin } from "./utils/supabaseAdminClient"; // <--- CHANGE THIS IMPORT
-import formidable from "formidable";
+import { supabaseAdmin } from "./utils/supabaseAdminClient"; // Make sure this path is correct for your project
+import formidable from "formidable"; // Ensure formidable is installed: npm install formidable
 import { Readable } from "stream";
 import { readFile } from "fs/promises";
-// import path from "path"; // No longer needed
-// import { fileURLToPath } from "url"; // No longer needed
-
-// REMOVE THESE LINES THAT ARE CAUSING THE CRASH:
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
 
 // --- Interfaces (ensure these match your Supabase table schemas) ---
 interface Excuse {
-  id: string; // Assuming Supabase generates this as UUID/text
+  id: string; // Supabase generates this as UUID/text
   student_id: number;
   parent_id: number;
   reason_id: number;
@@ -28,36 +22,35 @@ interface Excuse {
 }
 
 interface ExcuseAttachment {
-  id?: string; // Supabase usually generates this
-  excuse_id: string; // Foreign key to Excuse.id
+  id?: string; // Supabase usually generates this (UUID)
+  excuse_id: string; // Foreign key to Excuse.id (UUID)
   file_url: string;
   uploaded_at: string;
 }
 
 // --- Helper function to parse multipart/form-data ---
+// This handles the file upload from the incoming Netlify function event body.
 const parseMultipartForm = (event: APIGatewayProxyEvent) => {
   return new Promise<{ fields: formidable.Fields; files: formidable.Files }>(
     (resolve, reject) => {
       const form = formidable({
-        multiples: false,
-        keepExtensions: true,
-        maxFileSize: 5 * 1024 * 1024,
-        uploadDir: "/tmp", // Explicitly set upload directory, common for serverless
+        multiples: false, // Expecting single file upload for 'attachmentFile'
+        keepExtensions: true, // Keep file extensions
+        maxFileSize: 5 * 1024 * 1024, // Max 5MB file size
+        uploadDir: "/tmp", // Crucial for Netlify Functions: temporary files are written to /tmp
       });
 
-      // Create a mock IncomingMessage as formidable expects it
+      // Formidable expects a Node.js IncomingMessage. Netlify's event body needs to be streamed.
       const req = new Readable() as any;
       req.headers = event.headers;
       req.method = event.httpMethod;
       req.url = event.path;
 
-      // Convert base64 body to buffer and push to stream
+      // Convert base64 body (from Netlify event) to Buffer and push to the readable stream
       req.push(
-        event.isBase64Encoded
-          ? Buffer.from(event.body || "", "base64")
-          : event.body
+        event.isBase64Encoded ? Buffer.from(event.body || "", "base64") : event.body
       );
-      req.push(null); // Mark end of stream
+      req.push(null); // Signal end of the stream
 
       form.parse(req, (err, fields, files) => {
         if (err) {
@@ -73,10 +66,8 @@ const parseMultipartForm = (event: APIGatewayProxyEvent) => {
 };
 
 // --- Main Handler for creating an excuse ---
-const handler: Handler = async (
-  event: APIGatewayProxyEvent,
-  context: Context
-) => {
+const handler: Handler = async (event: APIGatewayProxyEvent, context: Context) => {
+  // Ensure the request is a POST request
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
@@ -84,6 +75,7 @@ const handler: Handler = async (
   let fields: formidable.Fields;
   let files: formidable.Files;
 
+  // Parse the multipart form data (text fields and files)
   try {
     ({ fields, files } = await parseMultipartForm(event));
     console.log("[createExcuse] Parsed form fields:", fields);
@@ -98,6 +90,7 @@ const handler: Handler = async (
     };
   }
 
+  // Extract form fields, handling potential array wrapping by formidable
   const student_id_str = fields.studentId?.[0];
   const parent_id_str = fields.parentId?.[0];
   const reason_id_str = fields.reasonId?.[0];
@@ -106,6 +99,7 @@ const handler: Handler = async (
   const excuse_date_g = fields.excuseDateG?.[0];
   const excuse_date_h = fields.excuseDateH?.[0];
 
+  // Validate required fields
   if (
     !student_id_str ||
     !parent_id_str ||
@@ -119,6 +113,7 @@ const handler: Handler = async (
     };
   }
 
+  // Parse numeric IDs
   const student_id = parseInt(student_id_str, 10);
   const parent_id = parseInt(parent_id_str, 10);
   const reason_id = parseInt(reason_id_str, 10);
@@ -132,16 +127,18 @@ const handler: Handler = async (
     };
   }
 
+  // Get the attachment file object (if present)
   const attachmentFile = files.attachmentFile?.[0];
 
   let finalAttachmentUrl: string | undefined;
-  let newAttachmentRecord: ExcuseAttachment | undefined;
+  let newAttachmentRecord: ExcuseAttachment | undefined; // To hold the created attachment record
 
   try {
+    // --- Step 1: Upload attachment to Supabase Storage if a file is provided ---
     if (attachmentFile) {
       console.log("[createExcuse] Attachment file object found. Details:", {
         originalFilename: attachmentFile.originalFilename,
-        filepath: attachmentFile.filepath,
+        filepath: attachmentFile.filepath, // Path to the temporary file
         mimetype: attachmentFile.mimetype,
         size: attachmentFile.size,
       });
@@ -154,17 +151,20 @@ const handler: Handler = async (
       }
 
       console.log("[createExcuse] Uploading attachment to Supabase Storage...");
+      // Define the storage path within the 'excuse-attachments' bucket
       const filePath = `public/excuse_attachments/${Date.now()}-${
         attachmentFile.originalFilename
       }`;
+      // Read the temporary file into a buffer
       const fileBuffer = await readFile(attachmentFile.filepath);
 
+      // Perform the upload to Supabase Storage
       const { data: uploadData, error: uploadError } =
         await supabaseAdmin.storage
-          .from("excuse-attachments")
+          .from("excuse-attachments") // Your Supabase Storage bucket name
           .upload(filePath, fileBuffer, {
             contentType: attachmentFile.mimetype || "application/octet-stream",
-            upsert: false,
+            upsert: false, // Do not overwrite existing files with the same name
           });
 
       if (uploadError) {
@@ -177,6 +177,7 @@ const handler: Handler = async (
         );
       }
 
+      // Get the public URL for the uploaded file
       const { data: publicUrlData } = supabaseAdmin.storage
         .from("excuse-attachments")
         .getPublicUrl(filePath);
@@ -188,8 +189,9 @@ const handler: Handler = async (
       );
     }
 
+    // --- Step 2: Insert the new excuse record into the 'excuses' table ---
     const now = new Date().toISOString();
-    const newExcuseData: Omit<Excuse, "id"> = {
+    const newExcuseData: Omit<Excuse, "id"> = { // Omit 'id' as Supabase will generate it
       student_id,
       parent_id,
       reason_id,
@@ -206,8 +208,8 @@ const handler: Handler = async (
     const { data: newExcuse, error: excuseError } = await supabaseAdmin
       .from("excuses")
       .insert([newExcuseData])
-      .select()
-      .single();
+      .select() // Select the newly inserted row
+      .single(); // Expecting one row back
 
     if (excuseError) {
       console.error(
@@ -219,26 +221,24 @@ const handler: Handler = async (
 
     console.log(
       "[createExcuse] Excuse record created successfully:",
-      newExcuse
+      newExcuse // This object includes the Supabase-generated UUID for 'id'
     );
 
+    // --- Step 3: Insert attachment record into 'excuseAttachments' table if file was uploaded ---
     if (attachmentFile && finalAttachmentUrl && newExcuse?.id) {
-      const newAttachmentData: Omit<ExcuseAttachment, "id"> = {
-          excuse_id: newExcuse.id,
-          file_url: finalAttachmentUrl,
-          uploaded_at: now,
-        };
+      const newAttachmentData: Omit<ExcuseAttachment, "id"> = { // Omit 'id' for attachment, as DB generates
+        excuse_id: newExcuse.id, // Use the UUID from the newly created excuse
+        file_url: finalAttachmentUrl,
+        uploaded_at: now,
+      };
 
-      console.log(
-        "[createExcuse] Inserting new attachment record:",
-        newAttachmentData
-      );
+      console.log("[createExcuse] Inserting new attachment record:", newAttachmentData);
       const { data: attachmentRecord, error: attachmentError } =
         await supabaseAdmin
           .from("excuseAttachments")
           .insert([newAttachmentData])
-          .select()
-          .single();
+          .select() // Select the newly inserted row
+          .single(); // Expecting one row back
 
       if (attachmentError) {
         console.error(
@@ -249,19 +249,20 @@ const handler: Handler = async (
           `Failed to create attachment record: ${attachmentError.message}`
         );
       }
-      newAttachmentRecord = attachmentRecord;
+      newAttachmentRecord = attachmentRecord; // Store the newly created attachment record
       console.log(
         "[createExcuse] Attachment record created successfully:",
         newAttachmentRecord
       );
     }
 
+    // --- Final Response: Return the newly created excuse and attachment records ---
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        newExcuse,
-        newAttachment: newAttachmentRecord,
+        newExcuse, // Contains the UUID of the newly created excuse
+        newAttachment: newAttachmentRecord, // Contains details of the newly created attachment
       }),
     };
   } catch (apiError) {

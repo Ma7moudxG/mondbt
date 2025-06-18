@@ -710,10 +710,9 @@ export default class DataService {
             }
 
             console.log(`DataService: Calling Netlify function at: ${NETLIFY_FUNCTIONS_BASE_URL}/createExcuse`);
-            const response = await fetch(`${NETLIFY_FUNCTIONS_BASE_URL}/createExcuse`, { 
-                method: 'POST',
-                body: formData,
-                // No 'Content-Type' header here; browser sets it automatically for FormData
+            const response = await fetch(`${NETLIFY_FUNCTIONS_BASE_URL}/createExcuse`, {
+            method: 'POST',
+            body: formData,
             });
 
             if (!response.ok) {
@@ -728,8 +727,7 @@ export default class DataService {
             }
 
             const result: { newExcuse: Excuse; newAttachment?: ExcuseAttachment } = await response.json();
-            console.log("DataService: Excuse and attachment created successfully:", result);
-            return result;
+        console.log("DataService: Excuse and attachment created successfully:", result);            return result;
 
         } catch (error) {
             console.error(

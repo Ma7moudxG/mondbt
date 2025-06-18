@@ -56,25 +56,34 @@ const NewExcusePage = () => {
     const fetchData = async () => {
       const parentStudents = DataService.getStudentsByParentId(parentId);
       console.log("Students loaded for parentId:", parentId, parentStudents);
-      setStudents(parentStudents.slice(0,3));
+      setStudents(parentStudents.slice(0, 3));
 
       try {
         const reasons = await DataService.getExcuseReasons();
         console.log("Fetched raw Excuse Reasons:", reasons);
 
-        const processedReasons = reasons.map(reason => {
-            const numericId = Number(reason.id);
-            const safeReasonId = isNaN(numericId) ? 0 : numericId;
-            console.log("Processing reason:", reason, "-> numericId:", numericId, "-> safeReasonId:", safeReasonId);
-            return {
-              ...reason,
-              reason_id: safeReasonId
-            };
+        const processedReasons = reasons.map((reason) => {
+          const numericId = Number(reason.id);
+          const safeReasonId = isNaN(numericId) ? 0 : numericId;
+          console.log(
+            "Processing reason:",
+            reason,
+            "-> numericId:",
+            numericId,
+            "-> safeReasonId:",
+            safeReasonId
+          );
+          return {
+            ...reason,
+            reason_id: safeReasonId,
+          };
         }) as ExcuseReason[];
         setExcuseReasons(processedReasons);
       } catch (error) {
         console.error("Failed to fetch excuse reasons:", error);
-        setSubmissionError(getConsistentTranslatedText("failed_to_load_excuse_reasons")); // Use helper
+        setSubmissionError(
+          getConsistentTranslatedText("failed_to_load_excuse_reasons")
+        ); // Use helper
       }
     };
 
@@ -100,7 +109,9 @@ const NewExcusePage = () => {
       !attachment
     ) {
       console.log("Submit Check: Required field missing!");
-      setSubmissionError(getConsistentTranslatedText("please_fill_all_required_fields")); // Use helper
+      setSubmissionError(
+        getConsistentTranslatedText("please_fill_all_required_fields")
+      ); // Use helper
       setSubmitting(false);
       return;
     }
@@ -110,37 +121,40 @@ const NewExcusePage = () => {
 
     try {
       // 1. Parse the Gregorian date string from the input
-      const gregorianDateObject = new Date(selectedDateG + 'T00:00:00'); // Add T00:00:00 to ensure UTC interpretation and avoid timezone issues
-      if (isNaN(gregorianDateObject.getTime())) { // Check for invalid date
+      const gregorianDateObject = new Date(selectedDateG + "T00:00:00"); // Add T00:00:00 to ensure UTC interpretation and avoid timezone issues
+      if (isNaN(gregorianDateObject.getTime())) {
+        // Check for invalid date
         throw new Error("Invalid Gregorian date selected.");
       }
 
       // 2. Format Gregorian date for storage (as YYYY-MM-DD HH:mm:ss, but with 00:00:00 time)
       const year = gregorianDateObject.getFullYear();
-      const month = String(gregorianDateObject.getMonth() + 1).padStart(2, '0');
-      const day = String(gregorianDateObject.getDate()).padStart(2, '0');
+      const month = String(gregorianDateObject.getMonth() + 1).padStart(2, "0");
+      const day = String(gregorianDateObject.getDate()).padStart(2, "0");
       excuseDateGFormatted = `${year}-${month}-${day} 00:00:00`;
 
       // 3. Convert Gregorian date to Hijri date using Intl.DateTimeFormat
       // Note: This conversion is fine because it happens *after* mount on client-side
       // and isn't part of the initial SSR HTML.
-      const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
+      const hijriFormatter = new Intl.DateTimeFormat("en-US-u-ca-islamic-umalqura", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
       });
 
       excuseDateH = hijriFormatter.format(gregorianDateObject);
-      excuseDateH = excuseDateH.replace(/\//g, '-');
+      excuseDateH = excuseDateH.replace(/\//g, "-");
     } catch (error) {
       console.error("Date conversion error:", error);
-      setSubmissionError(getConsistentTranslatedText("Invalid date format or conversion failed.")); // Use helper
+      setSubmissionError(
+        getConsistentTranslatedText("Invalid date format or conversion failed.")
+      ); // Use helper
       setSubmitting(false);
       return;
     }
-    console.log("daaaaaaaaaaaaaaaaaaaaaa", excuseDateH)
+    console.log("daaaaaaaaaaaaaaaaaaaaaa", excuseDateH);
     try {
-      const { newExcuse } = await DataService.createExcuse(
+      const result = await DataService.createExcuse( // Destructure 'newExcuse' from 'result'
         parentId,
         selectedStudentId,
         selectedReasonId,
@@ -149,8 +163,17 @@ const NewExcusePage = () => {
         excuseDateGFormatted, // Pass the formatted Gregorian date
         excuseDateH // Pass the converted Hijri date
       );
-      setSubmissionSuccess(true);
-      router.push(`/excuses/${newExcuse.id}`);
+
+      // Check if result and newExcuse are present before navigating
+      if (result && result.newExcuse) {
+        setSubmissionSuccess(true);
+        // FIX: Correctly navigate to the dynamic route using the UUID
+        router.push(`/parent/excuses/${result.newExcuse.id}`);
+      } else {
+        // Handle cases where result or newExcuse might be null/undefined (e.g., if API returned null)
+        setSubmissionError(getConsistentTranslatedText("Failed to create excuse. No excuse ID returned."));
+      }
+
     } catch (err) {
       console.error("Failed to submit excuse:", err);
       setSubmissionError(getConsistentTranslatedText("failed_to_submit_excuse")); // Use helper
@@ -175,7 +198,8 @@ const NewExcusePage = () => {
               htmlFor="student"
               className={`block text-sm font-medium text-gray-700 mb-2 ${textDirectionClass}`}
             >
-              {getConsistentTranslatedText("Select Student")} <span className="text-red-500">*</span>
+              {getConsistentTranslatedText("Select Student")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <select
               id="student"
@@ -212,7 +236,8 @@ const NewExcusePage = () => {
               htmlFor="reason"
               className={`block text-sm font-medium text-gray-700 mb-2 ${textDirectionClass}`}
             >
-              {getConsistentTranslatedText("Excuse Reason")} <span className="text-red-500">*</span>
+              {getConsistentTranslatedText("Excuse Reason")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <select
               id="reason"
@@ -232,7 +257,11 @@ const NewExcusePage = () => {
                 return (
                   <option key={reason.reason_id} value={reason.reason_id}>
                     {/* START: Hydration Fix - Excuse Reason Description */}
-                    {mounted ? (isArabic ? reason.description_ar : reason.description_en) : reason.description_en}
+                    {mounted
+                      ? isArabic
+                        ? reason.description_ar
+                        : reason.description_en
+                      : reason.description_en}
                     {/* END: Hydration Fix */}
                   </option>
                 );
@@ -246,7 +275,8 @@ const NewExcusePage = () => {
               htmlFor="excuseDate"
               className={`block text-sm font-medium text-gray-700 mb-2 ${textDirectionClass}`}
             >
-              {getConsistentTranslatedText("Date of Absence")} <span className="text-red-500">*</span>
+              {getConsistentTranslatedText("Date of Absence")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <input
               id="excuseDate"
@@ -274,7 +304,9 @@ const NewExcusePage = () => {
               value={remarks}
               onChange={(e) => setRemarks(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8447AB] focus:ring-[#8447AB] sm:text-sm"
-              placeholder={getConsistentTranslatedText("Enter any additional remarks (optional)")}
+              placeholder={getConsistentTranslatedText(
+                "Enter any additional remarks (optional)"
+              )}
               dir={dirAttribute} // dirAttribute itself is now fixed for hydration
             ></textarea>
           </div>
@@ -285,7 +317,8 @@ const NewExcusePage = () => {
               htmlFor="attachment"
               className={`block text-sm font-medium text-gray-700 mb-2 ${textDirectionClass}`}
             >
-              {getConsistentTranslatedText("Attachment")} <span className="text-red-500">*</span>
+              {getConsistentTranslatedText("Attachment")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <input
               type="file"
@@ -319,7 +352,9 @@ const NewExcusePage = () => {
             disabled={submitting}
             className="w-full sm:w-auto self-end px-6 py-3 text-lg font-medium text-white rounded-full bg-[#5EB89D] hover:bg-[#4a9780] focus:outline-none focus:ring-2 focus:ring-[#5EB89D] focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {submitting ? getConsistentTranslatedText("Submitting...") : getConsistentTranslatedText("Submit Excuse")}
+            {submitting
+              ? getConsistentTranslatedText("Submitting...")
+              : getConsistentTranslatedText("Submit Excuse")}
           </button>
         </form>
       </div>
