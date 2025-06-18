@@ -2,7 +2,7 @@
 
 import { Handler, Context, APIGatewayProxyEvent } from "@netlify/functions";
 import { supabaseAdmin } from "./utils/supabaseAdminClient"; // <--- CHANGE THIS IMPORT
-// import formidable from "formidable";
+import formidable from "formidable";
 import { Readable } from "stream";
 import { readFile } from "fs/promises";
 // import path from "path"; // No longer needed
