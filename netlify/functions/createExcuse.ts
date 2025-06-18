@@ -7,6 +7,8 @@ import { Readable } from 'stream'; // Node.js stream for file buffer handling
 import { fileURLToPath } from 'url';
 import path from 'path';
 
+import * as fs from 'fs/promises'; // Required for fs.promises.readFile
+
 // Helper to get __dirname in ES Modules (Netlify Functions are ESM by default with esbuild)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.3",
+    "@types/formidable": "^3.4.5",
     "@types/geojson": "^7946.0.16",
     "@types/leaflet": "^1.9.18",
     "@types/moment-hijri": "^2.1.4",
