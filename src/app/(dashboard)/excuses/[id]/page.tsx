@@ -76,10 +76,10 @@ export default function ExcusePage() {
           ),
         ]);
 
+        setExcuseAttachment(attachmentUrl);
+        setExcuseDescription(description);
+        setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
         console.log("aaaassss", excuseAttachment)
-      setExcuseAttachment(attachmentUrl);
-      setExcuseDescription(description);
-      setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
     } catch (err) {
       console.error("Failed to fetch Excuse details:", err);
       setError("failed_to_load_excuse_data_error");
