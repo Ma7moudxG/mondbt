@@ -1,17 +1,16 @@
 // netlify/functions/createExcuse.ts
 
-import { Handler, Context, APIGatewayProxyEvent } from "@netlify/functions"; // Use APIGatewayProxyEvent
-import { supabaseAdmin } from "../../src/lib/supabase/supabaseClient"; // Ensure this path is correct
+import { Handler, Context, APIGatewayProxyEvent } from "@netlify/functions";
+import { supabaseAdmin } from "../../src/lib/supabase/supabaseClient";
 import formidable from "formidable";
 import { Readable } from "stream";
-import { readFile } from "fs/promises"; // Import readFile directly for promise-based file reading
-import path from "path";
-import { fileURLToPath } from "url";
+import { readFile } from "fs/promises";
+// import path from "path"; // No longer needed
+// import { fileURLToPath } from "url"; // No longer needed
 
-// Helper to get __dirname in ES Modules (Netlify Functions are ESM by default with esbuild)
-// These lines are fine for ESM. The warning earlier was about the 'cjs' output format.
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// REMOVE THESE LINES THAT ARE CAUSING THE CRASH:
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // --- Interfaces (ensure these match your Supabase table schemas) ---
 interface Excuse {
@@ -39,7 +38,6 @@ interface ExcuseAttachment {
 }
 
 // --- Helper function to parse multipart/form-data ---
-// This is adjusted to better handle how formidable expects input in a serverless context.
 const parseMultipartForm = (event: APIGatewayProxyEvent) => {
   return new Promise<{ fields: formidable.Fields; files: formidable.Files }>(
     (resolve, reject) => {
@@ -69,8 +67,8 @@ const parseMultipartForm = (event: APIGatewayProxyEvent) => {
           console.error("[Formidable] Error parsing form:", err);
           return reject(err);
         }
-        console.log("[Formidable Parse Result] Fields:", fields); // NEW LOG
-        console.log("[Formidable Parse Result] Files:", files); // NEW LOG
+        console.log("[Formidable Parse Result] Fields:", fields);
+        console.log("[Formidable Parse Result] Files:", files);
         resolve({ fields, files });
       });
     }
@@ -82,7 +80,6 @@ const handler: Handler = async (
   event: APIGatewayProxyEvent,
   context: Context
 ) => {
-  // Use APIGatewayProxyEvent
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
@@ -146,9 +143,8 @@ const handler: Handler = async (
   try {
     if (attachmentFile) {
       console.log("[createExcuse] Attachment file object found. Details:", {
-        // NEW LOG
         originalFilename: attachmentFile.originalFilename,
-        filepath: attachmentFile.filepath, // IMPORTANT: Check this
+        filepath: attachmentFile.filepath,
         mimetype: attachmentFile.mimetype,
         size: attachmentFile.size,
       });
@@ -156,7 +152,7 @@ const handler: Handler = async (
       if (!attachmentFile.filepath) {
         console.error(
           "[createExcuse] ERROR: attachmentFile.filepath is undefined AFTER formidable parsing!"
-        ); // NEW ERROR LOG
+        );
         throw new Error("Missing attachment file path after upload parsing.");
       }
 
