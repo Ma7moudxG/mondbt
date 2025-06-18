@@ -4,10 +4,11 @@
 
 [functions] # Consolidate all function settings here
   directory = "netlify/functions"
-  node_bundler = "esbuild" # Add this to the main functions block
-  external_node_modules = ["@netlify/functions"] # This might help with Netlify-specific modules
+  node_bundler = "esbuild"
+  
+  external_node_modules = ["@netlify/functions", "formidable", "@supabase/supabase-js"] 
   included_files = ["./src/lib/supabase/supabaseClient.ts"]
-  node_target = "es2022"
+
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
