@@ -1,6 +1,6 @@
 import moment from "moment";
 import "moment-hijri";
-import { supabase } from "@/lib/supabase/supabaseClient"; // Assuming this is your client-side Supabase instance
+import { supabaseAdmin } from "../../src/lib/supabase/supabaseClient";
 // import { saveSchoolData } from '@/utils/schoolService';
 // src/services/dataService.ts
 // --- Interfaces (Copied directly from your last provided code) ---
@@ -391,7 +391,7 @@ export default class DataService {
   ): Promise<string | null> {
     try {
       // Query the 'excuseAttachments' table for records linked to the excuseId
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from("excuseAttachments")
         .select("file_url") // Only select the file_url column
         .eq("excuse_id", excuseId) // Filter by excuse_id
