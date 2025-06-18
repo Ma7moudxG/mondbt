@@ -1,5 +1,6 @@
 import moment from "moment";
 import "moment-hijri";
+import { supabase } from "@/lib/supabase/supabaseClient"; // Assuming this is your client-side Supabase instance
 // import { saveSchoolData } from '@/utils/schoolService';
 // src/services/dataService.ts
 // --- Interfaces (Copied directly from your last provided code) ---
@@ -372,17 +373,43 @@ export default class DataService {
       : null;
   }
 
+  // static async getExcuseAttachmentById(
+  //   excuseId: string
+  // ): Promise<string | null> {
+  //   const response = await fetch(
+  //     `${JSON_SERVER_BASE_URL}/excuseAttachments?excuse_id=${excuseId}`
+  //   );
+  //   if (!response.ok) throw new Error("Failed to fetch excuse attachments");
+  //   const attachments: ExcuseAttachment[] = await response.json();
+
+  //   console.log("sssssssssss", excuseId )
+  //   return attachments.length > 0 ? attachments[0].file_url : null;
+  // }
+
   static async getExcuseAttachmentById(
     excuseId: string
   ): Promise<string | null> {
-    const response = await fetch(
-      `${JSON_SERVER_BASE_URL}/excuseAttachments?excuse_id=${excuseId}`
-    );
-    if (!response.ok) throw new Error("Failed to fetch excuse attachments");
-    const attachments: ExcuseAttachment[] = await response.json();
+    try {
+      // Query the 'excuseAttachments' table for records linked to the excuseId
+      const { data, error } = await supabase
+        .from("excuseAttachments")
+        .select("file_url") // Only select the file_url column
+        .eq("excuse_id", excuseId) // Filter by excuse_id
+        .single(); // Expecting one attachment per excuse, or the first one if multiple
 
-    console.log("sssssssssss", excuseId )
-    return attachments.length > 0 ? attachments[0].file_url : null;
+      if (error) {
+        console.error("Supabase Error fetching attachment:", error);
+        throw new Error(error.message); // Throw error to be caught by caller
+      }
+
+      // If data exists, return the file_url, otherwise null
+      return data ? data.file_url : null;
+
+    } catch (err) {
+      console.error("Failed to fetch excuse attachment:", err);
+      // Depending on your error handling strategy, you might re-throw or return null
+      return null;
+    }
   }
 
   static async getExcuseReasons(): Promise<ExcuseReason[]> {

@@ -33,67 +33,69 @@ export default function ExcusePage() {
   const [error, setError] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
 
-
   useEffect(() => {
-      setMounted(true); // Component has mounted on the client
-      // Setting document direction globally is safe here as it runs client-side
-      document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
-    }, [i18n.language]);
+    setMounted(true); // Component has mounted on the client
+    // Setting document direction globally is safe here as it runs client-side
+    document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
+  }, [i18n.language]);
 
   const isArabic = i18n.language === "ar";
   const textDirectionClass = isArabic ? "text-right" : "text-left";
 
   const fetchExcuseData = useCallback(async () => {
-      setLoading(true);
-      setError(null);
-  
-      if (!excuseId) {
-        setError("invalid_excuse_id");
+    setLoading(true);
+    setError(null);
+
+    if (!excuseId) {
+      setError("invalid_excuse_id");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const details = await DataService.getExcuseDetailsById(excuseId);
+
+      if (!details) {
+        setError("excuse_not_found");
         setLoading(false);
         return;
       }
-  
-      try {
-        const details = await DataService.getExcuseDetailsById(excuseId);
-  
-        if (!details) {
-          setError("excuse_not_found");
-          setLoading(false);
-          return;
-        }
-  
-        setExcuseDetails(details);
-  
-        const [attachmentUrl, description, [firstName, lastName]] = await Promise.all([
-          DataService.getExcuseAttachmentById(details.id.toString()),
-          DataService.getExcuseDescriptionById(details.reason_id.toString(), i18n.language),
-          DataService.getStudentNameById(details.student_id as number, i18n.language),
-        ]);
-  
-        setExcuseAttachment(attachmentUrl);
-        setExcuseDescription(description);
-        setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
-  
-      } catch (err) {
-        console.error("Failed to fetch Excuse details:", err);
-        setError("failed_to_load_excuse_data_error");
-      } finally {
-        setLoading(false);
-      }
-    }, [excuseId, i18n.language, t]);
 
-    useEffect(() => {
-        // Only fetch data if mounted AND excuseIdString is available.
-        // This also means data fetching only begins on the client-side,
-        // avoiding server-side data fetching for this client component.
-        if (mounted && excuseId) {
-          fetchExcuseData();
-        } else if (mounted && excuseId === undefined) {
-          // If mounted but no ID, it's an invalid URL, show an error.
-          setLoading(false);
-          setError("invalid_excuse_id");
-        }
-      }, [mounted, excuseId, fetchExcuseData]);
+      setExcuseDetails(details);
+
+      const [attachmentUrl, description, [firstName, lastName]] =
+        await Promise.all([
+          DataService.getExcuseAttachmentById(details.id.toString()),
+          DataService.getExcuseDescriptionById(
+            details.reason_id.toString(),
+            i18n.language
+          ),
+          DataService.getStudentNameById(
+            details.student_id as number,
+            i18n.language
+          ),
+        ]);
+
+      setExcuseAttachment(attachmentUrl);
+      setExcuseDescription(description);
+      setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
+    } catch (err) {
+      console.error("Failed to fetch Excuse details:", err);
+      setError("failed_to_load_excuse_data_error");
+    } finally {
+      setLoading(false);
+    }
+  }, [excuseId, i18n.language, t]);
+
+  useEffect(() => {
+    if (mounted && excuseId) {
+      fetchExcuseData();
+    } else if (mounted && excuseId === undefined) {
+      // If mounted but no ID, it's an invalid URL, show an error.
+      setLoading(false);
+      setError("invalid_excuse_id");
+    }
+  }, [mounted, excuseId, fetchExcuseData]);
 
   const handleImageClick = () => {
     if (excuseAttachment) {
