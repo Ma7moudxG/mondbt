@@ -32,7 +32,6 @@ interface ExcuseAttachment {
   excuse_id: string; // Foreign key to Excuse.id
   file_url: string;
   uploaded_at: string;
-  file_name: string; // Original file name
   file_type: string; // Mime type
   file_size: number; // Size in bytes
 }
@@ -227,13 +226,12 @@ const handler: Handler = async (
 
     if (attachmentFile && finalAttachmentUrl && newExcuse?.id) {
       const newAttachmentData: Omit<ExcuseAttachment, "id"> = {
-        excuse_id: newExcuse.id,
-        file_url: finalAttachmentUrl,
-        uploaded_at: now,
-        file_name: attachmentFile.originalFilename || "unnamed",
-        file_type: attachmentFile.mimetype || "application/octet-stream",
-        file_size: attachmentFile.size || 0,
-      };
+          excuse_id: newExcuse.id,
+          file_url: finalAttachmentUrl,
+          uploaded_at: now,
+          file_type: attachmentFile.mimetype || "application/octet-stream",
+          file_size: attachmentFile.size || 0,
+        };
 
       console.log(
         "[createExcuse] Inserting new attachment record:",
