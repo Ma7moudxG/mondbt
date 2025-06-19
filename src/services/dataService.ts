@@ -445,126 +445,126 @@ export default class DataService {
     }
   }
 
-  static async getExcusesForStudent(
-    studentId: number,
-    startDate?: Date,
-    endDate?: Date
-  ): Promise<Excuse[]> {
-    // Changed return type to Promise<Excuse[]>
+  // static async getExcusesForStudent(
+  //   studentId: number,
+  //   startDate?: Date,
+  //   endDate?: Date
+  // ): Promise<Excuse[]> {
+  //   // Changed return type to Promise<Excuse[]>
 
-    try {
-      // console.log(
-      //   `DataService: Attempting to fetch excuses for student ID: ${studentId}`
-      // );
+  //   try {
+  //     // console.log(
+  //     //   `DataService: Attempting to fetch excuses for student ID: ${studentId}`
+  //     // );
 
-      // Construct the URL. JSON Server supports filtering by a property.
-      // E.g., /excuses?student_id=1 will return all excuses for student 1.
-      const url = new URL(`${JSON_SERVER_BASE_URL}/excuses`);
-      url.searchParams.append("student_id", String(studentId)); // Append studentId as a query param
+  //     // Construct the URL. JSON Server supports filtering by a property.
+  //     // E.g., /excuses?student_id=1 will return all excuses for student 1.
+  //     const url = new URL(`${JSON_SERVER_BASE_URL}/excuses`);
+  //     url.searchParams.append("student_id", String(studentId)); // Append studentId as a query param
 
-      const response = await fetch(url.toString());
+  //     const response = await fetch(url.toString());
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(
-          `HTTP error! Status: ${response.status}, Details: ${errorText}`
-        );
-      }
+  //     if (!response.ok) {
+  //       const errorText = await response.text();
+  //       throw new Error(
+  //         `HTTP error! Status: ${response.status}, Details: ${errorText}`
+  //       );
+  //     }
 
-      let studentExcuses: Excuse[] = await response.json();
+  //     let studentExcuses: Excuse[] = await response.json();
 
-      // If date range filters are provided, apply them client-side
-      if (startDate && endDate) {
-        studentExcuses = studentExcuses.filter((excuse) => {
-          // Ensure excuse.excuse_date_g exists before parsing
-          if (!excuse.excuse_date_g) return false;
+  //     // If date range filters are provided, apply them client-side
+  //     if (startDate && endDate) {
+  //       studentExcuses = studentExcuses.filter((excuse) => {
+  //         // Ensure excuse.excuse_date_g exists before parsing
+  //         if (!excuse.excuse_date_g) return false;
 
-          // Use your existing utility to check if the date is in range
-          // Make sure this.isDateInRange is a static method in DataService or a global utility
-          return DataService.isDateInRange(
-            excuse.excuse_date_g,
-            startDate,
-            endDate
-          );
-        });
-      }
+  //         // Use your existing utility to check if the date is in range
+  //         // Make sure this.isDateInRange is a static method in DataService or a global utility
+  //         return DataService.isDateInRange(
+  //           excuse.excuse_date_g,
+  //           startDate,
+  //           endDate
+  //         );
+  //       });
+  //     }
 
-      console.log(
-        `DataService: Successfully fetched ${studentExcuses.length} excuses for student ID ${studentId}.`
-      );
-      return studentExcuses;
-    } catch (error) {
-      console.error(
-        `DataService: Error getting excuses for student ID ${studentId}:`,
-        error
-      );
-      return []; // Return an empty array on error
-    }
-  }
+  //     console.log(
+  //       `DataService: Successfully fetched ${studentExcuses.length} excuses for student ID ${studentId}.`
+  //     );
+  //     return studentExcuses;
+  //   } catch (error) {
+  //     console.error(
+  //       `DataService: Error getting excuses for student ID ${studentId}:`,
+  //       error
+  //     );
+  //     return []; // Return an empty array on error
+  //   }
+  // }
 
-  static async getExcusesForStudents(studentIds: number[]): Promise<Excuse[]> {
-    try {
-      console.log(
-        `DataService: Attempting to fetch all excuses to filter for student IDs: ${studentIds.join(
-          ", "
-        )}`
-      );
+  // static async getExcusesForStudents(studentIds: number[]): Promise<Excuse[]> {
+  //   try {
+  //     console.log(
+  //       `DataService: Attempting to fetch all excuses to filter for student IDs: ${studentIds.join(
+  //         ", "
+  //       )}`
+  //     );
 
-      // Fetch ALL excuses from JSON Server
-      const response = await fetch(`${JSON_SERVER_BASE_URL}/excuses`);
+  //     // Fetch ALL excuses from JSON Server
+  //     const response = await fetch(`${JSON_SERVER_BASE_URL}/excuses`);
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(
-          `HTTP error! Status: ${response.status}, Details: ${errorText}`
-        );
-      }
+  //     if (!response.ok) {
+  //       const errorText = await response.text();
+  //       throw new Error(
+  //         `HTTP error! Status: ${response.status}, Details: ${errorText}`
+  //       );
+  //     }
 
-      const allExcuses: Excuse[] = await response.json();
+  //     const allExcuses: Excuse[] = await response.json();
 
-      // Filter the fetched excuses locally based on the provided studentIds
-      const filteredExcuses = allExcuses.filter((excuse) =>
-        // Ensure student_id is a number before checking inclusion
-        studentIds.includes(Number(excuse.student_id))
-      );
+  //     // Filter the fetched excuses locally based on the provided studentIds
+  //     const filteredExcuses = allExcuses.filter((excuse) =>
+  //       // Ensure student_id is a number before checking inclusion
+  //       studentIds.includes(Number(excuse.student_id))
+  //     );
 
-      console.log(
-        `DataService: Successfully fetched and filtered excuses. Found ${filteredExcuses.length} matching excuses for the given student IDs.`
-      );
-      return filteredExcuses;
-    } catch (error) {
-      console.error(`DataService: Error getting excuses for students:`, error);
-      return []; // Return an empty array on error
-    }
-  }
-  static async getExcuses(): Promise<Excuse[]> {
-    try {
-      // Fetch ALL excuses from JSON Server
-      const response = await fetch(`${JSON_SERVER_BASE_URL}/excuses`);
+  //     console.log(
+  //       `DataService: Successfully fetched and filtered excuses. Found ${filteredExcuses.length} matching excuses for the given student IDs.`
+  //     );
+  //     return filteredExcuses;
+  //   } catch (error) {
+  //     console.error(`DataService: Error getting excuses for students:`, error);
+  //     return []; // Return an empty array on error
+  //   }
+  // }
+  // static async getExcuses(): Promise<Excuse[]> {
+  //   try {
+  //     // Fetch ALL excuses from JSON Server
+  //     const response = await fetch(`${JSON_SERVER_BASE_URL}/excuses`);
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(
-          `HTTP error! Status: ${response.status}, Details: ${errorText}`
-        );
-      }
+  //     if (!response.ok) {
+  //       const errorText = await response.text();
+  //       throw new Error(
+  //         `HTTP error! Status: ${response.status}, Details: ${errorText}`
+  //       );
+  //     }
 
-      const allExcuses: Excuse[] = await response.json();
-      const filteredExcuses = allExcuses.filter(
-        (excuse) =>
-          // Ensure student_id is a number before checking inclusion
-          excuse.status_en === "PENDING"
-      );
+  //     const allExcuses: Excuse[] = await response.json();
+  //     const filteredExcuses = allExcuses.filter(
+  //       (excuse) =>
+  //         // Ensure student_id is a number before checking inclusion
+  //         excuse.status_en === "PENDING"
+  //     );
 
-      console.log(
-        `DataService: Successfully fetched and filtered excuses. Found ${filteredExcuses.length} matching excuses for the given student IDs.`
-      );
-      return filteredExcuses;
-    } catch (error) {
-      console.error(`DataService: Error getting excuses for students:`, error);
-      return []; // Return an empty array on error
-    }
-  }
+  //     console.log(
+  //       `DataService: Successfully fetched and filtered excuses. Found ${filteredExcuses.length} matching excuses for the given student IDs.`
+  //     );
+  //     return filteredExcuses;
+  //   } catch (error) {
+  //     console.error(`DataService: Error getting excuses for students:`, error);
+  //     return []; // Return an empty array on error
+  //   }
+  // }
 
   // static async createExcuse(
   //   parentId: number,
@@ -683,6 +683,134 @@ export default class DataService {
 
   //   return { newExcuse, newAttachment };
   // }
+
+  static async getExcusesForStudent(
+    studentId: number,
+    startDate?: Date,
+    endDate?: Date
+  ): Promise<Excuse[]> {
+    try {
+      let url = `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuses?studentId=${studentId}`;
+      if (startDate && endDate) {
+        // Pass dates as ISO strings (YYYY-MM-DD) for consistency
+        url += `&startDate=${startDate.toISOString().split('T')[0]}&endDate=${endDate.toISOString().split('T')[0]}`;
+      }
+
+      console.log(`DataService: Attempting to fetch excuses for student ID: ${studentId} via Netlify Function.`);
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (getExcusesForStudent)! Status: ${response.status}, Details:`,
+          errorData
+        );
+        throw new Error(
+          `Failed to fetch excuses for student: ${errorData.error || 'Unknown error'}`
+        );
+      }
+
+      const studentExcuses: Excuse[] = await response.json();
+
+      // Client-side date filtering is no longer strictly necessary if the Netlify function handles it,
+      // but keeping it as a fallback or for more complex date logic.
+      // If the Netlify function correctly applies startDate/endDate filters, this block can be removed.
+      if (startDate && endDate) {
+        return studentExcuses.filter((excuse) => {
+          if (!excuse.excuse_date_g) return false;
+          return DataService.isDateInRange(
+            excuse.excuse_date_g,
+            startDate,
+            endDate
+          );
+        });
+      }
+
+      console.log(
+        `DataService: Successfully fetched ${studentExcuses.length} excuses for student ID ${studentId} via Netlify Function.`
+      );
+      return studentExcuses;
+    } catch (error) {
+      console.error(
+        `DataService: Error getting excuses for student ID ${studentId}:`,
+        error
+      );
+      return [];
+    }
+  }
+
+  static async getExcusesForStudents(studentIds: number[]): Promise<Excuse[]> {
+    try {
+      // Pass studentIds as a comma-separated string
+      const url = `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuses?studentIds=${studentIds.join(",")}`;
+
+      console.log(
+        `DataService: Attempting to fetch excuses for student IDs: ${studentIds.join(", ")} via Netlify Function.`
+      );
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (getExcusesForStudents)! Status: ${response.status}, Details:`,
+          errorData
+        );
+        throw new Error(
+          `Failed to fetch excuses for multiple students: ${errorData.error || 'Unknown error'}`
+        );
+      }
+
+      const filteredExcuses: Excuse[] = await response.json();
+
+      console.log(
+        `DataService: Successfully fetched and filtered excuses. Found ${filteredExcuses.length} matching excuses for the given student IDs via Netlify Function.`
+      );
+      return filteredExcuses;
+    } catch (error) {
+      console.error(`DataService: Error getting excuses for students:`, error);
+      return [];
+    }
+  }
+
+  static async getExcuses(): Promise<Excuse[]> {
+    try {
+      // Call the Netlify function with a 'status' parameter to get pending excuses
+      const url = `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuses?status=PENDING`; // Or remove '?status=PENDING' if the function defaults to it
+
+      console.log(`DataService: Attempting to fetch all PENDING excuses via Netlify Function.`);
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (getExcuses)! Status: ${response.status}, Details:`,
+          errorData
+        );
+        throw new Error(
+          `Failed to fetch excuses: ${errorData.error || 'Unknown error'}`
+        );
+      }
+
+      const allExcuses: Excuse[] = await response.json();
+
+      // The filtering by 'PENDING' status is now done on the server-side by the Netlify function.
+      // So, this local filter is no longer strictly necessary if the function consistently returns only PENDING.
+      // However, if the Netlify function is designed to return all if 'status' isn't provided,
+      // you might keep this client-side filter as a safeguard.
+      const filteredExcuses = allExcuses.filter(
+        (excuse) => excuse.status_en === "PENDING"
+      );
+
+
+      console.log(
+        `DataService: Successfully fetched and filtered PENDING excuses. Found ${filteredExcuses.length} matching excuses via Netlify Function.`
+      );
+      return filteredExcuses;
+    } catch (error) {
+      console.error(`DataService: Error getting excuses:`, error);
+      return [];
+    }
+  }
 
 
   static async createExcuse(
