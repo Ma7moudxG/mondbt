@@ -151,7 +151,8 @@ const ar = {
   "Secondary Schools": "المدارس الثانوية",
   "Filtered Students": "المدارس المفلترة",
   "Male": "ذكور",
-  "Female": "إناث"
+  "Female": "إناث",
+  "Submitting...":"جاري التقديم..."
 
 };
 
