@@ -144,7 +144,7 @@ export default function ExcusePage() {
   }
 
   return (
-    <div className={`p-4 flex flex-col gap-4 w-1/2`} dir={textDirectionClass}>
+    <div className={`p-4 flex flex-col gap-4 lg:w-1/2`} dir={textDirectionClass}>
       <div className="p-8 bg-white rounded-2xl flex flex-col gap-8 shadow-md">
         <h1
           className={`text-lg font-black text-[#7C8B9D] ${textDirectionClass}`}
