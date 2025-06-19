@@ -152,8 +152,8 @@ const ar = {
   "Filtered Students": "المدارس المفلترة",
   "Male": "ذكور",
   "Female": "إناث",
-  "Submitting...":"جاري التقديم..."
-
+  "Submitting...":"جاري التقديم...",
+  "Updating...": "جاري التحديث..."
 };
 
 // English translations
