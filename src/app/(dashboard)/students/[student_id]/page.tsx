@@ -167,7 +167,7 @@ const StudentPage = ({ params }: StudentPageProps) => {
         <h1 className={`text-lg font-black text-[#7C8B9D] ${textDirectionClass}`}>
           {t("My Children")}
         </h1>
-        <div className={`flex gap-8 items-center`}>
+        <div className={`flex flex-col md:flex-row gap-8 items-center`}>
           <div className="">
             <Image
               src={
