@@ -20,13 +20,6 @@ interface Student {
   last_name_ar: string;
 }
 
-// You no longer need to import the local JSON file here.
-// import schoolDataJson from "@/data/merged_school_data.json";
-// import { MergedSchoolData } from '@/services/dataService';
-// const schoolData: MergedSchoolData = schoolDataJson as MergedSchoolData; 
-
-// --- CORRECTED HELPER FUNCTION: getStudentsByParentId (uses Supabase with two queries) ---
-// This function now precisely mirrors your original two-step lookup logic using Supabase.
 async function getStudentsByParentId(parentId: number): Promise<Student[]> {
   console.log(`[getStudentsByParentId Helper] Fetching student IDs from 'parent_students' for parent ID: ${parentId}.`);
   try {

@@ -2055,41 +2055,115 @@ export default class DataService {
     }
   }
 
+  // static async updatePenaltyStatus(
+  //   penaltyId: string,
+  //   newPaidStatus: "Y" | "N"
+  // ): Promise<ParentPenalty | null> {
+  //   try {
+  //     console.log(
+  //       `DataService: Attempting to update penalty ID ${penaltyId} status to ${newPaidStatus}.`
+  //     );
+  //     const response = await fetch(
+  //       `${JSON_SERVER_BASE_URL}/parentPenalties/${penaltyId}`,
+  //       {
+  //         method: "PATCH", // Use PATCH for partial updates
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ paid: newPaidStatus }), // Send only the 'paid' field
+  //       }
+  //     );
+
+  //     if (!response.ok) {
+  //       const errorText = await response.text();
+  //       throw new Error(
+  //         `HTTP error! Status: ${response.status}, Details: ${errorText}`
+  //       );
+  //     }
+
+  //     const updatedPenalty: ParentPenalty = await response.json();
+  //     console.log(`DataService: Successfully updated penalty ID ${penaltyId}.`);
+  //     return updatedPenalty;
+  //   } catch (error) {
+  //     console.error(
+  //       `DataService: Error updating penalty status for ID ${penaltyId}:`,
+  //       error
+  //     );
+  //     return null; // Return null on error
+  //   }
+  // }
+
+  // static async getPenaltiesForStudent(
+  //   studentId: number
+  // ): Promise<ParentPenalty[]> {
+  //   try {
+  //     const response = await fetch(`${JSON_SERVER_BASE_URL}/parentPenalties`);
+  //     if (!response.ok) {
+  //       const errorText = await response.text();
+  //       throw new Error(
+  //         `HTTP error! Status: ${response.status}, Details: ${errorText}`
+  //       );
+  //     }
+
+  //     const allPenalties: ParentPenalty[] = await response.json();
+
+  //     const relevantPenalties = allPenalties.filter((penalty) => {
+  //       return penalty.student_id === studentId;
+  //     });
+
+  //     console.log(
+  //       `DataService: Found ${relevantPenalties.length} relevant penalties for parentId: ${studentId}`
+  //     );
+  //     return relevantPenalties;
+  //   } catch (error) {
+  //     console.error(
+  //       `DataService: Error getting penalties for parent ID ${studentId}:`,
+  //       error
+  //     );
+  //     return []; // Return empty array on error
+  //   }
+  // }
+
+
   static async updatePenaltyStatus(
     penaltyId: string,
     newPaidStatus: "Y" | "N"
   ): Promise<ParentPenalty | null> {
     try {
       console.log(
-        `DataService: Attempting to update penalty ID ${penaltyId} status to ${newPaidStatus}.`
+        `DataService: Attempting to update penalty ID ${penaltyId} status to ${newPaidStatus} via Netlify Function.`
       );
       const response = await fetch(
-        `${JSON_SERVER_BASE_URL}/parentPenalties/${penaltyId}`,
+        `${NETLIFY_FUNCTIONS_BASE_URL}/updatePenaltyStatus/${penaltyId}`, // Path with ID
         {
-          method: "PATCH", // Use PATCH for partial updates
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ paid: newPaidStatus }), // Send only the 'paid' field
+          body: JSON.stringify({ paid: newPaidStatus }),
         }
       );
 
       if (!response.ok) {
-        const errorText = await response.text();
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (updatePenaltyStatus)! Status: ${response.status}, Details:`,
+          errorData
+        );
         throw new Error(
-          `HTTP error! Status: ${response.status}, Details: ${errorText}`
+          `Failed to update penalty status: ${errorData.error || 'Unknown error'}`
         );
       }
 
       const updatedPenalty: ParentPenalty = await response.json();
-      console.log(`DataService: Successfully updated penalty ID ${penaltyId}.`);
+      console.log(`DataService: Successfully updated penalty ID ${penaltyId} via Netlify Function.`);
       return updatedPenalty;
     } catch (error) {
       console.error(
         `DataService: Error updating penalty status for ID ${penaltyId}:`,
         error
       );
-      return null; // Return null on error
+      return null;
     }
   }
 
@@ -2097,32 +2171,36 @@ export default class DataService {
     studentId: number
   ): Promise<ParentPenalty[]> {
     try {
-      const response = await fetch(`${JSON_SERVER_BASE_URL}/parentPenalties`);
+      console.log(`DataService: Calling Netlify function to get penalties for student ID: ${studentId}`);
+      const response = await fetch(`${NETLIFY_FUNCTIONS_BASE_URL}/getPenaltiesForStudent?studentId=${studentId}`);
+      
       if (!response.ok) {
-        const errorText = await response.text();
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (getPenaltiesForStudent)! Status: ${response.status}, Details:`,
+          errorData
+        );
         throw new Error(
-          `HTTP error! Status: ${response.status}, Details: ${errorText}`
+          `Failed to fetch penalties: ${errorData.error || 'Unknown error'}`
         );
       }
 
-      const allPenalties: ParentPenalty[] = await response.json();
-
-      const relevantPenalties = allPenalties.filter((penalty) => {
-        return penalty.student_id === studentId;
-      });
+      const penalties: ParentPenalty[] = await response.json();
 
       console.log(
-        `DataService: Found ${relevantPenalties.length} relevant penalties for parentId: ${studentId}`
+        `DataService: Found ${penalties.length} penalties for student ID: ${studentId} via Netlify Function.`
       );
-      return relevantPenalties;
+      return penalties;
     } catch (error) {
       console.error(
-        `DataService: Error getting penalties for parent ID ${studentId}:`,
+        `DataService: Error getting penalties for student ID ${studentId}:`,
         error
       );
-      return []; // Return empty array on error
+      return [];
     }
   }
+
+
 
   static async getTotalPenaltiesForStudent(studentId: number): Promise<number> {
     const penalties = await this.getPenaltiesForStudent(studentId);

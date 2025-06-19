@@ -77,7 +77,6 @@ export default function FinesPage() {
         setLoadingInitialData(false);
       }
     } else {
-      // Handle invalid parentId scenario
       setUnpaidPenalties([]);
       setTotalFines(0);
       setLoadingInitialData(false);
@@ -127,24 +126,16 @@ export default function FinesPage() {
       return;
     }
 
-    // Optional: Add a confirmation dialog before proceeding with payment
     const selectedMethodName = t(paymentMethods.find(m => m.id === selectedPaymentMethod)?.key || selectedPaymentMethod);
-    // const confirmProceed = window.confirm(t("Confirm Payment", { totalFines, selectedPaymentMethod: selectedMethodName }));
-    
-    // if (!confirmProceed) {
-    //   return;
-    // }
 
     setProcessingPayment(true); // Start payment processing loading state
     setPaymentActionError(null); // Clear previous payment action errors
 
     try {
-      // Iterate over the currently displayed (unpaid) penalties and update their status
       const updatePromises = unpaidPenalties.map(penalty =>
         DataService.updatePenaltyStatus(penalty.id, "Y") // Change 'paid' to "Y"
       );
 
-      // Wait for all update operations to complete, even if some fail
       const results = await Promise.allSettled(updatePromises);
 
       // Check if any updates failed
