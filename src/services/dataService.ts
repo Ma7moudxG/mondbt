@@ -898,47 +898,95 @@ export default class DataService {
     }
   }
 
+  // static async updateExcuseStatus(
+  //   excuseId: string,
+  //   statusEn: "PENDING" | "APPROVED" | "REJECTED",
+  //   statusAr: "قيد المراجعة" | "مقبول" | "مرفوض"
+  // ): Promise<Excuse> {
+  //   const updateData = {
+  //     status_en: statusEn,
+  //     status_ar: statusAr,
+  //   };
+
+  //   console.log(
+  //     `Attempting to update excuse ${excuseId} status to:`,
+  //     updateData
+  //   );
+
+  //   // Using PATCH to update only specific fields
+  //   const response = await fetch(
+  //     `${JSON_SERVER_BASE_URL}/excuses/${excuseId}`,
+  //     {
+  //       method: "PATCH", // Use PATCH to update only the specified fields
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(updateData),
+  //     }
+  //   );
+
+  //   if (!response.ok) {
+  //     const errorText = await response.text();
+  //     console.error(
+  //       "JSON Server excuse status update error response:",
+  //       errorText
+  //     );
+  //     throw new Error(
+  //       `Failed to update excuse status: ${response.statusText} - ${errorText}`
+  //     );
+  //   }
+
+  //   const updatedExcuse: Excuse = await response.json();
+  //   console.log("Excuse status updated successfully:", updatedExcuse);
+  //   return updatedExcuse;
+  // }
+
   static async updateExcuseStatus(
     excuseId: string,
     statusEn: "PENDING" | "APPROVED" | "REJECTED",
     statusAr: "قيد المراجعة" | "مقبول" | "مرفوض"
-  ): Promise<Excuse> {
+  ): Promise<Excuse | null> { // Changed return type to Promise<Excuse | null> to match others on error
     const updateData = {
       status_en: statusEn,
       status_ar: statusAr,
     };
 
-    console.log(
-      `Attempting to update excuse ${excuseId} status to:`,
-      updateData
-    );
+    try {
+      console.log(
+        `DataService: Attempting to update excuse ${excuseId} status to:`,
+        updateData,
+        `via Netlify Function.`
+      );
 
-    // Using PATCH to update only specific fields
-    const response = await fetch(
-      `${JSON_SERVER_BASE_URL}/excuses/${excuseId}`,
-      {
-        method: "PATCH", // Use PATCH to update only the specified fields
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updateData),
+      const response = await fetch(
+        `${NETLIFY_FUNCTIONS_BASE_URL}/updateExcuseStatus/${excuseId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateData),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (updateExcuseStatus)! Status: ${response.status}, Details:`,
+          errorData
+        );
+        throw new Error(
+          `Failed to update excuse status: ${errorData.error || 'Unknown error'}`
+        );
       }
-    );
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(
-        "JSON Server excuse status update error response:",
-        errorText
-      );
-      throw new Error(
-        `Failed to update excuse status: ${response.statusText} - ${errorText}`
-      );
+      const updatedExcuse: Excuse = await response.json();
+      console.log("DataService: Excuse status updated successfully via Netlify Function:", updatedExcuse);
+      return updatedExcuse;
+    } catch (error) {
+      console.error(`DataService: Error updating excuse status for ID ${excuseId}:`, error);
+      return null; // Return null on error
     }
-
-    const updatedExcuse: Excuse = await response.json();
-    console.log("Excuse status updated successfully:", updatedExcuse);
-    return updatedExcuse;
   }
 
   static getAllRegions(): Region[] {
