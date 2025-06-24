@@ -11,7 +11,6 @@ const ar = {
   hello: "مرحباً",
   logout: "تسجيل الخروج",
   guest: "ضيف",
-  admin: "مدير",
   parent: "ولي أمر",
   minister: "معالي الوزير",
   loading: "جاري التحميل...",

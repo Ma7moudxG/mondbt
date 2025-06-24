@@ -125,7 +125,7 @@ export default function LoginPage() {
               disabled={isLoading}
             />
           </div>
-          <p className="text-sm text-white">{getConsistentTranslatedText("Forgot Password?")}</p>
+          <p className="text-sm text-white hover:text-[#8447AB] cursor-pointer">{getConsistentTranslatedText("Forgot Password?")}</p>
           <button
             type="submit"
             className="w-full bg-[#8447AB] text-white p-2 rounded-md hover:bg-[#5d3279] disabled:opacity-50"
