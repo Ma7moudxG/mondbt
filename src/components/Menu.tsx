@@ -35,7 +35,13 @@ const menuItems = [
         icon: "/absence.svg",
         label: "Absence",
         href: "",
-        visible: ["admin", "minister", "parent", "manager"],
+        visible: ["minister", "parent", "manager"],
+      },
+      {
+        icon: "/absence.svg",
+        label: "Absence",
+        href: "absence",
+        visible: ["admin"],
       },
       {
         icon: "/late.svg",
