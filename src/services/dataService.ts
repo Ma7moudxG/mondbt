@@ -775,7 +775,7 @@ export default class DataService {
   static async getExcuses(): Promise<Excuse[]> {
     try {
       // Call the Netlify function with a 'status' parameter to get pending excuses
-      const url = `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuses?status=PENDING`; // Or remove '?status=PENDING' if the function defaults to it
+      const url = `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuses`; // Or remove '?status=PENDING' if the function defaults to it
 
       console.log(`DataService: Attempting to fetch all PENDING excuses via Netlify Function.`);
       const response = await fetch(url);
