@@ -36,7 +36,7 @@ export function AdminExcuses({ items }: { items: EnrichedExcuseItem[] }) {
   const alignmentClass = isArabic ? "text-right" : "text-left";
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-gray-200  overflow-y h-[300px] w-full">
+    <div className="overflow-x-auto rounded-xl border border-gray-200  overflow-y h-[600px] w-full">
       <Table className={`custom-table`}>
         <TableHead className={`bg-[#F8F8F8]`}>
           <TableRow className="text-xs font-bold">
