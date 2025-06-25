@@ -518,10 +518,6 @@ const AdminPage = () => {
           {t("Export Report")}
         </button>
       </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="text-lg font-black text-[#7C8B9D]">{t("Excuses")}</h1>
-        <AdminExcuses items={excusesForStudents} />
-      </div>
     </div>
   );
 };

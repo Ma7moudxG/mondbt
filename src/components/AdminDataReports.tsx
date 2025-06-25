@@ -141,7 +141,7 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
         {rightTab === "Schools" ? (
           <div className="h-full flex flex-col justify-between py-4 lg:py-8">
             <h3 className="text-lg font-semibold mb-4 text-[#7C8B9D]">
-              {t("Filtered Schools")} ({schools.length})
+              {t("Schools")} ({schools.length})
               {/* Translate "Filtered Schools" */}
             </h3>
             <div className="flex flex-col gap-4 h-[300px] lg:h-full overflow-y-auto">
@@ -170,7 +170,7 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
         ) : (
           <div className="h-full flex flex-col justify-between py-4 lg:py-8">
             <h3 className="text-lg font-semibold mb-4 text-[#7C8B9D]">
-              {t("Filtered Students")} ({filteredStudents.length})
+              {t("Students")} ({filteredStudents.length})
               {/* Translate "Filtered Students" */}
             </h3>
             <div className="flex flex-col gap-4 h-[300px] lg:h-full overflow-y-auto">
