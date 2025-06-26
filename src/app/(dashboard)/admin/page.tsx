@@ -72,7 +72,7 @@ const AdminPage = () => {
     schoolName: '',
     schoolType: '',
     ministryNumber: '',
-    gender: '',
+    sex: '',
   });
 
   const [results, setResults] = useState<School[]>([]);
@@ -109,7 +109,7 @@ const AdminPage = () => {
         schoolName: filters.schoolName,
         ministryNumber: filters.ministryNumber,
         schoolType: filters.schoolType,
-        gender: filters.gender,
+        sex: filters.sex,
       };
 
       // console.log("AdminPage: schoolFilterCriteria passed to DataService.getSchoolsByFilters:", schoolFilterCriteria);
@@ -124,10 +124,10 @@ const AdminPage = () => {
       // console.log("AdminPage: Found", studentIdsFromFilteredSchools.length, "students initially in filtered schools.");
 
       let finalFilteredStudentIds: number[] = studentIdsFromFilteredSchools;
-      if (filters.gender && filters.gender.trim() !== '') {
-        // console.log("AdminPage: Passing these student IDs to getStudentsBygender:", finalFilteredStudentIds.length, finalFilteredStudentIds.slice(0, 50));
-        // Note: getStudentsBygender should internally handle gender filtering, probably not needing `i18n.language`
-        // unless the `gender` filter value itself needs translation mapping, which DataService.getSchoolsByFilters now handles.
+      if (filters.sex && filters.sex.trim() !== '') {
+        // console.log("AdminPage: Passing these student IDs to getStudentsBySex:", finalFilteredStudentIds.length, finalFilteredStudentIds.slice(0, 50));
+        // Note: getStudentsBySex should internally handle sex filtering, probably not needing `i18n.language`
+        // unless the `sex` filter value itself needs translation mapping, which DataService.getSchoolsByFilters now handles.
         finalFilteredStudentIds = DataService.getStudentsBySex(studentIdsFromFilteredSchools, filters.sex); // Pass language here as well
         // console.log("AdminPage: After sex filter ('", filters.sex, "'), found", finalFilteredStudentIds.length, "students.");
       }

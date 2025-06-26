@@ -12,7 +12,7 @@ interface FilterValues {
   schoolName: string;
   schoolType: string;
   ministryNumber: string;
-  gender: string;
+  sex: string;
 }
 
 interface FilteredSearchProps {
@@ -30,7 +30,7 @@ const FilteredSearch: React.FC<FilteredSearchProps> = ({ onFilterChange, onSearc
     schoolName: '',
     schoolType: '',
     ministryNumber: '',
-    gender: '',
+    sex: '',
   });
 
   const [filterOptions, setFilterOptions] = useState({
@@ -38,7 +38,7 @@ const FilteredSearch: React.FC<FilteredSearchProps> = ({ onFilterChange, onSearc
     cities: [] as { city_id: number; name_en: string; name_ar: string; region_id: number }[],
     areas: [] as { area_id: number; city_id: number; name_en: string; name_ar: string; }[],
     schoolTypes: ['National', 'Global', 'Foreign', 'An international program for private schools', 'Egyptian Path', 'Sudanese path'],
-    genderes: ['Male', 'Female']
+    sexes: ['Male', 'Female']
   });
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const FilteredSearch: React.FC<FilteredSearchProps> = ({ onFilterChange, onSearc
       cities: DataService.getAllCities(),
       areas: DataService.getAllAreas(), // Assuming this fetches all areas
       schoolTypes: ['National', 'Global', 'Foreign', 'An international program for private schools', 'Egyptian Path', 'Sudanese path'],
-      genderes: ['Male', 'Female']
+      sexes: ['Male', 'Female']
     });
   }, []);
 
@@ -181,16 +181,16 @@ const FilteredSearch: React.FC<FilteredSearchProps> = ({ onFilterChange, onSearc
           ))}
         </select>
 
-        {/* gender Select */}
+        {/* Sex Select */}
         <select
           className="p-2 text-[#777777] font-medium text-sm border rounded-lg focus:ring-2 focus:ring-[#5EB89D]"
-          name="gender"
-          value={filters.gender}
+          name="sex"
+          value={filters.sex}
           onChange={handleChange}
         >
           <option value="">{t("Gender")}</option>
-          {filterOptions.genderes.map(gender => (
-            <option key={gender} value={gender}>{t(gender)}</option>
+          {filterOptions.sexes.map(sex => (
+            <option key={sex} value={sex}>{t(sex)}</option>
           ))}
         </select>
 
