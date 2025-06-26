@@ -797,15 +797,15 @@ export default class DataService {
       // So, this local filter is no longer strictly necessary if the function consistently returns only PENDING.
       // However, if the Netlify function is designed to return all if 'status' isn't provided,
       // you might keep this client-side filter as a safeguard.
-      // const filteredExcuses = allExcuses.filter(
-      //   (excuse) => excuse.status_en === "PENDING"
-      // );
+      const filteredExcuses = allExcuses.filter(
+        (excuse) => excuse.status_en === "PENDING"
+      );
 
 
       console.log(
         `DataService: Successfully fetched and filtered PENDING excuses. Found ${filteredExcuses.length} matching excuses via Netlify Function.`
       );
-      return allExcuses;
+      return filteredExcuses;
     } catch (error) {
       console.error(`DataService: Error getting excuses:`, error);
       return [];
