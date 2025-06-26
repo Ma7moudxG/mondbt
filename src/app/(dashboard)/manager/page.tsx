@@ -62,7 +62,7 @@ const ManagerPage = () => {
   useEffect(() => {
     document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
 
-    const initialDateRange = getDateRangeForTab("Day");
+    const initialDateRange = getDateRangeForTab("Year");
     setCardDateRange(initialDateRange);
     setDateRange(initialDateRange);
   }, [i18n.language]);

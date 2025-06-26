@@ -44,7 +44,7 @@ const AdminPage = () => {
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
   }, [i18n.language]);
 
-  const [cardTab, setCardTab] = useState<CardTab>("Day");
+  const [cardTab, setCardTab] = useState<CardTab>("Year");
   const [cardDateRange, setCardDateRange] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -82,7 +82,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     if (isClient) {
-      const initialDateRange = getDateRangeForTab("Day");
+      const initialDateRange = getDateRangeForTab("Year");
       setCardDateRange(initialDateRange);
       setDateRange(initialDateRange);
     }
@@ -90,7 +90,7 @@ const AdminPage = () => {
 
   useEffect(() => {
 
-    const initialDateRange = getDateRangeForTab("Day");
+    const initialDateRange = getDateRangeForTab("Year");
     setCardDateRange(initialDateRange);
     setDateRange(initialDateRange);
   }, [i18n.language]);
