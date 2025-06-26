@@ -37,7 +37,7 @@ const FilteredSearch: React.FC<FilteredSearchProps> = ({ onFilterChange, onSearc
     regions: [] as { region_id: number; name_en: string; name_ar: string }[],
     cities: [] as { city_id: number; name_en: string; name_ar: string; region_id: number }[],
     areas: [] as { area_id: number; city_id: number; name_en: string; name_ar: string; }[],
-    schoolTypes: ['National', 'Global', 'Foreign', 'An international program for private schools', 'Egyptian Path', 'Sudanese path'],
+    schoolTypes: ['Governmental', 'Private', 'Global', 'Foreign', 'An international program for private schools', 'Egyptian Path', 'Sudanese path'],
     sexes: ['Male', 'Female']
   });
 
