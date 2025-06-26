@@ -275,7 +275,7 @@ export interface FilterValues {
   schoolName: string;
   schoolType: string;
   ministryNumber: string;
-  sex: string;
+  gender: string;
 }
 
 export interface StudentDetails {
@@ -1388,10 +1388,10 @@ export default class DataService {
       }
     }
 
-    // NEW FILTER: School Gender (based on filters.sex from UI)
+    // NEW FILTER: School Gender (based on filters.gender from UI)
     // This filter now directly affects the list of schools based on their 'type_en' property.
-    if (filters.sex) {
-      const filterSchoolGender = filters.sex.toLowerCase().trim(); // 'male' or 'female'
+    if (filters.gender) {
+      const filterSchoolGender = filters.gender.toLowerCase().trim(); // 'male' or 'female'
       // console.log(`DataService: Filtering by school gender. Filter: '${filterSchoolGender}'. Schools before filter: ${filteredSchools.length}`);
 
       filteredSchools = filteredSchools.filter(
@@ -1566,7 +1566,7 @@ export default class DataService {
       `DataService.getStudentsBySex: Called with sex: '${sex}' and ${studentIds.length} initial student IDs.`
     );
 
-    if (!sex || sex.trim() === "") {
+    if (!s || sex.trim() === "") {
       console.log(
         "DataService.getStudentsBySex: Sex filter is empty, returning all initial student IDs."
       );

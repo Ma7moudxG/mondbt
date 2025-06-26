@@ -33,7 +33,7 @@ const ar = {
   "Ministry Number": "الرقم الوزاري",
   Type: "النوع",
   "School Name": "اسم المدرسة",
-  Sex: "الجنس",
+  Gender: "الجنس",
   Search: "ابحث",
   Day: "يوم",
   Month: "شهر",
