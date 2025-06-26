@@ -7,9 +7,7 @@ import DataService, {
   type Student,
 } from "@/services/dataService";
 import MinisterMap from "@/components/MinisterMap";
-import { validateDataStructure } from "@/utils/dataValidator";
 import AttendanceStatistics from "@/components/AttendanceStatistics";
-import UserCard from "@/components/UserCard";
 import { useTranslation } from "react-i18next";
 
 const cm = (...classes: (string | boolean | undefined | null)[]) =>
@@ -19,12 +17,8 @@ type CardTab = "Day" | "Month" | "Year";
 
 interface CardStats {
   attendance: number;
-  absence: number;
-  late: number;
-  fines: number;
   totalStudentsInRegion: number;
   totalPossibleAttendances: number;
-  rewards: number;
 }
 
 
@@ -70,12 +64,8 @@ const AttendanceStatisticsPage = () => {
 
   const [overallCardStats, setOverallCardStats] = useState<CardStats>({
     attendance: 0,
-    absence: 0,
-    late: 0,
-    fines: 0,
     totalStudentsInRegion: 0,
     totalPossibleAttendances: 0,
-    rewards: 0,
   });
 
   const [selectedRegion, setSelectedRegion] = useState<number | null>(null);
