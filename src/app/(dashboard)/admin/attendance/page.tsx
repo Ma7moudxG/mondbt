@@ -50,6 +50,20 @@ const AttendanceStatisticsPage = () => {
     endDate: new Date(),
   });
 
+  const [isClient, setIsClient] = useState(false);
+  
+    useEffect(() => {
+      setIsClient(true);
+      document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    }, [i18n.language]);
+
+  useEffect(() => {
+      if (isClient) {
+        const initialDateRange = getDateRangeForTab("Year");
+        setCardDateRange(initialDateRange);
+      }
+    }, [isClient]);
+
   const [groupedStats, setGroupedStats] = useState({
     all: { attendance: 0, totalPossible: 0 },
     male: { attendance: 0, totalPossible: 0 },
