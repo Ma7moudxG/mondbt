@@ -310,8 +310,8 @@ const AdminPage = () => {
     { type: t("Attendance"), number: cardStats.attendance.toLocaleString(), text: t("student") },
     { type: t("Absence"), number: cardStats.absence.toLocaleString(), text: t("student") },
     { type: t("Late"), number: cardStats.late.toLocaleString(), text: t("late student") },
-    { type: t("Fines"), number: cardStats.fines.toLocaleString(), text: t("Saudi Riyal") },
-    { type: t("Rewards"), number: cardStats.rewards.toLocaleString(), text: t("Reward") },
+    // { type: t("Fines"), number: cardStats.fines.toLocaleString(), text: t("Saudi Riyal") },
+    // { type: t("Rewards"), number: cardStats.rewards.toLocaleString(), text: t("Reward") },
   ];
   type EnrichedExcuse = Excuse & {
     studentFirstName: string | null;
