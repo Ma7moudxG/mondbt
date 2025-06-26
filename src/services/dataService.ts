@@ -363,7 +363,7 @@ export default class DataService {
     const excuse = await this.getExcuseDetailsById(excuseId); // Reuse getExcuseDetailsById
     if (!excuse) return null;
     const reason = await this.getExcuseReasonById(excuse.id.toLocaleString());
-    console.log("resssssssssssssssssssssssssssss11reason", excuse);
+    // console.log("resssssssssssssssssssssssssssss11reason", excuse);
     return reason
       ? lang === "ar"
         ? reason.description_ar
