@@ -61,6 +61,8 @@ const AttendanceStatisticsPage = () => {
       if (isClient) {
         const initialDateRange = getDateRangeForTab("Year");
         setCardDateRange(initialDateRange);
+        setCardTab("Year");
+        setCardDateRange(getDateRangeForTab("Year"));
       }
     }, [isClient]);
 
@@ -219,11 +221,11 @@ const AttendanceStatisticsPage = () => {
           schoolsMap.get(s.school_id)?.educational_level_en === "Secondary"
         ).map(s => s.student_id);
 
-        console.log("Male students (IDs filtered) count:", maleStudentIdsInRegion.length);
-        console.log("Female students (IDs filtered) count:", femaleStudentIdsInRegion.length);
-        console.log("Primary students (IDs filtered) count:", primaryStudentIdsInRegion.length);
-        console.log("Intermediate students (IDs filtered) count:", intermediateStudentIdsInRegion.length);
-        console.log("Secondary students (IDs filtered) count:", secondaryStudentIdsInRegion.length);
+        // console.log("Male students (IDs filtered) count:", maleStudentIdsInRegion.length);
+        // console.log("Female students (IDs filtered) count:", femaleStudentIdsInRegion.length);
+        // console.log("Primary students (IDs filtered) count:", primaryStudentIdsInRegion.length);
+        // console.log("Intermediate students (IDs filtered) count:", intermediateStudentIdsInRegion.length);
+        // console.log("Secondary students (IDs filtered) count:", secondaryStudentIdsInRegion.length);
 
 
         const newStats = {
@@ -235,7 +237,7 @@ const AttendanceStatisticsPage = () => {
           secondary: calculateGroupStats(secondaryStudentIdsInRegion, cardDateRange),
         };
 
-        console.log("AttendanceStatisticsPage: Loaded grouped stats for region:", selectedRegion, newStats);
+        // console.log("AttendanceStatisticsPage: Loaded grouped stats for region:", selectedRegion, newStats);
         setGroupedStats(newStats);
 
       } catch (error) {
@@ -246,86 +248,15 @@ const AttendanceStatisticsPage = () => {
     loadGroupedStats();
   }, [selectedRegion, cardDateRange, calculateGroupStats, overallCardStats]);
 
-  // Effect to load overall system-wide card stats
-  useEffect(() => {
-    const loadOverallCardStats = () => {
-      try {
-        const allRegions = DataService.getAllRegions(); // Still assuming no language param needed here
-        if (!allRegions || allRegions.length === 0) {
-          setOverallCardStats({
-            attendance: 0, absence: 0, late: 0, fines: 0,
-            totalStudentsInRegion: 0, totalPossibleAttendances: 0, rewards: 0,
-          });
-          return;
-        }
-
-        let totalAttendance = 0;
-        let totalAbsence = 0;
-        let totalLate = 0;
-        let totalFines = 0;
-        let totalRewards = 0;
-        let totalStudentsAcrossAllRegions = 0;
-        let totalPossibleAttendancesAcrossAllRegions = 0;
-
-        allRegions.forEach((region) => {
-          const regionStats = DataService.getRegionStats(
-            region.region_id,
-            cardDateRange.startDate,
-            cardDateRange.endDate
-          );
-          totalAttendance += regionStats.attendance || 0;
-          totalAbsence += regionStats.absence || 0;
-          totalLate += regionStats.late || 0;
-          totalFines += regionStats.penalties || 0;
-          totalRewards += regionStats.rewards || 0;
-          totalStudentsAcrossAllRegions += regionStats.totalStudentsInRegion || 0;
-          totalPossibleAttendancesAcrossAllRegions +=
-            (regionStats.attendance || 0) + (regionStats.absence || 0) + (regionStats.late || 0);
-        });
-
-        console.log("MinisterPage: Overall Card Date Range:", cardDateRange.startDate.toLocaleString(), "to", cardDateRange.endDate.toLocaleString());
-
-        setOverallCardStats({
-          attendance: totalAttendance,
-          absence: totalAbsence,
-          late: totalLate,
-          fines: totalFines,
-          totalStudentsInRegion: totalStudentsAcrossAllRegions,
-          totalPossibleAttendances: totalPossibleAttendancesAcrossAllRegions,
-          rewards: totalRewards,
-        });
-      } catch (error) {
-        console.error("MinisterPage: Error loading overall card stats:", error);
-        setOverallCardStats({
-          attendance: 0, absence: 0, late: 0, fines: 0,
-          totalStudentsInRegion: 0, totalPossibleAttendances: 0, rewards: 0,
-        });
-      }
-    };
-
-    if (cardDateRange.startDate && cardDateRange.endDate) {
-      loadOverallCardStats();
-    }
-  }, [cardDateRange, i18n.language]);
-
   const handleDateTabClick = useCallback((tab: CardTab) => {
     setCardTab(tab);
     setCardDateRange(getDateRangeForTab(tab));
   }, [getDateRangeForTab]);
 
-  const overallCards = [
-    { type: getConsistentTranslatedText("Attendance"), number: overallCardStats.attendance.toLocaleString(), text: getConsistentTranslatedText("student") },
-    { type: getConsistentTranslatedText("Absence"), number: overallCardStats.absence.toLocaleString(), text: getConsistentTranslatedText("student") },
-    { type: getConsistentTranslatedText("Late"), number: overallCardStats.late.toLocaleString(), text: getConsistentTranslatedText("late student") },
-    { type: getConsistentTranslatedText("Fines"), number: overallCardStats.fines.toLocaleString(), text: getConsistentTranslatedText("Saudi Riyal") },
-    { type: getConsistentTranslatedText("Rewards"), number: overallCardStats.rewards.toLocaleString(), text: getConsistentTranslatedText("Reward") },
-  ];
-
-
   return (
     <div className="p-4 flex flex-col gap-4">
       <div className="flex gap-12">
-        <h1 className="text-lg font-black text-[#7C8B9D]">{getConsistentTranslatedText("Statistics")}</h1>
+        <h1 className="text-lg font-black text-[#7C8B9D]">{getConsistentTranslatedText("Attendance")}</h1>
       </div>
 
       <div className="flex flex-wrap justify-center gap-2">
@@ -344,13 +275,6 @@ const AttendanceStatisticsPage = () => {
           </button>
         ))}
       </div>
-
-      {/* <div className="flex gap-2 justify-between flex-wrap">
-        {overallCards.map((card) => (
-          <UserCard key={card.type} type={card} />
-        ))}
-      </div> */}
-
 
       <div className="flex gap-4 flex-col lg:flex-row">
         <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
