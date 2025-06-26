@@ -45,14 +45,12 @@ const AttendanceStatisticsPage = () => {
 
   const [isClient, setIsClient] = useState(false);
   
-  useEffect(() => {
-    setIsClient(true);
-    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
-  }, [i18n.language]);
+    useEffect(() => {
+      setIsClient(true);
+      document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    }, [i18n.language]);
 
-  // Initial setup effect for cardDateRange and selectedRegion
-
-
+  
 
   const [groupedStats, setGroupedStats] = useState({
     all: { attendance: 0, totalPossible: 0 },
@@ -107,35 +105,11 @@ const AttendanceStatisticsPage = () => {
       }
       startDate.setDate(1);
       startDate.setHours(0, 0, 0, 0);
-      endDate = new Date(startDate.getFullYear() + 1, 7, 31); // August 31st of next year relative to startDate's year
+      endDate = new Date(currentYear , 7, 31);
       endDate.setHours(23, 59, 59, 999);
     }
     return { startDate, endDate };
   }, []);
-
-  // Removed old useEffect for initial data, merged into the one above.
-  // useEffect(() => {
-  //     validateDataStructure();
-  //     const allRegions = DataService.getAllRegions();
-  //     if (allRegions?.length > 0 && selectedRegion === null) {
-  //         setSelectedRegion(allRegions[0].region_id);
-  //     }
-  // }, [selectedRegion, i18n.language]); // Dependencies ensure it runs when selectedRegion or language changes
-
-    useEffect(() => {
-    if (isClient) {
-      // Set initial date range for "Year"
-      const initialDateRange = getDateRangeForTab("Year");
-      setCardDateRange(initialDateRange);
-      setCardTab("Year"); // Ensure the tab is visually selected
-
-      // Set initial selected region to the first one available
-      const allRegions = DataService.getAllRegions();
-      if (allRegions?.length > 0 && selectedRegion === null) {
-        setSelectedRegion(allRegions[0].region_id);
-      }
-    }
-  }, [isClient, getDateRangeForTab, selectedRegion]); // Add selectedRegion here to ensure it only runs once for initial setup
 
   
 
@@ -146,6 +120,8 @@ const AttendanceStatisticsPage = () => {
     }
 
     console.log(`calculateGroupStats for ${studentIds.length} students for date range: ${dateRange.startDate.toLocaleDateString()} to ${dateRange.endDate.toLocaleDateString()}`);
+    // Optionally log a few student IDs to ensure they are present
+    // console.log("Student IDs being processed:", studentIds.slice(0, 5)); // Log first 5 IDs
     const students = DataService.getStudentsByIds(studentIds)
     const attendance = DataService.calculateAttendance(students, dateRange.startDate, dateRange.endDate);
     const absence = DataService.countAbsences(studentIds, dateRange.startDate, dateRange.endDate);
@@ -153,7 +129,7 @@ const AttendanceStatisticsPage = () => {
 
     const totalPossible = attendance + absence + late;
 
-    console.log(`  - Results: Attendance=${attendance}, Absence=${absence}, Late=${late}, Total Possible=${totalPossible}`);
+    console.log(`  - Results: Attendance=${attendance}, Absence=${absence}, Late=${late}, Total Possible=${totalPossible}`);
 
     return {
       attendance: attendance,
@@ -161,147 +137,101 @@ const AttendanceStatisticsPage = () => {
     };
   }, []);
 
-  // NEW useEffect: To calculate and set overallCardStats based on date range
-  // This effect will run on initial load (due to isClient and initial cardDateRange)
-  // and whenever cardDateRange changes (e.g., when clicking Day/Month/Year tabs).
-  useEffect(() => {
-    const loadOverallCardStats = () => {
-      if (!isClient || !cardDateRange.startDate || !cardDateRange.endDate) {
-        console.log("Not loading overall card stats: Client not ready or date range missing.");
-        return;
-      }
-
-      console.log("Loading overall card stats for date range:", cardDateRange.startDate.toLocaleString(), "to", cardDateRange.endDate.toLocaleString());
-
-      try {
-        const allRegions = DataService.getAllRegions();
-        if (!allRegions || allRegions.length === 0) {
-          console.log("No regions found, setting overallCardStats to zeros.");
-          setOverallCardStats({
-            attendance: 0, totalStudentsInRegion: 0, totalPossibleAttendances: 0,
-          });
-          return;
-        }
-
-        let totalAttendance = 0;
-        let totalPossibleAttendancesAcrossAllRegions = 0;
-        let totalStudentsAcrossAllRegions = 0;
-
-        allRegions.forEach((region) => {
-          const regionStats = DataService.getRegionStats(
-            region.region_id,
-            cardDateRange.startDate,
-            cardDateRange.endDate
-          );
-          totalAttendance += regionStats.attendance || 0;
-          // Note: getRegionStats typically returns absence, late, fines.
-          // totalPossibleAttendances should combine these if available from regionStats
-          const regionTotalPossible = (regionStats.attendance || 0) + (regionStats.absence || 0) + (regionStats.late || 0);
-          totalPossibleAttendancesAcrossAllRegions += regionTotalPossible;
-          totalStudentsAcrossAllRegions += regionStats.totalStudentsInRegion || 0;
-        });
-
-        const newOverallStats = {
-          attendance: totalAttendance,
-          totalStudentsInRegion: totalStudentsAcrossAllRegions,
-          totalPossibleAttendances: totalPossibleAttendancesAcrossAllRegions,
-        };
-        setOverallCardStats(newOverallStats);
-        console.log("Overall card stats calculated:", newOverallStats);
-      } catch (error) {
-        console.error("AttendanceStatisticsPage: Error loading overall card stats:", error);
-        setOverallCardStats({
-          attendance: 0, totalStudentsInRegion: 0, totalPossibleAttendances: 0,
-        });
-      }
-    };
-
-    loadOverallCardStats();
-  }, [isClient, cardDateRange]); // Dependency: Recalculate when client status or date range changes
-
-
-  // Effect to load region-specific grouped stats
+  // Effect to load region-specific grouped stats, now incorporating overallCardStats.attendance
   useEffect(() => {
     const loadGroupedStats = () => {
       console.log("Loading grouped stats for selectedRegion:", selectedRegion);
-      console.log("Current overallCardStats (for 'all' category):", overallCardStats); // This overallCardStats should now be loaded
-
-      if (!isClient || !cardDateRange.startDate || !cardDateRange.endDate) {
-        console.log("Not loading grouped stats: Client not ready or date range missing.");
-        return;
-      }
-
-      // Determine the scope of students (all or region-specific)
-      let studentsForCalculation: Student[] = [];
-      let schoolsForCalculation: School[] = [];
+      console.log("Current overallCardStats (for 'all' category):", overallCardStats);
 
       if (selectedRegion === null) {
-        // If no region selected, use all students and schools
-        // This will now use the overallCardStats if you want the "all" value to reflect the sum
-        studentsForCalculation = DataService.getAllStudents();
-        schoolsForCalculation = DataService.getAllSchools();
-        console.log("No specific region selected, calculating grouped stats for ALL students globally.");
-      } else {
-        // If a region is selected, filter students and schools for that region
-        schoolsForCalculation = DataService.getSchoolsByRegionId(selectedRegion);
-        const schoolsInRegionMap = new Map(schoolsForCalculation.map(s => [s.school_id, s]));
-        studentsForCalculation = DataService.getAllStudents().filter(student =>
-          schoolsInRegionMap.has(student.school_id)
-        );
-        console.log(`Calculating grouped stats for region ${selectedRegion}: Found ${studentsForCalculation.length} students.`);
-      }
-
-      if (studentsForCalculation.length === 0 && selectedRegion !== null) {
-        console.log("No students found for the selected region. Setting grouped stats to 0.");
         setGroupedStats({
-            all: { attendance: 0, totalPossible: 0 },
-            male: { attendance: 0, totalPossible: 0 },
-            female: { attendance: 0, totalPossible: 0 },
-            primary: { attendance: 0, totalPossible: 0 },
-            intermediate: { attendance: 0, totalPossible: 0 },
-            secondary: { attendance: 0, totalPossible: 0 },
+          all: { attendance: overallCardStats.attendance, totalPossible: overallCardStats.totalPossibleAttendances },
+          male: { attendance: 0, totalPossible: 0 },
+          female: { attendance: 0, totalPossible: 0 },
+          primary: { attendance: 0, totalPossible: 0 },
+          intermediate: { attendance: 0, totalPossible: 0 },
+          secondary: { attendance: 0, totalPossible: 0 },
         });
         return;
       }
-      
-      const studentIdsInScope = studentsForCalculation.map(s => s.student_id);
 
-      const maleStudentIdsInScope = studentsForCalculation.filter(s => s.gender === "Male").map(s => s.student_id);
-      const femaleStudentIdsInScope = studentsForCalculation.filter(s => s.gender === "Female").map(s => s.student_id);
-      
-      const primaryStudentIdsInScope = studentsForCalculation.filter(s =>
-        schoolsForCalculation.some(school => school.school_id === s.school_id && school.educational_level_en === "Primary")
-      ).map(s => s.student_id);
-      const intermediateStudentIdsInScope = studentsForCalculation.filter(s =>
-        schoolsForCalculation.some(school => school.school_id === s.school_id && school.educational_level_en === "Intermediate")
-      ).map(s => s.student_id);
-      const secondaryStudentIdsInScope = studentsForCalculation.filter(s =>
-        schoolsForCalculation.some(school => school.school_id === s.school_id && school.educational_level_en === "Secondary")
-      ).map(s => s.student_id);
+      try {
+        const regionSchools = DataService.getSchoolsByRegionId(selectedRegion);
+        console.log("Schools in selected region:", regionSchools);
 
-      const newStats = {
-        // The 'all' category here should reflect the total for the current scope (all students or selected region students)
-        // It's calculated dynamically based on 'studentsForCalculation' and 'cardDateRange'
-        all: calculateGroupStats(studentIdsInScope, cardDateRange),
-        male: calculateGroupStats(maleStudentIdsInScope, cardDateRange),
-        female: calculateGroupStats(femaleStudentIdsInScope, cardDateRange),
-        primary: calculateGroupStats(primaryStudentIdsInScope, cardDateRange),
-        intermediate: calculateGroupStats(intermediateStudentIdsInScope, cardDateRange),
-        secondary: calculateGroupStats(secondaryStudentIdsInScope, cardDateRange),
-      };
+        if (!regionSchools || regionSchools.length === 0) {
+            console.log("No schools found for selected region. Setting grouped stats to 0 (except 'all').");
+            setGroupedStats({
+                all: { attendance: overallCardStats.attendance, totalPossible: overallCardStats.totalPossibleAttendances },
+                male: { attendance: 0, totalPossible: 0 },
+                female: { attendance: 0, totalPossible: 0 },
+                primary: { attendance: 0, totalPossible: 0 },
+                intermediate: { attendance: 0, totalPossible: 0 },
+                secondary: { attendance: 0, totalPossible: 0 },
+            });
+            return;
+        }
 
-      console.log("AttendanceStatisticsPage: Setting grouped stats:", newStats);
-      setGroupedStats(newStats);
+        const schoolsMap = new Map(regionSchools.map(s => [s.school_id, s]));
 
+        const allStudentsInRegion = DataService.getAllStudents().filter(student =>
+          schoolsMap.has(student.school_id)
+        );
+        console.log("Total students in selected region (before specific filtering):", allStudentsInRegion.length);
+        if (allStudentsInRegion.length > 0) {
+          console.log("Sample student for gender check (ID:", allStudentsInRegion[0]?.student_id, "):", allStudentsInRegion[0]?.gender);
+          console.log("Sample school for level check (School ID:", allStudentsInRegion[0]?.school_id, "):", schoolsMap.get(allStudentsInRegion[0]?.school_id)?.educational_level_en);
+        }
+
+        const maleStudentIdsInRegion = allStudentsInRegion.filter(s => s.gender === "Male").map(s => s.student_id);
+        const femaleStudentIdsInRegion = allStudentsInRegion.filter(s => s.gender === "Female").map(s => s.student_id);
+        const primaryStudentIdsInRegion = allStudentsInRegion.filter(s =>
+          schoolsMap.get(s.school_id)?.educational_level_en === "Primary"
+        ).map(s => s.student_id);
+        const intermediateStudentIdsInRegion = allStudentsInRegion.filter(s =>
+          schoolsMap.get(s.school_id)?.educational_level_en === "Intermediate"
+        ).map(s => s.student_id);
+        const secondaryStudentIdsInRegion = allStudentsInRegion.filter(s =>
+          schoolsMap.get(s.school_id)?.educational_level_en === "Secondary"
+        ).map(s => s.student_id);
+
+        // console.log("Male students (IDs filtered) count:", maleStudentIdsInRegion.length);
+        // console.log("Female students (IDs filtered) count:", femaleStudentIdsInRegion.length);
+        // console.log("Primary students (IDs filtered) count:", primaryStudentIdsInRegion.length);
+        // console.log("Intermediate students (IDs filtered) count:", intermediateStudentIdsInRegion.length);
+        // console.log("Secondary students (IDs filtered) count:", secondaryStudentIdsInRegion.length);
+
+
+        const newStats = {
+          all: { attendance: overallCardStats.attendance, totalPossible: overallCardStats.totalPossibleAttendances },
+          male: calculateGroupStats(maleStudentIdsInRegion, cardDateRange),
+          female: calculateGroupStats(femaleStudentIdsInRegion, cardDateRange),
+          primary: calculateGroupStats(primaryStudentIdsInRegion, cardDateRange),
+          intermediate: calculateGroupStats(intermediateStudentIdsInRegion, cardDateRange),
+          secondary: calculateGroupStats(secondaryStudentIdsInRegion, cardDateRange),
+        };
+
+        // console.log("AttendanceStatisticsPage: Loaded grouped stats for region:", selectedRegion, newStats);
+        setGroupedStats(newStats);
+
+      } catch (error) {
+        console.error("AttendanceStatisticsPage: Error loading grouped stats:", error);
+      }
     };
 
     loadGroupedStats();
-  }, [selectedRegion, cardDateRange, calculateGroupStats, isClient, overallCardStats]); // overallCardStats added here as it affects the initial 'all' calculation logic
+  }, [selectedRegion, cardDateRange, calculateGroupStats, overallCardStats]);
 
   const handleDateTabClick = useCallback((tab: CardTab) => {
     setCardTab(tab);
     setCardDateRange(getDateRangeForTab(tab));
   }, [getDateRangeForTab]);
+
+  useEffect(() => {
+  if (isClient) {
+    handleDateTabClick("Year");
+  }
+}, [isClient, handleDateTabClick]);
 
   return (
     <div className="p-4 flex flex-col gap-4">
