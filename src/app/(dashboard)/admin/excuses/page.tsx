@@ -51,12 +51,13 @@ const AbsenceStatisticsPage = () => {
       const fetchData = async () => {
         try {
           const excuses = await DataService.getExcuses();
+          console.log("esccccccc", excuses)
           const enrichedExcusesPromises = excuses.map(async (excuse) => {
             const [firstName, lastName] = await DataService.getStudentNameById(
               excuse.student_id,
               i18n.language
             );
-  
+            console.log("esccccccc1", enrichedExcusesPromises)
             const descriptionText = await DataService.getExcuseDescriptionById(
               excuse.reason_id.toLocaleString(),
               i18n.language
