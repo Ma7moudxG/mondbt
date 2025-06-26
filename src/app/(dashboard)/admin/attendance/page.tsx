@@ -44,7 +44,7 @@ const AttendanceStatisticsPage = () => {
     return t(key);
   }, [mounted, t]);
 
-  const [cardTab, setCardTab] = useState<CardTab>("Day");
+  const [cardTab, setCardTab] = useState<CardTab>("Year");
   const [cardDateRange, setCardDateRange] = useState({
     startDate: new Date(),
     endDate: new Date(),
