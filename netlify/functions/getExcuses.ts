@@ -61,7 +61,7 @@ const handler: Handler = async (
     // Fallback: If no specific filters, just fetch all (or apply a default like 'PENDING')
     // For your getExcuses() case, it implies status_en === "PENDING"
     else {
-      query = query.eq("status_en", "PENDING"); // Default for getExcuses()
+    //   query = query.eq("status_en", "PENDING"); // Default for getExcuses()
       console.log(`[getExcuses] No specific ID or status provided, defaulting to PENDING excuses.`);
     }
 
