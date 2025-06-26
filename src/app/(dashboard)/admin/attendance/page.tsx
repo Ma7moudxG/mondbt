@@ -67,7 +67,7 @@ const AttendanceStatisticsPage = () => {
     totalPossibleAttendances: 0,
   });
 
-  const [selectedRegion, setSelectedRegion] = useState<number | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<number | null>(1);
 
   const getDateRangeForTab = useCallback((
     tab: CardTab
@@ -146,8 +146,8 @@ const AttendanceStatisticsPage = () => {
   // Effect to load region-specific grouped stats, now incorporating overallCardStats.attendance
   useEffect(() => {
     const loadGroupedStats = () => {
-      console.log("Loading grouped stats for selectedRegion:", selectedRegion);
-      console.log("Current overallCardStats (for 'all' category):", overallCardStats);
+      // console.log("Loading grouped stats for selectedRegion:", selectedRegion);
+      // console.log("Current overallCardStats (for 'all' category):", overallCardStats);
 
       if (selectedRegion === null) {
         setGroupedStats({
@@ -162,8 +162,8 @@ const AttendanceStatisticsPage = () => {
       }
 
       try {
-        const regionSchools = DataService.getSchoolsByRegionId(selectedRegion);
-        console.log("Schools in selected region:", regionSchools);
+        const regionSchools = DataService.getSchoolsByRegionId(1);
+        // console.log("Schools in selected region:", regionSchools);
 
         if (!regionSchools || regionSchools.length === 0) {
             console.log("No schools found for selected region. Setting grouped stats to 0 (except 'all').");
