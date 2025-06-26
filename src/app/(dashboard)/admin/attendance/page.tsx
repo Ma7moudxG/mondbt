@@ -57,14 +57,7 @@ const AttendanceStatisticsPage = () => {
       document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
     }, [i18n.language]);
 
-  useEffect(() => {
-      if (isClient) {
-        const initialDateRange = getDateRangeForTab("Year");
-        setCardDateRange(initialDateRange);
-        setCardTab("Year");
-        setCardDateRange(getDateRangeForTab("Year"));
-      }
-    }, [isClient]);
+  
 
   const [groupedStats, setGroupedStats] = useState({
     all: { attendance: 0, totalPossible: 0 },
@@ -130,14 +123,12 @@ const AttendanceStatisticsPage = () => {
   }, []);
 
   useEffect(() => {
-    validateDataStructure();
-    // Assuming DataService.getAllRegions() does not require language as per your provided code
-    const allRegions = DataService.getAllRegions();
-    if (allRegions?.length > 0 && selectedRegion === null) {
-      setSelectedRegion(allRegions[0].region_id);
-    }
-    setCardDateRange(getDateRangeForTab("Day"));
-  }, [getDateRangeForTab, selectedRegion, i18n.language]);
+      if (isClient) {
+        const initialDateRange = getDateRangeForTab("Year");
+        setCardDateRange(initialDateRange);
+        setCardTab("Year");
+      }
+    }, [isClient, getDateRangeForTab]);
 
   const calculateGroupStats = useCallback((studentIds: number[], dateRange: { startDate: Date; endDate: Date }) => {
     if (studentIds.length === 0) {
