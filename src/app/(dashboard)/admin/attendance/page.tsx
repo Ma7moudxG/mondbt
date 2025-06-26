@@ -111,7 +111,13 @@ const AttendanceStatisticsPage = () => {
     return { startDate, endDate };
   }, []);
 
-  
+  useEffect(() => {
+      if (isClient) {
+        const initialDateRange = getDateRangeForTab("Year");
+        setCardDateRange(initialDateRange);
+        setCardTab("Year");
+      }
+    }, [isClient, getDateRangeForTab]);
 
   const calculateGroupStats = useCallback((studentIds: number[], dateRange: { startDate: Date; endDate: Date }) => {
     if (studentIds.length === 0) {
@@ -232,6 +238,7 @@ const AttendanceStatisticsPage = () => {
     handleDateTabClick("Year");
   }
 }, [isClient, handleDateTabClick]);
+
 
   return (
     <div className="p-4 flex flex-col gap-4">
