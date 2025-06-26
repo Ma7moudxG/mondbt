@@ -805,7 +805,7 @@ export default class DataService {
       console.log(
         `DataService: Successfully fetched and filtered PENDING excuses. Found ${filteredExcuses.length} matching excuses via Netlify Function.`
       );
-      return filteredExcuses;
+      return allExcuses;
     } catch (error) {
       console.error(`DataService: Error getting excuses:`, error);
       return [];
