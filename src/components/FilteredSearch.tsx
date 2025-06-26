@@ -46,7 +46,7 @@ const FilteredSearch: React.FC<FilteredSearchProps> = ({ onFilterChange, onSearc
       regions: DataService.getAllRegions(),
       cities: DataService.getAllCities(),
       areas: DataService.getAllAreas(), // Assuming this fetches all areas
-      schoolTypes: ['National', 'Global', 'Foreign', 'An international program for private schools', 'Egyptian Path', 'Sudanese path'],
+      schoolTypes: ['Governmental', "Private", 'Global', 'Foreign', 'An international program for private schools', 'Egyptian Path', 'Sudanese path'],
       sexes: ['Male', 'Female']
     });
   }, []);
