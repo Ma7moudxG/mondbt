@@ -152,7 +152,9 @@ const ar = {
   "Male": "ذكور",
   "Female": "إناث",
   "Submitting...":"جاري التقديم...",
-  "Updating...": "جاري التحديث..."
+  "Updating...": "جاري التحديث...",
+  "Excuse Type": "نوع العذر",
+  "":""
 };
 
 // English translations

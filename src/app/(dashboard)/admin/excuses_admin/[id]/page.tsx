@@ -205,7 +205,7 @@ const AdminExcusesPage = () => {
           <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <div className="sm:w-1/2 lg:w-1/3">
               <p className="text-sm font-bold text-[#9B9B9B]">
-                {t("Excuse ID")}
+                {t("Excuse Type")}
               </p>
               <h3 className="text-[#6BBEA5] font-medium">
                 {excuseDetails?.id}{" "}
