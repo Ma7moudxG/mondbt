@@ -6,7 +6,7 @@ import { Gauge, gaugeClasses } from "@mui/x-charts";
 import { useTranslation } from "react-i18next"; // Import useTranslation
 
 interface GroupStats {
-  attendance: number;
+  absence: number;
   totalPossible: number;
 }
 
@@ -45,7 +45,7 @@ const AbsenceStatistics: React.FC<AbsenceStatisticsProps> = ({
   // Calculate attendance rate for a group
   const calculateRate = (stats: GroupStats) => {
     return stats.totalPossible > 0 ?
-      Math.round((stats.attendance / stats.totalPossible) * 100) : 0;
+      Math.round((stats.absence / stats.totalPossible) * 100) : 0;
   };
 
   return (
@@ -54,7 +54,7 @@ const AbsenceStatistics: React.FC<AbsenceStatisticsProps> = ({
       <StatCard
         titleKey="All Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.all.attendance}
+        value={groupedStats.all.absence}
         rate={calculateRate(groupedStats.all)}
         color="#5EB89D"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -64,7 +64,7 @@ const AbsenceStatistics: React.FC<AbsenceStatisticsProps> = ({
       <StatCard
         titleKey="Male Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.male.attendance}
+        value={groupedStats.male.absence}
         rate={calculateRate(groupedStats.male)}
         color="#519E87"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -74,7 +74,7 @@ const AbsenceStatistics: React.FC<AbsenceStatisticsProps> = ({
       <StatCard
         titleKey="Female Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.female.attendance}
+        value={groupedStats.female.absence}
         rate={calculateRate(groupedStats.female)}
         color="#448571"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -84,7 +84,7 @@ const AbsenceStatistics: React.FC<AbsenceStatisticsProps> = ({
       <StatCard
         titleKey="Primary Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.primary.attendance}
+        value={groupedStats.primary.absence}
         rate={calculateRate(groupedStats.primary)}
         color="#5EB89D"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -94,7 +94,7 @@ const AbsenceStatistics: React.FC<AbsenceStatisticsProps> = ({
       <StatCard
         titleKey="Intermediate Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.intermediate.attendance}
+        value={groupedStats.intermediate.absence}
         rate={calculateRate(groupedStats.intermediate)}
         color="#519E87"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -104,7 +104,7 @@ const AbsenceStatistics: React.FC<AbsenceStatisticsProps> = ({
       <StatCard
         titleKey="Secondary Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.secondary.attendance}
+        value={groupedStats.secondary.absence}
         rate={calculateRate(groupedStats.secondary)}
         color="#448571"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
