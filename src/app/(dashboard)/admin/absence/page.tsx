@@ -333,6 +333,9 @@ const AbsenceStatisticsPage = () => {
           totalStudentsInRegion: totalStudentsAcrossAllRegions,
           totalPossibleAttendances: totalPossibleAttendancesAcrossAllRegions,
         });
+
+        console.log("ccccccc", overallCardStats.absence)
+        console.log("ccccccc", overallCardStats.totalPossibleAttendances)
       } catch (error) {
         console.error("Error loading overall card stats:", error);
         setOverallCardStats({
