@@ -334,7 +334,7 @@ const AbsenceStatisticsPage = () => {
         ;
 
         setOverallCardStats({
-          attendance: totalAttendance,
+          absence: totalAttendance,
           totalStudentsInRegion: totalStudentsAcrossAllRegions,
           totalPossibleAttendances: totalPossibleAttendancesAcrossAllRegions,
         });
