@@ -1,12 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
-import DataService, {
-  type School,
-  type Region,
-  type Student,
-} from "@/services/dataService";
+import DataService from "@/services/dataService";
 import MinisterMap from "@/components/MinisterMap";
-import AttendanceStatistics from "@/components/AttendanceStatistics";
 import { useTranslation } from "react-i18next";
 import AbsenceStatistics from "@/components/AbsenceStatistics";
 
@@ -215,24 +210,24 @@ const AbsenceStatisticsPage = () => {
         const allStudentsInRegion = DataService.getAllStudents().filter(
           (student) => schoolsMap.has(student.school_id)
         );
-        console.log(
-          "Total students in selected region (before specific filtering):",
-          allStudentsInRegion.length
-        );
+        // console.log(
+        //   "Total students in selected region (before specific filtering):",
+        //   allStudentsInRegion.length
+        // );
         if (allStudentsInRegion.length > 0) {
-          console.log(
-            "Sample student for gender check (ID:",
-            allStudentsInRegion[0]?.student_id,
-            "):",
-            allStudentsInRegion[0]?.gender
-          );
-          console.log(
-            "Sample school for level check (School ID:",
-            allStudentsInRegion[0]?.school_id,
-            "):",
-            schoolsMap.get(allStudentsInRegion[0]?.school_id)
-              ?.educational_level_en
-          );
+          // console.log(
+          //   "Sample student for gender check (ID:",
+          //   allStudentsInRegion[0]?.student_id,
+          //   "):",
+          //   allStudentsInRegion[0]?.gender
+          // );
+          // console.log(
+          //   "Sample school for level check (School ID:",
+          //   allStudentsInRegion[0]?.school_id,
+          //   "):",
+          //   schoolsMap.get(allStudentsInRegion[0]?.school_id)
+          //     ?.educational_level_en
+          // );
         }
 
         const maleStudentIdsInRegion = allStudentsInRegion
@@ -334,7 +329,7 @@ const AbsenceStatisticsPage = () => {
         ;
 
         setOverallCardStats({
-          absence: totalAttendance,
+          absence: groupedStats.all.absence,
           totalStudentsInRegion: totalStudentsAcrossAllRegions,
           totalPossibleAttendances: totalPossibleAttendancesAcrossAllRegions,
         });
