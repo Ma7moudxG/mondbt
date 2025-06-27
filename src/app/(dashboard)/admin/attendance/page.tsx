@@ -317,7 +317,7 @@ const AttendanceStatisticsPage = () => {
         let totalStudentsAcrossAllRegions = 0;
         let totalPossibleAttendancesAcrossAllRegions = 0;
 
-        allRegions.forEach((region) => {
+        
           const regionStats = DataService.getRegionStats(
             1,
             cardDateRange.startDate,
@@ -330,14 +330,7 @@ const AttendanceStatisticsPage = () => {
             (regionStats.attendance || 0) +
             (regionStats.absence || 0) +
             (regionStats.late || 0);
-        });
-
-        console.log(
-          "MinisterPage: Overall Card Date Range:",
-          cardDateRange.startDate.toLocaleString(),
-          "to",
-          cardDateRange.endDate.toLocaleString()
-        );
+        ;
 
         setOverallCardStats({
           attendance: totalAttendance,
@@ -345,7 +338,7 @@ const AttendanceStatisticsPage = () => {
           totalPossibleAttendances: totalPossibleAttendancesAcrossAllRegions,
         });
       } catch (error) {
-        console.error("MinisterPage: Error loading overall card stats:", error);
+        console.error("Error loading overall card stats:", error);
         setOverallCardStats({
           attendance: 0,
           totalStudentsInRegion: 0,
