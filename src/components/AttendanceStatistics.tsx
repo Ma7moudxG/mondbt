@@ -172,7 +172,7 @@ const StatCard: React.FC<{
     <div className="mx-auto">
         <button
           onClick={handleExport}
-          className="bg-[#8447AB] py-2 px-6 font-bold text-base text-white rounded-full
+          className="bg-[#8447AB] py-2 px-4 font-medium text-sm text-white rounded-full
                              hover:bg-[#6a3793] transition-colors"
         >
           {getConsistentTranslatedText("Export Report")}
