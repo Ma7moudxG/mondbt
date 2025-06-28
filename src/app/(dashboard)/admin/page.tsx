@@ -215,7 +215,7 @@ const AdminPage = () => {
       startDate.setDate(1);
       startDate.setHours(0, 0, 0, 0);
 
-      endDate = new Date(currentYear + 1, 7, 31); // August 31st of next year for academic year end
+      endDate = new Date(currentYear , 7, 31); // August 31st of next year for academic year end
       endDate.setHours(23, 59, 59, 999);
     }
     return { startDate, endDate };

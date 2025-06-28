@@ -188,9 +188,7 @@ const StatCard: React.FC<{
         >
           {getConsistentTranslatedText("Export Report")}
         </button>
-      </div>
-
-      
+      </div>      
     </div>
   );
 };
