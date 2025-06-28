@@ -21,9 +21,7 @@ interface LateStatisticsProps {
   };
 }
 
-const LateStatistics: React.FC<LateStatisticsProps> = ({
-  groupedStats
-}) => {
+const LateStatistics: React.FC<LateStatisticsProps> = ({ groupedStats }) => {
   const { t } = useTranslation(); // Initialize the translation hook
 
   // START: Hydration Fix - Mounted state
@@ -44,8 +42,9 @@ const LateStatistics: React.FC<LateStatisticsProps> = ({
 
   // Calculate attendance rate for a group
   const calculateRate = (stats: GroupStats) => {
-    return stats.totalPossible > 0 ?
-      Math.round((stats.late / stats.totalPossible) * 100) : 0;
+    return stats.totalPossible > 0
+      ? Math.round((stats.late / stats.totalPossible) * 100)
+      : 0;
   };
 
   return (
@@ -121,43 +120,79 @@ const StatCard: React.FC<{
   rate: number;
   color: string;
   getConsistentTranslatedText: (key: string) => string; // Receive helper function
-}> = ({ titleKey, icon, value, rate, color, getConsistentTranslatedText }) => (
-  <div className="flex flex-col gap-2 items-center justify-between p-4 bg-gray-50 rounded-lg">
-    <div className="flex gap-2 items-center">
-      <Image src={icon} alt={getConsistentTranslatedText(titleKey)} width={16} height={16} /> {/* Use helper for alt text */}
-      <p className="text-sm font-medium">{getConsistentTranslatedText(titleKey)}</p> {/* Use helper for title */}
-    </div>
+}> = ({ titleKey, icon, value, rate, color, getConsistentTranslatedText }) => {
+  const handleExport = () => {
+    const link = document.createElement("a");
+    link.href = "/sickLeaves.pdf";
+    link.download = "attendance_report.pdf";
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
-    <div className="text-center">
-      <p className="text-xl font-bold">{value.toLocaleString()}</p>
-      <p className="text-xs text-gray-500">{getConsistentTranslatedText("Late")}</p> {/* Translate "Late" */}
-    </div>
+  return (
+    <div className="flex flex-col gap-2 items-center justify-between p-4 bg-gray-50 rounded-lg">
+      <div className="flex gap-2 items-center">
+        <Image
+          src={icon}
+          alt={getConsistentTranslatedText(titleKey)}
+          width={16}
+          height={16}
+        />{" "}
+        {/* Use helper for alt text */}
+        <p className="text-sm font-medium">
+          {getConsistentTranslatedText(titleKey)}
+        </p>{" "}
+        {/* Use helper for title */}
+      </div>
 
-    <div className="w-full max-w-[120px]">
-      <Gauge
-        value={rate}
-        valueMax={100}
-        startAngle={-180}
-        endAngle={180}
-        innerRadius="60%"
-        outerRadius="90%"
-        cornerRadius="50%"
-        sx={{
-          [`& .${gaugeClasses.valueText}`]: {
-            fontSize: 22,
-            transform: "translate(0px, 0px)",
-          },
-          [`& .${gaugeClasses.valueArc}`]: {
-            fill: color,
-          },
-          [`& .${gaugeClasses.referenceArc}`]: {
-            fill: "#E2E2E2",
-          },
-        }}
-        text={({ value }) => `${value}%`}
-      />
+      <div className="text-center">
+        <p className="text-xl font-bold">{value.toLocaleString()}</p>
+        <p className="text-xs text-gray-500">
+          {getConsistentTranslatedText("Late")}
+        </p>{" "}
+        {/* Translate "Late" */}
+      </div>
+
+      <div className="w-full max-w-[120px]">
+        <Gauge
+          value={rate}
+          valueMax={100}
+          startAngle={-180}
+          endAngle={180}
+          innerRadius="60%"
+          outerRadius="90%"
+          cornerRadius="50%"
+          sx={{
+            [`& .${gaugeClasses.valueText}`]: {
+              fontSize: 22,
+              transform: "translate(0px, 0px)",
+            },
+            [`& .${gaugeClasses.valueArc}`]: {
+              fill: color,
+            },
+            [`& .${gaugeClasses.referenceArc}`]: {
+              fill: "#E2E2E2",
+            },
+          }}
+          text={({ value }) => `${value}%`}
+        />
+      </div>
+
+      <div className="mx-auto">
+        <button
+          onClick={handleExport}
+          className="bg-[#8447AB] py-2 px-4 font-medium text-sm text-white rounded-full
+                             hover:bg-[#6a3793] transition-colors"
+        >
+          {getConsistentTranslatedText("Export Report")}
+        </button>
+      </div>
+
+      
     </div>
-  </div>
-);
+  );
+};
 
 export default LateStatistics;
