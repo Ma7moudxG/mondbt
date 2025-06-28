@@ -9,6 +9,15 @@ import { useParams } from "next/navigation";
 import DataService, { Excuse, Student } from "@/services/dataService";
 
 const AdminExcusesPage = () => {
+  const getConsistentTranslatedText = (key: string) => {
+    if (!mounted) {
+      return key; // During SSR, return the key itself (assuming keys are in default language, e.g., English)
+    }
+    return t(key); // After hydration, use the actual translation
+  };
+
+  const [remarks, setRemarks] = useState("");
+
   const params = useParams();
 
   // Safely extract id with proper type handling.
@@ -21,7 +30,9 @@ const AdminExcusesPage = () => {
   const { t, i18n } = useTranslation();
 
   const [excuseDetails, setExcuseDetails] = useState<Excuse | null>(null);
-  const [excuseDescription, setExcuseDescription] = useState<string | null>(null);
+  const [excuseDescription, setExcuseDescription] = useState<string | null>(
+    null
+  );
   const [excuseAttachment, setExcuseAttachment] = useState<string | null>(null);
   const [studentFullName, setStudentFullName] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -35,15 +46,15 @@ const AdminExcusesPage = () => {
   useEffect(() => {
     setMounted(true); // Component has mounted on the client
     // Setting document direction globally is safe here as it runs client-side
-    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
   }, [i18n.language]);
 
   const isArabic = i18n.language === "ar";
   const textDirectionClass = isArabic ? "text-right" : "text-left";
-  
+
   // Conditionally apply dir attribute to the component's root div
   // On SSR, it will be 'ltr' (or your i18n default). On client mount, it updates.
-  const dirAttribute = mounted && isArabic ? "rtl" : "ltr"; 
+  const dirAttribute = mounted && isArabic ? "rtl" : "ltr";
 
   // Memoized fetch function
   const fetchExcuseData = useCallback(async () => {
@@ -67,16 +78,22 @@ const AdminExcusesPage = () => {
 
       setExcuseDetails(details);
 
-      const [attachmentUrl, description, [firstName, lastName]] = await Promise.all([
-        DataService.getExcuseAttachmentById(details.id.toString()),
-        DataService.getExcuseDescriptionById(details.reason_id.toString(), i18n.language),
-        DataService.getStudentNameById(details.student_id as number, i18n.language),
-      ]);
+      const [attachmentUrl, description, [firstName, lastName]] =
+        await Promise.all([
+          DataService.getExcuseAttachmentById(details.id.toString()),
+          DataService.getExcuseDescriptionById(
+            details.reason_id.toString(),
+            i18n.language
+          ),
+          DataService.getStudentNameById(
+            details.student_id as number,
+            i18n.language
+          ),
+        ]);
 
       setExcuseAttachment(attachmentUrl);
       setExcuseDescription(description);
       setStudentFullName(`${firstName || t("N/A")} ${lastName || ""}`);
-
     } catch (err) {
       console.error("Failed to fetch Excuse details:", err);
       setError("failed_to_load_excuse_data_error");
@@ -94,31 +111,34 @@ const AdminExcusesPage = () => {
     }
   }, [mounted, excuseIdString, fetchExcuseData]);
 
-  const handleUpdateStatus = useCallback(async (status: "APPROVED" | "REJECTED") => {
-    if (!excuseDetails) return;
+  const handleUpdateStatus = useCallback(
+    async (status: "APPROVED" | "REJECTED") => {
+      if (!excuseDetails) return;
 
-    setIsUpdatingStatus(true);
-    setError(null);
+      setIsUpdatingStatus(true);
+      setError(null);
 
-    const statusEn = status;
-    const statusAr = status === "APPROVED" ? "مقبول" : "مرفوض";
+      const statusEn = status;
+      const statusAr = status === "APPROVED" ? "مقبول" : "مرفوض";
 
-    try {
-      const updatedExcuse = await DataService.updateExcuseStatus(
-        excuseDetails.id.toLocaleString(),
-        statusEn,
-        statusAr
-      );
+      try {
+        const updatedExcuse = await DataService.updateExcuseStatus(
+          excuseDetails.id.toLocaleString(),
+          statusEn,
+          statusAr
+        );
 
-      setExcuseDetails(updatedExcuse);
-      console.log(`Excuse ${excuseDetails.id} status updated to ${statusEn}`);
-    } catch (err) {
-      console.error("Error updating excuse status:", err);
-      setError("failed_to_update_excuse_status_error");
-    } finally {
-      setIsUpdatingStatus(false);
-    }
-  }, [excuseDetails]);
+        setExcuseDetails(updatedExcuse);
+        console.log(`Excuse ${excuseDetails.id} status updated to ${statusEn}`);
+      } catch (err) {
+        console.error("Error updating excuse status:", err);
+        setError("failed_to_update_excuse_status_error");
+      } finally {
+        setIsUpdatingStatus(false);
+      }
+    },
+    [excuseDetails]
+  );
 
   const handleImageClick = useCallback(() => {
     if (excuseAttachment) {
@@ -135,11 +155,14 @@ const AdminExcusesPage = () => {
     return isArabic
       ? excuseDetails.excuse_date_h || t("N/A")
       : excuseDetails.excuse_date_g
-      ? new Date(excuseDetails.excuse_date_g).toLocaleDateString(i18n.language, {
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-        })
+      ? new Date(excuseDetails.excuse_date_g).toLocaleDateString(
+          i18n.language,
+          {
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+          }
+        )
       : t("N/A");
   }, [excuseDetails, isArabic, i18n.language, t]);
 
@@ -153,7 +176,10 @@ const AdminExcusesPage = () => {
     // During SSR, and initial client render before useEffect runs.
     // Render a consistent, non-localized loading message.
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-gray-600" dir="ltr">
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-gray-600"
+        dir="ltr"
+      >
         Loading... {/* This text will be consistently rendered on SSR */}
       </div>
     );
@@ -162,7 +188,10 @@ const AdminExcusesPage = () => {
   // Once mounted, subsequent renders can use localized text and dynamic dir.
   if (excuseIdString === undefined) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-red-600" dir={dirAttribute}>
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-red-600"
+        dir={dirAttribute}
+      >
         {t("invalid_excuse_id_in_url")}
       </div>
     );
@@ -170,7 +199,10 @@ const AdminExcusesPage = () => {
 
   if (loading) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-gray-600" dir={dirAttribute}>
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-gray-600"
+        dir={dirAttribute}
+      >
         {t("loading")} {/* This will now be localized only on the client */}
       </div>
     );
@@ -178,7 +210,10 @@ const AdminExcusesPage = () => {
 
   if (error) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-red-600" dir={dirAttribute}>
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-red-600"
+        dir={dirAttribute}
+      >
         {t("error_prefix")}: {t(error)}
       </div>
     );
@@ -186,7 +221,10 @@ const AdminExcusesPage = () => {
 
   if (!excuseDetails) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-gray-600" dir={dirAttribute}>
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-gray-600"
+        dir={dirAttribute}
+      >
         {t("no_excuse_details_found", { excuseId: excuseIdString })}
       </div>
     );
@@ -221,9 +259,7 @@ const AdminExcusesPage = () => {
             </div>
             <div className="sm:w-1/2 lg:w-1/3">
               <p className="text-sm font-bold text-[#9B9B9B]">{t("Date")}</p>
-              <h3 className="text-[#6BBEA5] font-medium">
-                {excuseDate}
-              </h3>
+              <h3 className="text-[#6BBEA5] font-medium">{excuseDate}</h3>
             </div>
             <div className="sm:w-1/2 lg:w-1/3">
               <p className="text-sm font-bold text-[#9B9B9B]">{t("Student")}</p>
@@ -267,11 +303,32 @@ const AdminExcusesPage = () => {
               )}
             </div>
             <div className="sm:w-full">
-               <p className="text-sm font-bold text-[#9B9B9B]">{t("Remarks")}</p>
-               <h3 className="text-[#6BBEA5] font-medium">
-                 {isArabic ? excuseDetails.remarks_ar : excuseDetails.remarks_en}
-               </h3>
-             </div>
+              <p className="text-sm font-bold text-[#9B9B9B]">{t("Remarks")}</p>
+              <h3 className="text-[#6BBEA5] font-medium">
+                {isArabic ? excuseDetails.remarks_ar : excuseDetails.remarks_en}
+              </h3>
+            </div>
+          </div>
+
+          <div>
+            <label
+              htmlFor="remarks"
+              className={`block text-sm font-medium text-gray-700 mb-2 ${textDirectionClass}`}
+            >
+              {getConsistentTranslatedText("Remarks")}
+            </label>
+            <textarea
+              id="remarks"
+              name="remarks"
+              rows={4}
+              value={remarks}
+              onChange={(e) => setRemarks(e.target.value)}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8447AB] focus:ring-[#8447AB] sm:text-sm"
+              placeholder={getConsistentTranslatedText(
+                "Enter any additional remarks (optional)"
+              )}
+              dir={dirAttribute} // dirAttribute itself is now fixed for hydration
+            ></textarea>
           </div>
         </div>
 
