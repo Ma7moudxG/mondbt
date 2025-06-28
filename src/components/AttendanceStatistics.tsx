@@ -121,8 +121,20 @@ const StatCard: React.FC<{
   rate: number;
   color: string;
   getConsistentTranslatedText: (key: string) => string; // Receive helper function
-}> = ({ titleKey, icon, value, rate, color, getConsistentTranslatedText }) => (
-  <div className="flex flex-col gap-2 items-center justify-between p-4 bg-gray-50 rounded-lg">
+}> = ({ titleKey, icon, value, rate, color, getConsistentTranslatedText }) => {
+  
+  const handleExport = () => {
+    const link = document.createElement("a");
+    link.href = "/sickLeaves.pdf";
+    link.download = "attendance_report.pdf";
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  
+  return (
+    <div className="flex flex-col gap-2 items-center justify-between p-4 bg-gray-50 rounded-lg">
     <div className="flex gap-2 items-center">
       <Image src={icon} alt={getConsistentTranslatedText(titleKey)} width={16} height={16} /> {/* Use helper for alt text */}
       <p className="text-sm font-medium">{getConsistentTranslatedText(titleKey)}</p> {/* Use helper for title */}
@@ -157,7 +169,17 @@ const StatCard: React.FC<{
         text={({ value }) => `${value}%`}
       />
     </div>
+    <div className="mx-auto">
+        <button
+          onClick={handleExport}
+          className="bg-[#8447AB] py-2 px-6 font-bold text-base text-white rounded-full
+                             hover:bg-[#6a3793] transition-colors"
+        >
+          {getConsistentTranslatedText("Export Report")}
+        </button>
+      </div>
   </div>
-);
+  )
+};
 
 export default AttendanceStatistics;

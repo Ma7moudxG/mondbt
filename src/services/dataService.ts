@@ -323,7 +323,7 @@ async function fetchData<T>(url: string, method: string = 'GET', body?: object):
   }
 
   try {
-    console.log(`Fetching from Netlify Function: ${method} ${url}`);
+    // console.log(`Fetching from Netlify Function: ${method} ${url}`);
     const response = await fetch(url, options);
 
     if (!response.ok) {
