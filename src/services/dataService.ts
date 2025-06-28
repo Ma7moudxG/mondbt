@@ -942,52 +942,56 @@ export default class DataService {
   // }
 
   static async updateExcuseStatus(
-    excuseId: string,
-    statusEn: "PENDING" | "APPROVED" | "REJECTED",
-    statusAr: "قيد المراجعة" | "مقبول" | "مرفوض"
-  ): Promise<Excuse | null> { // Changed return type to Promise<Excuse | null> to match others on error
-    const updateData = {
-      status_en: statusEn,
-      status_ar: statusAr,
-    };
+  excuseId: string,
+  statusEn: "PENDING" | "APPROVED" | "REJECTED",
+  statusAr: "قيد المراجعة" | "مقبول" | "مرفوض",
+  remarksEn: string = "",
+  remarksAr: string = ""
+): Promise<Excuse | null> {
+  const updateData = {
+    status_en: statusEn,
+    status_ar: statusAr,
+    remarks_en: remarksEn,
+    remarks_ar: remarksAr,
+  };
 
-    try {
-      console.log(
-        `DataService: Attempting to update excuse ${excuseId} status to:`,
-        updateData,
-        `via Netlify Function.`
-      );
+  try {
+    console.log(
+      `DataService: Attempting to update excuse ${excuseId} with:`,
+      updateData
+    );
 
-      const response = await fetch(
-        `${NETLIFY_FUNCTIONS_BASE_URL}/updateExcuseStatus/${excuseId}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updateData),
-        }
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: response.statusText }));
-        console.error(
-          `DataService: HTTP error from Netlify function (updateExcuseStatus)! Status: ${response.status}, Details:`,
-          errorData
-        );
-        throw new Error(
-          `Failed to update excuse status: ${errorData.error || 'Unknown error'}`
-        );
+    const response = await fetch(
+      `${NETLIFY_FUNCTIONS_BASE_URL}/updateExcuseStatus/${excuseId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateData),
       }
+    );
 
-      const updatedExcuse: Excuse = await response.json();
-      console.log("DataService: Excuse status updated successfully via Netlify Function:", updatedExcuse);
-      return updatedExcuse;
-    } catch (error) {
-      console.error(`DataService: Error updating excuse status for ID ${excuseId}:`, error);
-      return null; // Return null on error
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({
+        message: response.statusText,
+      }));
+      console.error(
+        `DataService: HTTP error updating excuse! Status: ${response.status}, Details:`,
+        errorData
+      );
+      throw new Error(errorData.error || "Unknown error");
     }
+
+    const updatedExcuse: Excuse = await response.json();
+    console.log("DataService: Excuse updated successfully:", updatedExcuse);
+    return updatedExcuse;
+  } catch (error) {
+    console.error(`DataService: Error updating excuse ID ${excuseId}:`, error);
+    return null;
   }
+}
+
 
   static getAllRegions(): Region[] {
     return schoolData.regions || [];

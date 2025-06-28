@@ -20,7 +20,9 @@ const AdminExcusesPage = () => {
   const { t, i18n } = useTranslation();
 
   const [excuseDetails, setExcuseDetails] = useState<Excuse | null>(null);
-  const [excuseDescription, setExcuseDescription] = useState<string | null>(null);
+  const [excuseDescription, setExcuseDescription] = useState<string | null>(
+    null
+  );
   const [excuseAttachment, setExcuseAttachment] = useState<string | null>(null);
   const [studentFullName, setStudentFullName] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -66,7 +68,10 @@ const AdminExcusesPage = () => {
             details.reason_id.toString(),
             i18n.language
           ),
-          DataService.getStudentNameById(details.student_id as number, i18n.language),
+          DataService.getStudentNameById(
+            details.student_id as number,
+            i18n.language
+          ),
         ]);
 
       setExcuseAttachment(attachmentUrl);
@@ -104,11 +109,15 @@ const AdminExcusesPage = () => {
           excuseDetails.id.toString(),
           statusEn,
           statusAr,
+          isArabic ? "" : remarks,
+          isArabic ? remarks : ""
         );
 
         setExcuseDetails(updatedExcuse);
         setRemarks(""); // Clear input after save
-        console.log(`Excuse ${excuseDetails.id} updated with status ${statusEn}`);
+        console.log(
+          `Excuse ${excuseDetails.id} updated with status ${statusEn}`
+        );
       } catch (err) {
         console.error("Error updating excuse status:", err);
         setError("failed_to_update_excuse_status_error");
@@ -134,11 +143,14 @@ const AdminExcusesPage = () => {
     return isArabic
       ? excuseDetails.excuse_date_h || t("N/A")
       : excuseDetails.excuse_date_g
-      ? new Date(excuseDetails.excuse_date_g).toLocaleDateString(i18n.language, {
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-        })
+      ? new Date(excuseDetails.excuse_date_g).toLocaleDateString(
+          i18n.language,
+          {
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+          }
+        )
       : t("N/A");
   }, [excuseDetails, isArabic, i18n.language, t]);
 
@@ -149,7 +161,10 @@ const AdminExcusesPage = () => {
 
   if (!mounted) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-gray-600" dir="ltr">
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-gray-600"
+        dir="ltr"
+      >
         Loading...
       </div>
     );
@@ -157,7 +172,10 @@ const AdminExcusesPage = () => {
 
   if (excuseIdString === undefined) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-red-600" dir={dirAttribute}>
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-red-600"
+        dir={dirAttribute}
+      >
         {t("invalid_excuse_id_in_url")}
       </div>
     );
@@ -165,7 +183,10 @@ const AdminExcusesPage = () => {
 
   if (loading) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-gray-600" dir={dirAttribute}>
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-gray-600"
+        dir={dirAttribute}
+      >
         {t("loading")}
       </div>
     );
@@ -173,7 +194,10 @@ const AdminExcusesPage = () => {
 
   if (error) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-red-600" dir={dirAttribute}>
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-red-600"
+        dir={dirAttribute}
+      >
         {t("error_prefix")}: {t(error)}
       </div>
     );
@@ -181,7 +205,10 @@ const AdminExcusesPage = () => {
 
   if (!excuseDetails) {
     return (
-      <div className="p-4 flex flex-col gap-4 text-center text-gray-600" dir={dirAttribute}>
+      <div
+        className="p-4 flex flex-col gap-4 text-center text-gray-600"
+        dir={dirAttribute}
+      >
         {t("no_excuse_details_found", { excuseId: excuseIdString })}
       </div>
     );
@@ -190,19 +217,29 @@ const AdminExcusesPage = () => {
   return (
     <div className="p-4 flex flex-col gap-4 xl:w-1/2" dir={dirAttribute}>
       <div className="p-8 bg-white rounded-2xl flex flex-col gap-8 shadow-md">
-        <h1 className={`text-lg font-black text-[#7C8B9D] ${textDirectionClass}`}>
+        <h1
+          className={`text-lg font-black text-[#7C8B9D] ${textDirectionClass}`}
+        >
           {t("Excuse Details")}
         </h1>
 
         <div className={`flex flex-col gap-4 ${textDirectionClass}`}>
           <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <div className="sm:w-1/2 lg:w-1/3">
-              <p className="text-sm font-bold text-[#9B9B9B]">{t("Excuse Type")}</p>
-              <h3 className="text-[#6BBEA5] font-medium">{excuseDetails?.id}</h3>
+              <p className="text-sm font-bold text-[#9B9B9B]">
+                {t("Excuse Type")}
+              </p>
+              <h3 className="text-[#6BBEA5] font-medium">
+                {excuseDetails?.id}
+              </h3>
             </div>
             <div className="sm:w-1/2 lg:w-1/3">
-              <p className="text-sm font-bold text-[#9B9B9B]">{t("Description")}</p>
-              <h3 className="text-[#6BBEA5] font-medium">{excuseDescription || t("N/A")}</h3>
+              <p className="text-sm font-bold text-[#9B9B9B]">
+                {t("Description")}
+              </p>
+              <h3 className="text-[#6BBEA5] font-medium">
+                {excuseDescription || t("N/A")}
+              </h3>
             </div>
             <div className="sm:w-1/2 lg:w-1/3">
               <p className="text-sm font-bold text-[#9B9B9B]">{t("Date")}</p>
@@ -210,7 +247,9 @@ const AdminExcusesPage = () => {
             </div>
             <div className="sm:w-1/2 lg:w-1/3">
               <p className="text-sm font-bold text-[#9B9B9B]">{t("Student")}</p>
-              <h3 className="text-[#6BBEA5] font-medium">{studentFullName || t("N/A")}</h3>
+              <h3 className="text-[#6BBEA5] font-medium">
+                {studentFullName || t("N/A")}
+              </h3>
             </div>
             <div className="sm:w-1/2 lg:w-1/3">
               <p className="text-sm font-bold text-[#9B9B9B]">{t("Status")}</p>
@@ -227,9 +266,14 @@ const AdminExcusesPage = () => {
               </h3>
             </div>
             <div className="sm:w-1/2 lg:w-1/3">
-              <p className="text-sm font-bold text-[#9B9B9B]">{t("Attachment")}</p>
+              <p className="text-sm font-bold text-[#9B9B9B]">
+                {t("Attachment")}
+              </p>
               {excuseAttachment ? (
-                <button onClick={handleImageClick} className="focus:outline-none">
+                <button
+                  onClick={handleImageClick}
+                  className="focus:outline-none"
+                >
                   <Image
                     src={excuseAttachment}
                     height={150}
@@ -258,7 +302,9 @@ const AdminExcusesPage = () => {
                 ></textarea>
               ) : (
                 <h3 className="text-[#6BBEA5] font-medium whitespace-pre-wrap">
-                  {isArabic ? excuseDetails.remarks_ar : excuseDetails.remarks_en}
+                  {isArabic
+                    ? excuseDetails.remarks_ar
+                    : excuseDetails.remarks_en}
                 </h3>
               )}
             </div>
@@ -270,7 +316,9 @@ const AdminExcusesPage = () => {
                 onClick={() => handleUpdateStatus("APPROVED")}
                 disabled={isUpdatingStatus}
                 className={`px-4 w-full sm:w-[30%] text-center py-2 text-sm font-medium text-white rounded-full ${
-                  isUpdatingStatus ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-700"
+                  isUpdatingStatus
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-green-500 hover:bg-green-700"
                 }`}
               >
                 {isUpdatingStatus ? t("Updating...") : t("Accept")}
@@ -279,7 +327,9 @@ const AdminExcusesPage = () => {
                 onClick={() => handleUpdateStatus("REJECTED")}
                 disabled={isUpdatingStatus}
                 className={`px-4 w-full sm:w-[30%] text-center py-2 text-sm font-medium text-white rounded-full ${
-                  isUpdatingStatus ? "bg-gray-400 cursor-not-allowed" : "bg-red-500 hover:bg-red-700"
+                  isUpdatingStatus
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-red-500 hover:bg-red-700"
                 }`}
               >
                 {isUpdatingStatus ? t("Updating...") : t("Reject")}
