@@ -230,7 +230,7 @@ const AdminExcusesPage = () => {
                 {t("Excuse Type")}
               </p>
               <h3 className="text-[#6BBEA5] font-medium">
-                {excuseDetails?.id}
+                {t("Leave Excuse")}
               </h3>
             </div>
             <div className="sm:w-1/2 lg:w-1/3">
@@ -297,7 +297,7 @@ const AdminExcusesPage = () => {
                   value={remarks}
                   onChange={(e) => setRemarks(e.target.value)}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8447AB] focus:ring-[#8447AB] sm:text-sm"
-                  placeholder={t("Enter any additional remarks (optional)")}
+                  placeholder={t("The reason for accepting or rejecting the excuse")}
                   dir={dirAttribute}
                 ></textarea>
               ) : (

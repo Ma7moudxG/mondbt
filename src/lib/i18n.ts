@@ -154,7 +154,8 @@ const ar = {
   "Submitting...":"جاري التقديم...",
   "Updating...": "جاري التحديث...",
   "Excuse Type": "نوع العذر",
-  "":""
+  "The reason for accepting or rejecting the excuse":"سبب القبول أو الرفض",
+  "Leave Excuse": "عذر استئذان"
 };
 
 // English translations
