@@ -31,7 +31,7 @@ interface CardStats {
 
 
 
-const AbsenceStatisticsPage = () => {
+const AdminExcusesPage = () => {
   const { t, i18n } = useTranslation();
 
     const [loading, setLoading] = useState(false);
@@ -48,43 +48,48 @@ const AbsenceStatisticsPage = () => {
   const [excusesForStudents, setExcusesForStudents] = useState<EnrichedExcuse[]>([]);
 
   useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const excuses = await DataService.getExcuses();
-          // console.log("esccccccc", excuses)
-          const enrichedExcusesPromises = excuses.map(async (excuse) => {
-            const [firstName, lastName] = await DataService.getStudentNameById(
-              excuse.student_id,
-              i18n.language
-            );
-            // console.log("esccccccc1", enrichedExcusesPromises)
-            const descriptionText = await DataService.getExcuseDescriptionById(
-              excuse.reason_id.toLocaleString(),
-              i18n.language
-            );
-  
-            return {
-              ...excuse,
-              studentFirstName: firstName,
-              studentLastName: lastName,
-              descriptionText: descriptionText,
-            } as EnrichedExcuse;
-          });
-  
-          const enrichedExcuses = await Promise.all(enrichedExcusesPromises);
-          console.log("Enriched excuses ready for table:", enrichedExcuses);
-          setExcusesForStudents(enrichedExcuses);
-  
-        } catch (err) {
-          console.error("Failed to fetch parent page data:", err);
-          setError(t("failed_to_load_data"));
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchData();
-    }, [t, i18n.language]);
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const excuses = await DataService.getExcuses();
+
+      const enrichedExcusesPromises = excuses.map(async (excuse) => {
+        return Promise.allSettled([
+          DataService.getStudentNameById(excuse.student_id, i18n.language),
+          DataService.getExcuseDescriptionById(
+            excuse.reason_id.toLocaleString(),
+            i18n.language
+          ),
+        ]).then(([nameResult, descResult]) => {
+          const [firstName, lastName] =
+            nameResult.status === "fulfilled" ? nameResult.value : [null, null];
+          const descriptionText =
+            descResult.status === "fulfilled" ? descResult.value : null;
+
+          return {
+            ...excuse,
+            studentFirstName: firstName,
+            studentLastName: lastName,
+            descriptionText,
+          } as EnrichedExcuse;
+        });
+      });
+
+      const enrichedExcuses = await Promise.all(enrichedExcusesPromises);
+      setExcusesForStudents(enrichedExcuses);
+    } catch (err) {
+      console.error("Failed to fetch excuses data:", err);
+      setError(t("failed_to_load_data"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, [t, i18n.language]);
+
 
   useEffect(() => {
     setMounted(true);
@@ -121,4 +126,4 @@ const AbsenceStatisticsPage = () => {
   );
 };
 
-export default AbsenceStatisticsPage;
+export default AdminExcusesPage;
