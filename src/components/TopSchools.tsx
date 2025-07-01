@@ -36,19 +36,19 @@ const TopSchools = () => {
           {t("Top 5 Schools in June:")}{" "}
         </span>
         <span style={{ marginRight: "30px", fontSize: "18px", color: "#fff" }}>
-          {t("Medium Younis Ben Obaid")}{" "}
+          {t("Intermediate Younis Ben Obaid")}{" "}
         </span>
         <span style={{ marginRight: "30px", fontSize: "18px", color: "#fff" }}>
-          {t("Yusuf Ben Tashfin Medium")}{" "}
+          {t("Yusuf Ben Tashfin Intermediate")}{" "}
         </span>
         <span style={{ marginRight: "30px", fontSize: "18px", color: "#fff" }}>
-          {t("Medium Wahb Bin Alarm Clock")}{" "}
+          {t("Intermediate Wahb Bin Alarm Clock")}{" "}
         </span>
         <span style={{ marginRight: "30px", fontSize: "18px", color: "#fff" }}>
-          {t("Medium and Washla Bin Al-Khattab")}{" "}
+          {t("Intermediate and Washla Bin Al-Khattab")}{" "}
         </span>
         <span style={{ marginRight: "30px", fontSize: "18px", color: "#fff" }}>
-          {t("Medium Najd")}{" "}
+          {t("Intermediate Najd")}{" "}
         </span>
       </Marquee>
     </div>
