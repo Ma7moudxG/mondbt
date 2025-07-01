@@ -135,7 +135,7 @@ const ar = {
   manager: "مدير المدرسة",
   "Absence With Excuse": "غياب بعذر",
   "Absence Without Excuse": "غياب بدون عذر",
-  "Top 5 Schools in June:": "أفضل 5 مدارس في شهر ذي الحجة",
+  "Top 5 Schools in June:": "أفضل 5 مدارس انضباطا لشهر ذي الحجة",
   "Intermediate Younis Ben Obaid": "متوسطة يونس بن عبيد",
   "Yusuf Ben Tashfin Intermediate": "متوسطة يوسف بن تاشفين",
   "Intermediate Wahb Bin Alarm Clock": "متوسطة وهب بن منبه",
