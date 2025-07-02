@@ -412,13 +412,58 @@ export default class DataService {
     }
   }
 
+  // static async getExcuseReasons(): Promise<ExcuseReason[]> {
+  //   try {
+  //     const response = await fetch(`${JSON_SERVER_BASE_URL}/excuseReasons`);
+  //     if (!response.ok) throw new Error("Failed to fetch excuse reasons");
+  //     return response.json();
+  //   } catch (error) {
+  //     console.error("Error fetching excuse reasons:", error);
+  //     return [];
+  //   }
+  // }
+
+  // static async getExcuseReasonById(
+  //   reasonId: string
+  // ): Promise<ExcuseReason | null> {
+  //   // reasonId now string
+  //   try {
+  //     const response = await fetch(
+  //       `${JSON_SERVER_BASE_URL}/excuseReasons/${reasonId}`
+  //     );
+  //     // console.log("resssssssssssssssssssssssssssssresponse.json", response.json())
+
+  //     if (response.status === 404) return null;
+  //     if (!response.ok) throw new Error("Failed to fetch excuse reason");
+  //     const reason: ExcuseReason = await response.json();
+  //     // console.log("resssssssssssssssssssssssssssss", reasonId);
+
+  //     return reason;
+  //   } catch (error) {
+  //     console.error(`Error fetching excuse reason by ID ${reasonId}:`, error);
+  //     return null;
+  //   }
+  // }
+
   static async getExcuseReasons(): Promise<ExcuseReason[]> {
     try {
-      const response = await fetch(`${JSON_SERVER_BASE_URL}/excuseReasons`);
-      if (!response.ok) throw new Error("Failed to fetch excuse reasons");
-      return response.json();
+      console.log("DataService: Attempting to fetch excuse reasons via Netlify Function.");
+      const response = await fetch(`${NETLIFY_FUNCTIONS_BASE_URL}/getExcuseReasons`);
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (getExcuseReasons)! Status: ${response.status}, Details:`,
+          errorData
+        );
+        throw new Error(`Failed to fetch excuse reasons: ${errorData.error || 'Unknown error'}`);
+      }
+      
+      const reasons: ExcuseReason[] = await response.json();
+      console.log("DataService: Successfully fetched excuse reasons:", reasons);
+      return reasons;
     } catch (error) {
-      console.error("Error fetching excuse reasons:", error);
+      console.error("DataService: Error fetching excuse reasons:", error);
       return [];
     }
   }
@@ -426,21 +471,31 @@ export default class DataService {
   static async getExcuseReasonById(
     reasonId: string
   ): Promise<ExcuseReason | null> {
-    // reasonId now string
     try {
+      console.log(`DataService: Attempting to fetch excuse reason by ID ${reasonId} via Netlify Function.`);
       const response = await fetch(
-        `${JSON_SERVER_BASE_URL}/excuseReasons/${reasonId}`
+        `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuseReasonById/${reasonId}`
       );
-      // console.log("resssssssssssssssssssssssssssssresponse.json", response.json())
 
-      if (response.status === 404) return null;
-      if (!response.ok) throw new Error("Failed to fetch excuse reason");
+      if (response.status === 404) {
+        console.log(`DataService: Excuse reason with ID ${reasonId} not found.`);
+        return null;
+      }
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (getExcuseReasonById)! Status: ${response.status}, Details:`,
+          errorData
+        );
+        throw new Error(`Failed to fetch excuse reason: ${errorData.error || 'Unknown error'}`);
+      }
+      
       const reason: ExcuseReason = await response.json();
-      // console.log("resssssssssssssssssssssssssssss", reasonId);
-
+      console.log(`DataService: Successfully fetched excuse reason by ID ${reasonId}:`, reason);
       return reason;
     } catch (error) {
-      console.error(`Error fetching excuse reason by ID ${reasonId}:`, error);
+      console.error(`DataService: Error fetching excuse reason by ID ${reasonId}:`, error);
       return null;
     }
   }
