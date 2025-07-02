@@ -194,7 +194,7 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
                       }
                     </p>
                   </div>
-                  <Link href={`/students/${student.student_id}`}>
+                  <Link href={`/manager/students/${student.student_id}`}>
                     <Image
                       src="/view.svg"
                       alt={t("view details")}
