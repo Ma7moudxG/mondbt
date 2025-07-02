@@ -33,7 +33,7 @@ const handler: Handler = async (
     console.log(`[getExcuseReasonById] Attempting to fetch excuse reason with ID: ${reasonId}`);
 
     const { data, error } = await supabaseAdmin
-      .from("excuse_reasons") // Replace with your actual table name if different
+      .from("excuseReasons") // Replace with your actual table name if different
       .select("*")
       .eq("id", reasonId) // Filter by ID
       .single(); // Expecting a single result

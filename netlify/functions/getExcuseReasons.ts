@@ -24,7 +24,7 @@ const handler: Handler = async (
     console.log("[getExcuseReasons] Attempting to fetch all excuse reasons.");
 
     const { data, error } = await supabaseAdmin
-      .from("excuse_reasons") // Replace with your actual table name if different
+      .from("excuseReasons") // Replace with your actual table name if different
       .select("*");
 
     if (error) {
