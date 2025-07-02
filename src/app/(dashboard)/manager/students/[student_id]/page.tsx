@@ -165,7 +165,7 @@ const StudentPage = ({ params }: StudentPageProps) => {
     <div className={`p-4 flex flex-col gap-4`} dir={dirAttribute}>
       <div className="p-8 bg-white rounded-2xl flex flex-col gap-8">
         <h1 className={`text-lg font-black text-[#7C8B9D] ${textDirectionClass}`}>
-          {t("My Children")}
+          {studentDetails.student.gender === "Female" ? t("Female Students") : t("Male Students")}
         </h1>
         <div className={`flex flex-col md:flex-row gap-8 items-center`}>
           <div className="">
@@ -207,7 +207,7 @@ const StudentPage = ({ params }: StudentPageProps) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Attendance Card */}
         <div className={`p-8 bg-white rounded-2xl flex flex-col gap-8 items-center ${textDirectionClass}`}>
           <div className={`flex flex-col justify-items-start ${textDirectionClass}`}>
