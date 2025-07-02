@@ -420,7 +420,7 @@ const MinisterPage = () => {
     },
     {
       type: getConsistentTranslatedText("Fines"), // Use helper
-      number: cardStats.fines.toLocaleString(),
+      number: ((cardStats.fines)*100).toLocaleString(),
       text: getConsistentTranslatedText("Saudi Riyal"), // Use helper
     },
     {
