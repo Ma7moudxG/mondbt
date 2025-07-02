@@ -23,7 +23,7 @@ const menuItems = [
         icon: "/approvals.svg",
         label: "Attendance",
         href: "", 
-        visible: ["minister", "parent"],
+        visible: [ "parent"],
       },
       {
         icon: "/approvals.svg",
@@ -35,7 +35,7 @@ const menuItems = [
         icon: "/absence.svg",
         label: "Absence",
         href: "",
-        visible: ["minister", "parent"],
+        visible: ["parent"],
       },
       {
         icon: "/absence.svg",
@@ -47,7 +47,7 @@ const menuItems = [
         icon: "/late.svg",
         label: "Late",
         href: "",
-        visible: ["parent", "minister"],
+        visible: ["parent"],
       },
       {
         icon: "/late.svg",
@@ -59,7 +59,7 @@ const menuItems = [
         icon: "/excuse.svg",
         label: "Excuses",
         href: "",
-        visible: ["minister", "parent"],
+        visible: [ "parent"],
       },
       {
         icon: "/excuse.svg",
