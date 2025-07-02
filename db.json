@@ -4512,7 +4512,60 @@
       "issued_at": "2025-05-23 00:00:00",
       "paid": "N",
       "id": "8485"
+    },
+    {
+      "id": 201,
+      "parent_id": 2,
+      "student_id": 14,
+      "penalty_type_id": 1,
+      "penalty_date_g": "2025-05-18 00:00:00",
+      "penalty_date_h": "08-11-1447",
+      "amount_due": 30,
+      "month_number": 8,
+      "year": 2025,
+      "issued_at": "2025-05-18 00:00:00",
+      "paid": "Y"
+    },
+    {
+      "id": 202,
+      "parent_id": 2,
+      "student_id": 14,
+      "penalty_type_id": 1,
+      "penalty_date_g": "2025-06-08 00:00:00",
+      "penalty_date_h": "08-11-1447",
+      "amount_due": 30,
+      "month_number": 8,
+      "year": 2025,
+      "issued_at": "2025-05-18 00:00:00",
+      "paid": "Y"
+    },
+    {
+      "id": 203,
+      "parent_id": 2,
+      "student_id": 14,
+      "penalty_type_id": 1,
+      "penalty_date_g": "2025-06-18 00:00:00",
+      "penalty_date_h": "08-11-1447",
+      "amount_due": 30,
+      "month_number": 8,
+      "year": 2025,
+      "issued_at": "2025-05-18 00:00:00",
+      "paid": "Y"
+    },
+    {
+      "id": 204,
+      "parent_id": 2,
+      "student_id": 14,
+      "penalty_type_id": 1,
+      "penalty_date_g": "2025-06-28 00:00:00",
+      "penalty_date_h": "08-11-1447",
+      "amount_due": 30,
+      "month_number": 8,
+      "year": 2025,
+      "issued_at": "2025-05-18 00:00:00",
+      "paid": "Y"
     }
+    
   ],
   "rewards": [
     {

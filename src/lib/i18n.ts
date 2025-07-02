@@ -157,7 +157,8 @@ const ar = {
   "The reason for accepting or rejecting the excuse":"سبب القبول أو الرفض",
   "Leave Excuse": "عذر استئذان",
   "Female Students": "الطالبات",
-  "Male Students": "الطلاب"
+  "Male Students": "الطلاب",
+  "Fine": "غرامة",
 };
 
 // English translations
