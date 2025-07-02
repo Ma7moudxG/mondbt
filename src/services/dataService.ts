@@ -921,37 +921,37 @@ export default class DataService {
         }
     }
 
-  static async getRewardsForStudent(
-    studentId: number,
-    startDate?: Date,
-    endDate?: Date
-  ): Promise<Reward[]> {
-    // Changed return type to Promise<Excuse[]>
+  // static async getRewardsForStudent(
+  //   studentId: number,
+  //   startDate?: Date,
+  //   endDate?: Date
+  // ): Promise<Reward[]> {
+  //   // Changed return type to Promise<Excuse[]>
 
-    try {
-      const url = new URL(`${JSON_SERVER_BASE_URL}/rewards`);
-      url.searchParams.append("student_id", String(studentId)); // Append studentId as a query param
+  //   try {
+  //     const url = new URL(`${JSON_SERVER_BASE_URL}/rewards`);
+  //     url.searchParams.append("student_id", String(studentId)); // Append studentId as a query param
 
-      const response = await fetch(url.toString());
+  //     const response = await fetch(url.toString());
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(
-          `HTTP error! Status: ${response.status}, Details: ${errorText}`
-        );
-      }
+  //     if (!response.ok) {
+  //       const errorText = await response.text();
+  //       throw new Error(
+  //         `HTTP error! Status: ${response.status}, Details: ${errorText}`
+  //       );
+  //     }
 
-      let studentRewards: Reward[] = await response.json();
+  //     let studentRewards: Reward[] = await response.json();
 
-      return studentRewards;
-    } catch (error) {
-      console.error(
-        `DataService: Error getting excuses for student ID ${studentId}:`,
-        error
-      );
-      return []; // Return an empty array on error
-    }
-  }
+  //     return studentRewards;
+  //   } catch (error) {
+  //     console.error(
+  //       `DataService: Error getting excuses for student ID ${studentId}:`,
+  //       error
+  //     );
+  //     return []; // Return an empty array on error
+  //   }
+  // }
 
   // static async updateExcuseStatus(
   //   excuseId: string,
@@ -995,6 +995,52 @@ export default class DataService {
   //   console.log("Excuse status updated successfully:", updatedExcuse);
   //   return updatedExcuse;
   // }
+
+  static async getRewardsForStudent(
+    studentId: number,
+    startDate?: Date,
+    endDate?: Date
+  ): Promise<Reward[]> {
+    try {
+      const url = new URL(`${NETLIFY_FUNCTIONS_BASE_URL}/getRewardsForStudent`);
+      url.searchParams.append("studentId", String(studentId)); // Append studentId as a query param
+
+      if (startDate) {
+        url.searchParams.append("startDate", startDate.toISOString());
+      }
+      if (endDate) {
+        url.searchParams.append("endDate", endDate.toISOString());
+      }
+
+      console.log(
+        `DataService: Attempting to get rewards for student ID ${studentId} with URL:`,
+        url.toString()
+      );
+
+      const response = await fetch(url.toString());
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (getRewardsForStudent)! Status: ${response.status}, Details:`,
+          errorData
+        );
+        throw new Error(
+          `Failed to get rewards for student: ${errorData.error || response.statusText}`
+        );
+      }
+
+      let studentRewards: Reward[] = await response.json();
+      console.log("DataService: Successfully fetched student rewards:", studentRewards);
+      return studentRewards;
+    } catch (error) {
+      console.error(
+        `DataService: Error getting rewards for student ID ${studentId}:`,
+        error
+      );
+      return []; // Return an empty array on error
+    }
+  }
 
   static async updateExcuseStatus(
   excuseId: string,
