@@ -253,13 +253,13 @@ const ManagerPage = () => {
     },
     {
       type: t("Absence Without Excuse"),
-      number: ( cardStats.rewards * 100 ).toLocaleString(),
+      number: ( cardStats.rewards * 10 ).toLocaleString(),
       text: t("Student"),
     },
     {
-      type: t("Excuse"),
+      type: t("Permissions"),
       number: ( cardStats.rewards * 100 ).toLocaleString(),
-      text: t("Excuse"),
+      text: t("Permission"),
     },
   ];
 

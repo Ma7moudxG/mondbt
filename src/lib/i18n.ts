@@ -159,6 +159,8 @@ const ar = {
   "Female Students": "الطالبات",
   "Male Students": "الطلاب",
   "Fine": "غرامة",
+  Permissions: "الاستئذان",
+  Permission: "الاستئذان",
 };
 
 // English translations
