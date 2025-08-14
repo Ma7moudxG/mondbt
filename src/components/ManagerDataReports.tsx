@@ -203,10 +203,12 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
           <h3 className="text-lg font-semibold mb-4 text-[#7C8B9D]">
             {t("Female Students")}
           </h3>
+          <hr />
+          
           <h3 className="text-md font-semibold mb-4 text-[#94a3b6]">
             {t("First Intermediate")}
           </h3>
-          <hr />
+          
           <div className="flex flex-col gap-4 h-full overflow-y-auto">
             {students.length > 0 ? (
               students.map((student) => (
