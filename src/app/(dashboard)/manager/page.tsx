@@ -233,7 +233,7 @@ const ManagerPage = () => {
   const cards = [
     {
       type: t("Attendance"),
-      number: (cardStats.attendance * 100 ).toLocaleString(),
+      number: cardTab === "Day" ? 96 : cardTab === "Month" ? 1820 : 16842,
       text: t("Student"),
     },
     {
