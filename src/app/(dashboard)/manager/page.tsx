@@ -248,12 +248,12 @@ const ManagerPage = () => {
     },
     {
       type: t("Absence With Excuse"),
-      number: ( cardStats.fines * 10 ).toLocaleString(),
+      number: ( 62 ).toLocaleString(),
       text: t("Student"),
     },
     {
       type: t("Absence Without Excuse"),
-      number: ( cardStats.rewards * 10 ).toLocaleString(),
+      number: ( 38 ).toLocaleString(),
       text: t("Student"),
     },
     {
