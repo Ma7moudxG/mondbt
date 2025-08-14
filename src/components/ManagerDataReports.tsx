@@ -89,7 +89,20 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
         late : 5,
         totalOccurrences : 105,
         })
-        
+      } else if ( tab === "Month"){
+        setStatsNew({
+        attendance : 1820,
+        absence : 82,
+        late : 66,
+        totalOccurrences : 1902,
+        })
+      } else{
+        setStatsNew({
+        attendance : 16842,
+        absence : 679,
+        late : 934,
+        totalOccurrences : 17521,
+        })
       }
 
       const studentIds = students.map((s) => s.student_id);
