@@ -233,28 +233,33 @@ const ManagerPage = () => {
   const cards = [
     {
       type: t("Attendance"),
-      number: cardStats.attendance.toLocaleString(),
+      number: (cardStats.attendance * 100 ).toLocaleString(),
       text: t("Student"),
     },
     {
       type: t("Absence"),
-      number: cardStats.absence.toLocaleString(),
+      number: ( cardStats.absence * 100 ).toLocaleString(),
       text: t("Student"),
     },
     {
       type: t("Late"),
-      number: cardStats.late.toLocaleString(),
+      number: ( cardStats.late * 100 ).toLocaleString(),
       text: t("Student"),
     },
     {
       type: t("Absence With Excuse"),
-      number: cardStats.fines.toLocaleString(),
+      number: ( cardStats.fines * 100 ).toLocaleString(),
       text: t("Student"),
     },
     {
       type: t("Absence Without Excuse"),
-      number: cardStats.rewards.toLocaleString(),
+      number: ( cardStats.rewards * 100 ).toLocaleString(),
       text: t("Student"),
+    },
+    {
+      type: t("Excuse"),
+      number: ( cardStats.rewards * 100 ).toLocaleString(),
+      text: t("Excuse"),
     },
   ];
 
