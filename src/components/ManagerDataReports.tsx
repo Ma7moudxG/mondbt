@@ -260,7 +260,7 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
                 />
                 <p>
                   {t("Attendance")}:
-                  <strong>{stats.attendance}</strong>
+                  <strong>{StatsNew.attendance}</strong>
                 </p>
               </div>
               <div className="flex">
@@ -269,7 +269,7 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
                     StatsNew.attendance,
                     StatsNew.totalOccurrences
                   )}
-                  valueMax={totalOccurrences}
+                  valueMax={100}
                   startAngle={-180}
                   endAngle={180}
                   innerRadius="60%"
@@ -301,14 +301,14 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
                   height={32}
                 />
                 <p>
-                  {t("Absence")}: <strong>{stats.absence}</strong>
+                  {t("Absence")}: <strong>{StatsNew.absence}</strong>
                 </p>
               </div>
               <div className="flex">
                 <Gauge
                   value={calculateGaugeValue(
-                    stats.absence,
-                    stats.totalPossibleAttendances
+                    StatsNew.absence,
+                    StatsNew.totalOccurrences
                   )}
                   valueMax={100}
                   startAngle={-180}
@@ -341,14 +341,14 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
                   height={32}
                 />
                 <p>
-                  {t("Late")}: <strong>{stats.late}</strong>
+                  {t("Late")}: <strong>{StatsNew.late}</strong>
                 </p>
               </div>
               <div className="flex">
                 <Gauge
                   value={calculateGaugeValue(
-                    stats.late,
-                    stats.totalPossibleAttendances
+                    StatsNew.late,
+                    StatsNew.totalOccurrences
                   )}
                   valueMax={100}
                   startAngle={-180}
