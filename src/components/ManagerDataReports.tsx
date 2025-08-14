@@ -162,7 +162,7 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
       <div className="bg-white rounded-2xl flex justify-center p-4 w-full">
         <div className=" flex flex-col w-full h-[700px] overflow-y">
           <h3 className="text-lg font-semibold mb-4 text-[#7C8B9D]">
-            {t("Students")}
+            {t("Female Students")}
           </h3>
           <div className="flex flex-col gap-4 h-full overflow-y-auto">
             {students.length > 0 ? (
