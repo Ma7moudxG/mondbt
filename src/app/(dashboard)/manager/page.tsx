@@ -238,12 +238,12 @@ const ManagerPage = () => {
     },
     {
       type: t("Absence"),
-      number: ( cardStats.absence * 100 ).toLocaleString(),
+      number: ( cardStats.absence * 10 ).toLocaleString(),
       text: t("Student"),
     },
     {
       type: t("Late"),
-      number: ( cardStats.late * 100 ).toLocaleString(),
+      number: ( cardStats.late * 10 ).toLocaleString(),
       text: t("Student"),
     },
     {
