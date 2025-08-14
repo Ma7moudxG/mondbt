@@ -21,6 +21,12 @@ interface CalculatedStatistics {
   absence: number;
   late: number;
 }
+interface StatsNew {
+  attendance: number;
+  absence: number;
+  late: number;
+  totalOccurrences: number;
+}
 
 interface CardStats {
   attendance: number;
@@ -32,18 +38,23 @@ interface CardStats {
   rewards: number;
 }
 
+type CardTab = "Day" | "Month" | "Year";
+
 interface ManagerDataReportsProps {
   students: Student[];
   stats: CardStats;
   startDate: Date;
   endDate: Date;
+  tab: CardTab;
 }
+
 
 const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
   students,
   stats,
   startDate,
   endDate,
+  tab,
 }) => {
   const { t, i18n } = useTranslation();
   const [mounted, setMounted] = useState(false); // New state to track client-side mount
@@ -56,18 +67,31 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
   // The dirAttribute and textDirectionClass can now safely be derived as they are used
   // after the `mounted` check or in elements that are always present.
 
-  const [leftTab, setLeftTab] = useState("Statistics");
-  const [rightTab, setRightTab] = useState("Schools");
-  const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
-
   const [calculatedStats, setCalculatedStats] = useState<CalculatedStatistics>({
     attendance: 0,
     absence: 0,
     late: 0,
   });
+  const [StatsNew, setStatsNew] = useState<StatsNew>({
+    attendance: 0,
+    absence: 0,
+    late: 0,
+    totalOccurrences: 0,
+  });
 
   useEffect(() => {
     const fetchStats = () => {
+
+      if ( tab === "Day"){
+        setStatsNew({
+        attendance : 96,
+        absence : 9,
+        late : 5,
+        totalOccurrences : 105,
+        })
+        
+      }
+
       const studentIds = students.map((s) => s.student_id);
       const attendanceRecords = DataService.getStudentAttendances(
         studentIds,
@@ -75,7 +99,7 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
         endDate
       );
 
-      console.log("stttttt", studentIds);
+      // console.log("stttttt", studentIds);
 
       const stats = {
         attendance: 0,
@@ -103,7 +127,7 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
     if (students.length > 0) {
       fetchStats();
     }
-  }, [students, startDate, endDate]);
+  }, [students, startDate, endDate, tab]);
 
   const totalOccurrences =
     calculatedStats.attendance + calculatedStats.absence + calculatedStats.late;
@@ -125,17 +149,17 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
       ? parseFloat(((late / totalOccurrences) * 100).toFixed(2))
       : 0;
 
-  console.log("attendanceeeeeeee", calculatedStats);
+  // console.log("attendanceeeeeeee", calculatedStats);
 
-  // Helper function to get school name based on language
-  const getSchoolName = (school: School) => {
-    // Only use i18n.language when mounted on client to prevent hydration mismatch
-    if (!mounted) {
-      // Return a consistent default for SSR, or handle based on your needs
-      return school.name_en; // Or primary language name
-    }
-    return i18n.language === "ar" ? school.name_ar : school.name_en;
-  };
+  // // Helper function to get school name based on language
+  // const getSchoolName = (school: School) => {
+  //   // Only use i18n.language when mounted on client to prevent hydration mismatch
+  //   if (!mounted) {
+  //     // Return a consistent default for SSR, or handle based on your needs
+  //     return school.name_en; // Or primary language name
+  //   }
+  //   return i18n.language === "ar" ? school.name_ar : school.name_en;
+  // };
 
   // Helper function to get student name based on language
   const getStudentFullName = (student: Student) => {
@@ -148,6 +172,8 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
       return `${student.first_name_en} ${student.last_name_en}`;
     }
   };
+
+  
 
   // Helper function to safely calculate percentage for Gauge and round to nearest whole number
   const calculateGaugeValue = (numerator: number, denominator: number) => {
@@ -240,10 +266,10 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
               <div className="flex">
                 <Gauge
                   value={calculateGaugeValue(
-                    stats.attendance,
-                    stats.totalPossibleAttendances
+                    StatsNew.attendance,
+                    StatsNew.totalOccurrences
                   )}
-                  valueMax={100}
+                  valueMax={totalOccurrences}
                   startAngle={-180}
                   endAngle={180}
                   innerRadius="60%"

@@ -329,6 +329,7 @@ const ManagerPage = () => {
             stats = {cardStats}
             startDate={dateRange.startDate}
             endDate={dateRange.endDate}
+            tab = {cardTab}
           />
         </div>
       </div>
