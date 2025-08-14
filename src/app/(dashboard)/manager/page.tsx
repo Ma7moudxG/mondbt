@@ -238,27 +238,27 @@ const ManagerPage = () => {
     },
     {
       type: t("Absence"),
-      number: ( cardStats.absence * 10 ).toLocaleString(),
+      number: cardTab === "Day" ? 9 : cardTab === "Month" ? 82 : 679,
       text: t("Student"),
     },
     {
       type: t("Late"),
-      number: ( cardStats.late * 10 ).toLocaleString(),
+      number: cardTab === "Day" ? 5 : cardTab === "Month" ? 66 : 934,
       text: t("Student"),
     },
     {
       type: t("Absence With Excuse"),
-      number: cardTab === "Day" ? 0 : ( 62 ).toLocaleString(),
+      number: cardTab === "Day" ? 5 : cardTab === "Month" ? 45 : 370,
       text: t("Student"),
     },
     {
       type: t("Absence Without Excuse"),
-      number: cardTab === "Day" ? 0 : ( 62 ).toLocaleString(),
+      number: cardTab === "Day" ? 4 : cardTab === "Month" ? 37 : 309,
       text: t("Student"),
     },
     {
       type: t("Permissions"),
-      number: ( cardStats.rewards * 100 ).toLocaleString(),
+      number: cardTab === "Day" ? 7 : cardTab === "Month" ? 103 : 1049,
       text: t("Permission"),
     },
   ];
