@@ -218,7 +218,7 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
       <div className="bg-white rounded-2xl flex md:block justify-center p-4">
         <div className="">
           <h3 className="text-lg font-semibold mb-4 text-[#7C8B9D]">
-            {t("Filtered Statistics")}
+            {t("Statistics")}
           </h3>
         </div>
 
