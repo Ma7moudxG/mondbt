@@ -161,6 +161,8 @@ const ar = {
   "Fine": "غرامة",
   Permissions: "الاستئذان",
   Permission: "استئذان",
+  "First Intermediate": "الأول متوسط",
+  "Third Intermediate": "الثالث متوسط",
 };
 
 // English translations

@@ -48,7 +48,6 @@ interface ManagerDataReportsProps {
   tab: CardTab;
 }
 
-
 const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
   students,
   stats,
@@ -81,28 +80,27 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
 
   useEffect(() => {
     const fetchStats = () => {
-
-      if ( tab === "Day"){
+      if (tab === "Day") {
         setStatsNew({
-        attendance : 96,
-        absence : 9,
-        late : 5,
-        totalOccurrences : 105,
-        })
-      } else if ( tab === "Month"){
+          attendance: 96,
+          absence: 9,
+          late: 5,
+          totalOccurrences: 105,
+        });
+      } else if (tab === "Month") {
         setStatsNew({
-        attendance : 1820,
-        absence : 82,
-        late : 66,
-        totalOccurrences : 1902,
-        })
-      } else{
+          attendance: 1820,
+          absence: 82,
+          late: 66,
+          totalOccurrences: 1902,
+        });
+      } else {
         setStatsNew({
-        attendance : 16842,
-        absence : 679,
-        late : 934,
-        totalOccurrences : 17521,
-        })
+          attendance: 16842,
+          absence: 679,
+          late: 934,
+          totalOccurrences: 17521,
+        });
       }
 
       const studentIds = students.map((s) => s.student_id);
@@ -186,8 +184,6 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
     }
   };
 
-  
-
   // Helper function to safely calculate percentage for Gauge and round to nearest whole number
   const calculateGaugeValue = (numerator: number, denominator: number) => {
     if (denominator === 0) {
@@ -195,6 +191,18 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
     }
     return Math.round((numerator / denominator) * 100);
   };
+
+  const groupedStudents = students.reduce(
+    (acc: { [key: string]: Student[] }, student) => {
+      const className = student.class_en;
+      if (!acc[className]) {
+        acc[className] = [];
+      }
+      acc[className].push(student);
+      return acc;
+    },
+    {} as { [key: string]: Student[] }
+  );
 
   return (
     <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 lg:h-[750px] w-full">
@@ -204,50 +212,54 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
             {t("Female Students")}
           </h3>
           <hr />
-          
-          <h3 className="text-md font-semibold mb-4 text-[#94a3b6]">
-            {t("First Intermediate")}
-          </h3>
-          
+
           <div className="flex flex-col gap-4 h-full overflow-y-auto">
-            {students.length > 0 ? (
-              students.map((student) => (
-                <div
-                  key={student.student_id}
-                  className="flex items-center gap-2 w-full"
-                >
-                  <div>
-                    <Image
-                      src={student.image_url || "/profile.png"}
-                      alt={t("Student profile picture")} // Translated alt text
-                      height={32}
-                      width={32}
-                      className="rounded-full"
-                    />
-                  </div>
-                  <div className="flex-grow">
-                    <p className="text-sm font-medium text-[#5EB89D]">
-                      {getStudentFullName(student)}
-                    </p>
-                    <p className="text-xs text-[#797c80]">
-                      {t("Class")}:
-                      {mounted // Conditionally render class name based on mount
-                        ? i18n.language == "ar"
-                          ? student.class_ar
-                          : student.class_en
-                        : student.class_en // Default for SSR
-                      }
-                    </p>
-                  </div>
-                  <Link href={`/manager/students/${student.student_id}`}>
-                    <Image
-                      src="/view.svg"
-                      alt={t("view details")}
-                      height={16}
-                      width={16}
-                      className="cursor-pointer"
-                    />
-                  </Link>
+            {Object.keys(groupedStudents).length > 0 ? (
+              Object.keys(groupedStudents).map((className) => (
+                <div key={className}>
+                  
+                  <h3 className="text-lg font-bold text-[#5EB89D] my-4">
+                    {className}
+                  </h3>
+
+                  {groupedStudents[className].map((student) => (
+                    <div
+                      key={student.student_id}
+                      className="flex items-center gap-2 w-full mb-2"
+                    >
+                      <div>
+                        <Image
+                          src={student.image_url || "/profile.png"}
+                          alt={t("Student profile picture")}
+                          height={32}
+                          width={32}
+                          className="rounded-full"
+                        />
+                      </div>
+                      <div className="flex-grow">
+                        <p className="text-sm font-medium text-[#5EB89D]">
+                          {getStudentFullName(student)}
+                        </p>
+                        <p className="text-xs text-[#797c80]">
+                          {t("Class")}:
+                          {mounted
+                            ? i18n.language == "ar"
+                              ? student.class_ar
+                              : student.class_en
+                            : student.class_en}
+                        </p>
+                      </div>
+                      <Link href={`/manager/students/${student.student_id}`}>
+                        <Image
+                          src="/view.svg"
+                          alt={t("view details")}
+                          height={16}
+                          width={16}
+                          className="cursor-pointer"
+                        />
+                      </Link>
+                    </div>
+                  ))}
                 </div>
               ))
             ) : (
@@ -278,8 +290,7 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
                   height={32}
                 />
                 <p>
-                  {t("Attendance")}:
-                  <strong>{StatsNew.attendance}</strong>
+                  {t("Attendance")}:<strong>{StatsNew.attendance}</strong>
                 </p>
               </div>
               <div className="flex">
