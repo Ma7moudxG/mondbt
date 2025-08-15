@@ -75,7 +75,7 @@ const handler: Handler = async (
     if (error) {
       console.error("[getRewardsForStudent] Supabase fetch error:", error);
       return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
-    }
+    } 
 
     console.log(`[getRewardsForStudent] Successfully fetched ${data?.length || 0} rewards.`);
     return {
