@@ -56,6 +56,12 @@ const menuItems = [
         visible: ["admin"],
       },
       {
+        icon: "/late.svg",
+        label: "Permissions",
+        href: "permissions",
+        visible: ["admin"],
+      },
+      {
         icon: "/excuse.svg",
         label: "Excuses",
         href: "",
