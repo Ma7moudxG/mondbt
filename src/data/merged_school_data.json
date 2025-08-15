@@ -26425,23 +26425,6 @@
     "image_url": "https://files.catbox.moe/pusrqu.jpg"
   },
   {
-    "student_id": 77,
-    "school_id": 659,
-    "class_en": "Third Intermediate",
-    "class_ar": "الثالث متوسط",
-    "first_name_en": "Rania",
-    "first_name_ar": "رانيا",
-    "last_name_en": "Mostafa Ahmed Hassan Ibrahim",
-    "last_name_ar": "أحمد يوسف أحمد توفيق",
-    "date_of_birth": "2011-07-14",
-    "date_of_birth_hijri": "1438-07-14",
-    "gender": "Female",
-    "registration_no": "REG451750",
-    "poi_number": 137443915,
-    "identity_type": "National_ID",
-    "image_url": "https://files.catbox.moe/mq2lyu.jpg"
-  },
-  {
     "student_id": 79,
     "school_id": 716,
     "class_en": "Third Intermediate",
