@@ -219,7 +219,7 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
                 <div key={className}>
                   
                   <h3 className="text-lg font-bold text-[#5EB89D] my-4">
-                    {className}
+                    { t(className)}
                   </h3>
 
                   {groupedStudents[className].map((student) => (
