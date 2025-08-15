@@ -12,7 +12,7 @@ interface MainChartProps {
   endDate: Date;
 }
 
-type ChartTab = 'Attendance' | 'Fines' | 'Late';
+type ChartTab = 'Attendance' | 'Fines' | 'Late' | 'Permissions';
 
 const MainChart = ({ regionId, startDate, endDate }: MainChartProps) => {
   const { t, i18n } = useTranslation();
@@ -45,7 +45,8 @@ const MainChart = ({ regionId, startDate, endDate }: MainChartProps) => {
   const [chartData, setChartData] = useState<Record<ChartTab, Array<{ name: string; value: number }>>>({
     Attendance: [],
     Fines: [],
-    Late: []
+    Late: [],
+    Permissions: []
   });
 
   useEffect(() => {
@@ -60,21 +61,25 @@ const MainChart = ({ regionId, startDate, endDate }: MainChartProps) => {
             name: day.date_g,
             value: day.attendanceRate
           })),
+          Late: dailyStats.map(day => ({
+            name: day.date_g,
+            value: day.late
+          })),
           Fines: dailyStats.map(day => ({
             name: day.date_g,
             value: day.fines
           })),
-          Late: dailyStats.map(day => ({
+          Permissions: dailyStats.map(day => ({
             name: day.date_g,
             value: day.late
-          }))
+          })),
         });
       } catch (error) {
         console.error("Error loading chart data:", error);
       }
     };
 
-    loadChartData();
+    loadChartData(); 
   }, [regionId, startDate, endDate]);
 
   const getBarColor = () => {
@@ -82,6 +87,7 @@ const MainChart = ({ regionId, startDate, endDate }: MainChartProps) => {
       case 'Attendance': return '#5EB89D';
       case 'Fines': return '#8447AB';
       case 'Late': return '#2196F3';
+      case 'Permissions': return '#ffb34f';
       default: return '#5EB89D';
     }
   };
@@ -91,6 +97,7 @@ const MainChart = ({ regionId, startDate, endDate }: MainChartProps) => {
       case 'Attendance': return getConsistentTranslatedText('Attendance Rate');
       case 'Fines': return getConsistentTranslatedText('Amount (SAR)');
       case 'Late': return getConsistentTranslatedText('Late Students');
+      case 'Permissions': return getConsistentTranslatedText('Permission');
       default: return '';
     }
   };
