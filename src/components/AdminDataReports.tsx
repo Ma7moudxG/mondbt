@@ -248,7 +248,7 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
                 />
                 <p>
                   {t("Attendance")}:
-                  <strong>{attendance.toLocaleString()}</strong>
+                  <strong>{(attendance * 10).toLocaleString()}</strong>
                   {/* Translate "Attendance" */}
                 </p>
               </div>
@@ -289,7 +289,7 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
                   height={32}
                 />
                 <p>
-                  {t("Absence")}: <strong>{absence.toLocaleString()}</strong>
+                  {t("Absence")}: <strong>{ ( absence * 10 ).toLocaleString()}</strong>
                   {/* Translate "Absence" */}
                 </p>
               </div>
@@ -329,7 +329,7 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
                   height={32}
                 />
                 <p>
-                  {t("Late")}: <strong>{late.toLocaleString()}</strong>
+                  {t("Late")}: <strong>{ ( late * 10 ).toLocaleString()}</strong>
                   {/* Translate "Late" */}
                 </p>
               </div>
