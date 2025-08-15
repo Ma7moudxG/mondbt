@@ -53,13 +53,13 @@ const menuItems = [
         icon: "/late.svg",
         label: "Late",
         href: "late",
-        visible: ["minister, admin"],
+        visible: ["admin", "minister"],
       },
       {
         icon: "/permissions.svg",
         label: "Permissions",
         href: "permissions",
-        visible: ["minister, admin"],
+        visible: ["admin", "minister"],
       },
       {
         icon: "/excuse.svg",
