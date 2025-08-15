@@ -150,7 +150,7 @@ const StatCard: React.FC<{
       <div className="text-center">
         <p className="text-xl font-bold">{value.toLocaleString()}</p>
         <p className="text-xs text-gray-500">
-          {getConsistentTranslatedText("Late")}
+          {getConsistentTranslatedText("Permission")}
         </p>{" "}
         {/* Translate "Late" */}
       </div>
