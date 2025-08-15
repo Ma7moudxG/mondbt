@@ -415,7 +415,7 @@ const MinisterPage = () => {
     },
     {
       type: getConsistentTranslatedText("Late"), // Use helper
-      number: ( cardStats.late * 100 ).toLocaleString(),
+      number: ( cardStats.late * 50 ).toLocaleString(),
       text: getConsistentTranslatedText("late student"), // Use helper
     },
     {
@@ -430,7 +430,7 @@ const MinisterPage = () => {
     },
     {
       type: getConsistentTranslatedText("Permissions"),
-      number: cardTab === "Day" ? 890 : cardTab === "Month" ? 13081 : 290493,
+      number: cardTab === "Day" ? 8907 : cardTab === "Month" ? 43081 : 290493,
       text: getConsistentTranslatedText("Permission"),
     },
   ];
