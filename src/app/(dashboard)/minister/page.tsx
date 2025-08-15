@@ -405,17 +405,17 @@ const MinisterPage = () => {
   const cards = [
     {
       type: getConsistentTranslatedText("Attendance"), // Use helper
-      number: cardStats.attendance.toLocaleString(),
+      number: ( cardStats.attendance * 100 ).toLocaleString(),
       text: getConsistentTranslatedText("student"), // Use helper
     },
     {
       type: getConsistentTranslatedText("Absence"), // Use helper
-      number: cardStats.absence.toLocaleString(),
+      number: ( cardStats.absence* 100 ).toLocaleString(),
       text: getConsistentTranslatedText("student"), // Use helper
     },
     {
       type: getConsistentTranslatedText("Late"), // Use helper
-      number: cardStats.late.toLocaleString(),
+      number: ( cardStats.late * 100 ).toLocaleString(),
       text: getConsistentTranslatedText("late student"), // Use helper
     },
     {
@@ -425,8 +425,13 @@ const MinisterPage = () => {
     },
     {
       type: getConsistentTranslatedText("Rewards"), // Use helper
-      number: cardStats.rewards.toLocaleString(),
+      number: ( cardStats.rewards * 100 ).toLocaleString(),
       text: getConsistentTranslatedText("Reward"), // Use helper
+    },
+    {
+      type: getConsistentTranslatedText("Permissions"),
+      number: cardTab === "Day" ? 890 : cardTab === "Month" ? 13081 : 290493,
+      text: getConsistentTranslatedText("Permission"),
     },
   ];
 
