@@ -10,7 +10,7 @@ interface GroupStats {
   totalPossible: number;
 }
 
-interface LateStatisticsProps {
+interface PermissionStatisticsProps {
   groupedStats: {
     all: GroupStats;
     male: GroupStats;
@@ -21,7 +21,7 @@ interface LateStatisticsProps {
   };
 }
 
-const LateStatistics: React.FC<LateStatisticsProps> = ({ groupedStats }) => {
+const PermissionStatistics: React.FC<PermissionStatisticsProps> = ({ groupedStats }) => {
   const { t } = useTranslation(); // Initialize the translation hook
 
   // START: Hydration Fix - Mounted state
@@ -150,7 +150,7 @@ const StatCard: React.FC<{
       <div className="text-center">
         <p className="text-xl font-bold">{value.toLocaleString()}</p>
         <p className="text-xs text-gray-500">
-          {getConsistentTranslatedText("Late")}
+          {getConsistentTranslatedText("Permission")}
         </p>{" "}
         {/* Translate "Late" */}
       </div>
@@ -193,4 +193,4 @@ const StatCard: React.FC<{
   );
 };
 
-export default LateStatistics;
+export default PermissionStatistics;

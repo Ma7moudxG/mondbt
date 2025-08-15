@@ -3,8 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import DataService from "@/services/dataService";
 import MinisterMap from "@/components/MinisterMap";
 import { useTranslation } from "react-i18next";
-import AbsenceStatistics from "@/components/AbsenceStatistics";
-import LateStatistics from "@/components/LateStatistics";
+import PermissionStatistics from "@/components/PermissionStatistics";
 
 const cm = (...classes: (string | boolean | undefined | null)[]) =>
   classes.filter(Boolean).join(" ");
@@ -245,7 +244,7 @@ const LateStatisticsPage = () => {
         <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
           <div className="flex flex-col gap-8">
             {selectedRegion !== null ? (
-              <LateStatistics groupedStats={groupedStats} />
+              <PermissionStatistics groupedStats={groupedStats} />
             ) : (
               <p className="text-gray-600 text-center py-10">
                 {getConsistentTranslatedText(
