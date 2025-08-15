@@ -55,7 +55,7 @@ const AttendanceStatistics: React.FC<AttendanceStatisticsProps> = ({
       <StatCard
         titleKey="All Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.all.attendance}
+        value={groupedStats.all.attendance * 10}
         rate={calculateRate(groupedStats.all)}
         color="#5EB89D"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
