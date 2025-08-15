@@ -29,7 +29,7 @@ const menuItems = [
         icon: "/approvals.svg",
         label: "Attendance",
         href: "attendance", 
-        visible: ["admin"],
+        visible: ["minister"],
       },
       {
         icon: "/absence.svg",
