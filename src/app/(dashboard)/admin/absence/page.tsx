@@ -250,7 +250,7 @@ const AbsenceStatisticsPage = () => {
   return (
     <div className="p-4 flex flex-col gap-4">
       <div className="flex gap-12">
-        <h1 className="text-lg font-black text-[#7C8B9D]">
+        <h1 className="text-xl font-black text-[#7C8B9D]">
           {getConsistentTranslatedText("Absence")}
         </h1>
       </div>
