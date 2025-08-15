@@ -65,7 +65,7 @@ const AttendanceStatistics: React.FC<AttendanceStatisticsProps> = ({
       <StatCard
         titleKey="Male Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.male.attendance}
+        value={groupedStats.male.attendance * 10}
         rate={calculateRate(groupedStats.male)}
         color="#519E87"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -75,7 +75,7 @@ const AttendanceStatistics: React.FC<AttendanceStatisticsProps> = ({
       <StatCard
         titleKey="Female Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.female.attendance}
+        value={groupedStats.female.attendance * 10}
         rate={calculateRate(groupedStats.female)}
         color="#448571"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -85,7 +85,7 @@ const AttendanceStatistics: React.FC<AttendanceStatisticsProps> = ({
       <StatCard
         titleKey="Primary Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.primary.attendance}
+        value={groupedStats.primary.attendance * 10}
         rate={calculateRate(groupedStats.primary)}
         color="#5EB89D"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -95,7 +95,7 @@ const AttendanceStatistics: React.FC<AttendanceStatisticsProps> = ({
       <StatCard
         titleKey="Intermediate Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.intermediate.attendance}
+        value={groupedStats.intermediate.attendance * 10}
         rate={calculateRate(groupedStats.intermediate)}
         color="#519E87"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -105,7 +105,7 @@ const AttendanceStatistics: React.FC<AttendanceStatisticsProps> = ({
       <StatCard
         titleKey="Secondary Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.secondary.attendance}
+        value={groupedStats.secondary.attendance * 10}
         rate={calculateRate(groupedStats.secondary)}
         color="#448571"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
