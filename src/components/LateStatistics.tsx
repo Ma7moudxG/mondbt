@@ -53,7 +53,7 @@ const LateStatistics: React.FC<LateStatisticsProps> = ({ groupedStats }) => {
       <StatCard
         titleKey="All Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.all.late}
+        value={groupedStats.all.late * 10}
         rate={calculateRate(groupedStats.all)}
         color="#5EB89D"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -63,7 +63,7 @@ const LateStatistics: React.FC<LateStatisticsProps> = ({ groupedStats }) => {
       <StatCard
         titleKey="Male Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.male.late}
+        value={groupedStats.male.late * 10}
         rate={calculateRate(groupedStats.male)}
         color="#519E87"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -73,7 +73,7 @@ const LateStatistics: React.FC<LateStatisticsProps> = ({ groupedStats }) => {
       <StatCard
         titleKey="Female Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.female.late}
+        value={groupedStats.female.late * 10}
         rate={calculateRate(groupedStats.female)}
         color="#448571"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -83,7 +83,7 @@ const LateStatistics: React.FC<LateStatisticsProps> = ({ groupedStats }) => {
       <StatCard
         titleKey="Primary Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.primary.late}
+        value={groupedStats.primary.late * 10}
         rate={calculateRate(groupedStats.primary)}
         color="#5EB89D"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -93,7 +93,7 @@ const LateStatistics: React.FC<LateStatisticsProps> = ({ groupedStats }) => {
       <StatCard
         titleKey="Intermediate Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.intermediate.late}
+        value={groupedStats.intermediate.late * 10}
         rate={calculateRate(groupedStats.intermediate)}
         color="#519E87"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
@@ -103,7 +103,7 @@ const LateStatistics: React.FC<LateStatisticsProps> = ({ groupedStats }) => {
       <StatCard
         titleKey="Secondary Schools" // Pass translation key
         icon="/stats_attendance.svg"
-        value={groupedStats.secondary.late}
+        value={groupedStats.secondary.late * 10}
         rate={calculateRate(groupedStats.secondary)}
         color="#448571"
         getConsistentTranslatedText={getConsistentTranslatedText} // Pass helper
