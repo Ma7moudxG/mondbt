@@ -25,68 +25,49 @@ const MinisterMap = ({
 }: MinisterMapProps) => {
   const { i18n } = useTranslation();
 
-  // State to store the current zoom level
   const [currentZoom, setCurrentZoom] = useState(1);
 
-  // Effect to update zoom based on screen width
   useEffect(() => {
     const handleResize = () => {
-      // Define your breakpoints and corresponding zoom levels
-      // Tailwind's default breakpoints:
-      // sm: 640px
-      // md: 768px
-      // lg: 1024px
-      // xl: 1280px
-      // 2xl: 1536px
-
       const width = window.innerWidth;
-      if (width >= 1280) { // xl and larger
+      if (width >= 1280) {
         setCurrentZoom(2);
-      } else if (width >= 768) { // md and lg
+      } else if (width >= 768) {
         setCurrentZoom(3);
-      } else { // sm and smaller
+      } else {
         setCurrentZoom(3);
       }
     };
 
-    // Set initial zoom on mount
     handleResize();
-
-    // Add event listener for window resize
     window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
+  }, []);
 
   const handleRegionClick = (geo: any) => {
-  const regionNameEn = geo.properties.NAME_1;
-  const region = DataService.getRegionByName(regionNameEn);
+    const regionNameEn = geo.properties.NAME_1;
+    const region = DataService.getRegionByName(regionNameEn);
 
-  if (region) {
-    // This will pass the new region ID to the parent component
-    // The parent component should manage the `selectedRegionId` state
-    onRegionSelect(region.region_id);
-  }
-};
+    if (region) {
+      onRegionSelect(region.region_id);
+    }
+  };
 
   return (
-    // Make the container fill its parent, and map will fill this container
     <div className="w-full h-full relative">
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{
-          scale: 1500, // This scale is relative to the base zoom. Adjust if needed.
+          scale: 1500,
           center: [45, 25],
         }}
-        // Add width and height props to ComposableMap to ensure it fills the div
-        width={800} // These values are placeholders and will be scaled by CSS
-        height={800} // Ensure aspect ratio is maintained or adjust for your needs
-        style={{ width: "100%", height: "100%" }} // Make map fill its parent div
+        width={800}
+        height={800}
+        style={{ width: "100%", height: "100%" }}
       >
-        <ZoomableGroup zoom={currentZoom} center={[45, 25]}> {/* Use currentZoom here */}
+        <ZoomableGroup zoom={currentZoom} center={[45, 25]}>
           <Geographies geography={saudiGeoJSON}>
             {({ geographies }) =>
               geographies.map((geo) => {
@@ -94,10 +75,10 @@ const MinisterMap = ({
                 const regionNameEn = geo.properties.NAME_1;
                 const region = DataService.getRegionByName(regionNameEn);
                 const isSelected = region?.region_id === selectedRegionId;
-                const isArriyad = regionNameEn === "Arriyad";
 
                 const defaultFillColor = "#DAF5F0";
-                const arriyadSelectedFillColor = "#00A09B";
+                const selectedFillColor = "#00A09B";
+                const hoverFillColor = "#8447AB"; // A different color for hover
 
                 const displayName =
                   i18n.language === "ar" && region?.name_ar
@@ -108,58 +89,46 @@ const MinisterMap = ({
                   <g key={geo.rsmKey}>
                     <Geography
                       geography={geo}
-                      onClick={
-                        isArriyad ? () => handleRegionClick(geo) : undefined
-                      }
+                      // FIX: The onClick handler is now applied to all regions.
+                      onClick={() => handleRegionClick(geo)}
                       style={{
                         default: {
-                          fill: isSelected
-                            ? arriyadSelectedFillColor
-                            : defaultFillColor,
+                          fill: isSelected ? selectedFillColor : defaultFillColor,
                           outline: "none",
                           stroke: "#00A09B",
                           strokeWidth: 0.35,
-                          cursor: isArriyad ? "pointer" : "default",
+                          // FIX: The cursor is now always a pointer for all regions.
+                          cursor: "pointer",
                         },
-                        hover: isArriyad
-                          ? {
-                              fill: arriyadSelectedFillColor,
-                              stroke: "#00A09B",
-                              strokeWidth: 0.35,
-                              cursor: "pointer",
-                            }
-                          : {
-                              fill: isSelected
-                                ? arriyadSelectedFillColor
-                                : defaultFillColor,
-                              stroke: "#00A09B",
-                              strokeWidth: 0.35,
-                              cursor: "default",
-                            },
-                        pressed: isArriyad
-                          ? {
-                              fill: "#E91E63",
-                              outline: "none",
-                            }
-                          : {
-                              fill: isSelected
-                                ? arriyadSelectedFillColor
-                                : defaultFillColor,
-                              outline: "none",
-                            },
+                        // FIX: Hover style is now applied to all regions.
+                        hover: {
+                          fill: isSelected ? selectedFillColor : hoverFillColor,
+                          stroke: "#00A09B",
+                          strokeWidth: 0.35,
+                          cursor: "pointer",
+                        },
+                        // FIX: Pressed style is now applied to all regions.
+                        pressed: {
+                          fill: selectedFillColor,
+                          outline: "none",
+                          stroke: "#00A09B",
+                          strokeWidth: 0.35,
+                        },
                       }}
                     />
-                    <Marker coordinates={centroid}>
-                      <text
-                        fontSize="16"
-                        fontWeight="bold"
-                        textAnchor="middle"
-                        fill="black"
-                        style={{ pointerEvents: "none" }}
-                      >
-                        {displayName}
-                      </text>
-                    </Marker>
+                    {centroid && (
+                      <Marker coordinates={centroid}>
+                        <text
+                          fontSize="16"
+                          fontWeight="bold"
+                          textAnchor="middle"
+                          fill="black"
+                          style={{ pointerEvents: "none" }}
+                        >
+                          {displayName}
+                        </text>
+                      </Marker>
+                    )}
                   </g>
                 );
               })
