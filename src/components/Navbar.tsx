@@ -137,8 +137,8 @@ export default function Header() {
             onClick={toggleLanguage}
             className={`px-3 py-1 text-xs rounded-full border ${
               i18n.language === 'ar'
-                ? "bg-[#5EB89D] text-white border-[#5EB89D]"
-                : "bg-white text-[#5EB89D] border-[#5EB89D]"
+                ? "bg-[#5EB89D] text-white border-[#5EB89D] hover:bg-white hover:text-[#5EB89D]"
+                : "bg-white text-[#5EB89D] border-[#5EB89D] hover:bg-[#5EB89D] hover:text-white"
             }`}
           >
             {i18n.language === 'ar' ? "EN" : "AR"}
