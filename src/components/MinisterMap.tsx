@@ -62,13 +62,15 @@ const MinisterMap = ({
   }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
 
   const handleRegionClick = (geo: any) => {
-    const regionNameEn = geo.properties.NAME_1;
-    const region = DataService.getRegionByName(regionNameEn);
+  const regionNameEn = geo.properties.NAME_1;
+  const region = DataService.getRegionByName(regionNameEn);
 
-    if (region) {
-      onRegionSelect(region.region_id);
-    }
-  };
+  if (region) {
+    // This will pass the new region ID to the parent component
+    // The parent component should manage the `selectedRegionId` state
+    onRegionSelect(region.region_id);
+  }
+};
 
   return (
     // Make the container fill its parent, and map will fill this container
