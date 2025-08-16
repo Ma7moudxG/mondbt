@@ -103,6 +103,15 @@ const MinisterPage = () => {
     totalPossibleAttendances: 0,
     rewards: 0,
   });
+  const [allStats, setAllStats] = useState<Stats>({
+    attendance: 0,
+    absence: 0,
+    late: 0,
+    fines: 0,
+    totalStudentsInRegion: 0,
+    totalPossibleAttendances: 0,
+    rewards: 0,
+  });
 
   const [selectedRegion, setSelectedRegion] = useState<number | null>(null);
 
@@ -156,15 +165,20 @@ const MinisterPage = () => {
     const loadCardStats = () => {
       try {
         const allRegions = DataService.getAllRegions();
+        const allR_States = DataService.getRegionStats(
+            1,
+            cardDateRange.startDate,
+            cardDateRange.endDate
+          );
         if (allRegions.length === 0) {
           setCardStats({
-            attendance: 0,
-            absence: 0,
-            late: 0,
-            fines: 0,
-            totalStudentsInRegion: 0,
-            totalPossibleAttendances: 0,
-            rewards: 0,
+            attendance: allR_States.attendance * 100,
+            absence: allR_States.absence * 100,
+            late: allR_States.late * 50,
+            fines: allR_States.penalties * 100,
+            totalStudentsInRegion: 500,
+            totalPossibleAttendances: ( allR_States.attendance + allR_States.absence ) * 100,
+            rewards: allR_States.rewards * 100,
           });
           return;
         }
@@ -193,6 +207,20 @@ const MinisterPage = () => {
           totalPossibleAttendancesAcrossAllRegions +=
             regionStats.attendance + regionStats.absence + regionStats.late;
         });
+
+        
+        setAllStats(
+          {
+            attendance: allR_States.attendance * 100,
+            absence: allR_States.absence * 100,
+            late: allR_States.late * 50,
+            fines: allR_States.penalties * 100,
+            totalStudentsInRegion: 500,
+            totalPossibleAttendances: ( allR_States.attendance + allR_States.absence ) * 100,
+            rewards: allR_States.rewards * 100,
+          }
+        )
+
 
         setCardStats({
           attendance: totalAttendance,
