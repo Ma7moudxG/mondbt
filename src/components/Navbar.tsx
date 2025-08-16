@@ -95,47 +95,47 @@ export default function Header() {
   if (!isMounted || status === "loading") {
     return (
       <header className="flex justify-between items-center p-4">
-               {" "}
+         
         <div className="text-sm text-gray-600 whitespace-nowrap">
-                    Loading...        {" "}
+            Loading...  
         </div>
-               {" "}
+         
         <div className="flex items-center gap-4">
-                    <span className="text-lg font-semibold">Loading...</span>   
-             {" "}
+            <span className="text-lg font-semibold">Loading...</span>
+          
         </div>
-             {" "}
+          
       </header>
     );
   } // Once isMounted is true and session is not loading, render the full header
 
   return (
     <header className="flex justify-between items-center p-4 bg-white">
-            {/* Date Display */}     {" "}
+        {/* Date Display */}  
       <div className="flex flex-col lg:flex-row text-xs text-[#9B9B9B] text-right font-bold whitespace-nowrap">
-               {" "}
+         
         {useHijri ? (
           <>
-                        <span className="text-[#5EB89D]">{t("today")}:</span>{" "}
-            {hijriDate}            &nbsp;&nbsp;&nbsp;            {" "}
-            <span className="text-[#5EB89D]">{t("corresponding")}:</span>{" "}
-            {gregorianDate}         {" "}
+              <span className="text-[#5EB89D]">{t("today")}:</span> 
+            {hijriDate}  &nbsp;&nbsp;&nbsp;   
+            <span className="text-[#5EB89D]">{t("corresponding")}:</span> 
+            {gregorianDate}  
           </>
         ) : (
           <>
-                        <span className="text-[#5EB89D]">{t("today")}</span>:{" "}
-            {gregorianDate}            &nbsp;&nbsp;&nbsp;            {" "}
-            <span className="text-[#5EB89D]">{t("corresponding")}</span>:{" "}
-            {hijriDate}         {" "}
+              <span className="text-[#5EB89D]">{t("today")}</span>: 
+            {gregorianDate}  &nbsp;&nbsp;&nbsp;   
+            <span className="text-[#5EB89D]">{t("corresponding")}</span>: 
+            {hijriDate}  
           </>
         )}
-             {" "}
+          
       </div>
-            {/* Controls */}     {" "}
+        {/* Controls */}  
       <div className="flex items-center gap-4">
-                {/* Language Toggle */}       {" "}
+         {/* Language Toggle */}  
         <div className="flex space-x-2">
-                   {" "}
+            
           <button
             onClick={toggleLanguage}
             className={`px-3 py-1 text-xs rounded-full border ${
@@ -144,13 +144,13 @@ export default function Header() {
                 : "bg-white text-[#5EB89D] border-[#5EB89D] hover:bg-[#5EB89D] hover:text-white"
             }`}
           >
-                        {i18n.language === "ar" ? "EN" : "AR"}         {" "}
+              {i18n.language === "ar" ? "EN" : "AR"}  
           </button>
-                 {" "}
+           
         </div>
-                {/* NEW Date Toggle Button */}       {" "}
+         {/* NEW Date Toggle Button */}  
         <div className="flex space-x-2">
-                   {" "}
+            
           <button
             onClick={toggleDateType}
             className={`px-3 py-1 text-xs rounded-full border ${
@@ -159,26 +159,26 @@ export default function Header() {
                 : "bg-white text-[#8447AB] border-[#8447AB] hover:bg-[#8447AB] hover:text-white"
             }`}
           >
-                        {useHijri ? t("gregorian") : t("hijri")}         {" "}
+              {useHijri ? t("gregorian") : t("hijri")}  
           </button>
-                 {" "}
+           
         </div>
-                {/* User Greeting */}       {" "}
+         {/* User Greeting */}  
         <span className="text-xs md:text-sm font-semibold text-[#9B9B9B]">
-                    {t("hello")}, {greetingName}!        {" "}
+            {t("hello")}, {greetingName}!  
         </span>
-                {/* Logout Button */}       {" "}
+         {/* Logout Button */}  
         {session && (
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
             className="bg-white rounded-full text-[#9B9B9B] text-xs md:text-sm font-medium px-2 md:px-4 py-2 hover:text-white hover:bg-[#8447AB]"
           >
-                        {t("logout")}         {" "}
+              {t("logout")}  
           </button>
         )}
-             {" "}
+          
       </div>
-         {" "}
+      
     </header>
   );
 }
