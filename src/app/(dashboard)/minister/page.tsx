@@ -147,7 +147,7 @@ const MinisterPage = () => {
     validateDataStructure();
     const allRegions = DataService.getAllRegions();
     if (allRegions && allRegions.length > 0 && selectedRegion === null) {
-      setSelectedRegion(allRegions[0].region_id); // Set the first region as default
+      // setSelectedRegion(allRegions[0].region_id); // Set the first region as default
     }
     setCardDateRange(getDateRangeForTab(cardTab));
   }, [selectedRegion, cardTab, getDateRangeForTab]); // Added getDateRangeForTab to dependencies
