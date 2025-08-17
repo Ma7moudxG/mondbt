@@ -50,6 +50,7 @@ const MainChart = ({ regionId, startDate, endDate }: MainChartProps) => {
   });
 
   useEffect(() => {
+    console.log("dailyyyy stats", chartData)
     if (!regionId) return;
 
     const loadChartData = () => {

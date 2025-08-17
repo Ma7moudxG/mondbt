@@ -5,10 +5,9 @@ import DataService, { StudentDetails, Reward, ParentPenalty, Excuse } from "@/se
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
-import ParentFinesTable from "@/components/ParentFinesTable";
-import ParentExcuses from "@/components/ParentExcuses";
 import { useTranslation } from "react-i18next";
 import RewardsCard from "@/components/RewardsCard";
+import ParentExcusesC from "@/components/ParentExcusesC";
 
 const cm = (...classes: (string | boolean)[]) =>
   classes.filter(Boolean).join(" ");
@@ -285,7 +284,7 @@ const StudentPage = ({ params }: StudentPageProps) => {
           </div>
           <div>
             {/* Pass the excuses state here */}
-            <ParentExcuses excuses={excusesJson || []} />
+            <ParentExcusesC excuses={excusesJson || []} />
           </div>
         </div>
       </div>
