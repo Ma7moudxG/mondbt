@@ -205,7 +205,7 @@ const AdminDataReports: React.FC<AdminDataReportsProps> = ({
                       </p>
                     </div>
                     <Link
-                      href={`/students/${studentDetails.student.student_id}`}
+                      href={`admin/students/${studentDetails.student.student_id}`}
                     >
                       <Image
                         src="/view.svg"
