@@ -2811,7 +2811,7 @@ export default class DataService {
                           (actualPresentStudents / totalStudentsInRegionCount) * 100
                       )
                     : 0;
-                console.log("Data", attendanceRate, da)
+                // console.log("Data", attendanceRate, da)
                     return {
                 dateLabel: dayStats.dateLabel,
                 date_g: dayStats.date_g,

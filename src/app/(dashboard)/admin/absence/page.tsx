@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import DataService from "@/services/dataService";
-import MinisterMap from "@/components/MinisterMap";
 import { useTranslation } from "react-i18next";
 import AbsenceStatistics from "@/components/AbsenceStatistics";
+import FixedMap from "@/components/FixedMap";
 
 const cm = (...classes: (string | boolean | undefined | null)[]) =>
   classes.filter(Boolean).join(" ");
@@ -275,7 +275,7 @@ const AbsenceStatisticsPage = () => {
       <div className="flex gap-4 flex-col lg:flex-row">
         <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
           <div className="md:min-h-[300px]">
-            <MinisterMap
+            <FixedMap
               key={selectedRegion}
               onRegionSelect={setSelectedRegion}
               selectedRegionId={selectedRegion}
