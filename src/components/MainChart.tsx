@@ -55,6 +55,7 @@ const MainChart = ({ regionId, startDate, endDate }: MainChartProps) => {
     const loadChartData = () => {
       try {
         const dailyStats = DataService.getDailyStats(regionId, startDate, endDate);
+        console.log("dailyyyy stats", dailyStats)
 
         setChartData({
           Attendance: dailyStats.map(day => ({
