@@ -9,13 +9,13 @@ import {
 } from "react-simple-maps";
 import { geoCentroid } from "d3-geo";
 import DataService from "@/services/dataService";
+import React, { useState, useEffect, useRef } from "react"; // Import useRef
 import { useTranslation } from "react-i18next";
-import React, { useState, useEffect } from "react"; // Import useState and useEffect
 
 const saudiGeoJSON = require("@/saudi-regions.json");
 
 interface MinisterMapProps {
-  onRegionSelect: (regionId: number) => void;
+  onRegionSelect: (regionId: number | null) => void; // Allow null for deselecting
   selectedRegionId?: number | null;
 }
 
@@ -24,9 +24,35 @@ const MinisterMap = ({
   selectedRegionId,
 }: MinisterMapProps) => {
   const { i18n } = useTranslation();
-
   const [currentZoom, setCurrentZoom] = useState(1);
+  const mapRef = useRef<HTMLDivElement>(null); // Create a ref for the map container
 
+  // Effect for setting up the click outside listener
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+
+    // Check if the target or any of its parents has the data attribute
+    const isIgnored = target.closest('[data-ignore-click-outside="true"]');
+
+    if (
+      mapRef.current &&
+      !mapRef.current.contains(target) &&
+      !isIgnored && // Ignore clicks on elements with this attribute
+      selectedRegionId !== null
+    ) {
+      onRegionSelect(null); // Deselect the region
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [selectedRegionId, onRegionSelect]);
+
+  // Effect for updating zoom based on screen width
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -38,7 +64,6 @@ const MinisterMap = ({
         setCurrentZoom(3);
       }
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
@@ -56,7 +81,8 @@ const MinisterMap = ({
   };
 
   return (
-    <div className="w-full h-full relative">
+    // Attach the ref to the map's container div
+    <div className="w-full h-full relative" ref={mapRef}>
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{
@@ -78,7 +104,7 @@ const MinisterMap = ({
 
                 const defaultFillColor = "#DAF5F0";
                 const selectedFillColor = "#00A09B";
-                const hoverFillColor = "#8447AB"; // A different color for hover
+                const hoverFillColor = "#8447AB";
 
                 const displayName =
                   i18n.language === "ar" && region?.name_ar
@@ -89,7 +115,6 @@ const MinisterMap = ({
                   <g key={geo.rsmKey}>
                     <Geography
                       geography={geo}
-                      // FIX: The onClick handler is now applied to all regions.
                       onClick={() => handleRegionClick(geo)}
                       style={{
                         default: {
@@ -97,17 +122,14 @@ const MinisterMap = ({
                           outline: "none",
                           stroke: "#00A09B",
                           strokeWidth: 0.35,
-                          // FIX: The cursor is now always a pointer for all regions.
                           cursor: "pointer",
                         },
-                        // FIX: Hover style is now applied to all regions.
                         hover: {
                           fill: isSelected ? selectedFillColor : hoverFillColor,
                           stroke: "#00A09B",
                           strokeWidth: 0.35,
                           cursor: "pointer",
                         },
-                        // FIX: Pressed style is now applied to all regions.
                         pressed: {
                           fill: selectedFillColor,
                           outline: "none",

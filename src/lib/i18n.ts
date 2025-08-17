@@ -163,6 +163,8 @@ const ar = {
   Permission: "استئذان",
   "First Intermediate": "الأول متوسط",
   "Third Intermediate": "الثالث متوسط",
+  Category: "الفئة",
+  Number: "العدد",
 };
 
 // English translations

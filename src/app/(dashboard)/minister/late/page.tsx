@@ -214,7 +214,7 @@ const LateStatisticsPage = () => {
         </h1>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="flex flex-wrap justify-center gap-2" data-ignore-click-outside="true">
         {(["Day", "Month", "Year"] as CardTab[]).map((tab) => (
           <button
             key={tab}
@@ -242,7 +242,7 @@ const LateStatisticsPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
+        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl" data-ignore-click-outside="true">
           <div className="flex flex-col gap-8">
             {selectedRegion !== null ? (
               <LateStatistics groupedStats={groupedStats} />

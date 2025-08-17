@@ -121,15 +121,47 @@ const StatCard: React.FC<{
   color: string;
   getConsistentTranslatedText: (key: string) => string; // Receive helper function
 }> = ({ titleKey, icon, value, rate, color, getConsistentTranslatedText }) => {
-  const handleExport = () => {
-    const link = document.createElement("a");
-    link.href = "/sickLeaves.pdf";
-    link.download = "attendance_report.pdf";
-    link.target = "_blank";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const handleExport = ( titleKey: string) => {
+    
+      const BOM = "\ufeff";
+  
+      const csvContent = [
+        [
+          getConsistentTranslatedText("Metric"), // Use helper
+          getConsistentTranslatedText("Category"), // Use helper
+          getConsistentTranslatedText("Value"), // Use helper
+          getConsistentTranslatedText("Number"), // Use helper
+          // getConsistentTranslatedText("Start Date"), // Use helper
+          // getConsistentTranslatedText("End Date"), // Use helper
+        ],
+        [
+          getConsistentTranslatedText("Permission"), // Use helper
+          getConsistentTranslatedText(titleKey), // Use helper
+          `${rate} %`,
+          value, // Use helper
+        ],
+        
+      ]
+        .map((row) => row.join(","))
+        .join("\n");
+  
+      // Prepend the BOM to the CSV content
+      const finalCsvContent = BOM + csvContent;
+  
+      const blob = new Blob([finalCsvContent], {
+        type: "text/csv;charset=utf-8;",
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${getConsistentTranslatedText("report")}_${ // Use helper
+        getConsistentTranslatedText("all") // Use helper
+      }_${new Date().getTime()}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    };
 
   return (
     <div className="flex flex-col gap-2 items-center justify-between p-4 bg-gray-50 rounded-lg">
@@ -182,11 +214,11 @@ const StatCard: React.FC<{
 
       <div className="mx-auto">
         <button
-          onClick={handleExport}
-          className="bg-[#8447AB] py-2 px-4 font-medium text-sm text-white rounded-full
+          onClick={() => handleExport(titleKey)}
+          className="bg-[#8447AB] py-2 px-6 font-bold text-base text-white rounded-full
                              hover:bg-[#6a3793] transition-colors"
         >
-          {getConsistentTranslatedText("Export Report")}
+          {getConsistentTranslatedText("Export Report")} {/* Use helper */}
         </button>
       </div>      
     </div>

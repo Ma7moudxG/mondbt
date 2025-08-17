@@ -214,25 +214,25 @@ const AttendanceStatisticsPage = () => {
         const allStudentsInRegion = DataService.getAllStudents().filter(
           (student) => schoolsMap.has(student.school_id)
         );
-        console.log(
-          "Total students in selected region (before specific filtering):",
-          allStudentsInRegion.length
-        );
-        if (allStudentsInRegion.length > 0) {
-          console.log(
-            "Sample student for gender check (ID:",
-            allStudentsInRegion[0]?.student_id,
-            "):",
-            allStudentsInRegion[0]?.gender
-          );
-          console.log(
-            "Sample school for level check (School ID:",
-            allStudentsInRegion[0]?.school_id,
-            "):",
-            schoolsMap.get(allStudentsInRegion[0]?.school_id)
-              ?.educational_level_en
-          );
-        }
+        // console.log(
+        //   "Total students in selected region (before specific filtering):",
+        //   allStudentsInRegion.length
+        // );
+        // if (allStudentsInRegion.length > 0) {
+        //   console.log(
+        //     "Sample student for gender check (ID:",
+        //     allStudentsInRegion[0]?.student_id,
+        //     "):",
+        //     allStudentsInRegion[0]?.gender
+        //   );
+        //   console.log(
+        //     "Sample school for level check (School ID:",
+        //     allStudentsInRegion[0]?.school_id,
+        //     "):",
+        //     schoolsMap.get(allStudentsInRegion[0]?.school_id)
+        //       ?.educational_level_en
+        //   );
+        // }
 
         const maleStudentIdsInRegion = allStudentsInRegion
           .filter((s) => s.gender === "Male")
@@ -260,12 +260,6 @@ const AttendanceStatisticsPage = () => {
           )
           .map((s) => s.student_id);
 
-        // console.log("Male students (IDs filtered) count:", maleStudentIdsInRegion.length);
-        // console.log("Female students (IDs filtered) count:", femaleStudentIdsInRegion.length);
-        // console.log("Primary students (IDs filtered) count:", primaryStudentIdsInRegion.length);
-        // console.log("Intermediate students (IDs filtered) count:", intermediateStudentIdsInRegion.length);
-        // console.log("Secondary students (IDs filtered) count:", secondaryStudentIdsInRegion.length);
-
         const newStats = {
           all: {
             attendance: overallCardStats.attendance,
@@ -287,7 +281,6 @@ const AttendanceStatisticsPage = () => {
           ),
         };
 
-        // console.log("AttendanceStatisticsPage: Loaded grouped stats for region:", selectedRegion, newStats);
         setGroupedStats(newStats);
       } catch (error) {
         console.error(
@@ -366,6 +359,7 @@ const AttendanceStatisticsPage = () => {
     }
   }, [isClient, handleDateTabClick]);
 
+
   return (
     <div className="p-4 flex flex-col gap-4">
       <div className="flex gap-12">
@@ -374,7 +368,7 @@ const AttendanceStatisticsPage = () => {
         </h1>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="flex flex-wrap justify-center gap-2" data-ignore-click-outside="true">
         {(["Day", "Month", "Year"] as CardTab[]).map((untranslatedTab) => (
           <button
             key={untranslatedTab}
@@ -402,7 +396,7 @@ const AttendanceStatisticsPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
+        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl" data-ignore-click-outside="true">
           <div className="flex flex-col gap-8">
             {selectedRegion !== null ? (
               <AttendanceStatistics groupedStats={groupedStats} />

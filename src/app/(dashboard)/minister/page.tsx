@@ -469,7 +469,7 @@ const MinisterPage = () => {
   ];
 
   return (
-    <div className="p-4 flex flex-col gap-4">
+    <div className="p-4 flex flex-col gap-4" data-ignore-click-outside="true">
       <div className="flex gap-12">
         <h1 className="text-lg font-black text-[#7C8B9D]">{getConsistentTranslatedText("Statistics")}</h1>{" "}
         <div className="flex flex-wrap justify-center gap-2">

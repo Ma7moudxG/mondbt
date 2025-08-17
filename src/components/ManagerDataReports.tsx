@@ -204,6 +204,55 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
     {} as { [key: string]: Student[] }
   );
 
+  const handleExport = () => {
+    const BOM = "\ufeff";
+
+    const csvContent = [
+      [
+        t("Metric"), // Use helper
+        t("Value"), // Use helper
+        t("Number"), // Use helper
+        // getConsistentTranslatedText("Start Date"), // Use helper
+        // getConsistentTranslatedText("End Date"), // Use helper
+      ],
+      [
+        t("Attendance"), // Use helper
+        `${calculateGaugeValue(StatsNew.attendance, StatsNew.totalOccurrences)} %`,
+        StatsNew.attendance,
+      ],
+      [
+        t("Absence"), // Use helper
+        `${calculateGaugeValue(StatsNew.absence, StatsNew.totalOccurrences)} %`,
+        StatsNew.absence,
+      ],
+      [
+        t("Late"), // Use helper
+        `${calculateGaugeValue(StatsNew.late, StatsNew.totalOccurrences)} %`,
+        StatsNew.late,
+      ],
+    ]
+      .map((row) => row.join(","))
+      .join("\n");
+
+    // Prepend the BOM to the CSV content
+    const finalCsvContent = BOM + csvContent;
+
+    const blob = new Blob([finalCsvContent], {
+      type: "text/csv;charset=utf-8;",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${t("report")}_${
+      // Use helper
+      t("all") // Use helper
+    }_${new Date().getTime()}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 lg:h-[750px] w-full">
       <div className="bg-white rounded-2xl flex justify-center p-4 w-full">
@@ -217,9 +266,8 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
             {Object.keys(groupedStudents).length > 0 ? (
               Object.keys(groupedStudents).map((className) => (
                 <div key={className}>
-                  
                   <h3 className="text-lg font-bold text-[#5EB89D] my-4">
-                    { t(className)}
+                    {t(className)}
                   </h3>
 
                   {groupedStudents[className].map((student) => (
@@ -401,6 +449,16 @@ const ManagerDataReports: React.FC<ManagerDataReportsProps> = ({
                   text={({ value }) => `${value}%`}
                 />
               </div>
+            </div>
+
+            <div className="mx-auto">
+              <button
+                onClick={handleExport}
+                className="bg-[#8447AB] py-2 px-6 font-bold text-base text-white rounded-full
+                             hover:bg-[#6a3793] transition-colors"
+              >
+                {t("Export Report")} {/* Use helper */}
+              </button>
             </div>
           </div>
         </div>

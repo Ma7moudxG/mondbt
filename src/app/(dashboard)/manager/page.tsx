@@ -164,6 +164,8 @@ const ManagerPage = () => {
     rewards: 0,
   });
 
+  
+
   useEffect(() => {
     const loadCardStats = async () => {
       try {
@@ -333,6 +335,8 @@ const ManagerPage = () => {
           />
         </div>
       </div>
+
+      
     </div>
   );
 };
