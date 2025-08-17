@@ -1,6 +1,6 @@
 import moment from "moment";
 import "moment-hijri";
-import { supabase } from '@/lib/supabase/supabaseClient';// src/services/dataService.ts
+import { supabase } from "@/lib/supabase/supabaseClient"; // src/services/dataService.ts
 // --- Interfaces (Copied directly from your last provided code) ---
 export interface Region {
   region_id: number;
@@ -218,17 +218,15 @@ const JSON_SERVER_BASE_URL = "http://localhost:3001"; // Your JSON Server URL
 
 // Load data from localStorage or use initial data
 export const loadSchoolData = (): MergedSchoolData => {
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     return initialSchoolData as MergedSchoolData;
   }
 
   const storedData = localStorage.getItem("schoolDataJson");
-  return storedData 
+  return storedData
     ? (JSON.parse(storedData) as MergedSchoolData)
     : (initialSchoolData as MergedSchoolData);
 };
-
-
 
 export const saveSchoolData = (data: MergedSchoolData): void => {
   if (typeof window !== "undefined") {
@@ -294,8 +292,7 @@ export interface StudentDetails {
   rewards: Reward[];
 }
 
-  const NETLIFY_FUNCTIONS_BASE_URL = "/.netlify/functions"
-
+const NETLIFY_FUNCTIONS_BASE_URL = "/.netlify/functions";
 
 /**
  * Maps a school type name (e.g., "National") to an array of corresponding education_type_ids.
@@ -309,12 +306,15 @@ const mapSchoolTypeNameToIds = (typeName: string): number[] => {
     .map((et) => et.education_type_id);
 };
 
-
-async function fetchData<T>(url: string, method: string = 'GET', body?: object): Promise<T | null> {
+async function fetchData<T>(
+  url: string,
+  method: string = "GET",
+  body?: object
+): Promise<T | null> {
   const options: RequestInit = {
     method,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   };
 
@@ -332,13 +332,18 @@ async function fetchData<T>(url: string, method: string = 'GET', body?: object):
         return null; // For 404, return null
       }
       const errorData = await response.json();
-      console.error(`Network request error: ${method} ${url} - Status: ${response.status}`, errorData);
-      throw new Error(errorData.error || `HTTP error! Status: ${response.status}`);
+      console.error(
+        `Network request error: ${method} ${url} - Status: ${response.status}`,
+        errorData
+      );
+      throw new Error(
+        errorData.error || `HTTP error! Status: ${response.status}`
+      );
     }
 
     // Handle 204 No Content for PATCH/PUT/DELETE operations if no content is expected
     if (response.status === 204) {
-        return {} as T; // Return an empty object or true, depending on expected type
+      return {} as T; // Return an empty object or true, depending on expected type
     }
 
     return await response.json();
@@ -351,8 +356,8 @@ async function fetchData<T>(url: string, method: string = 'GET', body?: object):
 // --- DataService Class (FIXED FUNCTIONS with Debugging) ---
 export default class DataService {
   static getSchoolData(): MergedSchoolData {
-  return loadSchoolData(); // Now always returns data
-}
+    return loadSchoolData(); // Now always returns data
+  }
 
   // --- Methods now fetching from JSON Server ---
 
@@ -400,11 +405,10 @@ export default class DataService {
         throw new Error(error.message); // Throw error to be caught by caller
       }
 
-      console.log("dataaaaaaaaaa", data)
+      console.log("dataaaaaaaaaa", data);
 
       // If data exists, return the file_url, otherwise null
       return data ? data.file_url : null;
-
     } catch (err) {
       console.error("Failed to fetch excuse attachment:", err);
       // Depending on your error handling strategy, you might re-throw or return null
@@ -447,18 +451,28 @@ export default class DataService {
 
   static async getExcuseReasons(): Promise<ExcuseReason[]> {
     try {
-      console.log("DataService: Attempting to fetch excuse reasons via Netlify Function.");
-      const response = await fetch(`${NETLIFY_FUNCTIONS_BASE_URL}/getExcuseReasons`);
-      
+      console.log(
+        "DataService: Attempting to fetch excuse reasons via Netlify Function."
+      );
+      const response = await fetch(
+        `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuseReasons`
+      );
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: response.statusText }));
         console.error(
           `DataService: HTTP error from Netlify function (getExcuseReasons)! Status: ${response.status}, Details:`,
           errorData
         );
-        throw new Error(`Failed to fetch excuse reasons: ${errorData.error || 'Unknown error'}`);
+        throw new Error(
+          `Failed to fetch excuse reasons: ${
+            errorData.error || "Unknown error"
+          }`
+        );
       }
-      
+
       const reasons: ExcuseReason[] = await response.json();
       console.log("DataService: Successfully fetched excuse reasons:", reasons);
       return reasons;
@@ -472,30 +486,44 @@ export default class DataService {
     reasonId: string
   ): Promise<ExcuseReason | null> {
     try {
-      console.log(`DataService: Attempting to fetch excuse reason by ID ${reasonId} via Netlify Function.`);
+      console.log(
+        `DataService: Attempting to fetch excuse reason by ID ${reasonId} via Netlify Function.`
+      );
       const response = await fetch(
         `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuseReasonById/${reasonId}`
       );
 
       if (response.status === 404) {
-        console.log(`DataService: Excuse reason with ID ${reasonId} not found.`);
+        console.log(
+          `DataService: Excuse reason with ID ${reasonId} not found.`
+        );
         return null;
       }
-      
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: response.statusText }));
         console.error(
           `DataService: HTTP error from Netlify function (getExcuseReasonById)! Status: ${response.status}, Details:`,
           errorData
         );
-        throw new Error(`Failed to fetch excuse reason: ${errorData.error || 'Unknown error'}`);
+        throw new Error(
+          `Failed to fetch excuse reason: ${errorData.error || "Unknown error"}`
+        );
       }
-      
+
       const reason: ExcuseReason = await response.json();
-      console.log(`DataService: Successfully fetched excuse reason by ID ${reasonId}:`, reason);
+      console.log(
+        `DataService: Successfully fetched excuse reason by ID ${reasonId}:`,
+        reason
+      );
       return reason;
     } catch (error) {
-      console.error(`DataService: Error fetching excuse reason by ID ${reasonId}:`, error);
+      console.error(
+        `DataService: Error fetching excuse reason by ID ${reasonId}:`,
+        error
+      );
       return null;
     }
   }
@@ -748,20 +776,28 @@ export default class DataService {
       let url = `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuses?studentId=${studentId}`;
       if (startDate && endDate) {
         // Pass dates as ISO strings (YYYY-MM-DD) for consistency
-        url += `&startDate=${startDate.toISOString().split('T')[0]}&endDate=${endDate.toISOString().split('T')[0]}`;
+        url += `&startDate=${startDate.toISOString().split("T")[0]}&endDate=${
+          endDate.toISOString().split("T")[0]
+        }`;
       }
 
-      console.log(`DataService: Attempting to fetch excuses for student ID: ${studentId} via Netlify Function.`);
+      console.log(
+        `DataService: Attempting to fetch excuses for student ID: ${studentId} via Netlify Function.`
+      );
       const response = await fetch(url);
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: response.statusText }));
         console.error(
           `DataService: HTTP error from Netlify function (getExcusesForStudent)! Status: ${response.status}, Details:`,
           errorData
         );
         throw new Error(
-          `Failed to fetch excuses for student: ${errorData.error || 'Unknown error'}`
+          `Failed to fetch excuses for student: ${
+            errorData.error || "Unknown error"
+          }`
         );
       }
 
@@ -797,21 +833,29 @@ export default class DataService {
   static async getExcusesForStudents(studentIds: number[]): Promise<Excuse[]> {
     try {
       // Pass studentIds as a comma-separated string
-      const url = `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuses?studentIds=${studentIds.join(",")}`;
+      const url = `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuses?studentIds=${studentIds.join(
+        ","
+      )}`;
 
       console.log(
-        `DataService: Attempting to fetch excuses for student IDs: ${studentIds.join(", ")} via Netlify Function.`
+        `DataService: Attempting to fetch excuses for student IDs: ${studentIds.join(
+          ", "
+        )} via Netlify Function.`
       );
       const response = await fetch(url);
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: response.statusText }));
         console.error(
           `DataService: HTTP error from Netlify function (getExcusesForStudents)! Status: ${response.status}, Details:`,
           errorData
         );
         throw new Error(
-          `Failed to fetch excuses for multiple students: ${errorData.error || 'Unknown error'}`
+          `Failed to fetch excuses for multiple students: ${
+            errorData.error || "Unknown error"
+          }`
         );
       }
 
@@ -832,17 +876,21 @@ export default class DataService {
       // Call the Netlify function with a 'status' parameter to get pending excuses
       const url = `${NETLIFY_FUNCTIONS_BASE_URL}/getExcuses`; // Or remove '?status=PENDING' if the function defaults to it
 
-      console.log(`DataService: Attempting to fetch all PENDING excuses via Netlify Function.`);
+      console.log(
+        `DataService: Attempting to fetch all PENDING excuses via Netlify Function.`
+      );
       const response = await fetch(url);
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: response.statusText }));
         console.error(
           `DataService: HTTP error from Netlify function (getExcuses)! Status: ${response.status}, Details:`,
           errorData
         );
         throw new Error(
-          `Failed to fetch excuses: ${errorData.error || 'Unknown error'}`
+          `Failed to fetch excuses: ${errorData.error || "Unknown error"}`
         );
       }
 
@@ -856,7 +904,6 @@ export default class DataService {
         (excuse) => excuse.status_en === "PENDING"
       );
 
-
       console.log(
         `DataService: Successfully fetched and filtered PENDING excuses. Found ${filteredExcuses.length} matching excuses via Netlify Function.`
       );
@@ -867,59 +914,68 @@ export default class DataService {
     }
   }
 
-
   static async createExcuse(
-        parentId: number,
-        studentId: number,
-        reasonId: number,
-        remarks: string,
-        attachmentFile: File | undefined,
-        excuseDateG: string,
-        excuseDateH: string
-    ): Promise<{ newExcuse: Excuse; newAttachment?: ExcuseAttachment } | null> {
-        
-        try {
-            const formData = new FormData();
-            formData.append('parentId', String(parentId));
-            formData.append('studentId', String(studentId));
-            formData.append('reasonId', String(reasonId));
-            formData.append('remarksEn', remarks);
-            formData.append('remarksAr', remarks);
-            formData.append('excuseDateG', excuseDateG);
-            formData.append('excuseDateH', excuseDateH);
+    parentId: number,
+    studentId: number,
+    reasonId: number,
+    remarks: string,
+    attachmentFile: File | undefined,
+    excuseDateG: string,
+    excuseDateH: string
+  ): Promise<{ newExcuse: Excuse; newAttachment?: ExcuseAttachment } | null> {
+    try {
+      const formData = new FormData();
+      formData.append("parentId", String(parentId));
+      formData.append("studentId", String(studentId));
+      formData.append("reasonId", String(reasonId));
+      formData.append("remarksEn", remarks);
+      formData.append("remarksAr", remarks);
+      formData.append("excuseDateG", excuseDateG);
+      formData.append("excuseDateH", excuseDateH);
 
-            if (attachmentFile) {
-                formData.append('attachmentFile', attachmentFile); 
-            }
+      if (attachmentFile) {
+        formData.append("attachmentFile", attachmentFile);
+      }
 
-            console.log(`DataService: Calling Netlify function at: ${NETLIFY_FUNCTIONS_BASE_URL}/createExcuse`);
-            const response = await fetch(`${NETLIFY_FUNCTIONS_BASE_URL}/createExcuse`, {
-            method: 'POST',
-            body: formData,
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ message: response.statusText }));
-                console.error(
-                    `DataService: HTTP error from Netlify function (createExcuse)! Status: ${response.status}, Details:`,
-                    errorData
-                );
-                throw new Error(
-                    `Failed to create excuse: ${errorData.error || 'Unknown error'}`
-                );
-            }
-
-            const result: { newExcuse: Excuse; newAttachment?: ExcuseAttachment } = await response.json();
-        console.log("DataService: Excuse and attachment created successfully:", result);            return result;
-
-        } catch (error) {
-            console.error(
-                `DataService: Error creating excuse via Netlify Function:`,
-                error
-            );
-            return null;
+      console.log(
+        `DataService: Calling Netlify function at: ${NETLIFY_FUNCTIONS_BASE_URL}/createExcuse`
+      );
+      const response = await fetch(
+        `${NETLIFY_FUNCTIONS_BASE_URL}/createExcuse`,
+        {
+          method: "POST",
+          body: formData,
         }
+      );
+
+      if (!response.ok) {
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: response.statusText }));
+        console.error(
+          `DataService: HTTP error from Netlify function (createExcuse)! Status: ${response.status}, Details:`,
+          errorData
+        );
+        throw new Error(
+          `Failed to create excuse: ${errorData.error || "Unknown error"}`
+        );
+      }
+
+      const result: { newExcuse: Excuse; newAttachment?: ExcuseAttachment } =
+        await response.json();
+      console.log(
+        "DataService: Excuse and attachment created successfully:",
+        result
+      );
+      return result;
+    } catch (error) {
+      console.error(
+        `DataService: Error creating excuse via Netlify Function:`,
+        error
+      );
+      return null;
     }
+  }
 
   // static async getRewardsForStudent(
   //   studentId: number,
@@ -1020,18 +1076,25 @@ export default class DataService {
       const response = await fetch(url.toString());
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: response.statusText }));
         console.error(
           `DataService: HTTP error from Netlify function (getRewardsForStudent)! Status: ${response.status}, Details:`,
           errorData
         );
         throw new Error(
-          `Failed to get rewards for student: ${errorData.error || response.statusText}`
+          `Failed to get rewards for student: ${
+            errorData.error || response.statusText
+          }`
         );
       }
 
       let studentRewards: Reward[] = await response.json();
-      console.log("DataService: Successfully fetched student rewards:", studentRewards);
+      console.log(
+        "DataService: Successfully fetched student rewards:",
+        studentRewards
+      );
       return studentRewards;
     } catch (error) {
       console.error(
@@ -1043,56 +1106,58 @@ export default class DataService {
   }
 
   static async updateExcuseStatus(
-  excuseId: string,
-  statusEn: "PENDING" | "APPROVED" | "REJECTED",
-  statusAr: "قيد المراجعة" | "مقبول" | "مرفوض",
-  remarksEn: string = "",
-  remarksAr: string = ""
-): Promise<Excuse | null> {
-  const updateData = {
-    status_en: statusEn,
-    status_ar: statusAr,
-    remarks_en: remarksEn,
-    remarks_ar: remarksAr,
-  };
+    excuseId: string,
+    statusEn: "PENDING" | "APPROVED" | "REJECTED",
+    statusAr: "قيد المراجعة" | "مقبول" | "مرفوض",
+    remarksEn: string = "",
+    remarksAr: string = ""
+  ): Promise<Excuse | null> {
+    const updateData = {
+      status_en: statusEn,
+      status_ar: statusAr,
+      remarks_en: remarksEn,
+      remarks_ar: remarksAr,
+    };
 
-  try {
-    console.log(
-      `DataService: Attempting to update excuse ${excuseId} with:`,
-      updateData
-    );
-
-    const response = await fetch(
-      `${NETLIFY_FUNCTIONS_BASE_URL}/updateExcuseStatus/${excuseId}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updateData),
-      }
-    );
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({
-        message: response.statusText,
-      }));
-      console.error(
-        `DataService: HTTP error updating excuse! Status: ${response.status}, Details:`,
-        errorData
+    try {
+      console.log(
+        `DataService: Attempting to update excuse ${excuseId} with:`,
+        updateData
       );
-      throw new Error(errorData.error || "Unknown error");
+
+      const response = await fetch(
+        `${NETLIFY_FUNCTIONS_BASE_URL}/updateExcuseStatus/${excuseId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateData),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({
+          message: response.statusText,
+        }));
+        console.error(
+          `DataService: HTTP error updating excuse! Status: ${response.status}, Details:`,
+          errorData
+        );
+        throw new Error(errorData.error || "Unknown error");
+      }
+
+      const updatedExcuse: Excuse = await response.json();
+      console.log("DataService: Excuse updated successfully:", updatedExcuse);
+      return updatedExcuse;
+    } catch (error) {
+      console.error(
+        `DataService: Error updating excuse ID ${excuseId}:`,
+        error
+      );
+      return null;
     }
-
-    const updatedExcuse: Excuse = await response.json();
-    console.log("DataService: Excuse updated successfully:", updatedExcuse);
-    return updatedExcuse;
-  } catch (error) {
-    console.error(`DataService: Error updating excuse ID ${excuseId}:`, error);
-    return null;
   }
-}
-
 
   static getAllRegions(): Region[] {
     return schoolData.regions || [];
@@ -1320,12 +1385,17 @@ export default class DataService {
 
   // NEW Helper: Get Education Type Name from ID (e.g., 1 -> "National")
   public static getEducationTypeNameFromId(
-    educationTypeId: number, lang: string
+    educationTypeId: number,
+    lang: string
   ): string | null {
     const educationType = schoolData.educationTypes.find(
       (et) => et.education_type_id === educationTypeId
     );
-    return  educationType ? lang === "ar" ? educationType.description_ar : educationType.description_ar : null;
+    return educationType
+      ? lang === "ar"
+        ? educationType.description_ar
+        : educationType.description_ar
+      : null;
   }
 
   public static getSchoolsByFilters(filters: FilterValues): School[] {
@@ -1721,12 +1791,11 @@ export default class DataService {
   }
 
   public static getStudentsByIds(studentIds: number[]): Student[] {
-
     const relevantStudents = schoolData.students.filter((student) =>
       studentIds.includes(student.student_id)
     );
 
-    return relevantStudents
+    return relevantStudents;
   }
 
   static isDateInRange(
@@ -1897,7 +1966,7 @@ export default class DataService {
     // console.log(`\n--- Processing Penalty Records (${schoolData.parentPenalties?.length || 0} total) ---`);
     // Use optional chaining for safe access:
     // console.log("pennnnnnnnn", schoolData.parentPenalties?.[0]);
-    schoolData.parentPenalties?.forEach((penalty) => {
+    schoolData.parentPenalties?.forEach((penalty: any) => {
       const penaltyStudentId = Number(penalty.student_id);
       const isInRegion = studentIdsInRegion.has(penaltyStudentId);
       // Ensure penalty.penalty_date_g is the correct field
@@ -2084,113 +2153,112 @@ export default class DataService {
   }
 
   static getStudentAttendances(
-  studentIds: number[],
-  startDate: Date,
-  endDate: Date
-): AttendanceRecord[] {
-  return schoolData.attendance.filter((attendance) => {
-    const attendanceDate = new Date(attendance.date_g); // Convert string to Date
+    studentIds: number[],
+    startDate: Date,
+    endDate: Date
+  ): AttendanceRecord[] {
+    return schoolData.attendance.filter((attendance) => {
+      const attendanceDate = new Date(attendance.date_g); // Convert string to Date
 
-    const inRange = attendanceDate >= startDate && attendanceDate <= endDate;
-    const included = studentIds.includes(attendance.student_id);
+      const inRange = attendanceDate >= startDate && attendanceDate <= endDate;
+      const included = studentIds.includes(attendance.student_id);
 
-    // console.log("attendanceDate", attendanceDate);
-    // console.log("startDate", startDate);
-    // console.log("endDate", endDate);
-    // console.log("inRange:", inRange, "included:", included);
+      // console.log("attendanceDate", attendanceDate);
+      // console.log("startDate", startDate);
+      // console.log("endDate", endDate);
+      // console.log("inRange:", inRange, "included:", included);
 
-    return included && inRange;
-  });
-}
-
-
+      return included && inRange;
+    });
+  }
 
   static async getAggregatedStatsForStudents(
-  studentIds: number[],
-  startDate: Date,
-  endDate: Date
-): Promise<{
-  attendance: number;
-  absence: number;
-  late: number;
-  totalPossibleAttendances: number;
-  penalties: number;
-  rewards: number;
-  totalStudentsInGroup: number;
-}> {
-  let totalAttendance = 0;
-  let totalAbsence = 0;
-  let totalLate = 0;
-  let totalPossibleAttendances = 0;
-  let totalPenalties = 0;
-  let totalRewards = 0;
+    studentIds: number[],
+    startDate: Date,
+    endDate: Date
+  ): Promise<{
+    attendance: number;
+    absence: number;
+    late: number;
+    totalPossibleAttendances: number;
+    penalties: number;
+    rewards: number;
+    totalStudentsInGroup: number;
+  }> {
+    let totalAttendance = 0;
+    let totalAbsence = 0;
+    let totalLate = 0;
+    let totalPossibleAttendances = 0;
+    let totalPenalties = 0;
+    let totalRewards = 0;
 
-  const relevantAttendances = await DataService.getStudentAttendances(
-    studentIds,
-    startDate,
-    endDate
-  );
-
-  console.log("relevant", relevantAttendances)
-  const uniqueStudentDays = new Set<string>();
-
-  relevantAttendances.forEach((record) => {
-    const dayKey = `${record.student_id}-${record.date_g.toString().split("T")[0]}`;
-
-    if (!uniqueStudentDays.has(dayKey)) {
-      totalPossibleAttendances += 1;
-      uniqueStudentDays.add(dayKey);
-    }
-
-    switch (record.status) {
-      case "IN_TIME":
-        totalAttendance += 1;
-        break;
-      case "VIOLATION":
-        totalLate += 1;
-        break;
-    }
-  });
-
-  console.log("relevannnn", relevantAttendances)
-
-  totalAbsence = DataService.countAbsences(studentIds, startDate, endDate)
-
-  // ✅ Fetch penalties and rewards
-  const penaltyPromises = studentIds.map((id) =>
-    DataService.getPenaltiesForStudent(id)
-  );
-  const rewardPromises = studentIds.map((id) =>
-    DataService.getRewardsForStudent(id, startDate, endDate)
-  );
-
-  const allPenalties = await Promise.all(penaltyPromises);
-  const allRewards = await Promise.all(rewardPromises);
-
-  // ✅ Sum penalties
-  allPenalties.forEach((penaltyList) => {
-    totalPenalties += penaltyList.reduce(
-      (sum, p) => sum + (p.amount_due || 0),
-      0
+    const relevantAttendances = await DataService.getStudentAttendances(
+      studentIds,
+      startDate,
+      endDate
     );
-  });
 
-  // ✅ Count rewards
-  allRewards.forEach((rewardList) => {
-    totalRewards += rewardList.length;
-  });
+    console.log("relevant", relevantAttendances);
+    const uniqueStudentDays = new Set<string>();
 
-  return {
-    attendance: totalAttendance,
-    absence: totalAbsence,
-    late: totalLate,
-    totalPossibleAttendances: totalPossibleAttendances,
-    penalties: totalPenalties,
-    rewards: totalRewards,
-    totalStudentsInGroup: studentIds.length,
-  };
-}
+    relevantAttendances.forEach((record) => {
+      const dayKey = `${record.student_id}-${
+        record.date_g.toString().split("T")[0]
+      }`;
 
+      if (!uniqueStudentDays.has(dayKey)) {
+        totalPossibleAttendances += 1;
+        uniqueStudentDays.add(dayKey);
+      }
+
+      switch (record.status) {
+        case "IN_TIME":
+          totalAttendance += 1;
+          break;
+        case "VIOLATION":
+          totalLate += 1;
+          break;
+      }
+    });
+
+    console.log("relevannnn", relevantAttendances);
+
+    totalAbsence = DataService.countAbsences(studentIds, startDate, endDate);
+
+    // ✅ Fetch penalties and rewards
+    const penaltyPromises = studentIds.map((id) =>
+      DataService.getPenaltiesForStudent(id)
+    );
+    const rewardPromises = studentIds.map((id) =>
+      DataService.getRewardsForStudent(id, startDate, endDate)
+    );
+
+    const allPenalties = await Promise.all(penaltyPromises);
+    const allRewards = await Promise.all(rewardPromises);
+
+    // ✅ Sum penalties
+    allPenalties.forEach((penaltyList) => {
+      totalPenalties += penaltyList.reduce(
+        (sum, p) => sum + (p.amount_due || 0),
+        0
+      );
+    });
+
+    // ✅ Count rewards
+    allRewards.forEach((rewardList) => {
+      totalRewards += rewardList.length;
+    });
+
+    return {
+      attendance: totalAttendance,
+      absence: totalAbsence,
+      late: totalLate,
+      totalPossibleAttendances: totalPossibleAttendances,
+      penalties: totalPenalties,
+      rewards: totalRewards,
+      totalStudentsInGroup: studentIds.length,
+    };
+  }
 
   // --- Other existing methods (unchanged unless explicitly mentioned) ---
 
@@ -2231,14 +2299,13 @@ export default class DataService {
     start: Date,
     end: Date
   ): number {
-
     const studentIds = students.map((s) => s.student_id);
 
     const totalPossibleAttendanceDays = schoolData.attendance.filter(
       (a) =>
         studentIds.includes(Number(a.student_id)) &&
-        this.isDateInRange(a.date_g, start, end) ).length;
-            
+        this.isDateInRange(a.date_g, start, end)
+    ).length;
 
     // const fullAbsenceDays = this.countAbsences(studentIds, start, end);
     // const lateDays = this.countLateArrivals(studentIds, start, end);
@@ -2288,28 +2355,31 @@ export default class DataService {
   //   }
   // }
 
-
   static async getPenaltiesForParent(
-        parentId: number
-    ): Promise<ParentPenalty[]> {
-        console.log(`DataService: Requesting penalties for parentId: ${parentId} via fetchData.`);
-        
-        // Use fetchData to call the Netlify function
-        const penalties = await fetchData<ParentPenalty[]>(
-            `/.netlify/functions/getPenaltiesForParent?parentId=${parentId}`
-        );
+    parentId: number
+  ): Promise<ParentPenalty[]> {
+    console.log(
+      `DataService: Requesting penalties for parentId: ${parentId} via fetchData.`
+    );
 
-        // fetchData returns null on error. The original function returned an empty array on error.
-        if (penalties === null) {
-            console.error(`DataService: Failed to fetch penalties for parent ID ${parentId}. Returning empty array.`);
-            return []; // Return empty array to match the original function's error handling behavior
-        }
+    // Use fetchData to call the Netlify function
+    const penalties = await fetchData<ParentPenalty[]>(
+      `/.netlify/functions/getPenaltiesForParent?parentId=${parentId}`
+    );
 
-        console.log(
-            `DataService: Successfully fetched ${penalties.length} penalties for parentId: ${parentId}.`
-        );
-        return penalties;
+    // fetchData returns null on error. The original function returned an empty array on error.
+    if (penalties === null) {
+      console.error(
+        `DataService: Failed to fetch penalties for parent ID ${parentId}. Returning empty array.`
+      );
+      return []; // Return empty array to match the original function's error handling behavior
     }
+
+    console.log(
+      `DataService: Successfully fetched ${penalties.length} penalties for parentId: ${parentId}.`
+    );
+    return penalties;
+  }
 
   static async getTotalPenaltiesForParent(parentId: number): Promise<number> {
     try {
@@ -2405,7 +2475,6 @@ export default class DataService {
   //   }
   // }
 
-
   static async updatePenaltyStatus(
     penaltyId: string,
     newPaidStatus: "Y" | "N"
@@ -2426,18 +2495,24 @@ export default class DataService {
       );
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: response.statusText }));
         console.error(
           `DataService: HTTP error from Netlify function (updatePenaltyStatus)! Status: ${response.status}, Details:`,
           errorData
         );
         throw new Error(
-          `Failed to update penalty status: ${errorData.error || 'Unknown error'}`
+          `Failed to update penalty status: ${
+            errorData.error || "Unknown error"
+          }`
         );
       }
 
       const updatedPenalty: ParentPenalty = await response.json();
-      console.log(`DataService: Successfully updated penalty ID ${penaltyId} via Netlify Function.`);
+      console.log(
+        `DataService: Successfully updated penalty ID ${penaltyId} via Netlify Function.`
+      );
       return updatedPenalty;
     } catch (error) {
       console.error(
@@ -2452,17 +2527,23 @@ export default class DataService {
     studentId: number
   ): Promise<ParentPenalty[]> {
     try {
-      console.log(`DataService: Calling Netlify function to get penalties for student ID: ${studentId}`);
-      const response = await fetch(`${NETLIFY_FUNCTIONS_BASE_URL}/getPenaltiesForStudent?studentId=${studentId}`);
-      
+      console.log(
+        `DataService: Calling Netlify function to get penalties for student ID: ${studentId}`
+      );
+      const response = await fetch(
+        `${NETLIFY_FUNCTIONS_BASE_URL}/getPenaltiesForStudent?studentId=${studentId}`
+      );
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: response.statusText }));
         console.error(
           `DataService: HTTP error from Netlify function (getPenaltiesForStudent)! Status: ${response.status}, Details:`,
           errorData
         );
         throw new Error(
-          `Failed to fetch penalties: ${errorData.error || 'Unknown error'}`
+          `Failed to fetch penalties: ${errorData.error || "Unknown error"}`
         );
       }
 
@@ -2480,8 +2561,6 @@ export default class DataService {
       return [];
     }
   }
-
-
 
   static async getTotalPenaltiesForStudent(studentId: number): Promise<number> {
     const penalties = await this.getPenaltiesForStudent(studentId);
@@ -2508,7 +2587,7 @@ export default class DataService {
         studentIds.includes(Number(a.student_id)) &&
         this.isDateInRange(a.date_g, start, end) &&
         // Check for VIOLATION status if that's what indicates late
-        (a.status === "VIOLATION") // <-- Check for both if applicable
+        a.status === "VIOLATION" // <-- Check for both if applicable
     ).length;
   }
 
@@ -2559,171 +2638,197 @@ export default class DataService {
 
   static getDailyStats(regionId: number, startDate: Date, endDate: Date) {
     if (
-      !schoolData.absences ||
-      !schoolData.parentPenalties ||
-      !schoolData.attendance ||
-      !schoolData.rewards
+        !schoolData.absences ||
+        !schoolData.parentPenalties ||
+        !schoolData.attendance ||
+        !schoolData.rewards
     ) {
-      // console.warn("DEBUG (getDailyStats): Missing one or more data arrays (absences, penalties, attendance, rewards). Returning empty array.");
-      return [];
+        return [];
     }
+
     const studentsInRegion = this.getStudentsInRegion(regionId);
     const studentIdsInRegion = new Set(
-      studentsInRegion.map((s) => s.student_id)
+        studentsInRegion.map((s) => s.student_id)
     );
 
     const dailyDataMap: Record<
-      string,
-      {
-        dateLabel: string;
-        date_g: string;
-        date_h: string;
-        absences: number;
-        late: number;
-        fines: number;
-        rewards: number;
-      }
+        string,
+        {
+            dateLabel: string;
+            date_g: string;
+            date_h: string;
+            absences: number;
+            late: number;
+            fines: number;
+            rewards: number;
+        }
     > = {};
 
     const currentDay = new Date(startDate);
-    currentDay.setHours(0, 0, 0, 0); // Normalize to start of day for iteration
+    currentDay.setHours(0, 0, 0, 0);
 
     const endIterationDate = new Date(endDate);
-    endIterationDate.setHours(23, 59, 59, 999); // Normalize to end of day for iteration
+    endIterationDate.setHours(23, 59, 59, 999);
 
+    // FIX: This loop now initializes a date entry for every day, including weekends.
     while (currentDay.getTime() <= endIterationDate.getTime()) {
-      const dateKey = currentDay.toISOString().split("T")[0]; // YYYY-MM-DD format for key
-      // Hijri date placeholder. This needs to be replaced with actual conversion if possible.
-      // For now, using a simple mock if the data doesn't provide it
-      const hijriDatePlaceholder =
-        "H " +
-        (currentDay.getMonth() + 1).toString().padStart(2, "0") +
-        "/" +
-        currentDay.getDate().toString().padStart(2, "0") +
-        "/" +
-        currentDay.getFullYear();
+        const dateKey = currentDay.toISOString().split("T")[0];
+        const hijriDatePlaceholder =
+            "H " +
+            (currentDay.getMonth() + 1).toString().padStart(2, "0") +
+            "/" +
+            currentDay.getDate().toString().padStart(2, "0") +
+            "/" +
+            currentDay.getFullYear();
 
-      dailyDataMap[dateKey] = {
-        dateLabel: this.formatHijriDate(hijriDatePlaceholder),
-        date_g: dateKey,
-        date_h: hijriDatePlaceholder,
-        absences: 0,
-        late: 0,
-        fines: 0,
-        rewards: 0,
-      };
-      currentDay.setDate(currentDay.getDate() + 1);
-      currentDay.setHours(0, 0, 0, 0); // Reset hours for the next day
+        dailyDataMap[dateKey] = {
+            dateLabel: this.formatHijriDate(hijriDatePlaceholder),
+            date_g: dateKey,
+            date_h: hijriDatePlaceholder,
+            absences: 0,
+            late: 0,
+            fines: 0,
+            rewards: 0,
+        };
+        currentDay.setDate(currentDay.getDate() + 1);
+        currentDay.setHours(0, 0, 0, 0);
     }
 
     // Process Absences
     schoolData.absences.forEach((absence) => {
-      const dateKey = absence.date_g
-        ? new Date(absence.date_g.split(" ")[0]).toISOString().split("T")[0]
-        : null;
-      if (
-        dateKey &&
-        dailyDataMap[dateKey] &&
-        studentIdsInRegion.has(Number(absence.student_id)) &&
-        this.isDateInRange(absence.date_g, startDate, endDate)
-      ) {
-        dailyDataMap[dateKey].absences++;
-        if (absence.date_h) dailyDataMap[dateKey].date_h = absence.date_h;
-        dailyDataMap[dateKey].dateLabel = this.formatHijriDate(
-          dailyDataMap[dateKey].date_h
-        );
-      }
+        const dateStr = absence.date_g ? absence.date_g.split(" ")[0] : null;
+        const dateObject = dateStr ? new Date(dateStr) : null;
+        const dateKey =
+            dateObject instanceof Date && !isNaN(dateObject.getTime())
+                ? dateObject.toISOString().split("T")[0]
+                : null;
+
+        // FIX: Only count absences if the date is a weekday (not Friday or Saturday)
+        if (
+            dateKey &&
+            dailyDataMap[dateKey] &&
+            studentIdsInRegion.has(Number(absence.student_id)) &&
+            dateObject.getDay() !== 5 && dateObject.getDay() !== 6 &&
+            this.isDateInRange(absence.date_g, startDate, endDate)
+        ) {
+            dailyDataMap[dateKey].absences++;
+            if (absence.date_h) dailyDataMap[dateKey].date_h = absence.date_h;
+            dailyDataMap[dateKey].dateLabel = this.formatHijriDate(
+                dailyDataMap[dateKey].date_h
+            );
+        }
     });
 
     // Process Attendance (for late status)
     schoolData.attendance.forEach((record) => {
-      const dateKey = record.date_g
-        ? new Date(record.date_g.split(" ")[0]).toISOString().split("T")[0]
-        : null;
-      if (
-        dateKey &&
-        dailyDataMap[dateKey] &&
-        studentIdsInRegion.has(Number(record.student_id)) &&
-        this.isDateInRange(record.date_g, startDate, endDate)
-      ) {
-        // Changed this line:
-        if (record.status === "VIOLATION") {
-          // <-- Change 'late' to 'VIOLATION' here
-          dailyDataMap[dateKey].late++;
+        const dateStr = record.date_g ? record.date_g.split(" ")[0] : null;
+        // FIX: Added the robust date validation here as well
+        const dateObject = dateStr ? new Date(dateStr) : null;
+        const dateKey = 
+            dateObject instanceof Date && !isNaN(dateObject.getTime())
+            ? dateObject.toISOString().split("T")[0]
+            : null;
+        
+        // FIX: Only count late records if the date is a weekday
+        if (
+            dateKey &&
+            dailyDataMap[dateKey] &&
+            studentIdsInRegion.has(Number(record.student_id)) &&
+            dateObject.getDay() !== 5 && dateObject.getDay() !== 6 &&
+            this.isDateInRange(record.date_g, startDate, endDate)
+        ) {
+            if (record.status === "VIOLATION") {
+                dailyDataMap[dateKey].late++;
+            }
+            if (record.date_h) dailyDataMap[dateKey].date_h = record.date_h;
+            dailyDataMap[dateKey].dateLabel = this.formatHijriDate(
+                dailyDataMap[dateKey].date_h
+            );
         }
-
-        if (record.date_h) dailyDataMap[dateKey].date_h = record.date_h;
-        dailyDataMap[dateKey].dateLabel = this.formatHijriDate(
-          dailyDataMap[dateKey].date_h
-        );
-      }
     });
 
     // Process Penalties
     schoolData.parentPenalties.forEach((penalty) => {
-      const dateKey = penalty.penalty_date_g
-        ? new Date(penalty.penalty_date_g.split(" ")[0])
-            .toISOString()
-            .split("T")[0]
-        : null;
-      if (
-        dateKey &&
-        dailyDataMap[dateKey] &&
-        studentIdsInRegion.has(Number(penalty.student_id)) &&
-        this.isDateInRange(penalty.penalty_date_g, startDate, endDate)
-      ) {
-        dailyDataMap[dateKey].fines += penalty.amount_due || 0;
-        if (penalty.penalty_date_h)
-          dailyDataMap[dateKey].date_h = penalty.penalty_date_h;
-        dailyDataMap[dateKey].dateLabel = this.formatHijriDate(
-          dailyDataMap[dateKey].date_h
-        );
-      }
+        const dateStr = penalty.penalty_date_g
+            ? penalty.penalty_date_g.split(" ")[0]
+            : null;
+        const dateObject = dateStr ? new Date(dateStr) : null;
+        const dateKey =
+            dateObject instanceof Date && !isNaN(dateObject.getTime())
+                ? dateObject.toISOString().split("T")[0]
+                : null;
+
+        // FIX: Only count penalties if the date is a weekday
+        if (
+            dateKey &&
+            dailyDataMap[dateKey] &&
+            studentIdsInRegion.has(Number(penalty.student_id)) &&
+            dateObject.getDay() !== 5 && dateObject.getDay() !== 6 &&
+            this.isDateInRange(penalty.penalty_date_g, startDate, endDate)
+        ) {
+            dailyDataMap[dateKey].fines += penalty.amount_due || 0;
+            if (penalty.penalty_date_h)
+                dailyDataMap[dateKey].date_h = penalty.penalty_date_h;
+            dailyDataMap[dateKey].dateLabel = this.formatHijriDate(
+                dailyDataMap[dateKey].date_h
+            );
+        }
     });
 
     // Process Rewards
     schoolData.rewards.forEach((reward) => {
-      const dateKey = reward.issued_at
-        ? new Date(reward.issued_at.split(" ")[0]).toISOString().split("T")[0]
-        : null;
-      if (
-        dateKey &&
-        dailyDataMap[dateKey] &&
-        studentIdsInRegion.has(Number(reward.student_id)) &&
-        this.isDateInRange(reward.issued_at, startDate, endDate)
-      ) {
-        dailyDataMap[dateKey].rewards++;
-      }
+        const dateStr = reward.issued_at ? reward.issued_at.split(" ")[0] : null;
+        const dateObject = dateStr ? new Date(dateStr) : null;
+        const dateKey =
+            dateObject instanceof Date && !isNaN(dateObject.getTime())
+                ? dateObject.toISOString().split("T")[0]
+                : null;
+
+        // FIX: Only count rewards if the date is a weekday
+        if (
+            dateKey &&
+            dailyDataMap[dateKey] &&
+            studentIdsInRegion.has(Number(reward.student_id)) &&
+            dateObject.getDay() !== 5 && dateObject.getDay() !== 6 &&
+            this.isDateInRange(reward.issued_at, startDate, endDate)
+        ) {
+            dailyDataMap[dateKey].rewards++;
+        }
     });
 
     const totalStudentsInRegionCount = studentsInRegion.length;
 
+
     return Object.values(dailyDataMap)
-      .map((dayStats) => {
-        const actualPresentStudents = Math.max(
-          0,
-          totalStudentsInRegionCount - dayStats.absences - dayStats.late
+        .map((dayStats) => {
+            const actualPresentStudents = Math.max(
+                0,
+                totalStudentsInRegionCount - dayStats.absences - dayStats.late
+            );
+            const attendanceRate =
+                totalStudentsInRegionCount > 0
+                    ? Math.round(
+                          (actualPresentStudents / totalStudentsInRegionCount) * 100
+                      )
+                    : 0;
+                console.log("Data", attendanceRate, da)
+                    return {
+                dateLabel: dayStats.dateLabel,
+                date_g: dayStats.date_g,
+                attendanceRate: attendanceRate,
+                fines: dayStats.fines,
+                late: dayStats.late,
+                absences: dayStats.absences,
+                rewards: dayStats.rewards,
+            };
+            
+        })
+        .sort(
+            (a, b) => new Date(a.date_g).getTime() - new Date(b.date_g).getTime()
         );
-        const attendanceRate =
-          totalStudentsInRegionCount > 0
-            ? Math.round(
-                (actualPresentStudents / totalStudentsInRegionCount) * 100
-              )
-            : 0;
-        return {
-          dateLabel: dayStats.dateLabel,
-          date_g: dayStats.date_g,
-          attendanceRate: attendanceRate,
-          fines: dayStats.fines,
-          late: dayStats.late,
-          absences: dayStats.absences,
-          rewards: dayStats.rewards,
-        };
-      })
-      .sort(
-        (a, b) => new Date(a.date_g).getTime() - new Date(b.date_g).getTime()
-      );
-  }
+
+        
+}
 
   static formatHijriDate(hijriDateString: string): string {
     if (
@@ -2943,7 +3048,9 @@ export default class DataService {
   }
 
   static async getExcuseDetailsById(excuseId: string): Promise<Excuse | null> {
-    return fetchData<Excuse>(`/.netlify/functions/getExcuseDetailsById?id=${excuseId}`);
+    return fetchData<Excuse>(
+      `/.netlify/functions/getExcuseDetailsById?id=${excuseId}`
+    );
   }
   // static async getExcuseDetailsById(
   //   excuseId: string // Keep this as string, as your IDs are strings like "ec58"

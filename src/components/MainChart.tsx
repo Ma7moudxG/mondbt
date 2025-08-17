@@ -50,19 +50,26 @@ const MainChart = ({ regionId, startDate, endDate }: MainChartProps) => {
   });
 
   useEffect(() => {
-    console.log("dailyyyy stats", chartData)
+    // console.log("dailyyyy stats", chartData)
     if (!regionId) return;
 
     const loadChartData = () => {
+      // console.log("dailyyyy stats load", chartData)
       try {
         const dailyStats = DataService.getDailyStats(regionId, startDate, endDate);
         console.log("dailyyyy stats", dailyStats)
 
         setChartData({
-          Attendance: dailyStats.map(day => ({
-            name: day.date_g,
-            value: day.attendanceRate
-          })),
+          Attendance: dailyStats.map(day => {
+                const date = new Date(day.date_g);
+                const dayOfWeek = date.getDay(); // 0 = Sunday, 5 = Friday, 6 = Saturday
+
+                return {
+                    name: day.date_g,
+                    // If the day is Friday or Saturday, set value to 0, otherwise use attendanceRate
+                    value: (dayOfWeek === 5 || dayOfWeek === 6) ? 0 : day.attendanceRate
+                };
+            }),
           Late: dailyStats.map(day => ({
             name: day.date_g,
             value: day.late
