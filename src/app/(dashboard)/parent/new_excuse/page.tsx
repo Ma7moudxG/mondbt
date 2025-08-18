@@ -152,7 +152,7 @@ const NewExcusePage = () => {
       setSubmitting(false);
       return;
     }
-    console.log("daaaaaaaaaaaaaaaaaaaaaa", excuseDateH);
+    // console.log("daaaaaaaaaaaaaaaaaaaaaa", excuseDateH);
     try {
       const result = await DataService.createExcuse( // Destructure 'newExcuse' from 'result'
         parentId,

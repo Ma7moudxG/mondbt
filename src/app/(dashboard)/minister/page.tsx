@@ -469,10 +469,10 @@ const MinisterPage = () => {
   ];
 
   return (
-    <div className="p-4 flex flex-col gap-4" data-ignore-click-outside="true">
-      <div className="flex gap-12">
+    <div className="p-4 flex flex-col gap-4">
+      <div className="flex gap-12" >
         <h1 className="text-lg font-black text-[#7C8B9D]">{getConsistentTranslatedText("Statistics")}</h1>{" "}
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="flex flex-wrap justify-center gap-2" data-ignore-click-outside="true">
           {/* Tabs for the Cards section */}
           {(["Day", "Month", "Year"] as CardTab[]).map((tab) => (
             <button
@@ -514,7 +514,7 @@ const MinisterPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl">
+        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl" data-ignore-click-outside="true">
           {/* DateRange component uses mainDateRange */}
           <DateRange
             onDateChange={handleMainDateRangeChange}
@@ -545,7 +545,7 @@ const MinisterPage = () => {
           </div>
         </div>
       </div>
-      <div className="h-[800px] flex flex-col gap-8 p-8 bg-white rounded-2xl">
+      <div className="h-[800px] flex flex-col gap-8 p-8 bg-white rounded-2xl" data-ignore-click-outside="true">
         {/* MainChart uses mainDateRange and selectedRegion */}
         <MainChart
           startDate={mainDateRange.startDate}
