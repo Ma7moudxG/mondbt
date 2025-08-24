@@ -352,6 +352,75 @@ const MinisterPage = () => {
     });
   };
 
+    // Poll ZKTeco API every 5 seconds for attendance updates
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    async function fetchAttendance() {
+      try {
+        const res = await fetch("http://127.0.0.1/iclock/api/transactions/");
+        if (!res.ok) {
+          console.error("Failed to fetch transactions:", res.statusText);
+          return;
+        }
+        const data = await res.json();
+
+        // ✅ Count total transactions (you can filter by emp_code, etc. if needed)
+        const newAttendance = data?.data?.length + cardStats.attendance || 0;
+
+        // Update only the attendance stat
+        setCardStats((prev) => ({
+          ...prev,
+          attendance: newAttendance, // overwrite with live count
+        }));
+      } catch (err) {
+        console.error("Error fetching attendance:", err);
+      }
+    }
+
+    fetchAttendance(); // initial fetch
+    interval = setInterval(fetchAttendance, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+
+  
+
+  // Cards data for the top section (uses cardStats)
+  const cards = [
+    {
+      type: getConsistentTranslatedText("Attendance"), // Use helper
+      number: ( cardStats.attendance * 100 ).toLocaleString(),
+      text: getConsistentTranslatedText("student"), // Use helper
+    },
+    {
+      type: getConsistentTranslatedText("Absence"), // Use helper
+      number: ( cardStats.absence* 100 ).toLocaleString(),
+      text: getConsistentTranslatedText("student"), // Use helper
+    },
+    {
+      type: getConsistentTranslatedText("Late"), // Use helper
+      number: ( cardStats.late * 50 ).toLocaleString(),
+      text: getConsistentTranslatedText("late student"), // Use helper
+    },
+    {
+      type: getConsistentTranslatedText("Fines"), // Use helper
+      number: ((cardStats.fines)*100).toLocaleString(),
+      text: getConsistentTranslatedText("Saudi Riyal"), // Use helper
+    },
+    {
+      type: getConsistentTranslatedText("Rewards"), // Use helper
+      number: ( cardStats.rewards * 100 ).toLocaleString(),
+      text: getConsistentTranslatedText("Reward"), // Use helper
+    },
+    {
+      type: getConsistentTranslatedText("Permissions"),
+      number: cardTab === "Day" ? 0 : cardTab === "Month" ? 43081 : 290493,
+      text: getConsistentTranslatedText("Permission"),
+    },
+  ];
+
   const handleExport = () => {
     if (!selectedRegion) {
       alert(getConsistentTranslatedText("Please select a region first")); // Use helper
@@ -433,40 +502,6 @@ const MinisterPage = () => {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
-
-  // Cards data for the top section (uses cardStats)
-  const cards = [
-    {
-      type: getConsistentTranslatedText("Attendance"), // Use helper
-      number: ( cardStats.attendance * 100 ).toLocaleString(),
-      text: getConsistentTranslatedText("student"), // Use helper
-    },
-    {
-      type: getConsistentTranslatedText("Absence"), // Use helper
-      number: ( cardStats.absence* 100 ).toLocaleString(),
-      text: getConsistentTranslatedText("student"), // Use helper
-    },
-    {
-      type: getConsistentTranslatedText("Late"), // Use helper
-      number: ( cardStats.late * 50 ).toLocaleString(),
-      text: getConsistentTranslatedText("late student"), // Use helper
-    },
-    {
-      type: getConsistentTranslatedText("Fines"), // Use helper
-      number: ((cardStats.fines)*100).toLocaleString(),
-      text: getConsistentTranslatedText("Saudi Riyal"), // Use helper
-    },
-    {
-      type: getConsistentTranslatedText("Rewards"), // Use helper
-      number: ( cardStats.rewards * 100 ).toLocaleString(),
-      text: getConsistentTranslatedText("Reward"), // Use helper
-    },
-    {
-      type: getConsistentTranslatedText("Permissions"),
-      number: cardTab === "Day" ? 0 : cardTab === "Month" ? 43081 : 290493,
-      text: getConsistentTranslatedText("Permission"),
-    },
-  ];
 
   return (
     <div className="p-4 flex flex-col gap-4">
