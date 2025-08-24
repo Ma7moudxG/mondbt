@@ -463,7 +463,7 @@ const MinisterPage = () => {
     },
     {
       type: getConsistentTranslatedText("Permissions"),
-      number: cardTab === "Day" ? 8907 : cardTab === "Month" ? 43081 : 290493,
+      number: cardTab === "Day" ? 0 : cardTab === "Month" ? 43081 : 290493,
       text: getConsistentTranslatedText("Permission"),
     },
   ];
