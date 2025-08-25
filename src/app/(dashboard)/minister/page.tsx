@@ -422,7 +422,7 @@ const MinisterPage = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            url: "https://127.0.0.1/iclock/api/transactions/?page_size=10",
+            url: "https://127.0.0.1/iclock/api/transactions",
             method: "GET",
             headers: { Authorization: `JWT ${tokenData.token}` },
           }),
