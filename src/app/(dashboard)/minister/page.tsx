@@ -54,6 +54,7 @@ const MinisterPage = () => {
 
   // State for the card tabs (Day, Month, Year)
   const [cardTab, setCardTab] = useState<CardTab>("Day");
+  const [fCount, setFCount] = useState(0);
   // State for the date range used by cards
   const [cardDateRange, setCardDateRange] = useState({
     startDate: new Date(),
@@ -431,10 +432,7 @@ const MinisterPage = () => {
         const txData = await txRes.json();
         console.log("Transactions:", txData);
 
-        setCardStats((prev) => ({
-          ...prev,
-          attendance: cardStats.attendance * 100 + txData.count, // overwrite with live count
-        }));
+        setFCount(txData.count)
       } catch (err) {
         console.error("Failed to fetch attendance", err);
       }
@@ -450,7 +448,7 @@ const MinisterPage = () => {
   const cards = [
     {
       type: getConsistentTranslatedText("Attendance"), // Use helper
-      number: (cardStats.attendance).toLocaleString(),
+      number: (cardStats.attendance * 100 + fCount).toLocaleString(),
       text: getConsistentTranslatedText("student"), // Use helper
     },
     {
