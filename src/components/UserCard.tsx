@@ -14,7 +14,7 @@ const UserCard = ({ type }: { type: cardType }) => {
         <span className="font-bold">{type.type}</span>
       </div>
       <h1 className="text-2xl my-2 font-black">
-        {Number(type.number).toLocaleString("en-US")}
+        {Number(type.number || 0).toLocaleString("en-US")}
       </h1>
       <h2 className="capitalize text-sm font-medium">{type.text}</h2>
     </div>
