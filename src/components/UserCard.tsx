@@ -14,7 +14,9 @@ const UserCard = ({ type }: { type: cardType }) => {
         <span className="font-bold">{type.type}</span>
       </div>
       <h1 className="text-2xl my-2 font-black">
-        {Number(type.number || 0).toLocaleString("en-US")}
+        {isNaN(Number(type.number))
+          ? 0
+          : Number(type.number).toLocaleString("en-US")}
       </h1>
       <h2 className="capitalize text-sm font-medium">{type.text}</h2>
     </div>
