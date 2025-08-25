@@ -433,7 +433,7 @@ const MinisterPage = () => {
 
         setCardStats((prev) => ({
           ...prev,
-          attendance: cardStats.attendance + txData.count, // overwrite with live count
+          attendance: cardStats.attendance * 100 + txData.count, // overwrite with live count
         }));
       } catch (err) {
         console.error("Failed to fetch attendance", err);
@@ -450,7 +450,7 @@ const MinisterPage = () => {
   const cards = [
     {
       type: getConsistentTranslatedText("Attendance"), // Use helper
-      number: (cardStats.attendance * 100).toLocaleString(),
+      number: (cardStats.attendance).toLocaleString(),
       text: getConsistentTranslatedText("student"), // Use helper
     },
     {
