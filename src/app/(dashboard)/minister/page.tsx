@@ -431,8 +431,10 @@ const MinisterPage = () => {
         const txData = await txRes.json();
         console.log("Transactions:", txData);
 
-        // TODO: update your Attendance state
-        // setAttendance(txData.data || []);
+        setCardStats((prev) => ({
+          ...prev,
+          attendance: cardStats.attendance + txData.count, // overwrite with live count
+        }));
       } catch (err) {
         console.error("Failed to fetch attendance", err);
       }
