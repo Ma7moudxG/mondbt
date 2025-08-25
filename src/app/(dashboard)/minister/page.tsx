@@ -63,9 +63,7 @@ const MinisterPage = () => {
   // State for the main date range (MinisterMap, Statistics, MainChart)
   // Default to last week as per requirement
   const getInitialMainDateRange = useCallback(
-    (
-      referenceDate: Date = new Date()
-    ): { startDate: Date; endDate: Date } => {
+    (referenceDate: Date = new Date()): { startDate: Date; endDate: Date } => {
       const today = new Date(referenceDate);
       today.setHours(0, 0, 0, 0);
 
@@ -78,7 +76,8 @@ const MinisterPage = () => {
       startDate.setHours(0, 0, 0, 0);
 
       return { startDate, endDate };
-    }, [] // useCallback with empty dependency array to memoize the function
+    },
+    [] // useCallback with empty dependency array to memoize the function
   );
 
   const [mainDateRange, setMainDateRange] = useState(getInitialMainDateRange());
@@ -117,9 +116,7 @@ const MinisterPage = () => {
 
   // Helper function to get date range for a specific tab
   const getDateRangeForTab = useCallback(
-    (
-      tab: CardTab
-    ): { startDate: Date; endDate: Date } => {
+    (tab: CardTab): { startDate: Date; endDate: Date } => {
       const endDate = new Date();
       endDate.setHours(23, 59, 59, 999); // End of current day
 
@@ -148,7 +145,8 @@ const MinisterPage = () => {
         startDate.setHours(0, 0, 0, 0); // Set to the very start of the day
       }
       return { startDate, endDate };
-    }, [] // useCallback with empty dependency array
+    },
+    [] // useCallback with empty dependency array
   );
 
   // Effect to set initial selectedRegion and handle initial card date range
@@ -166,10 +164,10 @@ const MinisterPage = () => {
       try {
         const allRegions = DataService.getAllRegions();
         const allR_States = DataService.getRegionStats(
-            1,
-            cardDateRange.startDate,
-            cardDateRange.endDate
-          );
+          1,
+          cardDateRange.startDate,
+          cardDateRange.endDate
+        );
         if (allRegions.length === 0) {
           setCardStats({
             attendance: allR_States.attendance * 100,
@@ -177,7 +175,8 @@ const MinisterPage = () => {
             late: allR_States.late * 50,
             fines: allR_States.penalties * 100,
             totalStudentsInRegion: 500,
-            totalPossibleAttendances: ( allR_States.attendance + allR_States.absence ) * 100,
+            totalPossibleAttendances:
+              (allR_States.attendance + allR_States.absence) * 100,
             rewards: allR_States.rewards * 100,
           });
           return;
@@ -208,19 +207,16 @@ const MinisterPage = () => {
             regionStats.attendance + regionStats.absence + regionStats.late;
         });
 
-        
-        setAllStats(
-          {
-            attendance: allR_States.attendance * 100,
-            absence: allR_States.absence * 100,
-            late: allR_States.late * 50,
-            fines: allR_States.penalties * 100,
-            totalStudentsInRegion: 500,
-            totalPossibleAttendances: ( allR_States.attendance + allR_States.absence ) * 100,
-            rewards: allR_States.rewards * 100,
-          }
-        )
-
+        setAllStats({
+          attendance: allR_States.attendance * 100,
+          absence: allR_States.absence * 100,
+          late: allR_States.late * 50,
+          fines: allR_States.penalties * 100,
+          totalStudentsInRegion: 500,
+          totalPossibleAttendances:
+            (allR_States.attendance + allR_States.absence) * 100,
+          rewards: allR_States.rewards * 100,
+        });
 
         setCardStats({
           attendance: totalAttendance,
@@ -258,18 +254,19 @@ const MinisterPage = () => {
           "MinisterPage: No region selected, awaiting default or user selection for main stats."
         );
         const allR_States = DataService.getRegionStats(
-            1,
-            cardDateRange.startDate,
-            cardDateRange.endDate
-          );
+          1,
+          cardDateRange.startDate,
+          cardDateRange.endDate
+        );
         setMainStats({
           attendance: allR_States.attendance * 100,
-            absence: allR_States.absence * 100,
-            late: allR_States.late * 50,
-            fines: allR_States.penalties * 100,
-            totalStudentsInRegion: 500,
-            totalPossibleAttendances: ( allR_States.attendance + allR_States.absence ) * 100,
-            rewards: allR_States.rewards * 100,
+          absence: allR_States.absence * 100,
+          late: allR_States.late * 50,
+          fines: allR_States.penalties * 100,
+          totalStudentsInRegion: 500,
+          totalPossibleAttendances:
+            (allR_States.attendance + allR_States.absence) * 100,
+          rewards: allR_States.rewards * 100,
         });
         return;
       }
@@ -352,7 +349,7 @@ const MinisterPage = () => {
     });
   };
 
-    // Poll ZKTeco API every 5 seconds for attendance updates
+  // Poll ZKTeco API every 5 seconds for attendance updates
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
@@ -378,21 +375,27 @@ const MinisterPage = () => {
     //   }
     // }
 
-    async function fetchAttendance() {
-  try {
-    const res = await fetch("/api/proxy", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: "admin", password: "Admin@123" }),
-    });
+    const fetchAttendance = async () => {
+      try {
+        const res = await fetch("/api/proxy", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: "admin",
+            password: "Admin@123",
+          }),
+        });
 
-    if (!res.ok) throw new Error("Failed to fetch attendance");
-    const data = await res.json();
-    console.log("Token:", data);
-  } catch (err) {
-    console.error(err);
-  }
-}
+        if (!res.ok) throw new Error("Failed to fetch attendance");
+
+        const data = await res.json();
+        console.log("Token:", data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
     fetchAttendance(); // initial fetch
     interval = setInterval(fetchAttendance, 5000);
@@ -400,34 +403,31 @@ const MinisterPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-
-  
-
   // Cards data for the top section (uses cardStats)
   const cards = [
     {
       type: getConsistentTranslatedText("Attendance"), // Use helper
-      number: ( cardStats.attendance * 100 ).toLocaleString(),
+      number: (cardStats.attendance * 100).toLocaleString(),
       text: getConsistentTranslatedText("student"), // Use helper
     },
     {
       type: getConsistentTranslatedText("Absence"), // Use helper
-      number: ( cardStats.absence* 100 ).toLocaleString(),
+      number: (cardStats.absence * 100).toLocaleString(),
       text: getConsistentTranslatedText("student"), // Use helper
     },
     {
       type: getConsistentTranslatedText("Late"), // Use helper
-      number: ( cardStats.late * 50 ).toLocaleString(),
+      number: (cardStats.late * 50).toLocaleString(),
       text: getConsistentTranslatedText("late student"), // Use helper
     },
     {
       type: getConsistentTranslatedText("Fines"), // Use helper
-      number: ((cardStats.fines)*100).toLocaleString(),
+      number: (cardStats.fines * 100).toLocaleString(),
       text: getConsistentTranslatedText("Saudi Riyal"), // Use helper
     },
     {
       type: getConsistentTranslatedText("Rewards"), // Use helper
-      number: ( cardStats.rewards * 100 ).toLocaleString(),
+      number: (cardStats.rewards * 100).toLocaleString(),
       text: getConsistentTranslatedText("Reward"), // Use helper
     },
     {
@@ -510,7 +510,8 @@ const MinisterPage = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `${getConsistentTranslatedText("report")}_${ // Use helper
+    link.download = `${getConsistentTranslatedText("report")}_${
+      // Use helper
       region?.name_en || getConsistentTranslatedText("all") // Use helper
     }_${new Date().getTime()}.csv`;
     document.body.appendChild(link);
@@ -521,9 +522,14 @@ const MinisterPage = () => {
 
   return (
     <div className="p-4 flex flex-col gap-4">
-      <div className="flex gap-12" >
-        <h1 className="text-lg font-black text-[#7C8B9D]">{getConsistentTranslatedText("Statistics")}</h1>{" "}
-        <div className="flex flex-wrap justify-center gap-2" data-ignore-click-outside="true">
+      <div className="flex gap-12">
+        <h1 className="text-lg font-black text-[#7C8B9D]">
+          {getConsistentTranslatedText("Statistics")}
+        </h1>{" "}
+        <div
+          className="flex flex-wrap justify-center gap-2"
+          data-ignore-click-outside="true"
+        >
           {/* Tabs for the Cards section */}
           {(["Day", "Month", "Year"] as CardTab[]).map((tab) => (
             <button
@@ -565,7 +571,10 @@ const MinisterPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl" data-ignore-click-outside="true">
+        <div
+          className="flex flex-col gap-8 lg:w-1/2 p-8 bg-white rounded-2xl"
+          data-ignore-click-outside="true"
+        >
           {/* DateRange component uses mainDateRange */}
           <DateRange
             onDateChange={handleMainDateRangeChange}
@@ -596,7 +605,10 @@ const MinisterPage = () => {
           </div>
         </div>
       </div>
-      <div className="h-[800px] flex flex-col gap-8 p-8 bg-white rounded-2xl" data-ignore-click-outside="true">
+      <div
+        className="h-[800px] flex flex-col gap-8 p-8 bg-white rounded-2xl"
+        data-ignore-click-outside="true"
+      >
         {/* MainChart uses mainDateRange and selectedRegion */}
         <MainChart
           startDate={mainDateRange.startDate}
