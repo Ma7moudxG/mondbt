@@ -2,22 +2,20 @@
 import Image from "next/image";
 
 interface cardType {
-  type: string; // This refers to the category name (e.g., "Attendance", "Absence")
-  number: string;
-  text: string;
+  type: string, // This refers to the category name (e.g., "Attendance", "Absence")
+  number: string,
+  text: string
 }
 
 const UserCard = ({ type }: { type: cardType }) => {
   return (
     <div className="rounded-2xl text-white odd:bg-[#8447AB] even:bg-[#5EB89D] p-4 flex-1 min-w-[130px]">
       <div className="flex justify-between items-center">
-        <span className="font-bold">{type.type}</span>
+        <span className="font-bold">
+          {type.type}
+        </span>
       </div>
-      <h1 className="text-2xl my-2 font-black">
-        {isNaN(Number(type.number))
-          ? 0
-          : Number(type.number).toLocaleString("en-US")}
-      </h1>
+      <h1 className="text-2xl my-2 font-black">{type.number.toLocaleString()}</h1>
       <h2 className="capitalize text-sm font-medium">{type.text}</h2>
     </div>
   );
