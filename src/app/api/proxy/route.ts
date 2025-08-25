@@ -1,35 +1,35 @@
 // src/app/api/proxy/route.ts
 import { NextResponse } from "next/server";
 
-// Disable SSL verification for self-signed localhost certs
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+    const { url, method = "GET", headers = {}, data } = body;
 
-    const backendRes = await fetch("https://127.0.0.1/jwt-api-token-auth/", {
-      method: "POST",
+    if (!url) {
+      return NextResponse.json({ error: "Missing target URL" }, { status: 400 });
+    }
+
+    const backendRes = await fetch(url, {
+      method,
       headers: {
         "Content-Type": "application/json",
+        ...headers, // allow Authorization
       },
-      body: JSON.stringify(body),
+      body: method !== "GET" ? JSON.stringify(data) : undefined,
     });
 
-    const text = await backendRes.text(); // get raw response
-    let data;
-
+    const text = await backendRes.text();
+    let responseData;
     try {
-      data = JSON.parse(text); // try JSON parse
+      responseData = JSON.parse(text);
     } catch {
-      data = { raw: text }; // fallback for non-JSON
+      responseData = { raw: text };
     }
 
-    if (!backendRes.ok) {
-      return NextResponse.json({ error: data }, { status: backendRes.status });
-    }
-
-    return NextResponse.json(data, { status: 200 });
+    return NextResponse.json(responseData, { status: backendRes.status });
   } catch (error: any) {
     console.error("Proxy error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

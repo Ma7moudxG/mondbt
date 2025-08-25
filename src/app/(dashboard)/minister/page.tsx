@@ -375,27 +375,68 @@ const MinisterPage = () => {
     //   }
     // }
 
-    const fetchAttendance = async () => {
+    // const fetchAttendance = async () => {
+    //   try {
+    //     const res = await fetch("/api/proxy", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         username: "admin",
+    //         password: "Admin@123",
+    //       }),
+    //     });
+
+    //     if (!res.ok) throw new Error("Failed to fetcph attendance");
+
+    //     const data = await res.json();
+    //     console.log("Token:", data);
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // };
+
+    async function fetchAttendance() {
       try {
-        const res = await fetch("/api/proxy", {
+        // Step 1: Get token
+        const tokenRes = await fetch("/api/proxy", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            username: "admin",
-            password: "Admin@123",
+            url: "https://127.0.0.1/jwt-api-token-auth/",
+            method: "POST",
+            data: { username: "admin", password: "Admin@123" },
           }),
         });
 
-        if (!res.ok) throw new Error("Failed to fetcph attendance");
+        const tokenData = await tokenRes.json();
+        if (!tokenRes.ok || !tokenData.token) {
+          throw new Error("Failed to get token");
+        }
+        console.log("Got token:", tokenData.token);
 
-        const data = await res.json();
-        console.log("Token:", data);
+        // Step 2: Fetch transactions with Authorization
+        const txRes = await fetch("/api/proxy", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            url: "https://127.0.0.1/iclock/api/transactions/?page_size=10",
+            method: "GET",
+            headers: { Authorization: `JWT ${tokenData.token}` },
+          }),
+        });
+
+        if (!txRes.ok) throw new Error("Failed to fetch transactions");
+        const txData = await txRes.json();
+        console.log("Transactions:", txData);
+
+        // TODO: update your Attendance state
+        // setAttendance(txData.data || []);
       } catch (err) {
-        console.error(err);
+        console.error("Failed to fetch attendance", err);
       }
-    };
+    }
 
     fetchAttendance(); // initial fetch
     interval = setInterval(fetchAttendance, 5000);
