@@ -429,10 +429,20 @@ const MinisterPage = () => {
         });
 
         if (!txRes.ok) throw new Error("Failed to fetch transactions");
+
         const txData = await txRes.json();
         console.log("Transactions:", txData);
 
-        setFCount(txData.count)
+        let todayCount = 0;
+        const todayStr = new Date().toDateString();
+
+        if (Array.isArray(txData.data)) {
+          todayCount = txData.data.filter(
+            (tx: any) => new Date(tx.punch_time).toDateString() === todayStr
+          ).length;
+        }
+
+        setFCount(todayCount);
       } catch (err) {
         console.error("Failed to fetch attendance", err);
       }
