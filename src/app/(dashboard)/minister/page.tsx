@@ -356,27 +356,43 @@ const MinisterPage = () => {
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
+    // async function fetchAttendance() {
+    //   try {
+    //     const res = await fetch("http://127.0.0.1/iclock/api/transactions/");
+    //     if (!res.ok) {
+    //       console.error("Failed to fetch transactions:", res.statusText);
+    //       return;
+    //     }
+    //     const data = await res.json();
+
+    //     // ✅ Count total transactions (you can filter by emp_code, etc. if needed)
+    //     const newAttendance = data?.data?.length + cardStats.attendance || 0;
+
+    //     // Update only the attendance stat
+    //     setCardStats((prev) => ({
+    //       ...prev,
+    //       attendance: newAttendance, // overwrite with live count
+    //     }));
+    //   } catch (err) {
+    //     console.error("Error fetching attendance:", err);
+    //   }
+    // }
+
     async function fetchAttendance() {
-      try {
-        const res = await fetch("http://127.0.0.1/iclock/api/transactions/");
-        if (!res.ok) {
-          console.error("Failed to fetch transactions:", res.statusText);
-          return;
-        }
-        const data = await res.json();
+  try {
+    const res = await fetch("/api/proxy", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: "admin", password: "Admin@123" }),
+    });
 
-        // ✅ Count total transactions (you can filter by emp_code, etc. if needed)
-        const newAttendance = data?.data?.length + cardStats.attendance || 0;
-
-        // Update only the attendance stat
-        setCardStats((prev) => ({
-          ...prev,
-          attendance: newAttendance, // overwrite with live count
-        }));
-      } catch (err) {
-        console.error("Error fetching attendance:", err);
-      }
-    }
+    if (!res.ok) throw new Error("Failed to fetch attendance");
+    const data = await res.json();
+    console.log("Token:", data);
+  } catch (err) {
+    console.error(err);
+  }
+}
 
     fetchAttendance(); // initial fetch
     interval = setInterval(fetchAttendance, 5000);
