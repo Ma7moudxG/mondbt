@@ -388,7 +388,7 @@ const MinisterPage = () => {
           }),
         });
 
-        if (!res.ok) throw new Error("Failed to fetch attendance");
+        if (!res.ok) throw new Error("Failed to fetcph attendance");
 
         const data = await res.json();
         console.log("Token:", data);

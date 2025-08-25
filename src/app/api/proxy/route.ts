@@ -1,28 +1,37 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+// src/app/api/proxy/route.ts
+import { NextResponse } from "next/server";
 
-// Disable SSL verification for localhost self-signed certs
+// Disable SSL verification for self-signed localhost certs
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: Request) {
   try {
-    // Forward request to your backend
+    const body = await req.json();
+
     const backendRes = await fetch("https://127.0.0.1/jwt-api-token-auth/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(req.body), // forward client body
+      body: JSON.stringify(body),
     });
 
-    const data = await backendRes.json();
+    const text = await backendRes.text(); // get raw response
+    let data;
 
-    if (!backendRes.ok) {
-      return res.status(backendRes.status).json({ error: data });
+    try {
+      data = JSON.parse(text); // try JSON parse
+    } catch {
+      data = { raw: text }; // fallback for non-JSON
     }
 
-    return res.status(200).json(data);
+    if (!backendRes.ok) {
+      return NextResponse.json({ error: data }, { status: backendRes.status });
+    }
+
+    return NextResponse.json(data, { status: 200 });
   } catch (error: any) {
     console.error("Proxy error:", error);
-    return res.status(500).json({ error: error.message });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
