@@ -351,108 +351,108 @@ const MinisterPage = () => {
   };
 
   // Poll ZKTeco API every 5 seconds for attendance updates
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
+  // useEffect(() => {
+  //   let interval: NodeJS.Timeout;
 
-    // async function fetchAttendance() {
-    //   try {
-    //     const res = await fetch("http://127.0.0.1/iclock/api/transactions/");
-    //     if (!res.ok) {
-    //       console.error("Failed to fetch transactions:", res.statusText);
-    //       return;
-    //     }
-    //     const data = await res.json();
+  //   // async function fetchAttendance() {
+  //   //   try {
+  //   //     const res = await fetch("http://127.0.0.1/iclock/api/transactions/");
+  //   //     if (!res.ok) {
+  //   //       console.error("Failed to fetch transactions:", res.statusText);
+  //   //       return;
+  //   //     }
+  //   //     const data = await res.json();
 
-    //     // ✅ Count total transactions (you can filter by emp_code, etc. if needed)
-    //     const newAttendance = data?.data?.length + cardStats.attendance || 0;
+  //   //     // ✅ Count total transactions (you can filter by emp_code, etc. if needed)
+  //   //     const newAttendance = data?.data?.length + cardStats.attendance || 0;
 
-    //     // Update only the attendance stat
-    //     setCardStats((prev) => ({
-    //       ...prev,
-    //       attendance: newAttendance, // overwrite with live count
-    //     }));
-    //   } catch (err) {
-    //     console.error("Error fetching attendance:", err);
-    //   }
-    // }
+  //   //     // Update only the attendance stat
+  //   //     setCardStats((prev) => ({
+  //   //       ...prev,
+  //   //       attendance: newAttendance, // overwrite with live count
+  //   //     }));
+  //   //   } catch (err) {
+  //   //     console.error("Error fetching attendance:", err);
+  //   //   }
+  //   // }
 
-    // const fetchAttendance = async () => {
-    //   try {
-    //     const res = await fetch("/api/proxy", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //         username: "admin",
-    //         password: "Admin@123",
-    //       }),
-    //     });
+  //   // const fetchAttendance = async () => {
+  //   //   try {
+  //   //     const res = await fetch("/api/proxy", {
+  //   //       method: "POST",
+  //   //       headers: {
+  //   //         "Content-Type": "application/json",
+  //   //       },
+  //   //       body: JSON.stringify({
+  //   //         username: "admin",
+  //   //         password: "Admin@123",
+  //   //       }),
+  //   //     });
 
-    //     if (!res.ok) throw new Error("Failed to fetcph attendance");
+  //   //     if (!res.ok) throw new Error("Failed to fetcph attendance");
 
-    //     const data = await res.json();
-    //     console.log("Token:", data);
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // };
+  //   //     const data = await res.json();
+  //   //     console.log("Token:", data);
+  //   //   } catch (err) {
+  //   //     console.error(err);
+  //   //   }
+  //   // };
 
-    async function fetchAttendance() {
-      try {
-        // Step 1: Get token
-        const tokenRes = await fetch("/api/proxy", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            url: "https://127.0.0.1/jwt-api-token-auth/",
-            method: "POST",
-            data: { username: "admin", password: "Admin@123" },
-          }),
-        });
+  //   async function fetchAttendance() {
+  //     try {
+  //       // Step 1: Get token
+  //       const tokenRes = await fetch("/api/proxy", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({
+  //           url: "https://127.0.0.1/jwt-api-token-auth/",
+  //           method: "POST",
+  //           data: { username: "admin", password: "Admin@123" },
+  //         }),
+  //       });
 
-        const tokenData = await tokenRes.json();
-        if (!tokenRes.ok || !tokenData.token) {
-          throw new Error("Failed to get token");
-        }
-        console.log("Got token:", tokenData.token);
+  //       const tokenData = await tokenRes.json();
+  //       if (!tokenRes.ok || !tokenData.token) {
+  //         throw new Error("Failed to get token");
+  //       }
+  //       console.log("Got token:", tokenData.token);
 
-        // Step 2: Fetch transactions with Authorization
-        const txRes = await fetch("/api/proxy", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            url: "https://127.0.0.1/iclock/api/transactions/?page_size=100",
-            method: "GET",
-            headers: { Authorization: `JWT ${tokenData.token}` },
-          }),
-        });
+  //       // Step 2: Fetch transactions with Authorization
+  //       const txRes = await fetch("/api/proxy", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({
+  //           url: "https://127.0.0.1/iclock/api/transactions/?page_size=100",
+  //           method: "GET",
+  //           headers: { Authorization: `JWT ${tokenData.token}` },
+  //         }),
+  //       });
 
-        if (!txRes.ok) throw new Error("Failed to fetch transactions");
+  //       if (!txRes.ok) throw new Error("Failed to fetch transactions");
 
-        const txData = await txRes.json();
-        console.log("Transactions:", txData);
+  //       const txData = await txRes.json();
+  //       console.log("Transactions:", txData);
 
-        let todayCount = 0;
-        const todayStr = new Date().toDateString();
+  //       let todayCount = 0;
+  //       const todayStr = new Date().toDateString();
 
-        if (Array.isArray(txData.data)) {
-          todayCount = txData.data.filter(
-            (tx: any) => new Date(tx.punch_time).toDateString() === todayStr
-          ).length;
-        }
+  //       if (Array.isArray(txData.data)) {
+  //         todayCount = txData.data.filter(
+  //           (tx: any) => new Date(tx.punch_time).toDateString() === todayStr
+  //         ).length;
+  //       }
 
-        setFCount(todayCount);
-      } catch (err) {
-        console.error("Failed to fetch attendance", err);
-      }
-    }
+  //       setFCount(todayCount);
+  //     } catch (err) {
+  //       console.error("Failed to fetch attendance", err);
+  //     }
+  //   }
 
-    fetchAttendance(); // initial fetch
-    interval = setInterval(fetchAttendance, 5000);
+  //   fetchAttendance(); // initial fetch
+  //   interval = setInterval(fetchAttendance, 5000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   // Cards data for the top section (uses cardStats)
   const cards = [
